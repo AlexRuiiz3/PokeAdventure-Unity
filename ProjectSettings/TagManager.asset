@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Suelo
+  - Ground
   - Water
   - UI
-  - SobreSuelo
-  - ObjetosSolidos
-  - Jugador
+  - OnGround
+  - SolidObjects
+  - Player
   - 
   - 
   - 
@@ -41,15 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Suelo
+  - name: Ground
     uniqueID: 471373789
     locked: 0
-  - name: SobreSuelo
+  - name: OnGround
     uniqueID: 3419635695
     locked: 0
-  - name: ObjetosSolidos
+  - name: SolidObjects
     uniqueID: 3076907199
     locked: 0
-  - name: Jugador
+  - name: Player
     uniqueID: 3341536985
     locked: 0

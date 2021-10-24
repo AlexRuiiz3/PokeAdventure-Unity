@@ -26,8 +26,15 @@ public class MovimientoJugador : MonoBehaviour
         //Se obtiene el input del jugador(Teclado)
         movimientoHorizontal = Input.GetAxisRaw("Horizontal"); //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla;
         movimientoVertical = Input.GetAxisRaw("Vertical"); //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
-
         ModificarVariablesAnimaciones();
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            movimientoHorizontal *= (float)1.8;
+            movimientoVertical *= (float)1.8;
+        }
+
+        
 
     }
 
@@ -38,8 +45,9 @@ public class MovimientoJugador : MonoBehaviour
     { //Es un metodo que tiene que actualizarce de manera mucho mas habitual que el Update(Este depende de a cuantos frame por segundos vayas), por eso aqui es donde se mete lo de la fisica
 
         //Vector representa un vector con dos posiciones X e Y en el mundo 
+
         rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
-       
+
     }
 
     /// <summary>
