@@ -869,6 +869,18 @@ TextureImporter:
   - first:
       213: 4187737454526154468
     second: Landscape_bench10
+  - first:
+      213: 8481762446072469365
+    second: Landscapes1_rock
+  - first:
+      213: 4180362154017901485
+    second: Landscapes1_rock9
+  - first:
+      213: 7490444305702171978
+    second: Landscapes1_rock10
+  - first:
+      213: -4798903860185880079
+    second: Landscapes1_rock8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -7282,7 +7294,7 @@ TextureImporter:
       name: Landscape_rock4
       rect:
         serializedVersion: 2
-        x: 417
+        x: 416
         y: 220
         width: 31
         height: 29
@@ -10563,7 +10575,7 @@ TextureImporter:
         width: 51
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -10584,7 +10596,7 @@ TextureImporter:
         width: 33
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -10592,6 +10604,90 @@ TextureImporter:
       bones: []
       spriteID: 4e641adf605dd1a30800000000000000
       internalID: 4187737454526154468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_rock
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 253
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577d563a10645b570800000000000000
+      internalID: 8481762446072469365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_rock9
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 253
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab49b60b31a30a30800000000000000
+      internalID: 4180362154017901485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_rock10
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 252
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45b933f86763f760800000000000000
+      internalID: 7490444305702171978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_rock8
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 188
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f9ae566d5ed66db0800000000000000
+      internalID: -4798903860185880079
       vertices: []
       indices: 
       edges: []
