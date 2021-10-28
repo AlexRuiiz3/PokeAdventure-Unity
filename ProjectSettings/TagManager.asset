@@ -14,7 +14,7 @@ TagManager:
   - OnGround
   - SolidObjects
   - Player
-  - 
+  - OnSolidObjects
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3341536985
+    locked: 0
+  - name: OnSolidObjects
+    uniqueID: 2289070103
     locked: 0
