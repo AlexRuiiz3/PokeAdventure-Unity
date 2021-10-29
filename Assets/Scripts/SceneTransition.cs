@@ -18,10 +18,11 @@ public class SceneTransition : MonoBehaviour
         if (collision.CompareTag("Player") && !collision.isTrigger)
         { //Si colisiona con el jugador  
             if (nombreEscena.Equals("AdventureZone")) {
-    
+                
                 string[] adventureScenes = {"SnowScene","RouteScene","ForestScene"};
                 nombreEscena = adventureScenes[(int) (Random.Range(0f,3f))]; //Numero entre 0 y 2
             }
+
              SceneManager.LoadScene(nombreEscena);
             
         }
