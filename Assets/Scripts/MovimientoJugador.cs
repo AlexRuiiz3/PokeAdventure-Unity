@@ -16,7 +16,6 @@ public class MovimientoJugador : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
@@ -24,17 +23,27 @@ public class MovimientoJugador : MonoBehaviour
     {
 
         //Se obtiene el input del jugador(Teclado)
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal"); //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla;
+        movimientoHorizontal = Input.GetAxisRaw("Horizontal"); //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
         movimientoVertical = Input.GetAxisRaw("Vertical"); //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
-        ModificarVariablesAnimaciones();
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            movimientoHorizontal *= (float)1.8;
-            movimientoVertical *= (float)1.8;
+            movimientoHorizontal *= (float)1.85;
+            movimientoVertical *= (float)1.85;
         }
 
-        
+        if (movimientoHorizontal != 0 || movimientoVertical != 0)
+        { //Si alguno de los no es igual a 0 significa que se esta moviento, si los la X y la Y son 0 significa que el personaje esta parado
+            //Por lo tanto como se sabe que el personaje se esta moviendo se hacen los set correspondiente 
+            animator.SetFloat("moveX", movimientoHorizontal);
+            animator.SetFloat("moveY", movimientoVertical);
+            animator.SetBool("isMoving", true);
+        }
+        else {
+            animator.SetBool("isMoving", false);
+        }
+
+
 
     }
 
@@ -48,47 +57,5 @@ public class MovimientoJugador : MonoBehaviour
 
         rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
 
-    }
-
-    /// <summary>
-    /// Cabecera: private void ModificarVariablesAnimaciones()
-    /// Comentario: Este metodo se encarga de modificar las variables booleanas de un Animator
-    ///             dependiendo de que tecla se pulse
-    /// Entradas: Ninguna
-    /// Salidas: Ninguna
-    /// Precondiciones: Ninguna
-    /// Postcondiciones: Se modificaran las variables booleanas de un objeto Animator que determinan que 
-    ///                  animacion se activa en funcion de la tecla que se pulse, el resultado de estas puede ser:
-    ///                  -Todas false
-    ///                  -Una true y el resto false
-    /// </summary>
-    private void ModificarVariablesAnimaciones() {
-
-        animator.SetBool("movimientoIzquierda", false);
-        animator.SetBool("movimientoDerecha", false);
-        animator.SetBool("movimientoArriba", false);
-        animator.SetBool("movimientoAbajo", false);
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            animator.SetBool("movimientoIzquierda", true);
-
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            animator.SetBool("movimientoDerecha", true);
-
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-
-            animator.SetBool("movimientoArriba", true);
-
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            animator.SetBool("movimientoAbajo", true);
-
-        }
     }
 }
