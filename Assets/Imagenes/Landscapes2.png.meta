@@ -290,6 +290,18 @@ TextureImporter:
   - first:
       213: 6345136693044006723
     second: Landscapes2_shelves4
+  - first:
+      213: -4625381467081203200
+    second: Landscapes2_books
+  - first:
+      213: 3801987065597371194
+    second: Landscapes2_computer1
+  - first:
+      213: -5866746892966832344
+    second: Landscapes2_computer2
+  - first:
+      213: 7701896345990253110
+    second: Landscapes2_computer3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2466,7 +2478,7 @@ TextureImporter:
         width: 14
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2487,7 +2499,7 @@ TextureImporter:
         width: 14
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2508,7 +2520,7 @@ TextureImporter:
         width: 30
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2516,6 +2528,90 @@ TextureImporter:
       bones: []
       spriteID: 34f4f2054347e0850800000000000000
       internalID: 6345136693044006723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_books
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1081
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00223ffdf085fcfb0800000000000000
+      internalID: -4625381467081203200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_computer1
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1047
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33af85a71f53c430800000000000000
+      internalID: 3801987065597371194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_computer2
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 1047
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827d591c8c0259ea0800000000000000
+      internalID: -5866746892966832344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_computer3
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 1173
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ac0a79be1a2ea60800000000000000
+      internalID: 7701896345990253110
       vertices: []
       indices: 
       edges: []
