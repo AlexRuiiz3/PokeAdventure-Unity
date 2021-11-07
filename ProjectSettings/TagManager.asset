@@ -15,7 +15,7 @@ TagManager:
   - SolidObjects
   - Player
   - OnSolidObjects
-  - 
+  - NPC
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: OnSolidObjects
     uniqueID: 2289070103
+    locked: 0
+  - name: NPC
+    uniqueID: 2168358249
     locked: 0

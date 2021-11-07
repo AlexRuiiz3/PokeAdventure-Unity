@@ -881,6 +881,18 @@ TextureImporter:
   - first:
       213: -4798903860185880079
     second: Landscapes1_rock8
+  - first:
+      213: 6073946270515047408
+    second: Landscapes1_box1
+  - first:
+      213: 6794722023712051019
+    second: Landscapes1_box2
+  - first:
+      213: -5701846913357659899
+    second: Landscape_traffic_sign4
+  - first:
+      213: -343506158423578568
+    second: Landscapes1_stair2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -10688,6 +10700,90 @@ TextureImporter:
       bones: []
       spriteID: 1f9ae566d5ed66db0800000000000000
       internalID: -4798903860185880079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_box1
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 380
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbabdea3fdfa4450800000000000000
+      internalID: 6073946270515047408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_box2
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 380
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f41ea3ea3bb4e50800000000000000
+      internalID: 6794722023712051019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscape_traffic_sign4
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 221
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501c8a52178fed0b0800000000000000
+      internalID: -5701846913357659899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes1_stair2
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 92
+        width: 15
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838e00908fe9b3bf0800000000000000
+      internalID: -343506158423578568
       vertices: []
       indices: 
       edges: []
