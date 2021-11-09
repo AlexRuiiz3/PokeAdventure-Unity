@@ -329,6 +329,15 @@ TextureImporter:
   - first:
       213: 1646214589971110773
     second: Landscapes2_wall9
+  - first:
+      213: -3646404295225171796
+    second: Landscapes2_big_building5
+  - first:
+      213: 3160538125886208634
+    second: Landscapes2_shop2
+  - first:
+      213: 5207746483465100121
+    second: Landscapes2_big_building6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2187,7 +2196,7 @@ TextureImporter:
         serializedVersion: 2
         x: 464
         y: 1337
-        width: 190
+        width: 192
         height: 154
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2652,7 +2661,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2673,7 +2682,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2694,7 +2703,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2715,7 +2724,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2736,7 +2745,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2757,7 +2766,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2778,7 +2787,7 @@ TextureImporter:
         width: 20
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2799,7 +2808,7 @@ TextureImporter:
         width: 20
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2820,7 +2829,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2828,6 +2837,69 @@ TextureImporter:
       bones: []
       spriteID: 57b1b43927788d610800000000000000
       internalID: 1646214589971110773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building5
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 552
+        width: 110
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca025abec9e556dc0800000000000000
+      internalID: -3646404295225171796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_shop2
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 551
+        width: 80
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ab6842eac7cdb20800000000000000
+      internalID: 3160538125886208634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building6
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 363
+        width: 186
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b1a3bb5d1a54840800000000000000
+      internalID: 5207746483465100121
       vertices: []
       indices: 
       edges: []

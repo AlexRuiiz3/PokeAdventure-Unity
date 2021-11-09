@@ -320,6 +320,12 @@ TextureImporter:
   - first:
       213: 8405487520647199097
     second: Landscapes2_floor_b_13
+  - first:
+      213: -3227642731853968652
+    second: Landscapes2_house7
+  - first:
+      213: 4906575145809977482
+    second: Landscapes2_house8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2429,9 +2435,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1022
-        y: 302
+        y: 295
         width: 84
-        height: 204
+        height: 203
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2756,6 +2762,69 @@ TextureImporter:
       bones: []
       spriteID: 979b728ad5a46a470800000000000000
       internalID: 8405487520647199097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 262
+        width: 78
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5b5f533c3b08030800000000000000
+      internalID: 3494990961844794843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 807
+        width: 64
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa09f1490c1533d0800000000000000
+      internalID: -3227642731853968652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 807
+        width: 64
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80a3c55918a71440800000000000000
+      internalID: 4906575145809977482
       vertices: []
       indices: 
       edges: []

@@ -16,8 +16,8 @@ TagManager:
   - Player
   - OnSolidObjects
   - NPC
-  - 
-  - 
+  - HouseRow2
+  - HouseRow1
   - 
   - 
   - 
@@ -58,4 +58,10 @@ TagManager:
     locked: 0
   - name: NPC
     uniqueID: 2168358249
+    locked: 0
+  - name: HouseRow2
+    uniqueID: 1386021265
+    locked: 0
+  - name: HouseRow1
+    uniqueID: 2883853561
     locked: 0
