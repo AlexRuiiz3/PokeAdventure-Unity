@@ -57059,28 +57059,24 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1904667684
+--- !u!1001 &1462643447
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7807754928652034874, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b1393ad59309bc74a84ee1a6f5af56c3, type: 2}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.62
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.01
+      value: -17.42
       objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57117,14 +57113,6 @@ PrefabInstance:
     - target: {fileID: 7807754928652034884, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807754930341000655, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
-      propertyPath: m_AllowMSAA
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807754930341000655, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
-      propertyPath: m_TargetDisplay
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}

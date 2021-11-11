@@ -141,6 +141,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -6, y: -10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 56
+      m_TileSpriteIndex: 58
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -2, y: -10, z: 0}
     second:
       serializedVersion: 2
@@ -196,6 +206,26 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 41
       m_TileSpriteIndex: 13
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -6, y: -9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 61
+      m_TileSpriteIndex: 52
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -5, y: -9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 59
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -715,18 +745,18 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: c3422e1cf66dd034584b71486190f6cf, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7818b8dfa7d527849ad79a3dee564ec5, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d9bb4432eb9667542ae1e663033ac122, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 18defc8ebb0eab349ac76b9a99724336, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 220ddc8271b768b41ad29f73ec6bd86b, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 42fdf649160dfcb40959e647c20a93d4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2cb032a449534c444941941880a4da28, type: 2}
   - m_RefCount: 1
@@ -754,8 +784,8 @@ Tilemap:
     m_Data: {fileID: 6794722023712051019, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6073946270515047408, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -7174863421412912117, guid: f0fd4b73eb14b3f4581968c2bd9eca33, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2771549991803609040, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
   - m_RefCount: 1
@@ -854,8 +884,8 @@ Tilemap:
     m_Data: {fileID: -5701846913357659899, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -343506158423578568, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -4287361292864331601, guid: f0fd4b73eb14b3f4581968c2bd9eca33, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -8186149361481411532, guid: 2da199e558a4f994f8278a30d623e00e, type: 3}
   - m_RefCount: 1
@@ -866,8 +896,10 @@ Tilemap:
     m_Data: {fileID: 145802625860111339, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -9046418157337749987, guid: 67f7ff18d60f4194f85e32cc2ac76697, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -5277859752971102923, guid: f0fd4b73eb14b3f4581968c2bd9eca33, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 56
+  - m_RefCount: 59
     m_Data:
       e00: 1
       e01: 0
@@ -886,7 +918,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 56
+  - m_RefCount: 59
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 7.9316165e-18, g: 7.9316165e-18, b: 7.9316165e-18, a: 7.9316165e-18}
@@ -1008,7 +1040,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &5950142046923233655
+--- !u!114 &6243504541367372609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
