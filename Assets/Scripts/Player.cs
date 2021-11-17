@@ -62,21 +62,29 @@ public class Player : MonoBehaviour
     //Metodo para cada vez que el jugador colisione con algo.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (collision.gameObject.tag) {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            switch (collision.gameObject.tag)
+            {
 
-            case "NPC":
-                if (Input.GetKey(KeyCode.Mouse0)) {
+                case "NPC":
+
                     Debug.Log("Mensaje NPC");
-                }
-            break;
 
-            case "Trainer":
+                    break;
 
-            break;
+                case "Trainer":
 
-            case "Item":
+                    break;
 
-            break;
+                case "Item":
+
+                    break;
+
+                case "Cartel":
+                    Debug.Log("Mensaje Cartel");
+                    break;
+            }
         }
     }
 }
