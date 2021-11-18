@@ -20,11 +20,9 @@ public class SceneTransition : MonoBehaviour
             if (nombreEscena.Equals("AdventureZone")) {
                 
                 string[] adventureScenes = {"SnowScene","RouteScene","ForestScene","CityScene"};
-                nombreEscena = adventureScenes[(int) (Random.Range(0f,4f))]; //Numero entre 0 y 2
+                nombreEscena = adventureScenes[(int) (Random.Range(0f,4f))]; //Numero entre 0 y 3
             }
-
-             SceneManager.LoadScene(nombreEscena);
-            
+             SceneManager.LoadScene(nombreEscena);  
         }
     }
 }

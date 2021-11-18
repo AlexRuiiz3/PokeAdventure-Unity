@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
 
     }
-
+    /*
     //Metodo para cada vez que el jugador colisione con algo.
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -66,13 +66,6 @@ public class Player : MonoBehaviour
         {
             switch (collision.gameObject.tag)
             {
-
-                case "NPC":
-
-                    Debug.Log("Mensaje NPC");
-
-                    break;
-
                 case "Trainer":
 
                     break;
@@ -86,5 +79,5 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-    }
+    }*/
 }
