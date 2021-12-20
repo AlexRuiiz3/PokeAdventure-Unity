@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/RouteScene.unity
+- path: Assets/Scenes/BattleTrainerScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
