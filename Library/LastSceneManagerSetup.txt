@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Mapas/RouteScene.unity
+- path: Assets/Scenes/Titulo/GetFirstPokemonScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

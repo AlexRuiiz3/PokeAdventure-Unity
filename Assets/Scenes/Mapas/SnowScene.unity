@@ -29457,7 +29457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b7112543cb77640a87946ca9096997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreEscena: LobbyScene
+  escenaActual: AdventureZone
+  escenaSiguiente: LobbyScene
 --- !u!1 &2127418902
 GameObject:
   m_ObjectHideFlags: 0
@@ -37973,6 +37974,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4078339820095892679, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
+      propertyPath: zonaHierba.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165743177332307631, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916172096981605354, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -37983,7 +37996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.22
+      value: -14.44
       objectReference: {fileID: 0}
     - target: {fileID: 7807754928652034875, guid: 260c39a71f432bb46bae5e5cec733ed5, type: 3}
       propertyPath: m_LocalPosition.z

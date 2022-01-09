@@ -34,36 +34,9 @@ public class MenuJugador : MonoBehaviour
             }
         }
     }
-    public void verPokemons() {
-        Debug.Log("Ver pokemons");
-    }
-
-    public void verPokedex()
-    {
-        Debug.Log("Ver pokedex");
-    }
-
-    public void verMochila()
-    {
-        Debug.Log("Ver mochila");
-    }
-
-    public void guardarPartida()
-    {
-        Debug.Log("Guardar");
-    }
-
-    public void configuracion(GameObject menuConfiguracion)
-    {
-        menuConfiguracion.SetActive(true);
-    }
-
-    public void verPerfil(GameObject menuPerfil)
-    {
-        menuPerfil.SetActive(true);
-    }
     public void salir()
     {
+        Time.timeScale = 1f;
         //EditorUtility.DisplayDialog("Datos incorrectos", "Vas a volver a la pantalla principal, los cambios no guardados se perderan", "Ok");
         SceneManager.LoadScene("MainScene");
     }

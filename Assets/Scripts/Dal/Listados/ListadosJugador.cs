@@ -14,16 +14,16 @@ public class ListadosJugador
     /// <returns></returns>
     public static int obtenerIDJugador(string nombreUsuario, string contrasenha) {
         int idJugador = -1;
-        SqlConnection sqlConexion = null;
+        SqlConnection conexion = null;
 
         try
         {
-            sqlConexion = Conexion.establecerConexion();
-            SqlCommand sqlCommand = new SqlCommand("SELECT ID FROM Jugadores " +
-                "WHERE NombreUsuario = @NombreUsuario AND Contrasenha = @Contrasenha",sqlConexion);
-            sqlCommand.Parameters.Add("@NombreUsuario",System.Data.SqlDbType.VarChar).Value = nombreUsuario;
-            sqlCommand.Parameters.Add("@Contrasenha",System.Data.SqlDbType.VarChar).Value = contrasenha;
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            conexion = Conexion.establecerConexion();
+            SqlCommand command = new SqlCommand("SELECT ID FROM Jugadores " +
+                "WHERE NombreUsuario = @NombreUsuario AND Contrasenha = @Contrasenha", conexion);
+            command.Parameters.Add("@NombreUsuario",System.Data.SqlDbType.VarChar).Value = nombreUsuario;
+            command.Parameters.Add("@Contrasenha",System.Data.SqlDbType.VarChar).Value = contrasenha;
+            SqlDataReader sqlDataReader = command.ExecuteReader();
 
             if(sqlDataReader.HasRows){
                 sqlDataReader.Read();
@@ -35,7 +35,7 @@ public class ListadosJugador
             throw;
         }
         finally {
-            Conexion.cerrarConexion(sqlConexion); //El metodo controla cuando la conexion es null
+            Conexion.cerrarConexion(conexion); //El metodo controla cuando la conexion es null
         }
         return idJugador;
     }

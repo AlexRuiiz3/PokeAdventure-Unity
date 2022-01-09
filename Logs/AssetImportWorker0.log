@@ -15,11 +15,11 @@ C:/Users/AlexRuiz/Desktop/Ciclo DAM/Repositorios/PokeAdventure-Unity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51015
+56447
 Successfully changed project path to: C:/Users/AlexRuiz/Desktop/Ciclo DAM/Repositorios/PokeAdventure-Unity
 C:/Users/AlexRuiz/Desktop/Ciclo DAM/Repositorios/PokeAdventure-Unity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 100.90 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 134.09 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
@@ -35,89 +35,89 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56116
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56636
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003290 seconds.
+Registered in 0.003666 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 84.92 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 83.71 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.504 seconds
+- Completed reload, in  1.708 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1504ms)
-		BeginReloadAssembly (85ms)
+	ReloadAssembly (1708ms)
+		BeginReloadAssembly (87ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (580ms)
-			LoadAssemblies (80ms)
+		EndReloadAssembly (617ms)
+			LoadAssemblies (84ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (199ms)
+			SetupTypeCache (178ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (37ms)
-			SetupLoadedEditorAssemblies (234ms)
+			RebuildScriptCaches (47ms)
+			SetupLoadedEditorAssemblies (273ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (85ms)
-				BeforeProcessingInitializeOnLoad (16ms)
-				ProcessInitializeOnLoadAttributes (86ms)
-				ProcessInitializeOnLoadMethodAttributes (42ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (84ms)
+				BeforeProcessingInitializeOnLoad (25ms)
+				ProcessInitializeOnLoadAttributes (129ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.009850 seconds.
+Registered in 0.006765 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 83.40 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 117.74 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.624 seconds
+- Completed reload, in  2.019 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1625ms)
-		BeginReloadAssembly (274ms)
+	ReloadAssembly (2021ms)
+		BeginReloadAssembly (237ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (34ms)
-		EndReloadAssembly (1276ms)
-			LoadAssemblies (179ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (1706ms)
+			LoadAssemblies (206ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (409ms)
+			SetupTypeCache (673ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (80ms)
-			SetupLoadedEditorAssemblies (483ms)
+			RebuildScriptCaches (83ms)
+			SetupLoadedEditorAssemblies (564ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (84ms)
-				BeforeProcessingInitializeOnLoad (123ms)
-				ProcessInitializeOnLoadAttributes (249ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
-				AfterProcessingInitializeOnLoad (9ms)
+				RefreshPlugins (118ms)
+				BeforeProcessingInitializeOnLoad (150ms)
+				ProcessInitializeOnLoadAttributes (247ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (24ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (18ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.85 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.93 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3457 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 162.3 MB.
-System memory in use after: 162.5 MB.
+Unloading 3465 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 162.5 MB.
+System memory in use after: 162.7 MB.
 
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3912.
-Total: 4.740100 ms (FindLiveObjects: 0.389900 ms CreateObjectMapping: 0.188400 ms MarkObjects: 4.054500 ms  DeleteObjects: 0.105500 ms)
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3920.
+Total: 7.609900 ms (FindLiveObjects: 1.329900 ms CreateObjectMapping: 0.437500 ms MarkObjects: 5.679600 ms  DeleteObjects: 0.160100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,41 +131,17 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Preb/MenuJugador.prefab
-  artifactKey: Guid(0c2baf37fa9ecb748b4150c2eae4570b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Preb/MenuJugador.prefab using Guid(0c2baf37fa9ecb748b4150c2eae4570b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c57fb17d5abf37bc5d03430e0493c595') in 0.174969 seconds 
-  Import took 0.182921 seconds .
+  path: Assets/Imagenes/UI/Iconos/iconoTipoPlanta.gif
+  artifactKey: Guid(f0b585f13bfdd9449b503103fa7c9a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/UI/Iconos/iconoTipoPlanta.gif using Guid(f0b585f13bfdd9449b503103fa7c9a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69bc92c50155628e9efb91e561fff64f') in 0.121337 seconds 
+  Import took 0.130220 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000407 seconds.
-  path: Assets/Preb/Player.prefab
-  artifactKey: Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Preb/Player.prefab using Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f11cb1c684b2501b8339526e53155c71') in 0.276962 seconds 
-  Import took 0.284912 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 27.304784 seconds.
-  path: Assets/Preb/Player.prefab
-  artifactKey: Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Preb/Player.prefab using Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1e9a9f49c928942629e9dee34e4f539') in 0.070750 seconds 
-  Import took 0.081839 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 36.731483 seconds.
-  path: Assets/Preb/Player.prefab
-  artifactKey: Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Preb/Player.prefab using Guid(260c39a71f432bb46bae5e5cec733ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cc2b53bf0ec1d1627d2e369d6983e15') in 0.069249 seconds 
-  Import took 0.078898 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.918662 seconds.
-  path: Assets/Scenes/Mapas/RouteScene.unity
-  artifactKey: Guid(e1c78856d6a56ae4c90c65b8ecb50741) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Mapas/RouteScene.unity using Guid(e1c78856d6a56ae4c90c65b8ecb50741) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b84b4774c05a7206c29c8d311f9c1a52') in 0.021080 seconds 
-  Import took 0.032838 seconds .
+  Time since last request: 0.000385 seconds.
+  path: Assets/Imagenes/UI/Iconos/iconoTipoAgua.png
+  artifactKey: Guid(2298c8f8079d94b4e88569786562002a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/UI/Iconos/iconoTipoAgua.png using Guid(2298c8f8079d94b4e88569786562002a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35b84cba662a9f5bb5e5ef52572e5e77') in 0.025877 seconds 
+  Import took 0.033184 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

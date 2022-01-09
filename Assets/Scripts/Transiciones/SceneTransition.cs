@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
 
-    public string nombreEscena; //Es publica porque asi se sale en el inspector de unity y se puede poner el nombre de la escena manualmente
+    public string escenaActual; //Es publica porque asi se sale en el inspector de unity y se puede poner el nombre de la escena manualmente
+    public string escenaSiguiente; //Es publica porque asi se sale en el inspector de unity y se puede poner el nombre de la escena manualmente
 
     /// <summary>
     /// 
@@ -17,12 +18,14 @@ public class SceneTransition : MonoBehaviour
 
         if (collision.CompareTag("Player") && !collision.isTrigger)
         { //Si colisiona con el jugador  
-            if (nombreEscena.Equals("AdventureZone")) {
+            DatosGenerales.ultimaEscena = escenaActual;
+ 
+            if (escenaSiguiente.Equals("AdventureZone")) {
                 
                 string[] adventureScenes = {"SnowScene","RouteScene","ForestScene","CityScene"};
-                nombreEscena = adventureScenes[(int) (Random.Range(0f,4f))]; //Numero entre 0 y 3
+                escenaSiguiente = adventureScenes[(int) (Random.Range(0f,4f))]; //Numero entre 0 y 3
             }
-             SceneManager.LoadScene(nombreEscena);  
+             SceneManager.LoadScene(escenaSiguiente);  
         }
     }
 }

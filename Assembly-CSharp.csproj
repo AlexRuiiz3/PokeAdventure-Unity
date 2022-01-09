@@ -56,13 +56,15 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\ConfiguracionDialogo.cs" />
-    <Compile Include="Assets\Scripts\Clases Basicas\Player.cs" />
+    <Compile Include="Assets\Scripts\Clases Basicas\Jugador.cs" />
+    <Compile Include="Assets\Scripts\Clases Basicas\DatosGenerales.cs" />
     <Compile Include="Assets\Scripts\Dal\Listados\ListadosJugador.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\Scripts\Dal\GestoraDal.cs" />
+    <Compile Include="Assets\Scripts\Dal\Gestoras\GestoraJugador.cs" />
     <Compile Include="Assets\Scripts\Clases Basicas\Item.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\Dal\Listados\ListadosPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
@@ -80,8 +82,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPokemons.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\Clases Basicas\Pokemon.cs" />
+    <Compile Include="Assets\Scripts\Clases Basicas\ScriptPlayer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionConfiguracionJugador.cs" />
@@ -93,9 +97,11 @@
     <Compile Include="Assets\Scripts\Scripts\MovimientoPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
     <Compile Include="Assets\Scripts\Scripts\GenerarPokemons.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\ConfiguracionWildPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuOpcionesPokemon.cs" />
     <Compile Include="Assets\Scripts\Transiciones\SceneTransition.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\RayCast.cs" />
@@ -108,8 +114,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\MenuPrincipal.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\OpcionRegistrarse.cs" />
+    <Compile Include="Assets\Scripts\Utilidades\Utilidades.cs" />
+    <Compile Include="Assets\Scripts\Entidades\ClsJugador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
