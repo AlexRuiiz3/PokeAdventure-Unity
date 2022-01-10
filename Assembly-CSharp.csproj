@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.20f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Entidades\ClsJugador.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\ConfiguracionDialogo.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\OpcionRegistrarse.cs" />
     <Compile Include="Assets\Scripts\Scripts\GenerarPokemons.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\ConfiguracionWildPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Assets\Scripts\RayCast.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Scripts\Utilidades\Utilidades.cs" />
     <Compile Include="Assets\Scripts\Dal\Conexion.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -115,9 +118,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\OpcionRegistrarse.cs" />
-    <Compile Include="Assets\Scripts\Utilidades\Utilidades.cs" />
-    <Compile Include="Assets\Scripts\Entidades\ClsJugador.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionMochila.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPokedex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

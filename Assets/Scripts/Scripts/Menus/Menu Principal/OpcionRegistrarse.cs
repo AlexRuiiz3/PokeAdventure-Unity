@@ -30,8 +30,12 @@ public class OpcionRegistrarse : MonoBehaviour
                 {  
                     if (inputContrasenha.text.Equals(inputContrasenhaRepetida.text)) //Si las contraseñas coinciden
                     {
-                        if (!Utilidades.comprobarCadenaVacia(inputCorreoElectronico.text)) //Si el correo electronico esta vacio
+                        if (!Utilidades.comprobarCadenaVacia(inputCorreoElectronico.text)) //Si el correo electronico esta vacio 
                         {
+
+
+                            //Comprobar que el correo electronico no exista ya en la BBDD
+
                             if (inputCorreoElectronico.text.EndsWith("@gmail.com") || inputCorreoElectronico.text.EndsWith("@gmail.es")) //Si el correo electronico termina por @gmail.com o @gmail.es
                             {
                                 GestoraJugador.insertarJugador(new ClsJugador(inputNombreUsuario.text, inputContrasenha.text, inputCorreoElectronico.text, 1, 0, new byte[0]));
