@@ -19,11 +19,11 @@ public class OpcionPokemons : MonoBehaviour
 
         gameObject.SetActive(false); //Se desactiva el menu
 
-
+        /*
         //Se desactivan todos los botones, y luego debajo se activan los necesarios
         foreach (Button button in botonesPokemons) {
             button.gameObject.SetActive(false);
-        }
+        }*/
         List<PokemonJugador> aaaa = new List<PokemonJugador>();
 
         aaaa.Add(new PokemonJugador(new Pokemon(2, "Pikachu", 100, 20, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(44), null), 10, 1, 1, 1));
