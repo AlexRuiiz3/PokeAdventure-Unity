@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainerNPC : MonoBehaviour
 {
-    public Sprite imagenTrainer; //Es publica porque se asignara desde el insperctor de Unity
+    private bool derrotado = false;
 
     //Constructor sin parametros
     public TrainerNPC() {
@@ -29,4 +29,6 @@ public class TrainerNPC : MonoBehaviour
     //Mochila
     public List<Item> Mochila { get; set; }
     #endregion
+
+    
 }

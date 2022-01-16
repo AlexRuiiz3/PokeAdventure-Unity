@@ -7,12 +7,11 @@ using UnityEngine.UI;
 
 public class OpcionPokemons : MonoBehaviour
 {
-    public ScriptPlayer scriptPlayer;//Creo que tiene que ser GameObject
+    public PlayerController scriptPlayer;//Creo que tiene que ser GameObject
     public List<Button> botonesPokemons;
     public GameObject menuOpcionesPokemon;
     public Text textNumeroPokemons;
     private int numeroPokemonSeleccionado;
-
 
     void Start()
     {
