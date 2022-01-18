@@ -25,12 +25,19 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
 
         switch (SceneManager.GetActiveScene().name) {
             case "SnowScene":
-                posicionesEntrenadores = new List<PosicionTrainerNPC> { 
+                posicionesEntrenadores = new List<PosicionTrainerNPC> {
                     new PosicionTrainerNPC(new Vector2(-16.7f, 0.6f),new List<string>{ORIENTACION_ARRIBA,ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(-7.62f, 5.02f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(-0.38f, 0f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(6.41f, -11.27f),new List<string>{ORIENTACION_ARRIBA,ORIENTACION_ABAJO}),
-                    new PosicionTrainerNPC(new Vector2(9.3f, -3.475f),new List<string>{ORIENTACION_IZQUIERDA})
+                    new PosicionTrainerNPC(new Vector2(9.3f, -3.475f),new List<string>{ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-17.24f, 8.08f),new List<string>{ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-2.5f, 6.27f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(10.46f, -10.46f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(-20.16f, -11.09f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(-14.06f, -5.49f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
+                    new PosicionTrainerNPC(new Vector2(8.38f, 1.48f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(2.51f, 5.39f),new List<string>{ORIENTACION_ABAJO})
                 };
                 break;
             case "CityScene":
@@ -39,7 +46,12 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(12.5f, 43.25f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(7.95f, 25f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(15.15f, 14f),new List<string>{ORIENTACION_ARRIBA}),
-                    new PosicionTrainerNPC(new Vector2(15.2f, -2.51f),new List<string>{ORIENTACION_IZQUIERDA})
+                    new PosicionTrainerNPC(new Vector2(15.2f, -2.51f),new List<string>{ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-6.06f, 39.35f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(-12.62f, 21.6f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
+                    new PosicionTrainerNPC(new Vector2(-19f, 15.25f),new List<string>{ORIENTACION_DERECHA}),
+                    new PosicionTrainerNPC(new Vector2(21.48f, 16.73f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(30.5f, 10.86f),new List<string>{ORIENTACION_ARRIBA})
                 };
                 break;
             case "RouteScene":
@@ -48,7 +60,12 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(-5.62f, -2.1f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(-0.85f, 17.8f),new List<string>{ORIENTACION_DERECHA,ORIENTACION_ARRIBA}),
                     new PosicionTrainerNPC(new Vector2(8.84f, 32f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
-                    new PosicionTrainerNPC(new Vector2(-9.5f, 29.53f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA})
+                    new PosicionTrainerNPC(new Vector2(-9.5f, 29.53f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-14.8f, -0.5f),new List<string>{ORIENTACION_DERECHA}),
+                    new PosicionTrainerNPC(new Vector2(-0.72f, 9.76f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(13.47f, 13.48f),new List<string>{ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-2.48f, 35.18f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(3.5f, 35.18f),new List<string>{ORIENTACION_ABAJO})
                 };
                 break;
             case "ForestScene":
@@ -57,7 +74,12 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(5.29f, -4.4f),new List<string>{ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(-15.4f, 21.5f),new List<string>{ORIENTACION_DERECHA,ORIENTACION_IZQUIERDA,ORIENTACION_ARRIBA}),
                     new PosicionTrainerNPC(new Vector2(-9.46f, -2.56f),new List<string>{ORIENTACION_ARRIBA,ORIENTACION_IZQUIERDA}),
-                    new PosicionTrainerNPC(new Vector2(-4.43f, -14.4f),new List<string>{ORIENTACION_ARRIBA})
+                    new PosicionTrainerNPC(new Vector2(-4.43f, -14.4f),new List<string>{ORIENTACION_ARRIBA}),
+                    new PosicionTrainerNPC(new Vector2(7.3f, -10f),new List<string>{ORIENTACION_ARRIBA}),
+                    new PosicionTrainerNPC(new Vector2(20.83f, 6f),new List<string>{ORIENTACION_IZQUIERDA}),
+                    new PosicionTrainerNPC(new Vector2(-17.46f, -1.19f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
+                    new PosicionTrainerNPC(new Vector2(-8.55f, 6.45f),new List<string>{ORIENTACION_ABAJO}),
+                    new PosicionTrainerNPC(new Vector2(-18.53f, -11.51f),new List<string>{ORIENTACION_ABAJO})
                 };
                 break;
         }

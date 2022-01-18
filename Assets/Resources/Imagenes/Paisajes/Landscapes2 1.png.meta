@@ -1,0 +1,2847 @@
+fileFormatVersion: 2
+guid: fd069e461c507f14392ac2eb2da5c715
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4811491018247987878
+    second: Landscapes2_pokemon_shop
+  - first:
+      213: 8110078060811819879
+    second: Landscapes2_floor_a_1
+  - first:
+      213: 7897330690447709186
+    second: Landscapes2_floor_a_4
+  - first:
+      213: -3738582626038830228
+    second: Landscapes2_floor_a_7
+  - first:
+      213: 2899345026540420255
+    second: Landscapes2_floor_a_5
+  - first:
+      213: -5385174801289102495
+    second: Landscapes2_floor_a_2
+  - first:
+      213: -4505553215745117152
+    second: Landscapes2_floor_a_3
+  - first:
+      213: 62257373899349098
+    second: Landscapes2_floor_a_6
+  - first:
+      213: 3077253630506492952
+    second: Landscapes2_floor_a_8
+  - first:
+      213: 2546743364692425182
+    second: Landscapes2_floor_a_9
+  - first:
+      213: -5720815008992372446
+    second: Landscapes2_house1
+  - first:
+      213: -2333713332904591515
+    second: Landscapes2_house2
+  - first:
+      213: -4161834142054674914
+    second: Landscapes2_pokemon_center
+  - first:
+      213: -105215601952836598
+    second: Landscapes2_house3
+  - first:
+      213: -5645712398447557825
+    second: Landscapes2_house4
+  - first:
+      213: 3097448271010238210
+    second: Landscapes2_pokemon_center_floor1
+  - first:
+      213: 4571545133325785324
+    second: Landscapes2_pokemon_center_floor5
+  - first:
+      213: 6720302587929843449
+    second: Landscapes2_pokemon_center_floor9
+  - first:
+      213: -5728094943224074982
+    second: Landscapes2_pokemon_center_floor2
+  - first:
+      213: -948009673233222499
+    second: Landscapes2_pokemon_center_floor3
+  - first:
+      213: 6595769135245046677
+    second: Landscapes2_pokemon_center_floor7
+  - first:
+      213: 8071240150894789404
+    second: Landscapes2_pokemon_center_floor10
+  - first:
+      213: -4776999349215066010
+    second: Landscapes2_pokemon_center_floor11
+  - first:
+      213: 6378099428028945006
+    second: Landscapes2_pokemon_center_floor6
+  - first:
+      213: 5842086257656326091
+    second: Landscapes2_pokemon_center_floor12
+  - first:
+      213: 2073003207119960229
+    second: Landscapes2_pokemon_center_floor4
+  - first:
+      213: 7643238415869908509
+    second: Landscapes2_pokemon_center_floor8
+  - first:
+      213: -9033246790025098044
+    second: Landscapes2_pokemon_center_floor13
+  - first:
+      213: 3697846581102645249
+    second: Landscapes2_pokemon_center_floor15
+  - first:
+      213: -8466118774505234025
+    second: Landscapes2_pokemon_center_floor14
+  - first:
+      213: -8676251702317275510
+    second: Landscapes2_pokemon_center_floor16
+  - first:
+      213: 2928759526356192160
+    second: Landscapes2_table1
+  - first:
+      213: -4617236751536766886
+    second: Landscapes2_pokemon_center_TV
+  - first:
+      213: 3068730005095523438
+    second: Landscapes2_plant1
+  - first:
+      213: -5190469286361836535
+    second: Landscapes2_PC
+  - first:
+      213: 4044882662516430216
+    second: Landscapes2_plant2
+  - first:
+      213: -4389299661639390892
+    second: Landscapes2_plant3
+  - first:
+      213: -1373569636873281438
+    second: Landscapes2_house5
+  - first:
+      213: -5558801805020149571
+    second: Landscapes2_estatue2
+  - first:
+      213: -4963458610999680152
+    second: Landscapes2_estatue3
+  - first:
+      213: 476634945528541272
+    second: Landscapes2_big_building2
+  - first:
+      213: 4033068095157587141
+    second: Landscapes2_trash
+  - first:
+      213: 4309877159555388591
+    second: Landscapes2_photo1
+  - first:
+      213: 1555934918601291799
+    second: Landscapes2_photo3
+  - first:
+      213: 2834496118891665594
+    second: Landscapes2_photo2
+  - first:
+      213: -2330486974442471964
+    second: Landscapes2_calendar1
+  - first:
+      213: -6434388125471216424
+    second: Landscapes2_calendar2
+  - first:
+      213: 6720153394421642
+    second: Landscapes2_shelves1
+  - first:
+      213: -1901904052826018626
+    second: Landscapes2_red_desk1
+  - first:
+      213: -4972173379386918530
+    second: Landscapes2_blue_desk1
+  - first:
+      213: -3585031390705580775
+    second: Landscapes2_blue_desk2
+  - first:
+      213: 1115987923595315352
+    second: Landscapes2_blue_desk3
+  - first:
+      213: 5286699270358786304
+    second: Landscapes2_vendingMachine1
+  - first:
+      213: -4766809155284167239
+    second: Landscapes2_vendingMachine2
+  - first:
+      213: 8113892008086050137
+    second: Landscapes2_pokemon_shop_floor1
+  - first:
+      213: 763041853504090124
+    second: Landscapes2_pokemon_shop_floor9
+  - first:
+      213: 8960061323365967021
+    second: Landscapes2_pokemon_shop_floor2
+  - first:
+      213: -6942917345018041964
+    second: Landscapes2_pokemon_shop_floor10
+  - first:
+      213: 639924317611895229
+    second: Landscapes2_pokemon_shop_floor3
+  - first:
+      213: -2406770538146281486
+    second: Landscapes2_pokemon_shop_floor11
+  - first:
+      213: 6479048002154766322
+    second: Landscapes2_pokemon_shop_floor4
+  - first:
+      213: 3452683611553305077
+    second: Landscapes2_pokemon_shop_floor12
+  - first:
+      213: -6808110399971941233
+    second: Landscapes2_pokemon_shop_floor5
+  - first:
+      213: -4790277956495093731
+    second: Landscapes2_pokemon_shop_floor13
+  - first:
+      213: 8012799167741109367
+    second: Landscapes2_pokemon_shop_floor6
+  - first:
+      213: -4475542596820616192
+    second: Landscapes2_pokemon_shop_floor14
+  - first:
+      213: -4576459766611422285
+    second: Landscapes2_pokemon_shop_floor7
+  - first:
+      213: 706183174948351514
+    second: Landscapes2_pokemon_shop_floor15
+  - first:
+      213: -8233266776143844398
+    second: Landscapes2_pokemon_shop_floor8
+  - first:
+      213: -7066591151332571928
+    second: Landscapes2_pokemon_shop_floor16
+  - first:
+      213: -1387016451527554529
+    second: Landscapes2_map
+  - first:
+      213: 2618414937349758879
+    second: Landscapes2_snow_house_2
+  - first:
+      213: 6308560471908647091
+    second: Landscapes2_snow_house_3
+  - first:
+      213: 8304270740504755923
+    second: Landscapes2_snow_house_1
+  - first:
+      213: -5895462054031361521
+    second: Landscapes2_wall1
+  - first:
+      213: -7158175365582849341
+    second: Landscapes2_wall2
+  - first:
+      213: 4006656012691617896
+    second: Landscapes2_box2
+  - first:
+      213: 3582049494290011719
+    second: Landscapes2_box1
+  - first:
+      213: -4513644260557368529
+    second: Landscapes2_big_building3
+  - first:
+      213: -3853076548595356431
+    second: Landscapes2_shop
+  - first:
+      213: -1825440148314570434
+    second: Landscapes2_statue
+  - first:
+      213: -196262354805976600
+    second: Landscapes2_chair
+  - first:
+      213: -5962673871785406098
+    second: Landscapes2_shelves2
+  - first:
+      213: 3475574079106413633
+    second: Landscapes2_shelves3
+  - first:
+      213: 2305216483099214267
+    second: Landscapes2_hospital
+  - first:
+      213: -8461369053101640648
+    second: Landscapes2_table
+  - first:
+      213: -1576976235793996027
+    second: Landscapes2_rug
+  - first:
+      213: -3050054959559943063
+    second: Landscapes2_ru
+  - first:
+      213: 8853449211324879501
+    second: Landscapes2_big_building1
+  - first:
+      213: -1294457444965795809
+    second: Landscapes2_house
+  - first:
+      213: -8152309491195857004
+    second: Landscapes2_big_building
+  - first:
+      213: -7369189317122164378
+    second: Landscapes2_big_building4
+  - first:
+      213: -9000694133530185710
+    second: Landscapes2_school
+  - first:
+      213: -7523757829101772624
+    second: Landscapes2_floor_b_1
+  - first:
+      213: -7586410930015073270
+    second: Landscapes2_floor_b_4
+  - first:
+      213: 9197750944272994596
+    second: Landscapes2_floor_b_7
+  - first:
+      213: 7915749333445274429
+    second: Landscapes2_floor_b_8
+  - first:
+      213: -6949242291749747273
+    second: Landscapes2_floor_b_9
+  - first:
+      213: -195415876292533413
+    second: Landscapes2_floor_b_5
+  - first:
+      213: -822731971541210226
+    second: Landscapes2_floor_b_2
+  - first:
+      213: 3149329661215319015
+    second: Landscapes2_floor_b_3
+  - first:
+      213: 8104008101133632609
+    second: Landscapes2_floor_b_6
+  - first:
+      213: -2694277167684879331
+    second: Landscapes2_floor_b_10
+  - first:
+      213: -3277183828120367330
+    second: Landscapes2_floor_b_12
+  - first:
+      213: -5902747739246242163
+    second: Landscapes2_floor_b_11
+  - first:
+      213: 8405487520647199097
+    second: Landscapes2_floor_b_13
+  - first:
+      213: -3227642731853968652
+    second: Landscapes2_house7
+  - first:
+      213: 4906575145809977482
+    second: Landscapes2_house8
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1256
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5d985949662a3db0800000000000000
+      internalID: -4811491018247987878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1463
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b906bf609cc8070800000000000000
+      internalID: 8110078060811819879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1447
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2041dedcb64f89d60800000000000000
+      internalID: 7897330690447709186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1431
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b2283d8e2ed1cc0800000000000000
+      internalID: -3738582626038830228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1447
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cbc34b0fa8c3820800000000000000
+      internalID: 2899345026540420255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1463
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b37c3dc040445b0800000000000000
+      internalID: -5385174801289102495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1463
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024b4e2c83f0971c0800000000000000
+      internalID: -4505553215745117152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1447
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c5bef60ce2dd000800000000000000
+      internalID: 62257373899349098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1431
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814ee1a7fd994ba20800000000000000
+      internalID: 3077253630506492952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1431
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed93392d899d75320800000000000000
+      internalID: 2546743364692425182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1159
+        width: 102
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229594b3f059b90b0800000000000000
+      internalID: -5720815008992372446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1159
+        width: 64
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ff0a8961cfc9fd0800000000000000
+      internalID: -2333713332904591515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1241
+        width: 80
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e0dbce5e13e36c0800000000000000
+      internalID: -4161834142054674914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1153
+        width: 64
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04b5cca7f23a8ef0800000000000000
+      internalID: -105215601952836598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1143
+        width: 64
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33c3826c7666a1b0800000000000000
+      internalID: -5645712398447557825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f86bf9ac85cfa20800000000000000
+      internalID: 3097448271010238210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce89c82e314617f30800000000000000
+      internalID: 4571545133325785324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor9
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1111
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f652b8199f434d50800000000000000
+      internalID: 6720302587929843449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor2
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dea657ff7b180b0800000000000000
+      internalID: -5728094943224074982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94bc47993ef7d2f0800000000000000
+      internalID: -948009673233222499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59334c62511e88b50800000000000000
+      internalID: 6595769135245046677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor10
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 1111
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1344fa672ec20070800000000000000
+      internalID: 8071240150894789404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1111
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66883c9c660b4bdb0800000000000000
+      internalID: -4776999349215066010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor6
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6299cd13af838850800000000000000
+      internalID: 6378099428028945006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor12
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1111
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc7ebc6af72431150800000000000000
+      internalID: 5842086257656326091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor4
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a871a20f69c4cc10800000000000000
+      internalID: 2073003207119960229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d169b87f7dc321a60800000000000000
+      internalID: 7643238415869908509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor13
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cccd1897e573a280800000000000000
+      internalID: -9033246790025098044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor15
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 100148c9fd3615330800000000000000
+      internalID: 3697846581102645249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor14
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1143
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 791a95b74dd428a80800000000000000
+      internalID: -8466118774505234025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_floor16
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1127
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a862085ab03c79780800000000000000
+      internalID: -8676251702317275510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_table1
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1095
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab8001a54b05a820800000000000000
+      internalID: 2928759526356192160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_center_TV
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1057
+        width: 84
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50c5cc33a74cefb0800000000000000
+      internalID: -4617236751536766886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_plant1
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 1048
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e642d494ea1569a20800000000000000
+      internalID: 3068730005095523438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_PC
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1048
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904d3d03fafb7f7b0800000000000000
+      internalID: -5190469286361836535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_plant2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1047
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8859d61d95f422830800000000000000
+      internalID: 4044882662516430216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_plant3
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 1047
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459ed3796331613c0800000000000000
+      internalID: -4389299661639390892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1064
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260e7e751b910fce0800000000000000
+      internalID: -1373569636873281438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_estatue2
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 519
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db849fac53b2bd2b0800000000000000
+      internalID: -5558801805020149571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_estatue3
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 519
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863a20ad0b04e1bb0800000000000000
+      internalID: -4963458610999680152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building2
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 636
+        width: 84
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85034c725f85d9600800000000000000
+      internalID: 476634945528541272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_trash
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 1080
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc44de701658f730800000000000000
+      internalID: 4033068095157587141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_photo1
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1527
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa45ed02172cfcb30800000000000000
+      internalID: 4309877159555388591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_photo3
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 1512
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7183bd4909ac79510800000000000000
+      internalID: 1555934918601291799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_photo2
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 1528
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8d2cbc337265720800000000000000
+      internalID: 2834496118891665594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_calendar1
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 1513
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed7ea6b17278afd0800000000000000
+      internalID: -2330486974442471964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_calendar2
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 1496
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dceb4a371674b6a0800000000000000
+      internalID: -6434388125471216424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_shelves1
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 1431
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f19e3a1ffd71000800000000000000
+      internalID: 6720153394421642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_red_desk1
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 990
+        width: 15
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebced6637541b95e0800000000000000
+      internalID: -1901904052826018626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_blue_desk1
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1066
+        width: 16
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e793df7b7aa4ffab0800000000000000
+      internalID: -4972173379386918530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_blue_desk2
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 1066
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9158e58c1f86f3ec0800000000000000
+      internalID: -3585031390705580775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_blue_desk3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1066
+        width: 16
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898468f8a19cc7f00800000000000000
+      internalID: 1115987923595315352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_vendingMachine1
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 967
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0016d0ce9f02e5940800000000000000
+      internalID: 5286699270358786304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_vendingMachine2
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 967
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b515333454e8ddb0800000000000000
+      internalID: -4766809155284167239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95599d7cac55a9070800000000000000
+      internalID: 8113892008086050137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00fdd2e58ed69a00800000000000000
+      internalID: 763041853504090124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor2
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4e1f81d48885c70800000000000000
+      internalID: 8960061323365967021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor10
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4992d49b57dc5af90800000000000000
+      internalID: -6942917345018041964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor3
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db92462c6c771e800800000000000000
+      internalID: 639924317611895229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor11
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f74ae972fe699ed0800000000000000
+      internalID: -2406770538146281486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor4
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff932b94d33ae950800000000000000
+      internalID: 6479048002154766322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor12
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1927c93756aef20800000000000000
+      internalID: 3452683611553305077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor5
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84a70289abb481a0800000000000000
+      internalID: -6808110399971941233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor13
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10d9bb1493858db0800000000000000
+      internalID: -4790277956495093731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor6
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77421c1b36e233f60800000000000000
+      internalID: 8012799167741109367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor14
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00cb06b78bda3e1c0800000000000000
+      internalID: -4475542596820616192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b35242e6162d70c0800000000000000
+      internalID: -4576459766611422285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor15
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e67292bdddcc900800000000000000
+      internalID: 706183174948351514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor8
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 1015
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dbabe22d7f8dbd80800000000000000
+      internalID: -8233266776143844398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_pokemon_shop_floor16
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 999
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e447ebc9cc6eed90800000000000000
+      internalID: -7066591151332571928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_map
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 968
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1ac315d2e350cce0800000000000000
+      internalID: -1387016451527554529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_snow_house_2
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1287
+        width: 64
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f1f47338a765420800000000000000
+      internalID: 2618414937349758879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_snow_house_3
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1271
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b08f2433528c8750800000000000000
+      internalID: 6308560471908647091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_snow_house_1
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1479
+        width: 126
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3deb4769d32be3370800000000000000
+      internalID: 8304270740504755923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_wall1
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1527
+        width: 48
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a7aa25f7c1f2ea0800000000000000
+      internalID: -5895462054031361521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_wall2
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1463
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca7b7e3e6d09ac90800000000000000
+      internalID: -7158175365582849341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_box2
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1079
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 868baa55a608a9730800000000000000
+      internalID: 4006656012691617896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_box1
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 1079
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746160b590ff5b130800000000000000
+      internalID: 3582049494290011719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building3
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 508
+        width: 104
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f235ff695705c51c0800000000000000
+      internalID: -4513644260557368529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_shop
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 679
+        width: 80
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fce5942b4f178ac0800000000000000
+      internalID: -3853076548595356431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_statue
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 1335
+        width: 51
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3149f05bdbbaa6e0800000000000000
+      internalID: -1825440148314570434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_chair
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 1089
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1120b9d6cb64df0800000000000000
+      internalID: -196262354805976600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_shelves2
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1063
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e615ab884b3504da0800000000000000
+      internalID: -5962673871785406098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_shelves3
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 1063
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14471b7e538bb3030800000000000000
+      internalID: 3475574079106413633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_hospital
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1337
+        width: 190
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb101858d26cdff10800000000000000
+      internalID: 2305216483099214267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_table
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 1427
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 834b46c2dad239a80800000000000000
+      internalID: -8461369053101640648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_rug
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 1481
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507244ef7747d1ae0800000000000000
+      internalID: -1576976235793996027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_ru
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 1481
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96cd2069c270ca5d0800000000000000
+      internalID: -3050054959559943063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 551
+        width: 126
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d825bfd6625cdda70800000000000000
+      internalID: 8853449211324879501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_red_desk2
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 990
+        width: 80
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a3a62bf42e731c0800000000000000
+      internalID: -4523898468746773893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_red_desk3
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 990
+        width: 15
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be4db31c3fbd6990800000000000000
+      internalID: -7391041148694999370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1137
+        width: 63
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1834f7efc9290ee0800000000000000
+      internalID: -1294457444965795809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_10
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1463
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5a22ed4b7dbdff0800000000000000
+      internalID: -10177402317396486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_12
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1447
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec00647620142e20800000000000000
+      internalID: 3324800182253522156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1447
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d23a277282b17e0800000000000000
+      internalID: -1793795876684878585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_a_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1463
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d3c04e486121b60800000000000000
+      internalID: 7715253871656582520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 295
+        width: 84
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 497b936e5bd2dde80800000000000000
+      internalID: -8152309491195857004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_big_building4
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 359
+        width: 128
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66974561c516bb990800000000000000
+      internalID: -7369189317122164378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_school
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 679
+        width: 128
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210bdfe8f5c171380800000000000000
+      internalID: -9000694133530185710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1511
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b02354fd1e369790800000000000000
+      internalID: -7523757829101772624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c8f442477a7b690800000000000000
+      internalID: -7586410930015073270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1479
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421d7e580c9f4af70800000000000000
+      internalID: 9197750944272994596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1479
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b6a0f44146add60800000000000000
+      internalID: 7915749333445274429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1479
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5822e44f45f8f90800000000000000
+      internalID: -6949242291749747273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53ac1ebb4eb94df0800000000000000
+      internalID: -195415876292533413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1511
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8bede281a11594f0800000000000000
+      internalID: -822731971541210226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1511
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e3275914aaa4bb20800000000000000
+      internalID: 3149329661215319015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16445fc5e68377070800000000000000
+      internalID: 8104008101133632609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_10
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1511
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c72bdd0310c9ad0800000000000000
+      internalID: -2694277167684879331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_12
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f0b3debaa1582d0800000000000000
+      internalID: -3277183828120367330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1511
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d86dc7b843a351ea0800000000000000
+      internalID: -5902747739246242163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_floor_b_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979b728ad5a46a470800000000000000
+      internalID: 8405487520647199097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 262
+        width: 78
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5b5f533c3b08030800000000000000
+      internalID: 3494990961844794843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 807
+        width: 64
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa09f1490c1533d0800000000000000
+      internalID: -3227642731853968652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landscapes2_house8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 807
+        width: 64
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80a3c55918a71440800000000000000
+      internalID: 4906575145809977482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

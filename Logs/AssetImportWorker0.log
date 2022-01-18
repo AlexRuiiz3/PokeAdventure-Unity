@@ -15,11 +15,11 @@ C:/Users/aruiz/Documents/GitHub/PokeAdventure-Unity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59065
+56816
 Successfully changed project path to: C:/Users/aruiz/Documents/GitHub/PokeAdventure-Unity
 C:/Users/aruiz/Documents/GitHub/PokeAdventure-Unity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 64.22 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 97.77 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
@@ -35,73 +35,73 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56808
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56172
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001556 seconds.
+Registered in 0.001452 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 63.31 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 84.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.921 seconds
+- Completed reload, in  1.170 seconds
 Domain Reload Profiling:
-	ReloadAssembly (921ms)
-		BeginReloadAssembly (44ms)
+	ReloadAssembly (1170ms)
+		BeginReloadAssembly (49ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (397ms)
-			LoadAssemblies (42ms)
+		EndReloadAssembly (598ms)
+			LoadAssemblies (48ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (131ms)
+			SetupTypeCache (286ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (180ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (200ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (63ms)
+				RefreshPlugins (85ms)
 				BeforeProcessingInitializeOnLoad (14ms)
-				ProcessInitializeOnLoadAttributes (73ms)
-				ProcessInitializeOnLoadMethodAttributes (25ms)
+				ProcessInitializeOnLoadAttributes (70ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003265 seconds.
+Registered in 0.003495 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 67.75 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 71.46 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.141 seconds
+- Completed reload, in  1.204 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1142ms)
-		BeginReloadAssembly (125ms)
+	ReloadAssembly (1205ms)
+		BeginReloadAssembly (157ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (962ms)
-			LoadAssemblies (86ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (985ms)
+			LoadAssemblies (106ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (307ms)
+			SetupTypeCache (324ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (64ms)
-			SetupLoadedEditorAssemblies (377ms)
+			RebuildScriptCaches (60ms)
+			SetupLoadedEditorAssemblies (389ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (68ms)
-				BeforeProcessingInitializeOnLoad (92ms)
-				ProcessInitializeOnLoadAttributes (197ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
+				RefreshPlugins (72ms)
+				BeforeProcessingInitializeOnLoad (96ms)
+				ProcessInitializeOnLoadAttributes (202ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
 				AfterProcessingInitializeOnLoad (5ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -109,15 +109,71 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3470 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 162.4 MB.
 System memory in use after: 162.6 MB.
 
 Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3925.
-Total: 3.312100 ms (FindLiveObjects: 0.343400 ms CreateObjectMapping: 0.159200 ms MarkObjects: 2.737700 ms  DeleteObjects: 0.071000 ms)
+Total: 3.885500 ms (FindLiveObjects: 0.352100 ms CreateObjectMapping: 0.147700 ms MarkObjects: 3.305700 ms  DeleteObjects: 0.078500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003195 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.87 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.043 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1044ms)
+		BeginReloadAssembly (106ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (37ms)
+		EndReloadAssembly (880ms)
+			LoadAssemblies (98ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (325ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (302ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (87ms)
+				ProcessInitializeOnLoadAttributes (200ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3342 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 153.5 MB.
+System memory in use after: 153.7 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 3928.
+Total: 3.488300 ms (FindLiveObjects: 0.308200 ms CreateObjectMapping: 0.143000 ms MarkObjects: 3.021200 ms  DeleteObjects: 0.015100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,153 +187,169 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Imagenes/Landscapes3.png
-  artifactKey: Guid(847e810f8b108b648adcfc1b73301c6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Landscapes3.png using Guid(847e810f8b108b648adcfc1b73301c6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e63b357e245fc75bed1d370fd3d6fa8d') in 0.168102 seconds 
-  Import took 0.176900 seconds .
+  path: Assets/Resources/Imagenes/Trainers/NPC38.png
+  artifactKey: Guid(7d7d0a3e0a9868a4a94781800b3de74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC38.png using Guid(7d7d0a3e0a9868a4a94781800b3de74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9ea459c8cf65e997b11cfe79d193805') in 0.083102 seconds 
+  Import took 0.088036 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000197 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC26.png
-  artifactKey: Guid(3c392f4c867149046bf46b7f93f81fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC26.png using Guid(3c392f4c867149046bf46b7f93f81fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cc50be2884204f389018a760596477c') in 0.020715 seconds 
-  Import took 0.026505 seconds .
+  Time since last request: 0.000297 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC32.png
+  artifactKey: Guid(b0c33d9d3eaf4904b9a474fa61ce8719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC32.png using Guid(b0c33d9d3eaf4904b9a474fa61ce8719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b32b4ee652ede34281512f8679e7b4f') in 0.032464 seconds 
+  Import took 0.037273 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/Resources/Imagenes/iconoExclamacion.png
-  artifactKey: Guid(09fae820870349d4788860f3b03d24ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/iconoExclamacion.png using Guid(09fae820870349d4788860f3b03d24ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2af0f2fec4e291b71e32b253bcf9d2b6') in 0.012266 seconds 
-  Import took 0.017350 seconds .
+  Time since last request: 0.000141 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC35.png
+  artifactKey: Guid(4c8d0bcc7f99f5d4dab63b3c5e059ae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC35.png using Guid(4c8d0bcc7f99f5d4dab63b3c5e059ae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8280e5bdbe8f5c165f02895c56ce37b') in 0.035878 seconds 
+  Import took 0.040482 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000178 seconds.
-  path: Assets/Resources/Imagenes/TrainerMain1.png
-  artifactKey: Guid(23d85cf242946fb4bbb1526d46e74e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/TrainerMain1.png using Guid(23d85cf242946fb4bbb1526d46e74e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed049a86530d85396b400ec201f28684') in 0.016791 seconds 
-  Import took 0.021948 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/Resources/Imagenes
-  artifactKey: Guid(9de218cf9f28ed848b3c0f9505206f63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes using Guid(9de218cf9f28ed848b3c0f9505206f63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0357151d5a292ae8a442dd8dc98f9d0c') in 0.007675 seconds 
-  Import took 0.014485 seconds .
+  Time since last request: 0.000236 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC43.png
+  artifactKey: Guid(5048a68976e39894d94b285894cef074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC43.png using Guid(5048a68976e39894d94b285894cef074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34eafa14866d205c1d2198274e9a7b6e') in 0.033130 seconds 
+  Import took 0.038083 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000221 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC27.png
-  artifactKey: Guid(9268e14de5cdf96468f95d8fb8e8f34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC27.png using Guid(9268e14de5cdf96468f95d8fb8e8f34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac65e6c8a80060b8f22b8abbec0fcdbf') in 0.032259 seconds 
-  Import took 0.039153 seconds .
+  path: Assets/Resources/Imagenes/Trainers/NPC40.png
+  artifactKey: Guid(9c1a66f96f10a7a45be49c0e4c3bb684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC40.png using Guid(9c1a66f96f10a7a45be49c0e4c3bb684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ae35d3ff39a24dbe2c1b80243a8a578') in 0.030555 seconds 
+  Import took 0.036325 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000221 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC25.png
-  artifactKey: Guid(a3c188a41085fd047a3617cd42f8ba6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC25.png using Guid(a3c188a41085fd047a3617cd42f8ba6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec3a52ec5d84028854bb51818687d9f4') in 0.019415 seconds 
-  Import took 0.024799 seconds .
+  Time since last request: 0.000150 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC42.png
+  artifactKey: Guid(99256b06008928341a93fdbb47d1bef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC42.png using Guid(99256b06008928341a93fdbb47d1bef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b07b4b09369372af6f50e62b5696237') in 0.033058 seconds 
+  Import took 0.038806 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC24.png
-  artifactKey: Guid(f82f932252a48d94b968a0645c9a72ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC24.png using Guid(f82f932252a48d94b968a0645c9a72ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fd38303fe5917fc91d58f90084ad38a') in 0.018215 seconds 
-  Import took 0.023601 seconds .
+  Time since last request: 0.000557 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC41.png
+  artifactKey: Guid(1efcea3c6d6a64944a05b9d1ea7827de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC41.png using Guid(1efcea3c6d6a64944a05b9d1ea7827de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9afa9ac4254c4fbc63e2a8f50942350a') in 0.034111 seconds 
+  Import took 0.039849 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC1.png
-  artifactKey: Guid(516250d52b754ac4092168fe71c0d6ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC1.png using Guid(516250d52b754ac4092168fe71c0d6ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '224b484222b6b7b13565406bf4023abd') in 0.019896 seconds 
-  Import took 0.025194 seconds .
+  Time since last request: 0.000225 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC33.png
+  artifactKey: Guid(2aa1051ec57770b44869b6c00c02cb44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC33.png using Guid(2aa1051ec57770b44869b6c00c02cb44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd255ae42001347dce7f778d6746b53f') in 0.034146 seconds 
+  Import took 0.039748 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/Resources/Imagenes/Cabaña y mesa.png
-  artifactKey: Guid(81a18bb4e57082642811e3ba57115a97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Cabaña y mesa.png using Guid(81a18bb4e57082642811e3ba57115a97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31cbba6df9ad93afe4be8a3bae2ab533') in 0.016114 seconds 
-  Import took 0.021041 seconds .
+  Time since last request: 0.000150 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC34.png
+  artifactKey: Guid(c698ac5a4a31b5842b34f1dcf3424194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC34.png using Guid(c698ac5a4a31b5842b34f1dcf3424194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b3ca56e479ead02cd8775fc5fb3debb') in 0.035723 seconds 
+  Import took 0.041564 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 97.812482 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC28.png
-  artifactKey: Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC28.png using Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac72153dffad2f8aef69d267212475be') in 0.017669 seconds 
-  Import took 0.024834 seconds .
+  Time since last request: 0.000168 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC39.png
+  artifactKey: Guid(40b8d7ce6c708e64bae26ae226840460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC39.png using Guid(40b8d7ce6c708e64bae26ae226840460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8917fe5fc22870e4012fd5fb03773f26') in 0.034005 seconds 
+  Import took 0.039667 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC29.png
-  artifactKey: Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC29.png using Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca6a3111d6566aa60e4850427fcadce1') in 0.017093 seconds 
-  Import took 0.022516 seconds .
+  Time since last request: 0.000218 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC44.png
+  artifactKey: Guid(3f804a860246d3042a343982e7dd6bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC44.png using Guid(3f804a860246d3042a343982e7dd6bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42545916d48f2e1f89af4c3680c2c787') in 0.033654 seconds 
+  Import took 0.039367 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC30.png
-  artifactKey: Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC30.png using Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a16e9dfac882c63fa44e1aad2e023d11') in 0.026258 seconds 
-  Import took 0.034654 seconds .
+  Time since last request: 0.000199 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC31.png
+  artifactKey: Guid(f6e1bcf5c8d2378468613880cbd8d801) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC31.png using Guid(f6e1bcf5c8d2378468613880cbd8d801) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '539b0d127ad36c6336eb150a33d12c24') in 0.033724 seconds 
+  Import took 0.039288 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.134194 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC28.png
-  artifactKey: Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC28.png using Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ee1b3e9ecb4930f85e1a69eadcaf5b8') in 0.012143 seconds 
-  Import took 0.019856 seconds .
+  Time since last request: 0.000211 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC37.png
+  artifactKey: Guid(e67c110412ce1a24892b7d8b2c418c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC37.png using Guid(e67c110412ce1a24892b7d8b2c418c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b9e9af64d97f6f1ef74dcb6a005d15d') in 0.032835 seconds 
+  Import took 0.037572 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7704.113014 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC28.png
-  artifactKey: Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC28.png using Guid(691e3dba90d9dc34684fd4d45405b174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2baefd2d026ae450dd43b6388d0619d3') in 0.052263 seconds 
-  Import took 0.096508 seconds .
+  Time since last request: 0.000503 seconds.
+  path: Assets/Resources/Imagenes/Trainers/NPC36.png
+  artifactKey: Guid(fbc812e46a74fbf4e8a354b0abbd3b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Imagenes/Trainers/NPC36.png using Guid(fbc812e46a74fbf4e8a354b0abbd3b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be317b6eeef6f51bb228ad1bd0d15340') in 0.034993 seconds 
+  Import took 0.042048 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 9.747691 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC29.png
-  artifactKey: Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC29.png using Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58967135770e6391bc282d66b4a9a541') in 0.014993 seconds 
-  Import took 0.022788 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003456 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.969 seconds
+Domain Reload Profiling:
+	ReloadAssembly (969ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		EndReloadAssembly (810ms)
+			LoadAssemblies (81ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (281ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (294ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (93ms)
+				ProcessInitializeOnLoadAttributes (186ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (13ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3342 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 156.5 MB.
+System memory in use after: 156.8 MB.
 
-========================================================================
-Received Import Request.
-  Time since last request: 66.128418 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC29.png
-  artifactKey: Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC29.png using Guid(feda0c035c64ab242a21fb2ce485e8de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e772786cccf0923a088096f16753d7c') in 0.025060 seconds 
-  Import took 0.031205 seconds .
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 3966.
+Total: 3.158600 ms (FindLiveObjects: 0.328000 ms CreateObjectMapping: 0.134700 ms MarkObjects: 2.680400 ms  DeleteObjects: 0.014700 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 10.622096 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC30.png
-  artifactKey: Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC30.png using Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb6a9f7f00d138b5a115c1f3a332b5a6') in 0.013865 seconds 
-  Import took 0.021982 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 64.968524 seconds.
-  path: Assets/Resources/Imagenes/Trainers/NPC30.png
-  artifactKey: Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Imagenes/Trainers/NPC30.png using Guid(647b7f5db8bcd41458aca25809fa462a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b4971078c2664f399a2662fe0f7288a') in 0.022157 seconds 
-  Import took 0.029125 seconds .
-
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
