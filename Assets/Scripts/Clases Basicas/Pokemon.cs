@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scripts;
 using System.Linq;
-using PokeApiNet;
+
 
 public class Pokemon
 {
@@ -47,7 +47,7 @@ public class Pokemon
         ImagenDeEspalda = imagenDeEspalda;
         HPMaximos = hp;
     }
-
+    /*
     public Pokemon(PokeApiNet.Pokemon pokemonApi)
     {
         ID = pokemonApi.Id;
@@ -70,8 +70,8 @@ public class Pokemon
         Debilidades = ListadosPokemon.obtenerNombreTiposDebilesPokemon(pokemonApi.Types,"es").Result;
         /*
         ImagenDeFrente = imagenDeFrente;
-        ImagenDeEspalda = imagenDeEspalda;*/
-    }
+        ImagenDeEspalda = imagenDeEspalda;
+    }*/
     #endregion
 
     #region Metodos Fundamentales(Propiedades)

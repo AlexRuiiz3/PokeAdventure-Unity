@@ -23,6 +23,8 @@ public class OpcionPokemons : MonoBehaviour
         foreach (Button button in botonesPokemons) {
             button.gameObject.SetActive(false);
         }*/
+
+        var a = ListadosPokemon.obtenerPokemonDeApi(207).Result;
         List<PokemonJugador> aaaa = new List<PokemonJugador>();
 
         aaaa.Add(new PokemonJugador(new Pokemon(2, "Pikachu", 100, 20, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(44), null), 10, 1, 1, 1));

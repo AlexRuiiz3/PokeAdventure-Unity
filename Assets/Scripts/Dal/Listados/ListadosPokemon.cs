@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using UnityEngine;
-using PokeApiNet;
 using System.Threading.Tasks;
 using System.Linq;
+using PokeAPI;
 
 public class ListadosPokemon
 {
+    
     /// <summary>
     /// 
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static async Task<PokeApiNet.Pokemon> obtenerPokemonDeApi(int id)
+    public static async Task<PokeAPI.Pokemon> obtenerPokemonDeApi(int id)
     {
-        PokeApiClient apiClient = new PokeApiClient();
-        PokeApiNet.Pokemon pokemonSolicitado = await apiClient.GetResourceAsync<PokeApiNet.Pokemon>(id);
+        PokeAPI.Pokemon pokemonSolicitado = await DataFetcher.GetApiObject<PokeAPI.Pokemon>(id);
         return pokemonSolicitado;
-    }
+    }/*
     /// <summary>
     /// 
     /// </summary>
@@ -81,7 +81,7 @@ public class ListadosPokemon
 
         return tipoEnEspanhol;
     }
-
+    */
     /// <summary>
     /// 
     /// </summary>

@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -153,8 +154,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="PokeApiNet, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\PokeApiNet.3.0.2\lib\netstandard2.0\PokeApiNet.dll</HintPath>
+    <Reference Include="PokeApi-NJ.NET, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PokeApi-NJ.NET.1.2.0\lib\net45\PokeApi-NJ.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -405,9 +414,6 @@
     <Reference Include="System.Numerics.Vectors">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Net.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Compression">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.IO.Compression.dll</HintPath>
     </Reference>
@@ -653,9 +659,6 @@
     </Reference>
     <Reference Include="System.Security.Cryptography.Primitives">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll</HintPath>
