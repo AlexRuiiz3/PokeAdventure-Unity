@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Scripts;
+using System.Linq;
+using PokeApiNet;
 
 public class Pokemon
 {
@@ -10,7 +12,8 @@ public class Pokemon
     private int nivel;
     #endregion
 
-    #region Constructor por defecto
+    #region Constructores
+    //Contructor sin parametros
     public Pokemon()
     {
         ID = 0;
@@ -27,10 +30,8 @@ public class Pokemon
         ImagenDeEspalda = new byte[0];
         HPMaximos = 100;
     }
-    #endregion
-
-    #region Constructor con parametros
-    public Pokemon(int id, string nombre, int hp, int nivel,int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades,byte[] imagenDeFrente, byte[] imagenDeEspalda)
+    //Constructor con parametros
+    public Pokemon(int id, string nombre, int hp, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades, byte[] imagenDeFrente, byte[] imagenDeEspalda)
     {
         ID = id;
         Nombre = nombre;
@@ -45,6 +46,31 @@ public class Pokemon
         ImagenDeFrente = imagenDeFrente;
         ImagenDeEspalda = imagenDeEspalda;
         HPMaximos = hp;
+    }
+
+    public Pokemon(PokeApiNet.Pokemon pokemonApi)
+    {
+        ID = pokemonApi.Id;
+        Nombre = pokemonApi.Name;
+        hp = (from pokemonStats in pokemonApi.Stats
+              where pokemonStats.Stat.Name == "hp"
+              select pokemonStats).First().Effort;
+        Ataque = (from pokemonStats in pokemonApi.Stats
+                  where pokemonStats.Stat.Name == "attack"
+                  select pokemonStats).First().Effort;
+        Defensa = (from pokemonStats in pokemonApi.Stats
+                   where pokemonStats.Stat.Name == "defense"
+                   select pokemonStats).First().Effort;
+        Velocidad = (from pokemonStats in pokemonApi.Stats
+                     where pokemonStats.Stat.Name == "speed"
+                     select pokemonStats).First().Effort;
+        HPMaximos = hp;
+
+        Tipos = ListadosPokemon.obtenerNombreTiposPokemon(pokemonApi.Types,"es").Result;
+        Debilidades = ListadosPokemon.obtenerNombreTiposDebilesPokemon(pokemonApi.Types,"es").Result;
+        /*
+        ImagenDeFrente = imagenDeFrente;
+        ImagenDeEspalda = imagenDeEspalda;*/
     }
     #endregion
 

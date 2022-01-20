@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Conexion 
 {
+
     public static SqlConnection establecerConexion()
     {
         SqlConnection conexion = new SqlConnection();
