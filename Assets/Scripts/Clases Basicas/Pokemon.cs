@@ -47,31 +47,31 @@ public class Pokemon
         ImagenDeEspalda = imagenDeEspalda;
         HPMaximos = hp;
     }
-    /*
-    public Pokemon(PokeApiNet.Pokemon pokemonApi)
+    
+    public Pokemon(PokeAPI.Pokemon pokemonApi)
     {
-        ID = pokemonApi.Id;
+        ID = pokemonApi.ID;
         Nombre = pokemonApi.Name;
         hp = (from pokemonStats in pokemonApi.Stats
               where pokemonStats.Stat.Name == "hp"
-              select pokemonStats).First().Effort;
+              select pokemonStats.BaseValue).First();
         Ataque = (from pokemonStats in pokemonApi.Stats
                   where pokemonStats.Stat.Name == "attack"
-                  select pokemonStats).First().Effort;
+                  select pokemonStats.BaseValue).First();
         Defensa = (from pokemonStats in pokemonApi.Stats
                    where pokemonStats.Stat.Name == "defense"
-                   select pokemonStats).First().Effort;
+                   select pokemonStats.BaseValue).First();
         Velocidad = (from pokemonStats in pokemonApi.Stats
                      where pokemonStats.Stat.Name == "speed"
-                     select pokemonStats).First().Effort;
+                     select pokemonStats.BaseValue).First();
         HPMaximos = hp;
-
+        /*
         Tipos = ListadosPokemon.obtenerNombreTiposPokemon(pokemonApi.Types,"es").Result;
         Debilidades = ListadosPokemon.obtenerNombreTiposDebilesPokemon(pokemonApi.Types,"es").Result;
-        /*
-        ImagenDeFrente = imagenDeFrente;
-        ImagenDeEspalda = imagenDeEspalda;
-    }*/
+        */
+        ImagenDeFrente = Utilidades.obtenerGifUrl($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.png");
+        ImagenDeEspalda = Utilidades.obtenerGifUrl($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/{ID}.gif");
+    }
     #endregion
 
     #region Metodos Fundamentales(Propiedades)

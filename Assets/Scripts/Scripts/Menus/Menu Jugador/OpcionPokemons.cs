@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,25 +14,26 @@ public class OpcionPokemons : MonoBehaviour
     public Text textNumeroPokemons;
     private int numeroPokemonSeleccionado;
 
-    void Start()
+    async Task Start()
     {
 
         gameObject.SetActive(false); //Se desactiva el menu
-
-        /*
+     
+        
         //Se desactivan todos los botones, y luego debajo se activan los necesarios
         foreach (Button button in botonesPokemons) {
             button.gameObject.SetActive(false);
-        }*/
+        }
 
-        var a = ListadosPokemon.obtenerPokemonDeApi(207).Result;
+        var pokemonApi = await ListadosPokemon.obtenerPokemonDeApi(321);
+        var pokemonApi2 = await ListadosPokemon.obtenerPokemonDeApi(400);
+        var pokemonApi3= await ListadosPokemon.obtenerPokemonDeApi(581);
+
         List<PokemonJugador> aaaa = new List<PokemonJugador>();
 
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Pikachu", 100, 20, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(44), null), 10, 1, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Ratta", 50, 12, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(21), null), 10, 2, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Squirtle", 35, 8, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(105), null), 10, 3, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Zubat", 120, 54, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(88), null), 10, 4, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Mew", 325, 100, 3, 4, 5, null, null, null, ListadosPokemon.getImageFrentePokemon(122), null), 10, 5, 1, 1));
+        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi), 10, 1, 1, 1));
+        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi2), 10, 1, 1, 1));
+        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi3), 10, 1, 1, 1));
 
         textNumeroPokemons.text = $"Equipo Actual {aaaa.Count}/6";
 
@@ -76,24 +78,16 @@ public class OpcionPokemons : MonoBehaviour
             textNivelPokemon = (Text)componentesBoton[4];
             textNivelPokemon.text = $"Nvl. {pokemon.Nivel}";
 
-            botonesPokemons[i].onClick.AddListener(verOpcionesPokemon);
+            botonesPokemons[i].onClick.AddListener(delegate { verOpcionesPokemon(aaaa[i]); });
 
             componentesBoton.Clear(); //Se limpia la lista con los componentes del boton para que despues guardar los componentes del siguiente boton y asi las posicion 1,2,3,4 corresponderan a los componentes del boton que le toque en la iteracion
         }
 
 
     }
-    public void verOpcionesPokemon()
+
+    public void verOpcionesPokemon(PokemonJugador pokemon)
     {
-        List<PokemonJugador> aaaa = new List<PokemonJugador>();
-
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Pikachu", 100, 20, 3, 4, 5, null, null, null, null, null), 10, 1, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Ratta", 50, 12, 3, 4, 5, null, null, null, null, null), 10, 2, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Squirtle", 35, 8, 3, 4, 5, null, null, null, null, null), 10, 3, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Zubat", 120, 54, 3, 4, 5, null, null, null, null, null), 10, 4, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(2, "Mew", 325, 100, 3, 4, 5, null, null, null, null, null), 10, 5, 1, 1));
-
-
 
         /* EventSystem.current.currentSelectedGameObject.name me dara el nombre del GameObject seleccionado, En este caso el de un boton,
          * como los botones su nombre es ButtonPokemon 1, ButtonPokemon 2, ect. Se coge el ultimo caracter del nombre que 
@@ -102,7 +96,7 @@ public class OpcionPokemons : MonoBehaviour
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
         int numeroBotonClicado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
 
-        menuOpcionesPokemon.GetComponent<MenuOpcionesPokemon>().Pokemon = aaaa[numeroBotonClicado - 1];//scriptPlayer.Jugador.EquipoPokemon[numeroPokemon
+        menuOpcionesPokemon.GetComponent<MenuOpcionesPokemon>().Pokemon = pokemon;//scriptPlayer.Jugador.EquipoPokemon[numeroPokemon
         menuOpcionesPokemon.GetComponent<MenuOpcionesPokemon>().cambiarTextoTextNombrePokemon(); //Mejor hacerlo aqui porque es mas optimo, la otra forma seria en la clase MenuOpcionesPokemon hacer el cambio de nombre en un metodo update y eso no es lo mas optimo
         menuOpcionesPokemon.SetActive(true);
         
