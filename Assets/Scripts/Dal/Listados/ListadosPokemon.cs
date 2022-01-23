@@ -18,7 +18,7 @@ public class ListadosPokemon
     {
         PokeAPI.Pokemon pokemonSolicitado = await DataFetcher.GetApiObject<PokeAPI.Pokemon>(id);
         return pokemonSolicitado;
-    }/*
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -27,7 +27,7 @@ public class ListadosPokemon
     /// <returns></returns>
     public static async Task<List<string>> obtenerNombreTiposPokemon(List<PokemonType> tiposPokemon, string idioma)
     {
-        PokeApiClient apiClient = new PokeApiClient();
+        PokeAPI.Language
         List<string> nombreTiposPokemon = new List<string>();
         string tipoIdioma;
 
@@ -81,7 +81,7 @@ public class ListadosPokemon
 
         return tipoEnEspanhol;
     }
-    */
+    
     /// <summary>
     /// 
     /// </summary>

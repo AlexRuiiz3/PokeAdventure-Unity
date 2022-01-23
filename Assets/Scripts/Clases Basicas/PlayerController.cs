@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviour
     {
 
         //Se obtiene el input del jugador(Teclado)
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal")*1.25f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
-        movimientoVertical = Input.GetAxisRaw("Vertical")*1.25f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
+        movimientoHorizontal = Input.GetAxisRaw("Horizontal")*1.5f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
+        movimientoVertical = Input.GetAxisRaw("Vertical")*1.5f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            movimientoHorizontal *= 2;
-            movimientoVertical *= 2;
+            movimientoHorizontal *= 2.2f;
+            movimientoVertical *= 2.2f;
 
         }
 

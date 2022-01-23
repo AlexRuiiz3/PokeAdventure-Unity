@@ -23,7 +23,7 @@ public class SceneTransition : MonoBehaviour
 
     IEnumerator cargarEscena(){
         GameObject jugador = (GameObject.Find("Player"));
-        Vector2 posicionNueva = new Vector2(1f, 1f); //Se asigna una por defecto
+        Vector2 posicionNuevaJugador = new Vector2(1f, 1f); //Se asigna una por defecto
 
         switch (escenaSiguiente)
         {
@@ -34,25 +34,25 @@ public class SceneTransition : MonoBehaviour
                 switch (escenaSiguiente)
                 {
                     case "SnowScene":
-                        posicionNueva = new Vector2(-1.76f, -14.44f);
+                        posicionNuevaJugador = new Vector2(-1.76f, -14.44f);
                         break;
                     case "RouteScene":
-                        posicionNueva = new Vector2(-1.54f, -8.5f);
+                        posicionNuevaJugador = new Vector2(-1.54f, -8.5f);
                         break;
                     case "ForestScene":
-                        posicionNueva = new Vector2(0.6f, -21.12f);
+                        posicionNuevaJugador = new Vector2(0.6f, -21.12f);
                         break;
                     case "CityScene":
-                        posicionNueva = new Vector2(-0.04f, -8.83f);
+                        posicionNuevaJugador = new Vector2(-0.04f, -8.83f);
                         break;
                 }
                 break;
 
             case "PokemonCenterScene":
-                posicionNueva = new Vector2(-2.9f, -1.2f);
+                posicionNuevaJugador = new Vector2(-2.9f, -1.2f);
                 break;
             case "PokemonShopScene":
-                posicionNueva = new Vector2(-7.52f, -5.09f);
+                posicionNuevaJugador = new Vector2(-7.52f, -5.09f);
                 break;
             case "LobbyScene":
                 switch (SceneManager.GetActiveScene().name)
@@ -61,18 +61,18 @@ public class SceneTransition : MonoBehaviour
                     case "RouteScene":
                     case "ForestScene":
                     case "CityScene":
-                        posicionNueva = new Vector2(-1, 5);
+                        posicionNuevaJugador = new Vector2(-1, 5);
                         break;
 
                     case "PokemonCenterScene":
-                        posicionNueva = new Vector2(4.5f, -1f);
+                        posicionNuevaJugador = new Vector2(4.5f, -1f);
                         break;
 
                     case "PokemonShopScene":
-                        posicionNueva = new Vector2(-6.84f, -1f);
+                        posicionNuevaJugador = new Vector2(-6.84f, -1f);
                         break;
                     default:
-                        posicionNueva = new Vector2(-1f, -1f);
+                        posicionNuevaJugador = new Vector2(-1f, -1f);
                         break;
                 }
 
@@ -80,11 +80,7 @@ public class SceneTransition : MonoBehaviour
         }
         DontDestroyOnLoad(jugador);
         yield return new WaitForSeconds(1);
-        jugador.transform.position = posicionNueva;
         SceneManager.LoadScene(escenaSiguiente);
-    }
-
-    private void prepararEscena() { 
-    
+        jugador.transform.position = posicionNuevaJugador;
     }
 }

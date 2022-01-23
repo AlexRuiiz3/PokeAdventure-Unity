@@ -6800,7 +6800,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8735481783228928877}
   m_HandleRect: {fileID: 6016985480064432943}
   m_Direction: 2
-  m_Value: -0.027777778
+  m_Value: -0.083333336
   m_Size: 0.9999973
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10511,7 +10511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076282113, y: 0.0011092743}
+  m_AnchoredPosition: {x: -0.0000076282113, y: 0.0011817575}
   m_SizeDelta: {x: 0, y: 410.95}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6882900681993482724
@@ -11999,8 +11999,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.2218253, y: 0.3240633}
+  m_Offset: {x: 0, y: -0.0067015938}
+  m_Size: {x: 0.24193004, y: 0.37097448}
   m_Direction: 0
 --- !u!114 &4078339820095892679
 MonoBehaviour:
