@@ -25,9 +25,9 @@ public class OpcionPokemons : MonoBehaviour
             button.gameObject.SetActive(false);
         }
 
-        var pokemonApi = await ListadosPokemon.obtenerPokemonDeApi(321);
-        var pokemonApi2 = await ListadosPokemon.obtenerPokemonDeApi(400);
-        var pokemonApi3= await ListadosPokemon.obtenerPokemonDeApi(581);
+        var pokemonApi = await ListadosPokemon.obtenerPokemonDeApi(222);
+        var pokemonApi2 = await ListadosPokemon.obtenerPokemonDeApi(186);
+        var pokemonApi3= await ListadosPokemon.obtenerPokemonDeApi(599);
 
         List<PokemonJugador> aaaa = new List<PokemonJugador>();
 

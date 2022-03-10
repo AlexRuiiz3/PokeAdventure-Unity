@@ -65,8 +65,8 @@ public class Pokemon
                      where pokemonStats.Stat.Name == "speed"
                      select pokemonStats.BaseValue).First();
         HPMaximos = hp;
-        /*
-        Tipos = ListadosPokemon.obtenerNombreTiposPokemon(pokemonApi.Types,"es").Result;
+        
+        Tipos = ListadosPokemon.obtenerNombreTiposPokemon(pokemonApi.Types,"es").Result;/*
         Debilidades = ListadosPokemon.obtenerNombreTiposDebilesPokemon(pokemonApi.Types,"es").Result;
         */
         ImagenDeFrente = Utilidades.obtenerGifUrl($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.png");

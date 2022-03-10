@@ -25,15 +25,14 @@ public class ListadosPokemon
     /// <param name="tiposPokemon"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<List<string>> obtenerNombreTiposPokemon(List<PokemonType> tiposPokemon, string idioma)
+    public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon, string idioma)
     {
-        PokeAPI.Language
         List<string> nombreTiposPokemon = new List<string>();
         string tipoIdioma;
 
-        foreach (PokemonType tipoPokemon in tiposPokemon)
+        foreach (PokemonTypeMap tipoPokemon in tiposPokemon)
         {
-            tipoIdioma = await obtenerNombreTipoPokemonEnUnIdioma(tipoPokemon.Type.Name,"es");
+            tipoIdioma = await obtenerNombreTipoPokemonEnUnIdioma(tipoPokemon.Type.ID,idioma);
             nombreTiposPokemon.Add(tipoIdioma);
         }
         return nombreTiposPokemon;
@@ -46,6 +45,7 @@ public class ListadosPokemon
     /// <returns></returns>
     public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(List<PokemonType> tiposPokemon, string idioma)
     {
+        /*
         PokeApiClient apiClient = new PokeApiClient();
         List<string> nombreDebilidadesPokemon = new List<string>();
         string tipoDebilIdioma;
@@ -59,8 +59,8 @@ public class ListadosPokemon
                 tipoDebilIdioma = await obtenerNombreTipoPokemonEnUnIdioma(tipoFuerte.Name, "es");
                 nombreDebilidadesPokemon.Add(tipoDebilIdioma);
             }
-        }
-        return nombreDebilidadesPokemon;
+        }*/
+        return null;//nombreDebilidadesPokemon;
     }
     /// <summary>
     /// 
@@ -68,18 +68,15 @@ public class ListadosPokemon
     /// <param name="nombre"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<string> obtenerNombreTipoPokemonEnUnIdioma(string nombre, string idioma)
+    public static async Task<string> obtenerNombreTipoPokemonEnUnIdioma(int idTipo, string idioma)
     {
+        PokemonType tipoPokemon = await DataFetcher.GetApiObject<PokemonType>(idTipo);
+        ResourceName[] a = tipoPokemon.Names;
+        string nombreTipo = (from tipo in a
+                             where tipo.Language.Name == idioma.ToLower()
+                             select tipo.Name).FirstOrDefault();
 
-        PokeApiClient apiClient = new PokeApiClient();
-        string tipoEnEspanhol;
-        Type tipo = await apiClient.GetResourceAsync<Type>(nombre);
-
-        tipoEnEspanhol = (from nombreTipo in tipo.Names
-                          where nombreTipo.Language.Name == idioma
-                          select nombreTipo.Name).First();
-
-        return tipoEnEspanhol;
+        return nombreTipo;
     }
     
     /// <summary>
