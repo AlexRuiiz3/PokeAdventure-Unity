@@ -20,7 +20,7 @@ public class MenuPrincipal : MonoBehaviour
         if (!string.IsNullOrEmpty(nombreUsuario.Trim()) && !string.IsNullOrEmpty(contrasenha.Trim()))
         {
             try {
-                idJugador = ListadosJugador.obtenerIDJugador(nombreUsuario, contrasenha);
+                idJugador = ListadosJugadorBL.obtenerIDJugador(nombreUsuario, contrasenha);
                 if (idJugador != -1) //-1 es el valor que tomara idJugador cuando en la base de datos no se encuentre un jugador en el que coincidan el usuario y contraseña especificados por el usuario
                 {
                     SceneManager.LoadScene("LobbyScene");

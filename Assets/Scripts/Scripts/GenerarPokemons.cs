@@ -21,7 +21,7 @@ public class GenerarPokemons : MonoBehaviour
         int numero = Random.Range(1,101); //Numero entre 1 y 100
         
         if (collision.CompareTag("Player") && numero >= 1) {
-            Debug.Log("Pokemon Generado");
+            Debug.Log("Pokemon Generado GeneradorPokemons");
         }
     }
 }

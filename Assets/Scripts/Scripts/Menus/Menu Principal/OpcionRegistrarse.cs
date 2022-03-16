@@ -38,7 +38,7 @@ public class OpcionRegistrarse : MonoBehaviour
 
                             if (inputCorreoElectronico.text.EndsWith("@gmail.com") || inputCorreoElectronico.text.EndsWith("@gmail.es")) //Si el correo electronico termina por @gmail.com o @gmail.es
                             {
-                                GestoraJugador.insertarJugador(new ClsJugador(inputNombreUsuario.text, inputContrasenha.text, inputCorreoElectronico.text, 1, 0, new byte[0]));
+                                GestoraJugadorBL.insertarJugador(new ClsJugador(0, inputNombreUsuario.text, inputContrasenha.text, inputCorreoElectronico.text, 1, 0, 0, new byte[0]));
                                 EditorUtility.DisplayDialog("Campos obligatorios", "guardado con exito", "Ok");
                             }
                             else

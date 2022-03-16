@@ -21,15 +21,16 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
-    IEnumerator cargarEscena(){
-        GameObject jugador = (GameObject.Find("Player"));
-        Vector2 posicionNuevaJugador = new Vector2(1f, 1f); //Se asigna una por defecto
+    IEnumerator cargarEscena()
+    {
+        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+        Vector2 posicionNuevaJugador = new Vector2(1f, 1f);
 
         switch (escenaSiguiente)
         {
             case "AdventureZone":
                 string[] adventureScenes = { "SnowScene", "RouteScene", "ForestScene", "CityScene" };
-                escenaSiguiente = adventureScenes[(int)(Random.Range(0f, 4f))]; //Numero entre 0 y 3
+                escenaSiguiente = "RouteScene";//adventureScenes[(int)(Random.Range(0f, 4f))]; //Numero entre 0 y 3
 
                 switch (escenaSiguiente)
                 {
@@ -46,6 +47,7 @@ public class SceneTransition : MonoBehaviour
                         posicionNuevaJugador = new Vector2(-0.04f, -8.83f);
                         break;
                 }
+
                 break;
 
             case "PokemonCenterScene":
@@ -75,7 +77,6 @@ public class SceneTransition : MonoBehaviour
                         posicionNuevaJugador = new Vector2(-1f, -1f);
                         break;
                 }
-
                 break;
         }
         DontDestroyOnLoad(jugador);

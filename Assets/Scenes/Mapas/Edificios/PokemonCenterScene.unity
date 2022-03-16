@@ -1816,6 +1816,7 @@ GameObject:
   - component: {fileID: 395764050}
   - component: {fileID: 395764052}
   - component: {fileID: 395764053}
+  - component: {fileID: 395764054}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -1965,6 +1966,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2453ca7fe4d565b45889b6e0e9031a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &395764054
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395764049}
+  m_Enabled: 1
 --- !u!1 &454856012
 GameObject:
   m_ObjectHideFlags: 0

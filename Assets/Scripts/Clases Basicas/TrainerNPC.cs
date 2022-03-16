@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainerNPC : MonoBehaviour
 {
-    private bool derrotado = false;
+    //private bool derrotado = false;
 
     //Constructor sin parametros
     public TrainerNPC() {

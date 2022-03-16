@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,82 +12,22 @@ public class OpcionPokemons : MonoBehaviour
     public PlayerController scriptPlayer;//Creo que tiene que ser GameObject
     public List<Button> botonesPokemons;
     public GameObject menuOpcionesPokemon;
-    public Text textNumeroPokemons;
-    private int numeroPokemonSeleccionado;
+    public TextMeshProUGUI textNumeroPokemons;
+    private Jugador jugador;
+    //private int numeroPokemonSeleccionado;
 
-    async Task Start()
+     async  Task Start()
     {
-
-        gameObject.SetActive(false); //Se desactiva el menu
-     
-        
-        //Se desactivan todos los botones, y luego debajo se activan los necesarios
-        foreach (Button button in botonesPokemons) {
-            button.gameObject.SetActive(false);
-        }
-
-        var pokemonApi = await ListadosPokemon.obtenerPokemonDeApi(222);
-        var pokemonApi2 = await ListadosPokemon.obtenerPokemonDeApi(186);
-        var pokemonApi3= await ListadosPokemon.obtenerPokemonDeApi(599);
-
-        List<PokemonJugador> aaaa = new List<PokemonJugador>();
-
-        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi), 10, 1, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi2), 10, 1, 1, 1));
-        aaaa.Add(new PokemonJugador(new Pokemon(pokemonApi3), 10, 1, 1, 1));
-
-        textNumeroPokemons.text = $"Equipo Actual {aaaa.Count}/6";
-
-        Image imagenPokemon; Texture2D texture; //Texture2D necesario, porque sera donde se carge el la imagen del pokemon como byte[]
-        Text textNombrePokemon;
-        Text textHPPokemon;
-        Text textNivelPokemon;
-
-        PokemonJugador pokemon;
-        List<Component> componentesBoton = new List<Component>();
-
-        for(int i = 0; i < aaaa.Count; i++) {
-            //for (int i = 0; i < scriptPlayer.Jugador.EquipoPokemon.Count; i++)
-           // {
-            pokemon = aaaa[i];
-
-            botonesPokemons[i].gameObject.SetActive(true);
-            /* Se obtienen todos los componentes del boton, sus hijos seran el Image y los 3 Text que se esta buscando. 
-             * Para encontrarlos al boton hay que llamar al metodo GetComponentsInChildren que devolvera todos los compoentes 
-             * hijos que tiene el boton y los atributos de estos.
-             * Hay que hacer el foreach porque GetComponentsInChildren contiene todos los atributos de los 
-             * componentes(De la imagen y los text se coge CavasRenderer,RectTransform y Image o Text) y lo que 
-             * se necesita para modificar son el atributo Image o Text de los respectivos componetes Image o Text.
-             */
-            foreach (Component componente in botonesPokemons[i].GetComponentsInChildren<Component>()) {
-                if (componente is Text || componente is Image) {
-                    componentesBoton.Add(componente);
-                }
-            }
-
-            imagenPokemon = (Image)componentesBoton[1]; //No se tiene encuenta la posicion 0 porque en esa esta la imagen del propio boton(Boton en el que se encuentra la Image y los 3 Text)
-            texture = new Texture2D(1, 1);
-            texture.LoadImage(pokemon.ImagenDeFrente);
-            imagenPokemon.sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2));
-           
-            textNombrePokemon = (Text)componentesBoton[2];
-            textNombrePokemon.text = $"Nombre: {pokemon.Nombre}";
-
-            textHPPokemon = (Text)componentesBoton[3];
-            textHPPokemon.text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
-
-            textNivelPokemon = (Text)componentesBoton[4];
-            textNivelPokemon.text = $"Nvl. {pokemon.Nivel}";
-
-            botonesPokemons[i].onClick.AddListener(delegate { verOpcionesPokemon(aaaa[i]); });
-
-            componentesBoton.Clear(); //Se limpia la lista con los componentes del boton para que despues guardar los componentes del siguiente boton y asi las posicion 1,2,3,4 corresponderan a los componentes del boton que le toque en la iteracion
-        }
-
+        await crearJugadorPrueba(); //Pureba para poder probar la opcio ver equipo pokemon
+        //jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jugador;//Esta a null porque en playercontroller a la par se esta creando alli,
+        //Si lo quiero probar hacerlo en una corrutina. esperar unos segundos y luego obtener el jugador
+        textNumeroPokemons.text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
+        Utilidades.prepararBotonesPokemonsEquipo(jugador.EquipoPokemon, botonesPokemons);
+        gameObject.SetActive(false);
 
     }
 
-    public void verOpcionesPokemon(PokemonJugador pokemon)
+    public void verOpcionesPokemon() //Asignar este metodo a los botones en el inspector
     {
 
         /* EventSystem.current.currentSelectedGameObject.name me dara el nombre del GameObject seleccionado, En este caso el de un boton,
@@ -94,19 +35,66 @@ public class OpcionPokemons : MonoBehaviour
          * corresponde al numero del boton clicado 
          */
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
-        int numeroBotonClicado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
+        int numeroBotonPulsado = nombreBoton[nombreBoton.Length - 1];
+        PokemonJugador pokemon = jugador.EquipoPokemon[numeroBotonPulsado - 1];
 
         menuOpcionesPokemon.GetComponent<MenuOpcionesPokemon>().Pokemon = pokemon;//scriptPlayer.Jugador.EquipoPokemon[numeroPokemon
         menuOpcionesPokemon.GetComponent<MenuOpcionesPokemon>().cambiarTextoTextNombrePokemon(); //Mejor hacerlo aqui porque es mas optimo, la otra forma seria en la clase MenuOpcionesPokemon hacer el cambio de nombre en un metodo update y eso no es lo mas optimo
         menuOpcionesPokemon.SetActive(true);
-        
-    }
 
+    }
     /*
      * Se hace asi porque delegate { verOpcionesPokemon(pokemon.PokemonNumero); }
      * 
      * De esta manera no se le puede incluir parametros por eso poner lo de delegate
      * botonesPokemons[0].onClick.AddListener(verOpcionesPokemon(pokemon.PokemonNumero))
      */
+
+
+
+    private async Task crearJugadorPrueba()
+    {
+        try
+        {
+            ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 5, 100, 200, new byte[0]);
+            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(478);
+            Pokemon pokemon1 = new Pokemon(p1);
+            await pokemon1.obtenerTiposyDebilidades(p1.Types);
+
+            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(257);
+            Pokemon pokemon2 = new Pokemon(p2);
+            await pokemon2.obtenerTiposyDebilidades(p2.Types);
+
+            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(668);
+            Pokemon pokemon3 = new Pokemon(p3);
+            await pokemon3.obtenerTiposyDebilidades(p3.Types);
+
+            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(184);
+            Pokemon pokemon4 = new Pokemon(p4);
+            await pokemon4.obtenerTiposyDebilidades(p4.Types);
+
+            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(307);
+            Pokemon pokemon5 = new Pokemon(p5);
+            await pokemon5.obtenerTiposyDebilidades(p5.Types);
+
+            List<PokemonJugador> equipoPokemon = new List<PokemonJugador>();
+            equipoPokemon.Add(new PokemonJugador(pokemon1, 1, 1, 1, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon2, 1, 1, 1, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon3, 1, 1, 1, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon4, 1, 1, 1, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon5, 1, 1, 1, 100));
+
+            List<ItemConCantidad> mochila = new List<ItemConCantidad>();
+            mochila.Add(new ItemConCantidad(new Item(1, "Pocion", "Cura 20 hp", 0, 20, "POC"), 10));
+            mochila.Add(new ItemConCantidad(new Item(2, "Pokeball", "Dispositivo para capturar pokemons", 0, 20, "POK"), 20));
+
+            jugador = new Jugador(b, equipoPokemon, mochila);
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+
+    }
 }
 
