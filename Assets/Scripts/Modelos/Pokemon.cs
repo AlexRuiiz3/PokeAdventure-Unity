@@ -146,9 +146,10 @@ public class Pokemon
     #endregion
 
     //Este metodo es asi ya que en el constructor no puede a ver metodos async 
-    public async Task obtenerTiposyDebilidades(PokemonTypeMap[] tiposDeApi)
+    public async Task obtenerDatosAsincronos(PokeAPI.Pokemon pokeAPI)
     {
-        Tipos = await APIListadosPokemonBL.obtenerNombreTiposPokemon(tiposDeApi, DatosGenerales.idioma);
-        Debilidades = await APIListadosPokemonBL.obtenerNombreTiposDebilesPokemon(tiposDeApi, DatosGenerales.idioma);
+        Tipos = await APIListadosPokemonBL.obtenerNombreTiposPokemon(pokeAPI.Types);
+        Debilidades = await APIListadosPokemonBL.obtenerNombreTiposDebilesPokemon(pokeAPI.Types);
+        Movimientos = await APIListadosPokemonBL.obtenerMovimientosAleatoriosPokemon(pokeAPI.Moves);
     }
 }

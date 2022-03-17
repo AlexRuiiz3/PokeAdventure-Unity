@@ -52,6 +52,22 @@ public class Utilidades
         }
     }
 
+    public static void activarMusicaEscenaActiva()
+    {
+        bool encontrado = false;
+        GameObject[] gameObjectsEscena = SceneManager.GetActiveScene().GetRootGameObjects();
+        for (int i = 0; i < gameObjectsEscena.Length && !encontrado; i++)
+        {
+            if (gameObjectsEscena[i].name == "Grid")
+            {
+                encontrado = true;
+                gameObjectsEscena[i].GetComponent<AudioSource>().Play();
+                gameObjectsEscena[i].GetComponent<AudioSource>().enabled = true;
+                gameObjectsEscena[i].GetComponent<AudioListener>().enabled = true;
+            }
+        }
+    }
+
     public static void prepararBotonesPokemonsEquipo(List<PokemonJugador> pokemonsJugador, List<Button> botones)
     {
         Image imagenPokemon;

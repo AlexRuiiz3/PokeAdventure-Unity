@@ -36,34 +36,28 @@ namespace Scripts
 
     public class MovimientoPokemon
     {
-        #region Atributos
-        private int mt;
-        private string nombre;
-        private int danho;
-        private int precision;
-        private int pp;
-        private string tipo;
-        #endregion
 
         #region Constructor por defecto
         public MovimientoPokemon() {
-            mt = 0;
-            nombre = "";
-            danho = 0;
-            precision = 0;
-            pp = 0;
-            tipo = "";
+            MT = 0;
+            Nombre = "";
+            Danho = 0;
+            Precision = 0;
+            PP = 0;
+            PPMaximo = 0;
+            Tipo = "";
         }
         #endregion
 
         #region Constructor con parametros
         public MovimientoPokemon(int mt, string nombre, int danho, int precision, int pp, string tipo) {
-            this.mt = mt;
-            this.nombre = nombre;
-            this.danho = danho;
-            this.precision = precision;
-            this.pp = pp;
-            this.tipo = tipo;
+            MT = mt;
+            Nombre = nombre;
+            Danho = danho;
+            Precision = precision;
+            PP = pp;
+            PPMaximo = pp;
+            Tipo = tipo;
         }
         #endregion
 
@@ -78,6 +72,7 @@ namespace Scripts
         public int Precision { get; }
         //pp
         public int PP { get; }
+        public int PPMaximo { get; }
         //tipo
         public string Tipo { get; }
         #endregion

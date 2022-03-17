@@ -4,11 +4,13 @@ using System.Data.SqlClient;
 using UnityEngine;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 using PokeAPI;
+using Scripts;
 
 public class APIListadosPokemonDAL
 {
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -25,7 +27,7 @@ public class APIListadosPokemonDAL
     /// <param name="tiposPokemon"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon, string idioma)
+    public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon)
     {
         List<string> nombreTiposPokemon = new List<string>();
         PokemonType tipo;
@@ -34,7 +36,7 @@ public class APIListadosPokemonDAL
         foreach (PokemonTypeMap tipoPokemon in tiposPokemon)
         {
             tipo = await DataFetcher.GetApiObject<PokemonType>(tipoPokemon.Type.ID);
-            tipoIdioma = obtenerNombreTipoPokemonEnUnIdioma(tipo,idioma);
+            tipoIdioma = obtenerNombreEnUnIdioma(tipo.Names);
             nombreTiposPokemon.Add(tipoIdioma);
         }
         return nombreTiposPokemon;
@@ -45,7 +47,7 @@ public class APIListadosPokemonDAL
     /// <param name="tiposPokemon"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon, string idioma)
+    public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon)
     {
         List<string> listadosTiposDobleDanho = new List<string>();
         PokemonType tipo;
@@ -55,49 +57,83 @@ public class APIListadosPokemonDAL
         foreach (PokemonTypeMap tipoPokemon in tiposPokemon)
         {
             tipo = await DataFetcher.GetApiObject<PokemonType>(tipoPokemon.Type.ID);
-            foreach (NamedApiResource<PokemonType> tipoDobleDanho in tipo.DamageRelations.DoubleDamageFrom) {
+            foreach (NamedApiResource<PokemonType> tipoDobleDanho in tipo.DamageRelations.DoubleDamageFrom)
+            {
                 tipoDanho = await DataFetcher.GetApiObject<PokemonType>(tipoDobleDanho.ID);
-                tipoIdioma = obtenerNombreTipoPokemonEnUnIdioma(tipoDanho, idioma);
+                tipoIdioma = obtenerNombreEnUnIdioma(tipoDanho.Names);
                 listadosTiposDobleDanho.Add(tipoIdioma);
             }
-            
+
         }
         return listadosTiposDobleDanho;
     }
+
+    public static async Task<List<MovimientoPokemon>> obtenerMovimientosAleatoriosPokemon(PokemonMove[] pokemonMoves)
+    {
+        List<Move> listadoMovimientos = new List<Move>();
+        List<PokemonMove> movimientosSeleccionados = new List<PokemonMove>();
+        Move movimiento;
+        int aleatorio;
+        System.Random random = new System.Random();
+
+        while (listadoMovimientos.Count < 4)//4 Porque son 4 los movimientos que se quieren obtener 
+        {
+            aleatorio = random.Next(pokemonMoves.Length - 1);
+            if (!comprobarMovimientoYaObtenido(listadoMovimientos, pokemonMoves[aleatorio].Move.ID))//Si el movimiento obtenido de forma aleatoria no se ha seleccionado antes
+            {
+                movimiento = await DataFetcher.GetApiObject<Move>(pokemonMoves[aleatorio].Move.ID); //Hay que obtener de la api el objeto de tip Move, ya que tiene toda la inforacion de los movimientos, y asi se puede comprobar si es un movimiento que causa daño, ya que seran los unicos que se obtendran
+                if (movimiento.Power != null && movimiento.Power > 0 && movimiento.Accuracy > 0)
+                {
+                    listadoMovimientos.Add(movimiento);
+                }
+            }
+        }
+        return await mappearListaMoveAMovimientoPokemon(listadoMovimientos);
+    }
+
+    private static async Task<List<MovimientoPokemon>> mappearListaMoveAMovimientoPokemon(List<Move> movesPokemon)
+    {
+        List<MovimientoPokemon> listadoMovimientos = new List<MovimientoPokemon>();
+        PokemonType tipo;
+        string nombreMovimientoEnIdioma;
+        string nombreTipoEnIdioma;
+        foreach (Move move in movesPokemon)
+        {
+            tipo = await DataFetcher.GetApiObject<PokemonType>(move.Type.ID);
+            nombreTipoEnIdioma = obtenerNombreEnUnIdioma(tipo.Names);
+            nombreMovimientoEnIdioma = obtenerNombreEnUnIdioma(move.Names);
+            listadoMovimientos.Add(new MovimientoPokemon(move.ID, nombreMovimientoEnIdioma, (int)move.Power, (int)move.Accuracy, (int)move.PP, nombreTipoEnIdioma));
+        }
+        return listadoMovimientos;
+    }
+    private static bool comprobarMovimientoYaObtenido(List<Move> movesPokemon, int idMovimiento)
+    {
+        bool obtenido = false;
+
+        for (int i = 0; i < movesPokemon.Count && !obtenido; i++)
+        {
+            if (movesPokemon[i].ID == idMovimiento)
+            {
+                obtenido = true;
+            }
+        }
+        return obtenido;
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="nombre"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    private static string obtenerNombreTipoPokemonEnUnIdioma(PokemonType tipoPokemon, string idioma)
+    private static string obtenerNombreEnUnIdioma(ResourceName[] listadoNombres)
     {
-        ResourceName[] listadoNombres = tipoPokemon.Names;
-        string nombreTipo = (from tipo in listadoNombres
-                             where tipo.Language.Name == idioma.ToLower()
-                             select tipo.Name).FirstOrDefault();
+        string nombre = (from nombreSeleccionado in listadoNombres
+                         where nombreSeleccionado.Language.Name == DatosGenerales.idioma.ToLower()
+                         select nombreSeleccionado.Name).FirstOrDefault();
 
-        return nombreTipo;
+        return nombre;
     }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="idPokemon"></param>
-    /// <returns></returns>
-    //Metodo para probar los obtener la imagen del pokemon y poder probar pasarlo a sprite de la imagen
-    public static byte[] getImageFrentePokemon(int idPokemon)
-    {
-        byte[] imagenPokemon = null;
 
-        SqlConnection conexion = Conexion.establecerConexion();
-        SqlCommand command = new SqlCommand("Select ImagenDeFrente FROM ImagenesPokemons WHERE IDPokemon = @ID", conexion);
-        command.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = idPokemon;
-        SqlDataReader reader = command.ExecuteReader();
-        reader.Read();
 
-        imagenPokemon = (byte[])reader.GetValue(0);
-
-        return imagenPokemon;
-    }
 }

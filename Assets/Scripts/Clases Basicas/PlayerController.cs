@@ -114,25 +114,25 @@ public class PlayerController : MonoBehaviour
         try
         {
             ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 5, 100, 200, new byte[0]);
-            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(478);
+            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(456);
             Pokemon pokemon1 = new Pokemon(p1);
-            await pokemon1.obtenerTiposyDebilidades(p1.Types);
+            await pokemon1.obtenerDatosAsincronos(p1);
 
-            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(257);
+            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(290);
             Pokemon pokemon2 = new Pokemon(p2);
-            await pokemon2.obtenerTiposyDebilidades(p2.Types);
-            
-            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(668);
+            await pokemon2.obtenerDatosAsincronos(p2);
+
+            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(333);
             Pokemon pokemon3 = new Pokemon(p3);
-            await pokemon3.obtenerTiposyDebilidades(p3.Types);
+            await pokemon3.obtenerDatosAsincronos(p3);
 
-            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(184);
+            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(449);
             Pokemon pokemon4 = new Pokemon(p4);
-            await pokemon4.obtenerTiposyDebilidades(p4.Types);
+            await pokemon4.obtenerDatosAsincronos(p4);
 
-            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(307);
+            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(229);
             Pokemon pokemon5 = new Pokemon(p5);
-            await pokemon5.obtenerTiposyDebilidades(p5.Types);
+            await pokemon5.obtenerDatosAsincronos(p5);
 
             List<PokemonJugador> equipoPokemon = new List<PokemonJugador>();
             equipoPokemon.Add(new PokemonJugador(pokemon1, 1, 1, 1, 100));

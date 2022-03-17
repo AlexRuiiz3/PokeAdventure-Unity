@@ -1,4 +1,5 @@
 using PokeAPI;
+using Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,9 +23,9 @@ public class APIListadosPokemonBL
     /// <param name="tiposPokemon"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon, string idioma)
+    public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon)
     {
-        return await APIListadosPokemonDAL.obtenerNombreTiposPokemon(tiposPokemon,idioma);
+        return await APIListadosPokemonDAL.obtenerNombreTiposPokemon(tiposPokemon);
     }
     /// <summary>
     /// 
@@ -32,8 +33,17 @@ public class APIListadosPokemonBL
     /// <param name="tiposPokemon"></param>
     /// <param name="idioma"></param>
     /// <returns></returns>
-    public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon, string idioma)
+    public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon)
     {
-        return await APIListadosPokemonDAL.obtenerNombreTiposDebilesPokemon(tiposPokemon,idioma);
+        return await APIListadosPokemonDAL.obtenerNombreTiposDebilesPokemon(tiposPokemon);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pokemonMoves"></param>
+    /// <returns></returns>
+    public static async Task<List<MovimientoPokemon>> obtenerMovimientosAleatoriosPokemon(PokemonMove[] pokemonMoves)
+    {
+        return await APIListadosPokemonDAL.obtenerMovimientosAleatoriosPokemon(pokemonMoves);
     }
 }
