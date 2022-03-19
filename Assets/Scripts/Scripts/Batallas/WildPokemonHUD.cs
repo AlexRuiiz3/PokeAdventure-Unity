@@ -20,7 +20,7 @@ public class WildPokemonHUD : MonoBehaviour
             imagenPokemon.sprite = Utilidades.convertirArrayBytesASprite(pokemon.ImagenDeFrente);
         }
     }
-    public void setBarraSalud(Pokemon pokemon) {
-        barraSalud.transform.localScale = new Vector3((float)pokemon.HP / pokemon.HPMaximos,1f,1f);
+    public void setBarraSalud(int hp, int hpMaximos) {
+        barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos,1f,1f);
     }
 }

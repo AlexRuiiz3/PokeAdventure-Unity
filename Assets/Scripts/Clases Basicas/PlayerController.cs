@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
     async void Start()
     {
+        PlayerPrefs.SetString("GameLanguage", "es"); //Quitar de aqui es solo prueba porque esto va en em MenuPrincipal 
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         await crearJugadorPrueba();
@@ -114,38 +115,39 @@ public class PlayerController : MonoBehaviour
         try
         {
             ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 5, 100, 200, new byte[0]);
-            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(456);
+            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(417);
             Pokemon pokemon1 = new Pokemon(p1);
             await pokemon1.obtenerDatosAsincronos(p1);
 
-            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(290);
+            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(555);
             Pokemon pokemon2 = new Pokemon(p2);
             await pokemon2.obtenerDatosAsincronos(p2);
 
-            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(333);
+            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(210);
             Pokemon pokemon3 = new Pokemon(p3);
             await pokemon3.obtenerDatosAsincronos(p3);
 
-            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(449);
+            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(541);
             Pokemon pokemon4 = new Pokemon(p4);
             await pokemon4.obtenerDatosAsincronos(p4);
 
-            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(229);
+            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(343);
             Pokemon pokemon5 = new Pokemon(p5);
             await pokemon5.obtenerDatosAsincronos(p5);
 
             List<PokemonJugador> equipoPokemon = new List<PokemonJugador>();
             equipoPokemon.Add(new PokemonJugador(pokemon1, 1, 1, 1, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon2, 1, 1, 1, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon3, 1, 1, 1, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon4, 1, 1, 1, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon5, 1, 1, 1, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon2, 1, 1, 2, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon3, 1, 1, 3, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon4, 1, 1, 4, 100));
+            equipoPokemon.Add(new PokemonJugador(pokemon5, 1, 1, 5, 100));
 
             List<ItemConCantidad> mochila = new List<ItemConCantidad>();
             mochila.Add(new ItemConCantidad(new Item(1, "Pocion", "Cura 20 hp", 0, 20, "POC"), 10));
             mochila.Add(new ItemConCantidad(new Item(2, "Pokeball", "Dispositivo para capturar pokemons", 0, 20, "POK"), 20));
 
             Jugador = new Jugador(b, equipoPokemon, mochila);
+
         }
         catch (Exception) {
             throw;

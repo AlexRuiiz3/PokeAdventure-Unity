@@ -20,12 +20,15 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        texturasEntrenadores = Resources.LoadAll<Texture2D>("Imagenes/Trainers/");
-        posicionesEntrenadores = new List<PosicionTrainerNPC>();
+        if (PlayerPrefs.GetString("NameLastScene") == "LobbyScene") //Para que solo se creen la primera vez que se entre en la ecensa,que sera cuando la ultima escena cargada sea LobbyScene
+        {
+            texturasEntrenadores = Resources.LoadAll<Texture2D>("Imagenes/Trainers/");
+            posicionesEntrenadores = new List<PosicionTrainerNPC>();
 
-        switch (SceneManager.GetActiveScene().name) {
-            case "SnowScene":
-                posicionesEntrenadores = new List<PosicionTrainerNPC> {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "SnowScene":
+                    posicionesEntrenadores = new List<PosicionTrainerNPC> {
                     new PosicionTrainerNPC(new Vector2(-16.7f, 0.6f),new List<string>{ORIENTACION_ARRIBA,ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(-7.62f, 5.02f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(-0.38f, 0f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
@@ -39,9 +42,9 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(8.38f, 1.48f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(2.51f, 5.39f),new List<string>{ORIENTACION_ABAJO})
                 };
-                break;
-            case "CityScene":
-                posicionesEntrenadores = new List<PosicionTrainerNPC> {
+                    break;
+                case "CityScene":
+                    posicionesEntrenadores = new List<PosicionTrainerNPC> {
                     new PosicionTrainerNPC(new Vector2(-12.5f, 6.9f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(12.5f, 43.25f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(7.95f, 25f),new List<string>{ORIENTACION_ABAJO}),
@@ -53,9 +56,9 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(21.48f, 16.73f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(30.5f, 10.86f),new List<string>{ORIENTACION_ARRIBA})
                 };
-                break;
-            case "RouteScene":
-                posicionesEntrenadores = new List<PosicionTrainerNPC> {
+                    break;
+                case "RouteScene":
+                    posicionesEntrenadores = new List<PosicionTrainerNPC> {
                     new PosicionTrainerNPC(new Vector2(0.6f, 2.2f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(-5.62f, -2.1f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(-0.85f, 17.8f),new List<string>{ORIENTACION_DERECHA,ORIENTACION_ARRIBA}),
@@ -67,9 +70,9 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(-2.48f, 35.18f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(3.5f, 35.18f),new List<string>{ORIENTACION_ABAJO})
                 };
-                break;
-            case "ForestScene":
-                posicionesEntrenadores = new List<PosicionTrainerNPC> {
+                    break;
+                case "ForestScene":
+                    posicionesEntrenadores = new List<PosicionTrainerNPC> {
                     new PosicionTrainerNPC(new Vector2(8.5f, 10.6f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(5.29f, -4.4f),new List<string>{ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(-15.4f, 21.5f),new List<string>{ORIENTACION_DERECHA,ORIENTACION_IZQUIERDA,ORIENTACION_ARRIBA}),
@@ -81,9 +84,10 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(-8.55f, 6.45f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(-18.53f, -11.51f),new List<string>{ORIENTACION_ABAJO})
                 };
-                break;
+                    break;
+            }
+            crearTrainersNPC();
         }
-        crearTrainersNPC();
     }
 
     private void crearTrainersNPC()
@@ -138,6 +142,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
 
             //Se prepara un gameObject que contendra un sprite de exclamacion
             prepararGameObjectExclamacion(posicionTrainer.Posicion).transform.parent = trainer.transform;
+            DontDestroyOnLoad(trainer);//Para que cuando se vaya a la escena de un combate se mantengan la escena
         }
     }
     private Texture2D obtenerTexturaAleatoriaTrainer() {

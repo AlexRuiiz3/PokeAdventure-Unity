@@ -6,7 +6,7 @@ public class PokemonJugador : Pokemon
 {
     #region Atributos
     private int experiencia;
-    private int experienciaSiguienteNivel = 1000;
+    private int experienciaSiguienteNivel = 1;
     #endregion
 
     public PokemonJugador() : base()
@@ -62,13 +62,13 @@ public class PokemonJugador : Pokemon
     public bool comprobarSubirNivel()
     {
         bool subidaNivel = false;
-
+        //experiencia += experiencia;
         if (experiencia >= experienciaSiguienteNivel)
         {
             subidaNivel = true;
             Nivel += 1; //De esta manera se entra en set de Nivel y se controlara que el nivel no pase de 100
-            experiencia = 0; //Se resetea la experiencia del pokemon
-            experienciaSiguienteNivel += 200; //Aumenta la experiencia requerida para el siguiente nivel
+            experiencia = 0;//experienciaSiguienteNivel; //Se resetea la experiencia del pokemon
+            experienciaSiguienteNivel += 100; //Aumenta la experiencia requerida para el siguiente nivel
         }
         return subidaNivel;
     }

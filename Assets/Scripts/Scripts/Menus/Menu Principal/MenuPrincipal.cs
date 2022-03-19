@@ -12,6 +12,11 @@ public class MenuPrincipal : MonoBehaviour
     public InputField inputNombreUsuario;
     public InputField inputContrasenha;
 
+    private void Start()
+    {
+        PlayerPrefs.SetString("GameLanguage", "es");
+    }
+
     public void iniciarSesion() {
         string nombreUsuario = inputNombreUsuario.text,
                contrasenha = inputContrasenha.text;

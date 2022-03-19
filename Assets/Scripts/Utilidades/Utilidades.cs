@@ -37,7 +37,8 @@ public class Utilidades
         cadena = cadena.Substring(0, 1).ToUpper() + cadena.Substring(1);
     }
 
-    public static void pausarMusicaEscenaActiva() {
+    public static void pausarMusicaEscenaActiva()
+    {
         bool encontrado = false;
         GameObject[] gameObjectsEscena = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int i = 0; i < gameObjectsEscena.Length && !encontrado; i++)

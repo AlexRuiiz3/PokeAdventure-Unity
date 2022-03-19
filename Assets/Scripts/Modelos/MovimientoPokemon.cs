@@ -42,7 +42,7 @@ namespace Scripts
             MT = 0;
             Nombre = "";
             Danho = 0;
-            Precision = 0;
+            Precicion = 0;
             PP = 0;
             PPMaximo = 0;
             Tipo = "";
@@ -54,7 +54,7 @@ namespace Scripts
             MT = mt;
             Nombre = nombre;
             Danho = danho;
-            Precision = precision;
+            Precicion = precision;
             PP = pp;
             PPMaximo = pp;
             Tipo = tipo;
@@ -69,7 +69,7 @@ namespace Scripts
         //danho
         public int Danho { get; }
         //precision
-        public int Precision { get; }
+        public int Precicion { get; }
         //pp
         public int PP { get; }
         public int PPMaximo { get; }

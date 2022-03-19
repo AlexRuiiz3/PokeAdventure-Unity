@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 139002061}
   - component: {fileID: 139002060}
   m_Layer: 5
-  m_Name: Pokemon5
+  m_Name: ButtonPokemon5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,7 +1080,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 154483402}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158368795}
+        m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
+        m_MethodName: usarMovimientoJugadorButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &154483402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1219,7 @@ GameObject:
   - component: {fileID: 190398680}
   - component: {fileID: 190398679}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2259,7 +2271,7 @@ GameObject:
   - component: {fileID: 347456547}
   - component: {fileID: 347456546}
   m_Layer: 5
-  m_Name: Pokemon1
+  m_Name: ButtonPokemon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3200,7 +3212,7 @@ GameObject:
   - component: {fileID: 468122963}
   - component: {fileID: 468122962}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3406,7 +3418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484052544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158368795}
+        m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
+        m_MethodName: usarMovimientoJugadorButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484052544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4699,7 +4723,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1158368795}
         m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
-        m_MethodName: huir
+        m_MethodName: abandonarBatallaButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5549,7 +5573,7 @@ GameObject:
   - component: {fileID: 757309945}
   - component: {fileID: 757309944}
   m_Layer: 5
-  m_Name: Pokemon3
+  m_Name: ButtonPokemon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5809,7 +5833,7 @@ GameObject:
   - component: {fileID: 800054849}
   - component: {fileID: 800054848}
   m_Layer: 5
-  m_Name: Pokemon4
+  m_Name: ButtonPokemon4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7313,7 +7337,7 @@ GameObject:
   - component: {fileID: 1068029787}
   - component: {fileID: 1068029786}
   m_Layer: 5
-  m_Name: ButtonAtras
+  m_Name: ButtonAtrasMenuEquipo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7445,7 +7469,7 @@ GameObject:
   - component: {fileID: 1103964525}
   - component: {fileID: 1103964524}
   m_Layer: 5
-  m_Name: Pokemon2
+  m_Name: ButtonPokemon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7763,7 +7787,7 @@ GameObject:
   - component: {fileID: 1163214737}
   - component: {fileID: 1163214736}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8525,7 +8549,7 @@ GameObject:
   - component: {fileID: 1276606422}
   - component: {fileID: 1276606421}
   m_Layer: 5
-  m_Name: OptionsZone
+  m_Name: ActionsZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8887,7 +8911,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1347722147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158368795}
+        m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
+        m_MethodName: usarMovimientoJugadorButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1347722147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9958,7 +9994,7 @@ GameObject:
   - component: {fileID: 1703871265}
   - component: {fileID: 1703871264}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10533,7 +10569,7 @@ GameObject:
   - component: {fileID: 1776464384}
   - component: {fileID: 1776464383}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11431,7 +11467,7 @@ GameObject:
   - component: {fileID: 1933036918}
   - component: {fileID: 1933036917}
   m_Layer: 5
-  m_Name: ButtonLuchar
+  m_Name: ButtonCambiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12234,7 +12270,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2026220950}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158368795}
+        m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
+        m_MethodName: usarMovimientoJugadorButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2026220950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12541,7 +12589,7 @@ GameObject:
   - component: {fileID: 2055640806}
   - component: {fileID: 2055640805}
   m_Layer: 5
-  m_Name: Pokemon6
+  m_Name: ButtonPokemon6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

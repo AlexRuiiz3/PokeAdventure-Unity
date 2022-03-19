@@ -16,6 +16,7 @@ public class SceneTransition : MonoBehaviour
 
         if (collision.CompareTag("Player") && !collision.isTrigger)//Si entra en contacto con el jugador  
         {
+
             StartCoroutine(cargarEscena());
             //StopCoroutine(cargarEscena());
         }
@@ -29,6 +30,7 @@ public class SceneTransition : MonoBehaviour
         switch (escenaSiguiente)
         {
             case "AdventureZone":
+                
                 string[] adventureScenes = { "SnowScene", "RouteScene", "ForestScene", "CityScene" };
                 escenaSiguiente = "RouteScene";//adventureScenes[(int)(Random.Range(0f, 4f))]; //Numero entre 0 y 3
 
@@ -81,6 +83,7 @@ public class SceneTransition : MonoBehaviour
         }
         DontDestroyOnLoad(jugador);
         yield return new WaitForSeconds(1);
+        PlayerPrefs.SetString("NameLastScene",SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(escenaSiguiente);
         jugador.transform.position = posicionNuevaJugador;
     }

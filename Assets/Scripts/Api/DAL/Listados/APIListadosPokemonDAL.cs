@@ -129,7 +129,7 @@ public class APIListadosPokemonDAL
     private static string obtenerNombreEnUnIdioma(ResourceName[] listadoNombres)
     {
         string nombre = (from nombreSeleccionado in listadoNombres
-                         where nombreSeleccionado.Language.Name == DatosGenerales.idioma.ToLower()
+                         where nombreSeleccionado.Language.Name == PlayerPrefs.GetString("GameLanguage").ToLower()
                          select nombreSeleccionado.Name).FirstOrDefault();
 
         return nombre;

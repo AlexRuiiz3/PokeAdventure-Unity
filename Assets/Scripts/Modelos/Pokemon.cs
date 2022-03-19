@@ -152,4 +152,16 @@ public class Pokemon
         Debilidades = await APIListadosPokemonBL.obtenerNombreTiposDebilesPokemon(pokeAPI.Types);
         Movimientos = await APIListadosPokemonBL.obtenerMovimientosAleatoriosPokemon(pokeAPI.Moves);
     }
+
+    public bool recibirDanho(int danho) {
+        bool vivo = true;
+
+        hp -= danho;
+        if (hp <= 0) {
+            hp = 0;
+            vivo = false;
+        }
+
+        return vivo;
+    }
 }
