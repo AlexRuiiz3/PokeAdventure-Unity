@@ -29,30 +29,32 @@ public class PlayerController : MonoBehaviour
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
     void Update()
     {
-
-        //Se obtiene el input del jugador(Teclado)
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal")*1.5f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
-        movimientoVertical = Input.GetAxisRaw("Vertical")*1.5f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (SceneManager.GetActiveScene().name != "BattleWildPokemonScene")
         {
-            movimientoHorizontal *= 2.2f;
-            movimientoVertical *= 2.2f;
+            //Se obtiene el input del jugador(Teclado)
+            movimientoHorizontal = Input.GetAxisRaw("Horizontal") * 1.5f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
+            movimientoVertical = Input.GetAxisRaw("Vertical") * 1.5f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
 
-        }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                movimientoHorizontal *= 2.2f;
+                movimientoVertical *= 2.2f;
 
-        if (movimientoHorizontal != 0 || movimientoVertical != 0)
-        { //Si alguno de los no es igual a 0 significa que se esta moviento, si la X y la Y son 0 significa que el personaje esta parado
-            //Por lo tanto como se sabe que el personaje se esta moviendo se hacen los set correspondiente de las amimaciones y se comprueba si se esta en una zona de hierba
-            animator.SetFloat("moveX", movimientoHorizontal);
-            animator.SetFloat("moveY", movimientoVertical);
-            animator.SetBool("isMoving", true);
-            comprobarZonaHierba();
-        }
-        else {
-            animator.SetBool("isMoving", false);
-        }
+            }
 
+            if (movimientoHorizontal != 0 || movimientoVertical != 0)
+            { //Si alguno de los no es igual a 0 significa que se esta moviento, si la X y la Y son 0 significa que el personaje esta parado
+              //Por lo tanto como se sabe que el personaje se esta moviendo se hacen los set correspondiente de las amimaciones y se comprueba si se esta en una zona de hierba
+                animator.SetFloat("moveX", movimientoHorizontal);
+                animator.SetFloat("moveY", movimientoVertical);
+                animator.SetBool("isMoving", true);
+                comprobarZonaHierba();
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
+        }
     }
 
     /// <summary>
@@ -71,22 +73,35 @@ public class PlayerController : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position,0.2f,zonaHierba) != null) {
 
             if (true) {
-                StartCoroutine(cargarEscenaCombatePokemonSalvaje());
+                GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+                GameObject.FindObjectOfType<AudioListener>().enabled = false;
+                GameObject.FindObjectOfType<AudioSource>().enabled = false;
+                GameObject.FindObjectOfType<AudioSource>().Stop();
+                Utilidades.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
+                DontDestroyOnLoad(jugador);//this
+                SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
+                //yield return new WaitForSeconds(1);
+                jugador.SetActive(false);
+
+                //StartCoroutine(cargarEscenaCombatePokemonSalvaje());
             } 
         }
     }
 
-
+    /*
     IEnumerator cargarEscenaCombatePokemonSalvaje()
     {
         GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+        GameObject.FindObjectOfType<AudioListener>().enabled = false;
+        GameObject.FindObjectOfType<AudioSource>().enabled = false;
+        GameObject.FindObjectOfType<AudioSource>().Stop();
         Utilidades.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
         DontDestroyOnLoad(jugador);//this
         SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
         jugador.SetActive(false);  //this.gameObject.SetActive(false);
-        
-    }
+        StopAllCoroutines();
+    }*/
     /*
     //Metodo para cada vez que el jugador colisione con algo.
     private void OnCollisionEnter2D(Collision2D collision)

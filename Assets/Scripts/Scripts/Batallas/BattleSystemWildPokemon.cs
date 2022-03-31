@@ -28,7 +28,12 @@ public class BattleSystemWildPokemon : MonoBehaviour
     {
         GameObject.Find("MenuEquipo").SetActive(false);//Al crearlos desde unity, estan por defecto visible
         GameObject.Find("MenuAtaque").SetActive(false);
-        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jugador;
+        GameObject.Find("MenuAtaque").SetActive(false);
+        //se busca al jugador desde resource, ya que se encuentra desabilitado
+        jugador = Resources.FindObjectsOfTypeAll<GameObject>()
+                           .FirstOrDefault(g => g.CompareTag("Player"))
+                           .GetComponent<PlayerController>().Jugador;
+
 
         await prepararPokemonRival();
         StartCoroutine(prepararBatalla());
@@ -52,7 +57,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
             turnoJugador();
-
         }
         else
         {
@@ -146,9 +150,9 @@ public class BattleSystemWildPokemon : MonoBehaviour
     {
         StopAllCoroutines();
         PlayerPrefs.SetString("NameLastScene", SceneManager.GetActiveScene().name);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).name);
+        SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).name);
         GameObject player = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
-        player.SetActive(true); 
+        player.SetActive(true);
     }
 
     private void turnoJugador()
@@ -167,7 +171,8 @@ public class BattleSystemWildPokemon : MonoBehaviour
 
     IEnumerator atacarJugador(int numeroBotonPulsado)
     {
-        if (EventSystem.current.currentSelectedGameObject != null) {
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
             activarDesactivarBotonesMenuAcciones(false);
             GameObject.Find("MenuAtaque").SetActive(false);
             yield return new WaitForSeconds(2f); //Para que no se junte con los mensaje del enemigo, se hace una pausa y asi da tiempo de ver los mensajes de ambos

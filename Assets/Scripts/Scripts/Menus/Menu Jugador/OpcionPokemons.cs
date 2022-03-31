@@ -16,7 +16,7 @@ public class OpcionPokemons : MonoBehaviour
     private Jugador jugador;
     //private int numeroPokemonSeleccionado;
 
-     async Task Start()
+     void start()
     {
         //await crearJugadorPrueba(); //Pureba para poder probar la opcio ver equipo pokemon
         //jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jugador;//Esta a null porque en playercontroller a la par se esta creando alli,
