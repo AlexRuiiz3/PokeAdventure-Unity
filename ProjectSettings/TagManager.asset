@@ -6,6 +6,11 @@ TagManager:
   tags:
   - NPC
   - Cartel
+  - Medico
+  - Objeto
+  - Vendedor
+  - Trainer
+  - PC
   layers:
   - Default
   - TransparentFX
@@ -24,7 +29,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Vendedor
   - 
   - 
   - 

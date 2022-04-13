@@ -23,8 +23,6 @@ public class OpcionPokemons : MonoBehaviour
         //Si lo quiero probar hacerlo en una corrutina. esperar unos segundos y luego obtener el jugador
         //textNumeroPokemons.text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
         //Utilidades.prepararBotonesPokemonsEquipo(jugador.EquipoPokemon, botonesPokemons);
-        gameObject.SetActive(false);
-
     }
 
     public void verOpcionesPokemon() //Asignar este metodo a los botones en el inspector

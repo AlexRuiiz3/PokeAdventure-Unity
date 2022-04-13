@@ -32,7 +32,7 @@ public class SceneTransition : MonoBehaviour
             case "AdventureZone":
                 
                 string[] adventureScenes = { "SnowScene", "RouteScene", "ForestScene", "CityScene" };
-                escenaSiguiente = "RouteScene";//adventureScenes[(int)(Random.Range(0f, 4f))]; //Numero entre 0 y 3
+                escenaSiguiente = "RouteScene";//adventureScenes[(int)Random.Range(0f, 4f)]; //Numero entre 0 y 3
 
                 switch (escenaSiguiente)
                 {

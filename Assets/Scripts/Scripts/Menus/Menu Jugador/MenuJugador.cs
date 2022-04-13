@@ -7,31 +7,16 @@ using UnityEngine.SceneManagement;
 public class MenuJugador : MonoBehaviour
 {
     public GameObject menu;
-    private bool menuActivado;
 
     private void Start()
     {
-        menuActivado = false;
-        menu.SetActive(false);
     }
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.C))
+        if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString() && Input.GetKeyDown(KeyCode.C))
         {
-            if (menuActivado)
-            {
-                Time.timeScale = 1f; //El tiempo del juego se reactiva
-                menuActivado = false;
-                menu.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 0f; //El tiempo del juego pasa a ser 0 por que se pausa el juego 
-                menuActivado = true;
-                menu.SetActive(true);
-            }
+            UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menu);
         }
     }
     public void salir()

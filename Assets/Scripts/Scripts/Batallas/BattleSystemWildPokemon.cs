@@ -28,7 +28,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
     {
         GameObject.Find("MenuEquipo").SetActive(false);//Al crearlos desde unity, estan por defecto visible
         GameObject.Find("MenuAtaque").SetActive(false);
-        GameObject.Find("MenuAtaque").SetActive(false);
         //se busca al jugador desde resource, ya que se encuentra desabilitado
         jugador = Resources.FindObjectsOfTypeAll<GameObject>()
                            .FirstOrDefault(g => g.CompareTag("Player"))

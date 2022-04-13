@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 582481808}
   - component: {fileID: 582481807}
   - component: {fileID: 582481806}
+  - component: {fileID: 582481809}
   m_Layer: 10
   m_Name: NPC4
   m_TagString: Untagged
@@ -222,6 +223,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582481809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582481805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f64166823e023c47828a162feabad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frases:
+  - Vamos hijo elige el que mas te guste.
+  - Aprovecha que no esta tu madre, esta vez invito yo.
 --- !u!1 &763298136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2520,7 @@ GameObject:
   - component: {fileID: 1625714014}
   - component: {fileID: 1625714013}
   - component: {fileID: 1625714012}
+  - component: {fileID: 1625714015}
   m_Layer: 10
   m_Name: NPC2
   m_TagString: Untagged
@@ -2592,6 +2609,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625714015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625714011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f64166823e023c47828a162feabad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frases:
+  - Mi padre es el mejor del mundo.
+  - Me va a compar un peluche de Chimchar.
 --- !u!1 &1649226196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,105 +2781,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649226196}
   m_Enabled: 1
---- !u!1 &1660586322
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1660586326}
-  - component: {fileID: 1660586325}
-  - component: {fileID: 1660586324}
-  - component: {fileID: 1660586323}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1660586323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660586322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1660586324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660586322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1660586325
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660586322}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1660586326
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660586322}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1718527578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742345646}
   - component: {fileID: 1742345645}
+  - component: {fileID: 1742345647}
   m_Layer: 10
   m_Name: Shopkeeper
   m_TagString: Untagged
@@ -3001,6 +2935,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742345647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742345644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f64166823e023c47828a162feabad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frases:
+  - Muy buenas!
+  - "\xBFQu\xE9 desea compar?"
 --- !u!1 &1965108386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4070,6 +4019,7 @@ GameObject:
   - component: {fileID: 1985734362}
   - component: {fileID: 1985734361}
   - component: {fileID: 1985734363}
+  - component: {fileID: 1985734364}
   m_Layer: 10
   m_Name: NPC1
   m_TagString: Untagged
@@ -4158,3 +4108,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.017369768}
   m_Size: {x: 0.3, y: 0.43473956}
   m_Direction: 0
+--- !u!114 &1985734364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985734360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f64166823e023c47828a162feabad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frases:
+  - Estoy ocupado ahora mismo.

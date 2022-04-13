@@ -9,7 +9,6 @@ public class MenuOpcionesPokemon : MonoBehaviour
     public Text textNombrePokemon;
     void Start()
     {
-        gameObject.SetActive(false);
     }
 
     public void cambiarTextoTextNombrePokemon() {

@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObtenerPrimerPokemon : MonoBehaviour
 {
     public GameObject[] menusPokemons;
+    public List<Button> botonesPokemos;
+    public bool botonesActivados = false;
 
     void Start()
     {
-        ocultarMenusPokemons();
+        UtilidadesEscena.activarDesactivarIteracionBotones(botonesPokemos,false);
         FindObjectOfType<ControlDialogos>().activarDialogo();
-        FindObjectOfType<ControlDialogos>().siguienteFrase();
     }
 
-    private void ocultarMenusPokemons()
+    private void Update()
     {
-        foreach (GameObject menu in menusPokemons)
-        {
-            menu.SetActive(false);
+        if (!botonesActivados && PlayerPrefs.GetString("EstadoDialogo") == "Terminado") {
+            UtilidadesEscena.activarDesactivarIteracionBotones(botonesPokemos, true);
+            botonesActivados = true; 
         }
     }
 }

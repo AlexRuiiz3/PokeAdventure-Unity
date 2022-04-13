@@ -195,8 +195,8 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         boxCollider.offset = new Vector2(0.003630318f, -0.6459866f);
         boxCollider.size = new Vector2(0.1360126f, 1.088027f);
         //Se añade el sprict que tiene la funcion ontrigger para cuando el jugador entre en el boxCollider
-        zonaVision.AddComponent<ConfiguracionTrainerNPC>();
-        
+        zonaVision.AddComponent<ConfiguracionObjectoInteractable>();
+
         //Por defecto esta mirando abajo 
         Vector3 rotacionZonaVision = new Vector3(0,0,360);
         switch (orientacion) {

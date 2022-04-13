@@ -7,7 +7,6 @@ public class OpcionConfiguracionJugador : MonoBehaviour
 {
     private void Start()
     {
-        gameObject.SetActive(false);
     }
     public void cambiarVolumen() {
         Debug.Log("Cambiar volumen");
