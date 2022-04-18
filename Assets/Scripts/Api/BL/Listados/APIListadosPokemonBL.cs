@@ -1,5 +1,4 @@
 using PokeAPI;
-using Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -45,5 +44,9 @@ public class APIListadosPokemonBL
     public static async Task<List<MovimientoPokemon>> obtenerMovimientosAleatoriosPokemon(PokemonMove[] pokemonMoves)
     {
         return await APIListadosPokemonDAL.obtenerMovimientosAleatoriosPokemon(pokemonMoves);
+    }
+
+    public static async Task asignarImagenesPokemonsJugador(List<PokemonJugador> pokemonsJugador) {
+        await APIListadosPokemonDAL.asignarImagenesPokemonsJugador(pokemonsJugador);
     }
 }

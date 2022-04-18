@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mono.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,14 +15,14 @@ public class UtilidadesDal
     /// <returns></returns>
     public static bool comprobarSiExisteNombreUsuario(string nombreUsuario) {
         bool existeNombreUsuario = false;
-        SqlConnection conexion = null;
+        SqliteConnection conexion = null;
         try
         {
-            conexion = Conexion.establecerConexion();
-            SqlCommand command = new SqlCommand("SELECT NombreUsuario FROM Jugadores WHERE NombreUsuario = @NombreUsuario", conexion);
-            command.Parameters.Add("@NombreUsuario",System.Data.SqlDbType.VarChar).Value = nombreUsuario;
+            conexion = ConfiguracionDB.establecerConexion();
+            SqliteCommand command = new SqliteCommand("SELECT NombreUsuario FROM Jugadores WHERE NombreUsuario = @NombreUsuario", conexion);
+            command.Parameters.Add("@NombreUsuario",System.Data.DbType.String).Value = nombreUsuario;
 
-            SqlDataReader reader = command.ExecuteReader();
+            SqliteDataReader reader = command.ExecuteReader();
             existeNombreUsuario = reader.HasRows;
         }
         catch (Exception)
@@ -29,7 +30,7 @@ public class UtilidadesDal
             throw;
         }
         finally {
-            Conexion.cerrarConexion(conexion);
+            ConfiguracionDB.cerrarConexion(conexion);
         }
 
         return existeNombreUsuario;

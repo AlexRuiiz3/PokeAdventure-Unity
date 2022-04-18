@@ -1,4 +1,3 @@
-using Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -111,7 +110,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
             {
                 if (jugador.EquipoPokemon[numeroBotonPulsado - 1].HP > 0) //Si la vida del pokemon al que quiere cambiar en mayor que 0
                 {
-                    configuracionPokemonJugadorDebilitado(true, false);
+                    activarDesactivarMenuEquipo(true, false);
                     pokemonJugadorLuchando = jugador.EquipoPokemon[numeroBotonPulsado - 1];
                     trainerHUD.inicializarDatos(pokemonJugadorLuchando.Nombre, pokemonJugadorLuchando.Nivel, pokemonJugadorLuchando.HP, pokemonJugadorLuchando.HPMaximos, (pokemonJugadorLuchando.ImagenDeEspalda) != null ? pokemonJugadorLuchando.ImagenDeEspalda : pokemonJugadorLuchando.ImagenDeFrente);
                     prepararBannerIconosMovimientos();
@@ -147,7 +146,9 @@ public class BattleSystemWildPokemon : MonoBehaviour
 
     public void abandonarBatallaButton()
     {
-        StopAllCoroutines();
+        StopCoroutine(prepararBatalla());
+        StopCoroutine(atacarJugador(0));
+        StopCoroutine(atacarWildPokemon());
         PlayerPrefs.SetString("NameLastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).name);
         GameObject player = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
@@ -283,14 +284,14 @@ public class BattleSystemWildPokemon : MonoBehaviour
 
         if (pokemonsJugadorVivos != null)
         {
-            configuracionPokemonJugadorDebilitado(false, true);
+            activarDesactivarMenuEquipo(false, true);
             derrota = false;
             battleState = BattleState.POKEMONJUGADORDEBILITADO;//while (pokemonJugadorLuchando.HP == 0) ; //Mientras el jugador no haya cambiado a un pokemon que tenga vida
         }
         return derrota;
     }
 
-    private void configuracionPokemonJugadorDebilitado(bool activarBoton, bool activarMenu)
+    private void activarDesactivarMenuEquipo(bool activarBoton, bool activarMenu)
     {
         var a = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "ButtonAtrasMenuEquipo");
         GameObject b = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuEquipo");

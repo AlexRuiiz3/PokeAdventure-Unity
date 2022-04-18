@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPokedex.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosJugadorDAL.cs" />
     <Compile Include="Assets\Scripts\Api\BL\Listados\APIListadosPokemonBL.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonsJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Modelos\ItemConCantidad.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Api\DAL\Listados\APIListadosPokemonDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosMovimientoDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesSystemaBatalla.cs" />
@@ -84,9 +86,11 @@
     <Compile Include="Assets\Scripts\Modelos\Pokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosMovimientoBL.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuJugador.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesObjetosInteractables.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosTipoBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="Assets\Scripts\Scripts\Configuraciones\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\BattleSystemWildPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraItemDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionConfiguracionJugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\ObtenerPrimerPokemon.cs" />
@@ -108,6 +113,7 @@
     <Compile Include="Assets\Scripts\BBDD\UtilidadesDal.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosTipoDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesEscena.cs" />
@@ -122,13 +128,16 @@
     <Compile Include="Assets\Scripts\Scripts\Escenas\ConfiguracionEscenaAventura.cs" />
     <Compile Include="Assets\Scripts\Scripts\Dialogos\ControlDialogos.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosItemBL.cs" />
     <Compile Include="Assets\Scripts\Utilidades\Utilidades.cs" />
-    <Compile Include="Assets\Scripts\BBDD\Conexion.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonsJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Scripts\BBDD\ConfiguracionDB.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosItemDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
   </ItemGroup>
@@ -384,8 +393,8 @@
     <Reference Include="PokeApi-NJ.NET">
       <HintPath>Assets\Plugins\PokeApi-NJ.NET.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.SqlClient">
-      <HintPath>Assets\Plugins\System.Data.SqlClient.dll</HintPath>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

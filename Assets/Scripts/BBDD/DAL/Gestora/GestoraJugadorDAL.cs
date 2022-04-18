@@ -1,34 +1,55 @@
+using Mono.Data.Sqlite;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using UnityEngine;
 
 public class GestoraJugadorDAL
 {
     public static void insertarJugador(ClsJugador jugador)
     {
-        SqlConnection conexion = null;
+        SqliteConnection conexion = null;
         try
         {
-            conexion = Conexion.establecerConexion();
-            SqlCommand command = new SqlCommand("INSERT INTO Jugadores VALUES(@NombreUsuario,@Contrasenha,@CorreoElectronico,@NivelCuenta,@Experiencia,@Dinero,@Foto)", conexion);
-            command.Parameters.Add("@NombreUsuario",System.Data.SqlDbType.VarChar).Value = jugador.NombreUsuario;
-            command.Parameters.Add("@Contrasenha",System.Data.SqlDbType.VarChar).Value = jugador.Contrasenha;
-            command.Parameters.Add("@CorreoElectronico",System.Data.SqlDbType.VarChar).Value = jugador.CorreoElectronico;
-            command.Parameters.Add("@NivelCuenta",System.Data.SqlDbType.SmallInt).Value = jugador.NivelCuenta;
-            command.Parameters.Add("@Experiencia",System.Data.SqlDbType.Int).Value = jugador.Experiencia;
-            command.Parameters.Add("@Dinero",System.Data.SqlDbType.Int).Value = jugador.Dinero;
-            command.Parameters.Add("@Foto",System.Data.SqlDbType.VarBinary).Value = jugador.Foto;
-
+            conexion = ConfiguracionDB.establecerConexion();
+            SqliteCommand command = new SqliteCommand("INSERT INTO Jugadores (Nombre,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES(@NombreUsuario,@Contrasenha,@CorreoElectronico,@Dinero,NULL)", conexion);
+            command.Parameters.Add("@NombreUsuario", System.Data.DbType.String).Value = jugador.NombreUsuario;
+            command.Parameters.Add("@Contrasenha", System.Data.DbType.String).Value = jugador.Contrasenha;
+            command.Parameters.Add("@CorreoElectronico", System.Data.DbType.String).Value = jugador.CorreoElectronico;
+            command.Parameters.Add("@Dinero", System.Data.DbType.Int32).Value = jugador.Dinero;
+            //De momento a null command.Parameters.Add("@Foto",System.Data.DbType.VarBinary).Value = jugador.Foto;
             command.ExecuteNonQuery();
         }
         catch (Exception)
         {
             throw;
         }
-        finally {
-            Conexion.cerrarConexion(conexion);
+        finally
+        {
+            ConfiguracionDB.cerrarConexion(conexion);
         }
+    }
+
+    public static int actualizarDineroJugador(int id, int dinero)
+    {
+        int actualizaciones = 0;
+        SqliteConnection conexion = null;
+        try
+        {
+            conexion = ConfiguracionDB.establecerConexion();
+            SqliteCommand command = new SqliteCommand("UPDATE Jugadores SET Dinero = @Dinero WHERE ID = @ID", conexion);
+            command.Parameters.Add("@ID", System.Data.DbType.Int32).Value = id;
+            command.Parameters.Add("@Dinero", System.Data.DbType.Int32).Value = dinero;
+            actualizaciones = command.ExecuteNonQuery();
+        }
+        catch (Exception)
+        {
+            Debug.Log("Error en la actualizacion del dato dinero del jugador");//throw;
+        }
+        finally
+        {
+            ConfiguracionDB.cerrarConexion(conexion);
+        }
+        return actualizaciones;
     }
 }

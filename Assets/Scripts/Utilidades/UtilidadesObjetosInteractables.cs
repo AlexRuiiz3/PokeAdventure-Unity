@@ -10,11 +10,14 @@ using System.Linq;
 public class UtilidadesObjetosInteractables
 {
     public static void determinarAccionFinDialogo() {
-        switch (PlayerPrefs.GetString("InteraccionConObjeto")) {
+        string objetoInteraccion = PlayerPrefs.GetString("InteraccionConObjeto");
+        switch (objetoInteraccion) {
             case "Medico": curarPokemonsJugador(); break;
             case "Vendedor": activarMenuObjecto("MenuVendedor"); break;
             case "PC": activarMenuObjecto("MenuPC"); break;
+            case "Pocion": case "Pokeball": asignarObjetoAJugador(objetoInteraccion); break;
             case "Trainer": /*activarMenuObjecto("MenuPC");*/ break;
+            
         }
     }
 
@@ -24,6 +27,18 @@ public class UtilidadesObjetosInteractables
         foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
             pokemon.HP = pokemon.HPMaximos;
         }
+    }
+
+    private static void asignarObjetoAJugador(string nombreObjeto) {
+        Item item = new Item();
+        
+        /*
+        switch (nombreObjeto.Contains()) {
+            case "Pokeball": item = new Item(1, nombreObjeto, "Dispositivo que sirve para capturar pokemons", 70, 0, "Pokeball"); break;
+            case "Pocion": item = new Item(1, nombreObjeto, "Cura una pequeña cantidad de 50hp a un pokemon", 0, 50, "Pocion"); break;
+        }
+        */
+        GameObject.Find("Player").GetComponent<PlayerController>().Jugador.Mochila.Add(new ItemConCantidad(item,1));
     }
 
     private static void activarMenuObjecto(string nombreMenu) {

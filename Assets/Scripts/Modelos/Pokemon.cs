@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Scripts;
 using System.Linq;
 using System.Threading.Tasks;
 using PokeAPI;
@@ -140,9 +139,9 @@ public class Pokemon
     //debilidades
     public List<string> Debilidades { get; set; }
     //ImagenDeFrente
-    public byte[] ImagenDeFrente { get; }
+    public byte[] ImagenDeFrente { get; set; }
     //ImagenDeEspalda
-    public byte[] ImagenDeEspalda { get; }
+    public byte[] ImagenDeEspalda { get; set; }
     #endregion
 
     //Este metodo es asi ya que en el constructor no puede a ver metodos async 

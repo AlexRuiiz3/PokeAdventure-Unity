@@ -31,52 +31,51 @@ using UnityEngine;
  * Metodos heredados: Ninguno.
  * 
  */
-namespace Scripts
+public class MovimientoPokemon
 {
 
-    public class MovimientoPokemon
+    #region Constructor por defecto
+    public MovimientoPokemon()
     {
-
-        #region Constructor por defecto
-        public MovimientoPokemon() {
-            MT = 0;
-            Nombre = "";
-            Danho = 0;
-            Precicion = 0;
-            PP = 0;
-            PPMaximo = 0;
-            Tipo = "";
-        }
-        #endregion
-
-        #region Constructor con parametros
-        public MovimientoPokemon(int mt, string nombre, int danho, int precision, int pp, string tipo) {
-            MT = mt;
-            Nombre = nombre;
-            Danho = danho;
-            Precicion = precision;
-            PP = pp;
-            PPMaximo = pp;
-            Tipo = tipo;
-        }
-        #endregion
-
-        #region Metodos Fundamentales(Propiedades)
-        //mt
-        public int MT { get; }
-        //nombre
-        public string Nombre { get; }
-        //danho
-        public int Danho { get; }
-        //precision
-        public int Precicion { get; }
-        //pp
-        public int PP { get; }
-        public int PPMaximo { get; }
-        //tipo
-        public string Tipo { get; }
-        #endregion
+        MT = 0;
+        Nombre = "";
+        Danho = 0;
+        Precicion = 0;
+        PP = 0;
+        PPMaximo = 0;
+        Tipo = "";
     }
+    #endregion
 
+    #region Constructor con parametros
+    public MovimientoPokemon(int mt, string nombre, int danho, int precision, int pp, string tipo)
+    {
+        MT = mt;
+        Nombre = nombre;
+        Danho = danho;
+        Precicion = precision;
+        PP = pp;
+        PPMaximo = pp;
+        Tipo = tipo;
+    }
+    #endregion
+
+    #region Metodos Fundamentales(Propiedades)
+    //mt
+    public int MT { get; }
+    //nombre
+    public string Nombre { get; }
+    //danho
+    public int Danho { get; }
+    //precision
+    public int Precicion { get; }
+    //pp
+    public int PP { get; }
+    public int PPMaximo { get; }
+    //tipo
+    public string Tipo { get; }
+    #endregion
 }
+
+
 

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetString("GameLanguage", "es"); //Quitar de aqui es solo prueba porque esto va en em MenuPrincipal 
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        await crearJugadorPrueba();
+        await obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
@@ -74,19 +74,21 @@ public class PlayerController : MonoBehaviour
     //MovimientoHorizontal
     public float getMovimientoHorizontal() => movimientoHorizontal;
     public void setMovimientoHorizontal(float movimientoHorizontal) { this.movimientoHorizontal = movimientoHorizontal; }
-   
+
     //MovimientoVertical
     public float getMovimientoVertical() => movimientoVertical;
     public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
 
 
     //Metodos añadidos
-    private void comprobarZonaHierba() 
+    private void comprobarZonaHierba()
     {
         int random;
-        if (Physics2D.OverlapCircle(transform.position,0.2f,zonaHierba) != null) {
-            random = (int) UnityEngine.Random.Range(0f, 1001f);//0 y 1000
-            if (random < 80) {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
+        {
+            random = (int)UnityEngine.Random.Range(0f, 1001f);//0 y 1000
+            if (random < 80)
+            {
                 GameObject jugador = GameObject.FindGameObjectWithTag("Player");
                 /*
                 GameObject.FindObjectOfType<AudioListener>().enabled = false;
@@ -99,88 +101,26 @@ public class PlayerController : MonoBehaviour
                 jugador.SetActive(false);
 
                 //StartCoroutine(cargarEscenaCombatePokemonSalvaje());
-            } 
+            }
         }
     }
 
-    /*
-    IEnumerator cargarEscenaCombatePokemonSalvaje()
+    private async Task obtenerDatosJugador(string nombreUsuario, string contrasenha)
     {
-        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
-        GameObject.FindObjectOfType<AudioListener>().enabled = false;
-        GameObject.FindObjectOfType<AudioSource>().enabled = false;
-        GameObject.FindObjectOfType<AudioSource>().Stop();
-        Utilidades.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
-        DontDestroyOnLoad(jugador);//this
-        SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
-        //yield return new WaitForSeconds(1);
-        jugador.SetActive(false);  //this.gameObject.SetActive(false);
-        StopAllCoroutines();
-    }*/
-    /*
-    //Metodo para cada vez que el jugador colisione con algo.
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            switch (collision.gameObject.tag)
-            {
-                case "Trainer":
-
-                    break;
-
-                case "Item":
-
-                    break;
-
-                case "Cartel":
-                    Debug.Log("Mensaje Cartel");
-                    break;
-            }
-        }
-    }*/
-
-
-    private async Task crearJugadorPrueba() {
         try
         {
-            ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 5, 100, 200, new byte[0]);
-            PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(417);
-            Pokemon pokemon1 = new Pokemon(p1);
-            await pokemon1.obtenerDatosAsincronos(p1);
+            ClsJugador jugadorBase = ListadosJugadorBL.obtenerJugador(nombreUsuario, contrasenha);
+            List<PokemonJugador> pokemonsJugador = ListadosPokemonsJugadorBL.obtenerPokemonsJugadorEquipados(jugadorBase.ID);
+            await APIListadosPokemonBL.asignarImagenesPokemonsJugador(pokemonsJugador);
+            List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
 
-            PokeAPI.Pokemon p2 = await APIListadosPokemonBL.obtenerPokemonDeApi(555);
-            Pokemon pokemon2 = new Pokemon(p2);
-            await pokemon2.obtenerDatosAsincronos(p2);
-
-            PokeAPI.Pokemon p3 = await APIListadosPokemonBL.obtenerPokemonDeApi(210);
-            Pokemon pokemon3 = new Pokemon(p3);
-            await pokemon3.obtenerDatosAsincronos(p3);
-
-            PokeAPI.Pokemon p4 = await APIListadosPokemonBL.obtenerPokemonDeApi(541);
-            Pokemon pokemon4 = new Pokemon(p4);
-            await pokemon4.obtenerDatosAsincronos(p4);
-
-            PokeAPI.Pokemon p5 = await APIListadosPokemonBL.obtenerPokemonDeApi(343);
-            Pokemon pokemon5 = new Pokemon(p5);
-            await pokemon5.obtenerDatosAsincronos(p5);
-
-            List<PokemonJugador> equipoPokemon = new List<PokemonJugador>();
-            equipoPokemon.Add(new PokemonJugador(pokemon1, 1, 1, 1, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon2, 1, 1, 2, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon3, 1, 1, 3, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon4, 1, 1, 4, 100));
-            equipoPokemon.Add(new PokemonJugador(pokemon5, 1, 1, 5, 100));
-
-            List<ItemConCantidad> mochila = new List<ItemConCantidad>();
-            mochila.Add(new ItemConCantidad(new Item(1, "Pocion", "Cura 20 hp", 0, 20, "POC"), 10));
-            mochila.Add(new ItemConCantidad(new Item(2, "Pokeball", "Dispositivo para capturar pokemons", 0, 20, "POK"), 20));
-
-            Jugador = new Jugador(b, equipoPokemon, mochila);
-
+            Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);
+            int a = 0;
         }
-        catch (Exception) {
+        catch (Exception)
+        {
             throw;
+            //Debug.Log("Error recuperando los datos del jugador");
         }
     }
 }

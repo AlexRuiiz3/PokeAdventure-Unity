@@ -15,24 +15,24 @@ public class MenuPrincipal : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetString("GameLanguage", "es");
+        ConfiguracionDB.createDB();
     }
 
     public void iniciarSesion() {
         string nombreUsuario = inputNombreUsuario.text,
                contrasenha = inputContrasenha.text;
-        int idJugador;
 
         if (!string.IsNullOrEmpty(nombreUsuario.Trim()) && !string.IsNullOrEmpty(contrasenha.Trim()))
         {
             try {
-                idJugador = ListadosJugadorBL.obtenerIDJugador(nombreUsuario, contrasenha);
-                if (idJugador != -1) //-1 es el valor que tomara idJugador cuando en la base de datos no se encuentre un jugador en el que coincidan el usuario y contraseña especificados por el usuario
+                if (ListadosJugadorBL.comprobarExistenciaNombreUsuarioContrasenha(nombreUsuario,contrasenha)) 
                 {
+
                     SceneManager.LoadScene("LobbyScene");
                 }
                 else
                 {
-                    EditorUtility.DisplayDialog("Datos incorrectos", "Usuario o contraseña incorrectos", "Ok");
+                    EditorUtility.DisplayDialog("Datos incorrectos", "Usuario o contraseña no validos", "Ok");
                 }
             }
             catch (Exception) {

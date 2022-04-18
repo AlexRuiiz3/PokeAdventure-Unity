@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using PokeAPI;
-using Scripts;
 
 public class APIListadosPokemonDAL
 {
@@ -135,5 +134,24 @@ public class APIListadosPokemonDAL
         return nombre;
     }
 
+    public static async Task asignarImagenesPokemonsJugador(List<PokemonJugador> pokemonsJugador) {
+        PokeAPI.Pokemon pokemonApi;
+        string urlSpriteFrente;
+        string urlSpriteEspalda;
+        foreach (PokemonJugador pokemonJugador in pokemonsJugador) {
+            pokemonApi = await obtenerPokemonDeApi(pokemonJugador.ID);
+            
+            urlSpriteFrente = (pokemonApi.Sprites.FrontMale != null) ? pokemonApi.Sprites.FrontMale : pokemonApi.Sprites.FrontFemale;
+            if (urlSpriteFrente != null) //si no tiene ni hembra ni maculino se dejara vacio.
+            {
+                pokemonJugador.ImagenDeFrente = Utilidades.obtenerImagenDeUrl(urlSpriteFrente);
+            }
 
+            urlSpriteEspalda = (pokemonApi.Sprites.BackMale != null) ? pokemonApi.Sprites.BackMale : pokemonApi.Sprites.BackFemale;
+            if (urlSpriteEspalda != null)
+            {
+                pokemonJugador.ImagenDeEspalda = Utilidades.obtenerImagenDeUrl(urlSpriteEspalda);
+            }
+        }
+    }
 }

@@ -8,13 +8,13 @@ using UnityEngine.UI;
 public class ConfiguracionObjectoInteractable : MonoBehaviour
 {
     public List<string> frases;
-    public bool jugadorDentroRango;
+    private bool jugadorDentroRango;
 
     private void Update()
     {
         if (jugadorDentroRango && Input.GetKey(KeyCode.E) && PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())
         {
-            PlayerPrefs.SetString("InteraccionConObjeto",gameObject.tag);
+            PlayerPrefs.SetString("InteraccionConObjeto", gameObject.tag);
 
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
             dialogo.SetActive(true);

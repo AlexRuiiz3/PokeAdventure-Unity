@@ -11,6 +11,8 @@ TagManager:
   - Vendedor
   - Trainer
   - PC
+  - Pokeball
+  - Pocion
   layers:
   - Default
   - TransparentFX

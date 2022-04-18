@@ -54,7 +54,7 @@ public class OpcionPokemons : MonoBehaviour
     {
         try
         {
-            ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 5, 100, 200, new byte[0]);
+            ClsJugador b = new ClsJugador(1, "Usuario", "Constrasenha", "Correo", 200, new byte[0]);
             PokeAPI.Pokemon p1 = await APIListadosPokemonBL.obtenerPokemonDeApi(188);
             Pokemon pokemon1 = new Pokemon(p1);
             await pokemon1.obtenerDatosAsincronos(p1);

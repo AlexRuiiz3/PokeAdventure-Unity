@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jugador : ClsJugador
 {
-    public Jugador(ClsJugador jugador, List<PokemonJugador> equipoPokemon, List<ItemConCantidad> mochila ) : base(jugador.ID, jugador.NombreUsuario, jugador.Contrasenha, jugador.Contrasenha, jugador.NivelCuenta, jugador.Experiencia, jugador.Dinero, jugador.Foto) {
+    public Jugador(ClsJugador jugador, List<PokemonJugador> equipoPokemon, List<ItemConCantidad> mochila ) : base(jugador.ID, jugador.NombreUsuario, jugador.Contrasenha, jugador.Contrasenha, jugador.Dinero, jugador.Foto) {
         EquipoPokemon = equipoPokemon;
         Mochila = mochila;
     }
