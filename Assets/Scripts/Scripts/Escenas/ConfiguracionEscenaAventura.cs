@@ -167,7 +167,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
 
             //Se añade el script de configuracion de iteracion
             scriptIteracion = objeto.AddComponent<ConfiguracionObjectoInteractable>();
-            scriptIteracion.frases = new List<string> { $"¡Has obtenido {tipoObjeto}!" };
+            scriptIteracion.frases = new List<string> { "¡Has obtenido un objeto!" };
 
             //Añadir collider colision con otros objetos
             collider2D = objeto.AddComponent<CapsuleCollider2D>();

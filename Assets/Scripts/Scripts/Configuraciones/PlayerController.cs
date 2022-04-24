@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -115,12 +117,40 @@ public class PlayerController : MonoBehaviour
             List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
 
             Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);
-            int a = 0;
         }
         catch (Exception)
         {
             throw;
             //Debug.Log("Error recuperando los datos del jugador");
         }
+    }
+    public void iniciarCoroutineAsignarObjetoEncontrado() {
+        StartCoroutine(asignarObjetoEncontrado());
+    }
+    IEnumerator asignarObjetoEncontrado() //Deberia de ir en ultilidadesObjetoInteractable, pero al ser una corrutina debe de ir en un script que este asociado a un gameObject del juego
+    {
+        GameObject canvasObjetoRecogigo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasObjetoRecogido");
+        int cantidadItem = (int)UnityEngine.Random.Range(1f, 3f);
+        //Poner try catch
+        ItemConCantidad itemRecogido = new ItemConCantidad(ListadosItemBL.obtenerItemAleatorio(), cantidadItem);
+        Sprite iconoItem = Resources.LoadAll<Sprite>("Imagenes/Items/").First(g => g.name == itemRecogido.Nombre);
+
+        //GetChild(0) hace referencia a la imagen de fondo
+        canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = iconoItem;
+        canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"+{cantidadItem}";
+        canvasObjetoRecogigo.gameObject.SetActive(true);
+        if (Jugador.Mochila.Contains(itemRecogido))
+        {
+            Jugador.Mochila.Find(g => g.ID == itemRecogido.ID).Cantidad += itemRecogido.Cantidad;
+        }
+        else
+        {
+            Jugador.Mochila.Add(itemRecogido);
+        }
+        yield return new WaitForSeconds(2f);
+        canvasObjetoRecogigo.gameObject.SetActive(false);
+
+        StopCoroutine(asignarObjetoEncontrado());
+
     }
 }

@@ -9,15 +9,19 @@ using System.Linq;
 
 public class UtilidadesObjetosInteractables
 {
-    public static void determinarAccionFinDialogo() {
+    public void determinarAccionFinDialogo() {// No es static porque sino no se podria usar StartCoroutine
         string objetoInteraccion = PlayerPrefs.GetString("InteraccionConObjeto");
+
         switch (objetoInteraccion) {
             case "Medico": curarPokemonsJugador(); break;
-            case "Vendedor": activarMenuObjecto("MenuVendedor"); break;
-            case "PC": activarMenuObjecto("MenuPC"); break;
-            case "Pocion": case "Pokeball": asignarObjetoAJugador(objetoInteraccion); break;
+            case "Vendedor": activarMenuObjeto("MenuVendedor"); break;
+            case "PC": activarMenuObjeto("MenuPC"); break;
+            case "Objeto":
+                PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+                playerController.iniciarCoroutineAsignarObjetoEncontrado();
+                //StartCoroutine(playerController.asignarObjetoEncontrado()); //No se puede hacer aqui ya que esta clase no esta asociada a ningun gameObject del juego
+                break;
             case "Trainer": /*activarMenuObjecto("MenuPC");*/ break;
-            
         }
     }
 
@@ -28,20 +32,7 @@ public class UtilidadesObjetosInteractables
             pokemon.HP = pokemon.HPMaximos;
         }
     }
-
-    private static void asignarObjetoAJugador(string nombreObjeto) {
-        Item item = new Item();
-        
-        /*
-        switch (nombreObjeto.Contains()) {
-            case "Pokeball": item = new Item(1, nombreObjeto, "Dispositivo que sirve para capturar pokemons", 70, 0, "Pokeball"); break;
-            case "Pocion": item = new Item(1, nombreObjeto, "Cura una pequeña cantidad de 50hp a un pokemon", 0, 50, "Pocion"); break;
-        }
-        */
-        GameObject.Find("Player").GetComponent<PlayerController>().Jugador.Mochila.Add(new ItemConCantidad(item,1));
-    }
-
-    private static void activarMenuObjecto(string nombreMenu) {
+    private static void activarMenuObjeto(string nombreMenu) {
         GameObject menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == nombreMenu);
         UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menu);
     }

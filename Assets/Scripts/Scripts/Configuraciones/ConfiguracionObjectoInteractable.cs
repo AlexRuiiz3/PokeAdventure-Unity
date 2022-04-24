@@ -25,6 +25,10 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
             if (gameObject.tag == "Trainer") {
                 StartCoroutine(activarExclamacionTrainerCombate());
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

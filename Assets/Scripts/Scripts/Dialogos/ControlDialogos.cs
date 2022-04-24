@@ -40,7 +40,7 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObejct q
         else if (colaTextos.Count == 0 && !reproduciendoTexto)
         {
             gameObject.SetActive(false);
-            UtilidadesObjetosInteractables.determinarAccionFinDialogo();
+            new UtilidadesObjetosInteractables().determinarAccionFinDialogo();
             PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
             StopCoroutine(mostrarTextoPorCaracteres(""));
         }

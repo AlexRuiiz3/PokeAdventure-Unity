@@ -25,8 +25,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
     private readonly int PROBABILIDAD_CRITICO = 2;
     async void Start()
     {
-        GameObject.Find("MenuEquipo").SetActive(false);//Al crearlos desde unity, estan por defecto visible
-        GameObject.Find("MenuAtaque").SetActive(false);
         //se busca al jugador desde resource, ya que se encuentra desabilitado
         jugador = Resources.FindObjectsOfTypeAll<GameObject>()
                            .FirstOrDefault(g => g.CompareTag("Player"))
