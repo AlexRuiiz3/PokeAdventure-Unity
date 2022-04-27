@@ -14,11 +14,11 @@ public class BattleSystemWildPokemon : MonoBehaviour
 {
     private BattleState battleState;
     public TextMeshProUGUI textoDialogo;
-    public Jugador jugador;
-    public Pokemon wildPokemon;
+    private Jugador jugador;
+    private Pokemon wildPokemon;
     public TrainerHUD trainerHUD;
     public WildPokemonHUD wildPokemonHUD;
-    public PokemonJugador pokemonJugadorLuchando;
+    private PokemonJugador pokemonJugadorLuchando;
     public List<Button> botonesPokemonsEquipo;
     public List<Button> botonesMovimientos;
 
@@ -32,6 +32,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
 
 
         await prepararPokemonRival();
+        configurarMenuMochila();
         StartCoroutine(prepararBatalla());
     }
 
@@ -47,7 +48,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         Utilidades.prepararBotonesPokemonsEquipo(jugador.EquipoPokemon, botonesPokemonsEquipo);
         prepararBannerIconosMovimientos();
 
-        int aleatorioComienzo = UnityEngine.Random.Range(1, 3); //Aleatorio en entre 1 y 2
+        int aleatorioComienzo = 1;//UnityEngine.Random.Range(1, 3); //Aleatorio en entre 1 y 2
 
         if (aleatorioComienzo == 1)
         {
@@ -313,6 +314,37 @@ public class BattleSystemWildPokemon : MonoBehaviour
         foreach (Button boton in a.GetComponentsInChildren<Button>())
         {
             boton.interactable = estado;
+        }
+    }
+
+    public void configurarMenuMochila() {
+        GameObject menuMochila = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuMochilaCombate");
+        GameObject plantillaItem = menuMochila.transform.GetChild(1).gameObject, 
+        contentScroView = menuMochila.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        GameObject interfazItem;
+
+        foreach (ItemConCantidad item in jugador.Mochila) {
+            interfazItem = Instantiate(plantillaItem);
+            //Imagen
+            interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
+            //Text Nombre
+            interfazItem.gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = (item.CuracionPS != 0) ? $"{item.Nombre}. {item.CuracionPS}PS" : item.Nombre;
+            //Text Cantidad
+            interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{item.Cantidad}";
+            interfazItem.SetActive(true);
+            //Asignacion al content del scrollView
+            interfazItem.transform.SetParent(contentScroView.transform);
+        }
+    }
+
+    public void usarItemMochila(GameObject interfazItem) {
+        string nombreItem = interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite.name;
+        ItemConCantidad itemUsar = jugador.Mochila.Find(g=> g.Nombre == nombreItem);
+        interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{--itemUsar.Cantidad}";
+
+        if (itemUsar.Cantidad == 0) {
+            jugador.Mochila.Remove(itemUsar);
+            Destroy(interfazItem);
         }
     }
 }
