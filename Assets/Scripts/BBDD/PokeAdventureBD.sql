@@ -229,4 +229,5 @@ INSERT INTO PokemonsJugadores VALUES(1,455,1,'PokemonPrueba',1,2,3,4,5,1,1);
 INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba',1,2,3,8);
 INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,1);
 INSERT INTO ItemsJugadores VALUES(1,1,20);
+INSERT INTO ItemsJugadores VALUES(5,1,20);
 INSERT INTO TiposPokemons VALUES (455,2);

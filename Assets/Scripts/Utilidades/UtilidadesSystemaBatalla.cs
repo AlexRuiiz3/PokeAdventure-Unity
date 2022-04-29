@@ -66,4 +66,14 @@ public class UtilidadesSystemaBatalla
 
         return nivelPokemonRival;
     }
+
+    public static bool determinarCapturarPokemon(int indicePokeball,int psMaximos, int psActuales) {
+        int random = Random.Range(1, 101);
+
+        int numero = (3 * psMaximos - 2 * psActuales) * indicePokeball;
+
+        numero /= (3 * psMaximos);
+
+        return random <= numero;
+    }
 }

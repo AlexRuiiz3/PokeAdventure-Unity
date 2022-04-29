@@ -21,6 +21,12 @@ public class BattleSystemWildPokemon : MonoBehaviour
     private PokemonJugador pokemonJugadorLuchando;
     public List<Button> botonesPokemonsEquipo;
     public List<Button> botonesMovimientos;
+    public GameObject menuEquipo;
+    public GameObject menuAtaque;
+    public GameObject menuMochila;
+
+    private ItemConCantidad itemAUsar;
+    private GameObject interfazItemAUsar;
 
     private readonly int PROBABILIDAD_CRITICO = 2;
     async void Start()
@@ -42,6 +48,8 @@ public class BattleSystemWildPokemon : MonoBehaviour
         pokemonJugadorLuchando = (from pokemon in jugador.EquipoPokemon
                                   where pokemon.HP > 0
                                   select pokemon).First();
+        pokemonJugadorLuchando.HPMaximos = 40;
+        pokemonJugadorLuchando.HP = 20;
         trainerHUD.inicializarDatos(pokemonJugadorLuchando.Nombre, pokemonJugadorLuchando.Nivel, pokemonJugadorLuchando.HP, pokemonJugadorLuchando.HPMaximos, pokemonJugadorLuchando.ImagenDeEspalda);
         trainerHUD.prepararIconosPokemosDisponibles(jugador.EquipoPokemon.Count);
         wildPokemonHUD.inicializarDatos(wildPokemon);
@@ -148,6 +156,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         StopCoroutine(prepararBatalla());
         StopCoroutine(atacarJugador(0));
         StopCoroutine(atacarWildPokemon());
+        StopCoroutine(lanzarPokeball());
         PlayerPrefs.SetString("NameLastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).name);
         GameObject player = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
@@ -173,7 +182,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject != null)
         {
             activarDesactivarBotonesMenuAcciones(false);
-            GameObject.Find("MenuAtaque").SetActive(false);
+            menuAtaque.SetActive(false);
             yield return new WaitForSeconds(2f); //Para que no se junte con los mensaje del enemigo, se hace una pausa y asi da tiempo de ver los mensajes de ambos
             MovimientoPokemon movimientoUsado = pokemonJugadorLuchando.Movimientos[numeroBotonPulsado];
 
@@ -293,8 +302,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
     private void activarDesactivarMenuEquipo(bool activarBoton, bool activarMenu)
     {
         var a = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "ButtonAtrasMenuEquipo");
-        GameObject b = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuEquipo");
-        b.SetActive(activarMenu);
+        menuEquipo.SetActive(activarMenu);
         var c = a.GetComponent<Button>();
         c.interactable = activarBoton;
     }
@@ -317,13 +325,14 @@ public class BattleSystemWildPokemon : MonoBehaviour
         }
     }
 
-    public void configurarMenuMochila() {
-        GameObject menuMochila = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuMochilaCombate");
-        GameObject plantillaItem = menuMochila.transform.GetChild(1).gameObject, 
+    public void configurarMenuMochila()
+    {
+        GameObject plantillaItem = menuMochila.transform.GetChild(1).gameObject,
         contentScroView = menuMochila.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         GameObject interfazItem;
 
-        foreach (ItemConCantidad item in jugador.Mochila) {
+        foreach (ItemConCantidad item in jugador.Mochila)
+        {
             interfazItem = Instantiate(plantillaItem);
             //Imagen
             interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
@@ -337,14 +346,106 @@ public class BattleSystemWildPokemon : MonoBehaviour
         }
     }
 
-    public void usarItemMochila(GameObject interfazItem) {
+    public void buttonClickUsarItem(GameObject interfazItem)
+    {
         string nombreItem = interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite.name;
-        ItemConCantidad itemUsar = jugador.Mochila.Find(g=> g.Nombre == nombreItem);
-        interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{--itemUsar.Cantidad}";
+        ItemConCantidad itemUsar = jugador.Mochila.Find(g => g.Nombre == nombreItem);
 
-        if (itemUsar.Cantidad == 0) {
-            jugador.Mochila.Remove(itemUsar);
-            Destroy(interfazItem);
+        interfazItemAUsar = interfazItem;
+        itemAUsar = itemUsar;
+        if (itemUsar.Tipo == "Pocion")
+        {
+            configurarMenuEquipo(true);
+            menuMochila.SetActive(false);
         }
+        else if (itemUsar.Tipo == "Pokeball")
+        {
+            usarItem();
+        }
+
+    }
+
+    public void configurarMenuEquipo(bool activacion)
+    {
+        foreach (Button button in botonesPokemonsEquipo)
+        {
+            button.interactable = activacion;
+            button.gameObject.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = !activacion;
+            button.gameObject.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = !activacion;
+        }
+        menuEquipo.SetActive(activacion);
+    }
+
+    public void usarItem()
+    {
+        switch (itemAUsar.Tipo)
+        {
+            case "Pocion":
+                StartCoroutine(aplicarCuracionPokemon());
+                break;
+
+            case "Pokeball":
+                StartCoroutine(lanzarPokeball());
+                break;
+        }
+
+        interfazItemAUsar.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{--itemAUsar.Cantidad}";
+        if (itemAUsar.Cantidad == 0)
+        {
+            jugador.Mochila.Remove(itemAUsar);
+            Destroy(interfazItemAUsar);
+        }
+    }
+
+    IEnumerator aplicarCuracionPokemon() {
+        string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
+        int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]) - 1;
+        jugador.EquipoPokemon[numeroBotonPulsado].HP += itemAUsar.CuracionPS;
+
+        if (pokemonJugadorLuchando.Equals(jugador.EquipoPokemon[numeroBotonPulsado])) { //Si se cura el pokemon que esta luchando, para que se actualice la interfaz de la vida
+            trainerHUD.setBarraSalud(pokemonJugadorLuchando.HP,pokemonJugadorLuchando.HPMaximos);
+        }
+
+        textoDialogo.text = $"Has restaurado {itemAUsar.CuracionPS}PS a {pokemonJugadorLuchando.Nombre}";
+        //Se actualiza la vida de la interfaz del pokemon de ver equipo
+        botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {jugador.EquipoPokemon[numeroBotonPulsado].HP} / {jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
+        activarDesactivarBotonesMenuAcciones(false);
+        menuEquipo.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        battleState = BattleState.ENEMYTURN;
+        StartCoroutine(atacarWildPokemon());
+        StopCoroutine(aplicarCuracionPokemon());
+    }
+
+    IEnumerator lanzarPokeball() {
+        menuMochila.SetActive(false);
+        activarDesactivarBotonesMenuAcciones(false);
+
+        textoDialogo.text = $"Has lanzado una {itemAUsar.Nombre}";
+        wildPokemonHUD.imagenPokemon.sprite = interfazItemAUsar.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
+        wildPokemonHUD.imagenPokemon.transform.localScale = new Vector3(0.35f, 0.55f, 1f);
+        wildPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -34.18f);
+        yield return new WaitForSeconds(3.5f);
+
+        bool pokemonCapturado = UtilidadesSystemaBatalla.determinarCapturarPokemon(itemAUsar.IndiceExito,wildPokemon.HPMaximos,wildPokemon.HP);
+
+        if (pokemonCapturado)
+        {
+            wildPokemonHUD.imagenPokemon.color = Color.grey;
+            textoDialogo.text = $"{wildPokemon.Nombre} atrapado!";
+            yield return new WaitForSeconds(3.5f);
+            abandonarBatallaButton();
+        }
+        else {
+            textoDialogo.text = $"Oh no el pokemon se ha escapado";
+            wildPokemonHUD.imagenPokemon.transform.localScale = new Vector3(1f, 1f, 1f);
+            wildPokemonHUD.imagenPokemon.sprite = (wildPokemon.ImagenDeFrente != null) ? Utilidades.convertirArrayBytesASprite(wildPokemon.ImagenDeFrente) : Utilidades.convertirArrayBytesASprite(wildPokemon.ImagenDeEspalda);
+            wildPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -1.48f);
+            yield return new WaitForSeconds(2f);
+            battleState = BattleState.ENEMYTURN;
+            StartCoroutine(atacarWildPokemon());
+            StopCoroutine(lanzarPokeball());
+        }
+
     }
 }

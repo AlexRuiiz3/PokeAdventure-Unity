@@ -94,7 +94,7 @@ public class Pokemon
         get { return hp; }
         set
         {
-            if (value >= HPMaximos) //Pokemon ps 150, se le ataca(20) y se queda con 130 si se usa una pocion que le cure 100 de esta manera se quedara en su maximo(150) y no con 230 cuando sus ps maximos eran 150
+            if (value > HPMaximos) //Pokemon ps 150, se le ataca(20) y se queda con 130 si se usa una pocion que le cure 100 de esta manera se quedara en su maximo(150) y no con 230 cuando sus ps maximos eran 150
             {
                 hp = HPMaximos;
             }
@@ -112,7 +112,7 @@ public class Pokemon
         }
     }
     //HPMaximos
-    public int HPMaximos { get; } //Servira para tener guardado los ps maximo de un pokemon ya que cuando se cure a un pokemon hay que saber hasta donde curarlo.
+    public int HPMaximos { get; set; } //Servira para tener guardado los ps maximo de un pokemon ya que cuando se cure a un pokemon hay que saber hasta donde curarlo.
 
     //Nivel
     public int Nivel
