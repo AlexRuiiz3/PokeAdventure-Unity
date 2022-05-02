@@ -7,11 +7,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public enum BattleState { START, WIN, LOST, PLAYERTURN, ENEMYTURN, POKEMONJUGADORDEBILITADO };
 public class BattleSystemWildPokemon : MonoBehaviour
 {
+    public GameObject imagenBackGround;
     private BattleState battleState;
     public TextMeshProUGUI textoDialogo;
     private Jugador jugador;
@@ -31,6 +33,9 @@ public class BattleSystemWildPokemon : MonoBehaviour
     private readonly int PROBABILIDAD_CRITICO = 2;
     async void Start()
     {
+        imagenBackGround.GetComponent<Image>().sprite = (from sprite in Resources.LoadAll<Sprite>("Imagenes/UI/EscenasBatalla/BattleBackgrounds")
+                                                         where sprite.name == PlayerPrefs.GetString("EscenaAventura")
+                                                         select sprite).First();
         //se busca al jugador desde resource, ya que se encuentra desabilitado
         jugador = Resources.FindObjectsOfTypeAll<GameObject>()
                            .FirstOrDefault(g => g.CompareTag("Player"))

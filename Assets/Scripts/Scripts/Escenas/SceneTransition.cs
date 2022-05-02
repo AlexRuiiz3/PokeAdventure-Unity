@@ -32,26 +32,29 @@ public class SceneTransition : MonoBehaviour
             case "AdventureZone":
                 
                 string[] adventureScenes = { "SnowScene", "RouteScene", "ForestScene", "CityScene" };
-                escenaSiguiente = "RouteScene";//adventureScenes[(int)Random.Range(0f, 4f)]; //Numero entre 0 y 3
+                escenaSiguiente = adventureScenes[(int)Random.Range(0f, 4f)]; //Numero entre 0 y 3
 
                 switch (escenaSiguiente)
                 {
                     case "SnowScene":
                         posicionNuevaJugador = new Vector2(-1.76f, -14.44f);
+                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaNieve");
                         break;
                     case "RouteScene":
                         posicionNuevaJugador = new Vector2(-1.54f, -8.5f);
+                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaHierba");
                         break;
                     case "ForestScene":
                         posicionNuevaJugador = new Vector2(0.6f, -21.12f);
+                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaMontaña");
                         break;
                     case "CityScene":
                         posicionNuevaJugador = new Vector2(-0.04f, -8.83f);
+                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaHierba");
                         break;
                 }
-
                 break;
-
+                
             case "PokemonCenterScene":
                 posicionNuevaJugador = new Vector2(-2.9f, -1.2f);
                 break;

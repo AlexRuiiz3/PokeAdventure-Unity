@@ -85,17 +85,11 @@ public class PlayerController : MonoBehaviour
     //Metodos añadidos
     private void comprobarZonaHierba()
     {
-        int random;
         if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
         {
-            random = (int)UnityEngine.Random.Range(0f, 1001f);//0 y 1000
-            if (random < 80)
-            {
+            if (UnityEngine.Random.Range(1, 851) <= 2)
+            {   
                 GameObject jugador = GameObject.FindGameObjectWithTag("Player");
-                /*
-                GameObject.FindObjectOfType<AudioListener>().enabled = false;
-                GameObject.FindObjectOfType<AudioSource>().enabled = false;
-                GameObject.FindObjectOfType<AudioSource>().Stop();*/
                 UtilidadesEscena.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
                 DontDestroyOnLoad(jugador);//this
                 SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);

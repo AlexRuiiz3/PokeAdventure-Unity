@@ -8909,6 +8909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca1400b619140c4cb8e0cf9479b3f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imagenBackGround: {fileID: 271496556}
   textoDialogo: {fileID: 902806265}
   trainerHUD: {fileID: 1406604887}
   wildPokemonHUD: {fileID: 1747663326}
