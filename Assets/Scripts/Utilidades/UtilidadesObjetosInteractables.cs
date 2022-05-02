@@ -21,7 +21,11 @@ public class UtilidadesObjetosInteractables
                 playerController.iniciarCoroutineAsignarObjetoEncontrado();
                 //StartCoroutine(playerController.asignarObjetoEncontrado()); //No se puede hacer aqui ya que esta clase no esta asociada a ningun gameObject del juego
                 break;
-            case "Trainer": /*activarMenuObjecto("MenuPC");*/ break;
+            case "Trainer":
+                string a = PlayerPrefs.GetString("EntrenadorLuchando");
+                GameObject.Find(PlayerPrefs.GetString("EntrenadorLuchando")).transform.GetChild(0).GetComponent<TrainerNPC>().derrotado = true;
+                Debug.Log("Inicio combate vs trainer"); 
+                break;
         }
     }
 

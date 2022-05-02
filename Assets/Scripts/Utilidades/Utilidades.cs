@@ -88,4 +88,42 @@ public class Utilidades
             componentesBoton.Clear(); //Se limpia la lista con los componentes del boton para que despues guardar los componentes del siguiente boton y asi las posicion 1,2,3,4 corresponderan a los componentes del boton que le toque en la iteracion
         }
     }
+
+
+    public static List<string> obtenerFrasesAleatoriasTrainer() { 
+    List<List<string>> frasesEntrenadores = new List<List<string>> { 
+        new List<string> { "Hola viajero, veo que tienes un buen equipo.", "Dejame que compruebe si es verdad." },
+        new List<string> { "¡Eh! ¡Tu equipo Pokémon me da buenas vibraciones! ", "¿Te importa que vea lo entrenado que está?" },
+        new List<string> { "Te voy hacer comer polvo.", "Para que te hagas una idea, como el que va a comer Santi con el proyecto final." },
+        new List<string> { "¿Qué necesita mi vista?"},
+        new List<string> { "F1", "." },
+        new List<string> { "F2", "." },
+        new List<string> { "F3", "." },
+        new List<string> { "F4", "." },
+        new List<string> { "F5", "." },
+        new List<string> { "F6", "." },
+        new List<string> { "F7", "." },
+        new List<string> { "F8", "." }
+    };
+        return frasesEntrenadores[Random.Range(0, frasesEntrenadores.Count)];
+    }
+
+    public static List<string> obtenerFrasesAleatoriasTrainerDerrotado()
+    {
+        List<List<string>> frasesEntrenadoresDerotao = new List<List<string>> {
+        new List<string> { "Pues si que eres fuerte."},
+        new List<string> { "Pufff que combate más bueno, he aprendido mucho.", "Espero que volvamos a combatir otra vez." },
+        new List<string> { "Que sepas que me he dejado.", "No quiero abusar de un crio." },
+        new List<string> { "...","..."},
+        new List<string> { "FD1", "." },
+        new List<string> { "FD2", "." },
+        new List<string> { "FD3", "." },
+        new List<string> { "FD4", "." },
+        new List<string> { "FD5", "." },
+        new List<string> { "FD6", "." },
+        new List<string> { "FD7", "." },
+        new List<string> { "FD8", "." }
+    };
+        return frasesEntrenadoresDerotao[Random.Range(0, frasesEntrenadoresDerotao.Count)];
+    }
 }

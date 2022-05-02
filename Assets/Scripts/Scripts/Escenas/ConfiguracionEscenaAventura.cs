@@ -217,9 +217,8 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         {
             //Se crea el gameObject que sera un entrenador
             GameObject trainer = new GameObject();
+            trainer.name = $"Trainer{i}";
             trainer.tag = "Trainer";
-            //Se añade un script 
-            trainer.AddComponent<TrainerNPC>();
 
             //Se obtiene una posicion de forma aleatoria y se le añade al gameObject. Despues se le añade un escalado
             posicionTrainer = obtenerPosicionAleatoriaTrainer();
@@ -244,6 +243,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
             //Se obtiene una textura(Sera una imagen de un NPC) de forma aleatoria
             texturaAleatoria = obtenerTexturaAleatoriaTrainer();
 
+            
             //Para asignar el sprite al SpriteRenderer. Se obtienen todos los sprite que tiene la textura que se obtuvo de forma
             //aleatoria.Los sprite de la textura son siempre 4 y el nombre que tienen es Arriba,Abajo,Derecha,Izquierda.
             //Entonces se va obteniendo uno a uno los sprite y el que su nombre coincida con el de la orientacion(Obtenida de
@@ -255,6 +255,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
 
             //Se prepara un gameObject que contendra un sprite de exclamacion
             prepararGameObjectExclamacion(posicionTrainer.Posicion).transform.parent = trainer.transform;
+            prepararGameObjectZonaIteracion(trainer).transform.parent = trainer.transform;
             DontDestroyOnLoad(trainer);//Para que cuando se vaya a la escena de un combate se mantengan la escena
         }
     }
@@ -306,13 +307,15 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
     private GameObject prepararGameObjectZonaVision(string orientacion)
     {
         GameObject zonaVision = new GameObject();
-
+        zonaVision.name = "Zona Vision";
         BoxCollider2D boxCollider = zonaVision.AddComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
         boxCollider.offset = new Vector2(0.003630318f, -0.6459866f);
         boxCollider.size = new Vector2(0.1360126f, 1.088027f);
         //Se añade el sprict que tiene la funcion ontrigger para cuando el jugador entre en el boxCollider
-        zonaVision.AddComponent<ConfiguracionObjectoInteractable>();
+        zonaVision.AddComponent<TrainerNPC>();
+        zonaVision.GetComponent<TrainerNPC>().Frases = Utilidades.obtenerFrasesAleatoriasTrainer();
+        zonaVision.GetComponent<TrainerNPC>().FrasesDerrotado = Utilidades.obtenerFrasesAleatoriasTrainerDerrotado();
 
         //Por defecto esta mirando abajo 
         Vector3 rotacionZonaVision = new Vector3(0, 0, 360);
@@ -336,6 +339,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
     private GameObject prepararGameObjectExclamacion(Vector2 posicionTrainer)
     {
         GameObject iconoExclamacion = new GameObject();
+        iconoExclamacion.name = "Icono Exclamacion";
         iconoExclamacion.transform.position = new Vector2(posicionTrainer.x, posicionTrainer.y + 0.75f);
         iconoExclamacion.transform.localScale = new Vector3(3.5f, 3.5f, 0f);
 
@@ -345,5 +349,19 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         iconoExclamacion.SetActive(false);
 
         return iconoExclamacion;
+    }
+
+    private GameObject prepararGameObjectZonaIteracion(GameObject trainer)
+    {
+        GameObject zonaIteracion = new GameObject();
+        zonaIteracion.name = "Zona Iteracion";
+        zonaIteracion.tag = "Trainer";
+        CapsuleCollider2D capsuleCollider2D = zonaIteracion.AddComponent<CapsuleCollider2D>();
+        capsuleCollider2D.isTrigger = true;
+        capsuleCollider2D.offset = trainer.transform.position;
+        capsuleCollider2D.size = new Vector2(1.46f, 1.46f);
+
+        zonaIteracion.AddComponent<ConfiguracionObjectoInteractable>();
+        return zonaIteracion;
     }
 }

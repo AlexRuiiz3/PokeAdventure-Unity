@@ -1,29 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TrainerNPC : MonoBehaviour
 {
-    //private bool derrotado = false;
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!derrotado && collision.CompareTag("Player") && !collision.isTrigger)//Si entra en contacto con el jugador  
+        {
+            PlayerPrefs.SetString("InteraccionConObjeto", transform.parent.tag);
+            StartCoroutine(activarExclamacionTrainerCombate());
+            GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
+            dialogo.SetActive(true);
+            dialogo.transform.GetChild(0).gameObject.SetActive(true);//La imagen del dialogo
+            ControlDialogos controlDialogos = dialogo.transform.GetChild(0).gameObject.GetComponent<ControlDialogos>();
+            controlDialogos.ListaFrases = Frases.ToArray();
+            controlDialogos.activarDialogo();
+        }
+    }
+
+    public IEnumerator activarExclamacionTrainerCombate()
+    {
+        PlayerPrefs.SetString("EntrenadorLuchando", transform.parent.name);
+        GameObject iconoExclamacion = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
+        iconoExclamacion.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        iconoExclamacion.SetActive(false);
+        // Vector3 a = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
+        //iconoExclamacion.transform.position = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
+
+        gameObject.SetActive(false); //Se desactiva el gameObject que tiene el boxCollider, asi solo se podra combatir con el mismo entrenador solo una vez
+        StopCoroutine(activarExclamacionTrainerCombate());
+    }
 
     //Constructor sin parametros
     public TrainerNPC() {
-        Frase = "";
+        Frases = new List<string>();
         EquipoPokemon = new List<Pokemon>();
         Mochila = new List<Item>();
+        derrotado = false;
     }
     //Constructor con parametros
-    public TrainerNPC(string frase, List<Pokemon> equipoPokemon, List<Item> mochila)
+    public TrainerNPC(List<string> frases, List<Pokemon> equipoPokemon, List<Item> mochila)
     {
-        Frase = frase;
+        Frases = frases;
         EquipoPokemon = equipoPokemon;
         Mochila = mochila;
     }
 
 
     #region Metodos fundamentales(Propiedades)
-    //Frase
-    public string Frase { get; set; }
+    //Frases
+    public List<string> Frases { get; set; }
+    public List<string> FrasesDerrotado { get; set; }
+    public bool derrotado { get; set; }
+
     //EquipoPokemon
     public List<Pokemon> EquipoPokemon { get; }
     //Mochila
