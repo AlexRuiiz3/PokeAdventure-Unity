@@ -11,7 +11,6 @@ public class ObtenerPrimerPokemon : MonoBehaviour
 
     void Start()
     {
-        UtilidadesEscena.activarDesactivarIteracionBotones(botonesPokemos,false);
         FindObjectOfType<ControlDialogos>().activarDialogo();
     }
 

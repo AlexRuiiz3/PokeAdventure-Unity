@@ -18,9 +18,9 @@ public class OpcionPokemons : MonoBehaviour
 
      void start()
     {
-        //await crearJugadorPrueba(); //Pureba para poder probar la opcio ver equipo pokemon
-        //jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jugador;//Esta a null porque en playercontroller a la par se esta creando alli,
-        //Si lo quiero probar hacerlo en una corrutina. esperar unos segundos y luego obtener el jugador
+    //await crearJugadorPrueba(); //Pureba para poder probar la opcio ver equipo pokemon
+    //jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jugador;//Esta a null porque en playercontroller a la par se esta creando alli,
+    //Si lo quiero probar hacerlo en una corrutina. esperar unos segundos y luego obtener el jugador
         //textNumeroPokemons.text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
         //Utilidades.prepararBotonesPokemonsEquipo(jugador.EquipoPokemon, botonesPokemons);
     }

@@ -117,7 +117,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesEscena.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\OpcionRegistrarse.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\WildPokemonHUD.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraJugadorBL.cs" />

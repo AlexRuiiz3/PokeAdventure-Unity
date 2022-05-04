@@ -14,7 +14,7 @@ public class UtilidadesObjetosInteractables
 
         switch (objetoInteraccion) {
             case "Medico": curarPokemonsJugador(); break;
-            case "Vendedor": activarMenuObjeto("MenuVendedor"); break;
+            case "Vendedor": activarMenuObjeto("MenuTienda"); break;
             case "PC": activarMenuObjeto("MenuPC"); break;
             case "Objeto":
                 PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();

@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
     public float getMovimientoVertical() => movimientoVertical;
     public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
 
-
     //Metodos añadidos
     private void comprobarZonaHierba()
     {

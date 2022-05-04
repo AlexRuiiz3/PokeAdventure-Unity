@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -95,6 +96,16 @@ public class UtilidadesEscena : MonoBehaviour
                 gameObjectsEscena[i].GetComponent<AudioListener>().enabled = true;
             }
         }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="mensaje"></param>
+    public static void mostrarMensajeError(string mensaje) 
+    {
+        GameObject menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MensajeError");
+        menuError.GetComponentsInChildren<TextMeshProUGUI>()[1].text = mensaje;
+        menuError.SetActive(true);
     }
 }
 

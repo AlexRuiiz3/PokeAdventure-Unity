@@ -12,7 +12,7 @@ public class GestoraJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            SqliteCommand command = new SqliteCommand("INSERT INTO Jugadores (Nombre,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES(@NombreUsuario,@Contrasenha,@CorreoElectronico,@Dinero,NULL)", conexion);
+            SqliteCommand command = new SqliteCommand("INSERT INTO Jugadores (NombreUsuario,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES(@NombreUsuario,@Contrasenha,@CorreoElectronico,@Dinero,NULL)", conexion);
             command.Parameters.Add("@NombreUsuario", System.Data.DbType.String).Value = jugador.NombreUsuario;
             command.Parameters.Add("@Contrasenha", System.Data.DbType.String).Value = jugador.Contrasenha;
             command.Parameters.Add("@CorreoElectronico", System.Data.DbType.String).Value = jugador.CorreoElectronico;
