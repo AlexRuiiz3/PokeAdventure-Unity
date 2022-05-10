@@ -15,12 +15,13 @@ public class Item
         Tipo = "";
     }
     //Constructor con parametros
-    public Item(int id, string nombre, string descripcion, int indiceExito, int curacionPS, string tipo) {
+    public Item(int id, string nombre, string descripcion, int indiceExito, int curacionPS,int precio, string tipo) {
         ID = id;
         Nombre = nombre;
         Descripcion = descripcion;
         IndiceExito = indiceExito;
         CuracionPS = curacionPS;
+        Precio = precio;
         Tipo = tipo;
     }
     #endregion
@@ -30,6 +31,7 @@ public class Item
     public string Nombre { get; }
     public string Descripcion { get; }
     public int IndiceExito { get; }
+    public int Precio { get; }
     public int CuracionPS { get; }
     public string Tipo { get; }
     #endregion

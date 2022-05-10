@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
             List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
 
             Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);
+            Jugador.Dinero = 2000;
         }
         catch (Exception)
         {

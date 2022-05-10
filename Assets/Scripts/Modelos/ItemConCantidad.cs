@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class ItemConCantidad : Item
 {
-    public ItemConCantidad(Item item, int cantidad) : base(item.ID, item.Nombre, item.Descripcion, item.IndiceExito, item.CuracionPS, item.Tipo) {
+    public ItemConCantidad(Item item, int cantidad) : base(item.ID, item.Nombre, item.Descripcion, item.IndiceExito, item.CuracionPS, item.Precio,item.Tipo) {
         Cantidad = cantidad;
     }
 

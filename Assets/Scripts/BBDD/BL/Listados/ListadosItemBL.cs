@@ -18,4 +18,8 @@ public class ListadosItemBL
     {
         return ListadosItemDAL.obtenerItemsJugador(id);
     }
+    public static Item obtenerItem(int id)
+    {
+        return ListadosItemDAL.obtenerItem(id);
+    }
 }

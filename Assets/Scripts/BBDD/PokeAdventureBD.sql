@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS Items (
 		Descripcion varchar(255) NULL,
 		IndiceExito smallint NULL,
 		CuracionPS smallint NULL,
+		Precio smallint,
 		Tipo varchar(20) NOT NULL
 
 );
@@ -125,14 +126,14 @@ CREATE TABLE IF NOT EXISTS ItemsJugadores (
 );
 
 --Pociones
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('Pocion','Curacion basica que cura 20PS a un pokemon',NULL,20,'Pocion');
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('SuperPocion','Curacion normal que cura 50PS a un pokemon',NULL,50,'Pocion');
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('HiperPocion','Curacion avanzada que cura 200PS a un pokemon',NULL,200,'Pocion');
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('Refresco','Bebida refrescante que le encanta a los pokemons. Recupera 60 PS',NULL,60,'Pocion');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('Pocion','Curacion basica que cura 20PS a un pokemon',NULL,20,100,'Pocion');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('SuperPocion','Curacion normal que cura 50PS a un pokemon',NULL,50,150,'Pocion');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('HiperPocion','Curacion avanzada que cura 200PS a un pokemon',NULL,200,350,'Pocion');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('Refresco','Bebida refrescante que le encanta a los pokemons. Recupera 60 PS',NULL,60,200,'Pocion');
 --Pokeballs
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('Poke Ball','Dispositivo capsular que sirve para atrapar pokemons salvajes',40,NULL,'Pokeball');
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('Super Ball','Poke Ball de alto rendimiento. Tiene un indice de exito superior al de la Poke Ball',55,NULL,'Pokeball');
-INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Tipo) Values ('Ultra Ball','Poke Ball de elite. Tiene un indice de exito superior al de la Super Ball',70,NULL,'Pokeball');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('Poke Ball','Dispositivo capsular que sirve para atrapar pokemons salvajes',40,NULL,120,'Pokeball');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('Super Ball','Poke Ball de alto rendimiento. Tiene un indice de exito superior al de la Poke Ball',55,NULL,250,'Pokeball');
+INSERT INTO Items (Nombre,Descripcion,IndiceExito,CuracionPS,Precio,Tipo) Values ('Ultra Ball','Poke Ball de elite. Tiene un indice de exito superior al de la Super Ball',70,NULL,400,'Pokeball');
 
 INSERT INTO Tipos (Nombre) VALUES ('Planta');
 INSERT INTO Tipos (Nombre) VALUES ('Fuego');

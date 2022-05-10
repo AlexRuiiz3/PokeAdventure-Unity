@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum DialogEstate { PLAY,END}
 public class ControlDialogos : MonoBehaviour //Script que ira en el gameObejct que sera donde se muestre el dialogo
@@ -17,9 +18,11 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObejct q
         GameObject jugador = GameObject.Find("Player");
 
         //Se pausa el movimiento y animacion de jugador
-        jugador.GetComponent<PlayerController>().setMovimientoHorizontal(0);
-        jugador.GetComponent<PlayerController>().setMovimientoVertical(0);
-        jugador.GetComponent<Animator>().SetBool("isMoving", false);
+        if (SceneManager.GetActiveScene().name != "GetFirstPokemonScene") {
+            jugador.GetComponent<PlayerController>().setMovimientoHorizontal(0);
+            jugador.GetComponent<PlayerController>().setMovimientoVertical(0);
+            jugador.GetComponent<Animator>().SetBool("isMoving", false);
+        }
 
         colaTextos.Clear();
         foreach (string texto in ListaFrases)

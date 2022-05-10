@@ -35,7 +35,8 @@ public class ListadosItemDAL
                     reader.GetString(2),
                     (reader.GetValue(3) == DBNull.Value) ? 0 : reader.GetInt32(3),
                     (reader.GetValue(4) == DBNull.Value) ? 0 : reader.GetInt32(4),
-                    reader.GetString(5)
+                    reader.GetInt32(5),
+                    reader.GetString(6)
                     );
             }
         }
@@ -81,8 +82,9 @@ public class ListadosItemDAL
                                 reader.GetString(2),
                                 (reader.GetValue(3) == DBNull.Value) ? 0 : reader.GetInt32(3),
                                 (reader.GetValue(4) == DBNull.Value) ? 0 : reader.GetInt32(4),
-                                reader.GetString(5))
-                        );
+                                reader.GetInt32(5),
+                                reader.GetString(6)
+                        ));
                 }
             }
         }
@@ -127,9 +129,10 @@ public class ListadosItemDAL
                                                     reader.GetString(2),
                                                     (reader.GetValue(3) == DBNull.Value) ? 0 : reader.GetInt32(3),
                                                     (reader.GetValue(4) == DBNull.Value) ? 0 : reader.GetInt32(4),
-                                                    reader.GetString(5)
+                                                    reader.GetInt32(5),
+                                                    reader.GetString(6)
                                                     ), 
-                                                    reader.GetInt32(6))
+                                                    reader.GetInt32(7))
                         );
                 }
             }
@@ -150,5 +153,47 @@ public class ListadosItemDAL
         return items;
     }
 
+    public static Item obtenerItem(int id)
+    {
+        Item item = new Item();
+        SqliteConnection conexion = null;
+        SqliteCommand command;
+        SqliteDataReader reader = null;
+
+        try
+        {
+            conexion = ConfiguracionDB.establecerConexion();
+            command = new SqliteCommand("SELECT * FROM Items WHERE id = @id;", conexion);
+            command.Parameters.Add("@id",System.Data.DbType.String).Value = id;
+            reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                item = new Item(
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetString(2),
+                    (reader.GetValue(3) == DBNull.Value) ? 0 : reader.GetInt32(3),
+                    (reader.GetValue(4) == DBNull.Value) ? 0 : reader.GetInt32(4),
+                    reader.GetInt32(5),
+                    reader.GetString(6)
+                    );
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("Error en la obtencion de los datos de un item por nombre");
+        }
+        finally
+        {
+            ConfiguracionDB.cerrarConexion(conexion);
+            if (reader != null)
+            {
+                reader.Close();
+            }
+        }
+        return item;
+    }
 }
 

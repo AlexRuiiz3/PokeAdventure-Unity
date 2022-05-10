@@ -713,7 +713,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &218079228
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &412981443
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &476194963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &505386830
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2699,7 +2699,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &552023477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &668025916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3379,7 +3379,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &727449063
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4283,7 +4283,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &965086404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4962,7 +4962,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1115099010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1124621218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5458,7 +5458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 200
+  m_ReferencePixelsPerUnit: 500
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -5848,7 +5848,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1387618231
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5983,7 +5983,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1438102656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6404,7 +6404,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1509298983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6512,29 +6512,77 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 322
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1106796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1106796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1106796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 286
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392954587830853197, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 161.00002
+      objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3986014
+      value: 1.3986015
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3986014
+      value: 1.3986015
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3986014
+      value: 1.3986015
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -400
+      value: -400.00003
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -225.17482
+      value: -225.17485
       objectReference: {fileID: 0}
     - target: {fileID: 9188124449196421968, guid: 3717e4d11cf74df429afc5f49a058159, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6642,7 +6690,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1528604061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7836,7 +7884,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1712039570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8120,7 +8168,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &1767382482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8429,7 +8477,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &2045986634
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8505,7 +8553,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &2082858457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8548,7 +8596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23400001, y: 0.66356623}
   m_AnchorMax: {x: 0.5384889, y: 0.7492169}
-  m_AnchoredPosition: {x: -10.054001, y: -0.000011206}
+  m_AnchoredPosition: {x: -10.054001, y: -0.0000076293945}
   m_SizeDelta: {x: -20.108, y: -3.1017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099011398
@@ -8815,7 +8863,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &2125038618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9025,7 +9073,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &2137913124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9101,7 +9149,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.55
 --- !u!222 &2141880326
 CanvasRenderer:
   m_ObjectHideFlags: 0
