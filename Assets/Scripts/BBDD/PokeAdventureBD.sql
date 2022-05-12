@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS TiposPokemons(
 
 
 --Tabla TiposTiposDebiles
-CREATE TABLE TiposTiposDebiles(
+CREATE TABLE IF NOT EXISTS TiposTiposDebiles(
 		IDTipo INTEGER NOT NULL,
 		IDTipoDebil INTEGER NOT NULL,
 
@@ -228,7 +228,13 @@ INSERT INTO TiposTiposDebiles VALUES (18,16);
 INSERT INTO Jugadores (NombreUsuario,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES('a','a','correo',0,NULL);
 INSERT INTO PokemonsJugadores VALUES(1,455,1,'PokemonPrueba',1,2,3,4,5,1,1);
 INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba',1,2,3,8);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba2',1,2,3,8);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba3',1,2,3,8);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba4',1,2,3,8);
 INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,1);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,2);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,3);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,4);
 INSERT INTO ItemsJugadores VALUES(1,1,20);
 INSERT INTO ItemsJugadores VALUES(5,1,20);
 INSERT INTO TiposPokemons VALUES (455,2);

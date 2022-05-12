@@ -62,7 +62,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Modelos\Jugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Trainer NPC\TrainerNPC.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPokedex.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosJugadorDAL.cs" />
     <Compile Include="Assets\Scripts\Api\BL\Listados\APIListadosPokemonBL.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonsJugadorDAL.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPokemons.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\Scripts\Dialogos\Textos.cs" />
     <Compile Include="Assets\Scripts\Scripts\Configuraciones\PlayerController.cs" />
@@ -104,7 +102,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraItemDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionConfiguracionJugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\MenuTienda.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\ObtenerPrimerPokemon.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosJugadorBL.cs" />
@@ -116,12 +113,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosTipoDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\OpcionPerfil.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesEscena.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\WildPokemonHUD.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraJugadorBL.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuOpcionesPokemon.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuEquipoPokemon.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\SceneTransition.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
