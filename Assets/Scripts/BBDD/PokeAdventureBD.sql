@@ -226,15 +226,36 @@ INSERT INTO TiposTiposDebiles VALUES (18,16);
 
 --INSERT DE PRUEBA ELIMINAR
 INSERT INTO Jugadores (NombreUsuario,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES('a','a','correo',0,NULL);
-INSERT INTO PokemonsJugadores VALUES(1,455,1,'PokemonPrueba',1,2,3,4,5,1,1);
+
+INSERT INTO PokemonsJugadores VALUES(1,337,1,'PokemonPrueba',1,2,1,4,5,1,1);
+INSERT INTO PokemonsJugadores VALUES(1,211,2,'PokemonPrueba2',1,2,2,4,5,2,1);
+INSERT INTO PokemonsJugadores VALUES(1,428,3,'PokemonPrueba3',1,2,3,4,5,3,1);
+INSERT INTO PokemonsJugadores VALUES(1,211,4,'PokemonPrueba2',1,2,2,4,5,4,1);
+INSERT INTO PokemonsJugadores VALUES(1,337,5,'PokemonPrueba',1,2,1,4,5,0,1);
+
 INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba',1,2,3,8);
-INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba2',1,2,3,8);
-INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba3',1,2,3,8);
-INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba4',1,2,3,8);
-INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,1);
-INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,2);
-INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,3);
-INSERT INTO PokemonsJugadoresMovimientos VALUES(1,455,1,4);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba2',1,2,3,1);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba3',1,2,3,14);
+INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba4',1,2,3,3);
+
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,337,1,1);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,337,1,2);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,337,1,3);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,337,1,4);
+
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,211,2,1);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,211,2,2);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,211,2,3);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,211,2,4);
+
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,428,3,1);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,428,3,2);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,428,3,3);
+INSERT INTO PokemonsJugadoresMovimientos VALUES(1,428,3,4);
+
 INSERT INTO ItemsJugadores VALUES(1,1,20);
 INSERT INTO ItemsJugadores VALUES(5,1,20);
-INSERT INTO TiposPokemons VALUES (455,2);
+
+INSERT INTO TiposPokemons VALUES (337,5);
+INSERT INTO TiposPokemons VALUES (211,8);
+INSERT INTO TiposPokemons VALUES (428,10);

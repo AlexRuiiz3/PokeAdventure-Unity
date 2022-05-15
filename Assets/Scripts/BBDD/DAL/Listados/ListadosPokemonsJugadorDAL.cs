@@ -19,7 +19,7 @@ public class ListadosPokemonsJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado == 0;", conexion);
+            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado == 0 ORDER BY PokemonNumero;", conexion);
             command.Parameters.Add("@ID", System.Data.DbType.UInt32).Value = id;
             reader = command.ExecuteReader();
 
@@ -71,7 +71,7 @@ public class ListadosPokemonsJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado != 0;", conexion);
+            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado != 0 ORDER BY NumeroEquipado; ", conexion);
             command.Parameters.Add("@ID", System.Data.DbType.UInt32).Value = id;
             reader = command.ExecuteReader();
 

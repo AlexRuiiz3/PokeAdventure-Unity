@@ -28,9 +28,9 @@ public class PokemonJugador : Pokemon
     //IdJugador
     public int IDJugador { get; }
     //PokemonNumero
-    public int PokemonNumero { get; }
+    public int PokemonNumero { get; set; }
     //NumeroEquipado
-    public int NumeroEquipado { get; }
+    public int NumeroEquipado { get; set; }
     //Experiencia
     public int Experiencia
     {
@@ -71,5 +71,23 @@ public class PokemonJugador : Pokemon
             experienciaSiguienteNivel += 100; //Aumenta la experiencia requerida para el siguiente nivel
         }
         return subidaNivel;
+    }
+
+    public override bool Equals(object obj)
+    {
+        bool iguales = false;
+
+        if (this == obj)
+        {
+            iguales = true;
+        }
+        else if (obj != null && typeof(PokemonJugador).IsInstanceOfType(obj))
+        {
+            PokemonJugador pokemon = (PokemonJugador)obj;
+            if (ID == pokemon.ID && PokemonNumero == pokemon.PokemonNumero) {
+                iguales = true;
+            }
+        }
+        return iguales;
     }
 }

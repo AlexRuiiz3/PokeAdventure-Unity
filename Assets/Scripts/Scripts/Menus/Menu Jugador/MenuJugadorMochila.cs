@@ -80,9 +80,16 @@ public class MenuJugadorMochila : MonoBehaviour
 
     public void aplicarItemAPokemon(GameObject interfazPokemon){
         ItemConCantidad itemAplicar = jugador.Mochila.Find(g => g.ID == Int16.Parse(interfazItemUsar.name));
-        itemAplicar.Cantidad--;
-        interfazItemUsar.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{itemAplicar.Cantidad}";
-        jugador.EquipoPokemon.Find(g => g.ID == Int16.Parse(interfazPokemon.name)).HP += itemAplicar.CuracionPS;
+        
+        if (--itemAplicar.Cantidad == 0)
+        {
+            Destroy(interfazItemUsar);
+            jugador.Mochila.Remove(itemAplicar);
+        }
+        else {
+            interfazItemUsar.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{itemAplicar.Cantidad}";
+            jugador.EquipoPokemon.Find(g => g.ID == Int16.Parse(interfazPokemon.name)).HP += itemAplicar.CuracionPS;
+        }
         Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuAplicarItemPokemon").SetActive(false);
     }
 

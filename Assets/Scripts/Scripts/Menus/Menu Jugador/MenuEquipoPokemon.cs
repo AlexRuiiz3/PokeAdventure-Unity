@@ -14,32 +14,32 @@ public class MenuEquipoPokemon : MonoBehaviour
     private PokemonJugador pokemonSeleccionado;
 
     public void prepararMenuEquipo(GameObject plantillaInterfazPokemon) { 
-        GameObject interfazPokemon = null, contentScrollView;
+        GameObject interfazPokemon = null, contentPokemons;
         PokemonJugador pokemon;
         menuEquipo = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuPokemons");
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
-        contentScrollView = menuEquipo.transform.Find("Content").gameObject;
+
+        contentPokemons = menuEquipo.transform.Find("ContentPokemons").gameObject;
+        limpiarPokemonsMenu(contentPokemons);
         menuEquipo.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
-        for (int i = 0; i < 2; i++)//jugador.EquipoPokemon.Count
+        for (int i = 0; i < jugador.EquipoPokemon.Count; i++)//jugador.EquipoPokemon.Count
         {
             pokemon = jugador.EquipoPokemon[i];
-            jugador.EquipoPokemon.Add(pokemon); //Eliminar
-            pokemonSeleccionado = jugador.EquipoPokemon[i];
             interfazPokemon = Instantiate(plantillaInterfazPokemon);
-            interfazPokemon.name = pokemon.ID.ToString();
+            interfazPokemon.name = pokemon.PokemonNumero.ToString();
             interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Utilidades.convertirArrayBytesASprite((pokemon.ImagenDeFrente != null) ? pokemon.ImagenDeFrente: pokemon.ImagenDeEspalda);
             interfazPokemon.GetComponentsInChildren<Image>()[2].transform.localScale = new Vector3((float)pokemon.HP / pokemon.HPMaximos, 1f, 1f);
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Nvl.{pokemon.Nivel}";
 
-            interfazPokemon.transform.SetParent(contentScrollView.transform);
+            interfazPokemon.transform.SetParent(contentPokemons.transform);
             interfazPokemon.transform.localScale = new Vector3(1,1,1);
             interfazPokemon.SetActive(true);
         }
-        if (interfazPokemon != null && jugador.EquipoPokemon.Count < 2)
+        if (interfazPokemon != null && jugador.EquipoPokemon.Count < 2) //Cambiar a < 2 
         {
-            interfazPokemon.GetComponent<Button>().interactable = false;
+          Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuOpcionesPokemon").transform.Find("ButtonCambiarPosicion").gameObject.GetComponent<Button>().interactable = false;
 
         }
         menuEquipo.SetActive(true);
@@ -48,6 +48,7 @@ public class MenuEquipoPokemon : MonoBehaviour
     public void mostrarConfigurarMenuOpcionesPokemon(GameObject interfazPokemon) {
         GameObject menuOpciones = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuOpcionesPokemon");
         interfazPokemonSeleccionado = interfazPokemon;
+        pokemonSeleccionado = jugador.EquipoPokemon.Find(g => g.PokemonNumero == Int16.Parse(interfazPokemon.name));
         menuOpciones.GetComponentInChildren<TextMeshProUGUI>().text = pokemonSeleccionado.Nombre;
         menuOpciones.SetActive(true);
     }
@@ -83,6 +84,66 @@ public class MenuEquipoPokemon : MonoBehaviour
         }
         else {
             UtilidadesEscena.mostrarMensajeError("El nombre no puede estar vacio");
+        }
+    }
+
+    public void mostrarConfigurarMenuCambiarPosicion(GameObject plantillaPokemonCambiar) {
+        GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion"),
+            content = menuCambiarPosicion.transform.Find("Content").gameObject,
+            interfazPokemonCambiar;
+        limpiarPokemonsMenu(content);
+        foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
+            interfazPokemonCambiar = Instantiate(plantillaPokemonCambiar);
+            interfazPokemonCambiar.name = pokemon.PokemonNumero.ToString();
+            interfazPokemonCambiar.GetComponentsInChildren<Image>()[1].sprite = Utilidades.convertirArrayBytesASprite((pokemon.ImagenDeFrente != null) ? pokemon.ImagenDeFrente : pokemon.ImagenDeEspalda);
+            interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
+            interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = $"Nvl{pokemon.Nivel}";
+            if (pokemon.Equals(pokemonSeleccionado)) {
+                interfazPokemonCambiar.GetComponent<Button>().interactable = false;
+            }
+            interfazPokemonCambiar.transform.SetParent(content.transform);
+            interfazPokemonCambiar.transform.localScale = new Vector3(1,1,1);
+            interfazPokemonCambiar.SetActive(true);
+        }
+        menuCambiarPosicion.SetActive(true);
+    }
+
+    public void aplicarCambioPosicionPokemons(GameObject interfazPokemonCambiar) {
+        PokemonJugador pokemonCambiar = jugador.EquipoPokemon.Find(g => g.PokemonNumero == Int16.Parse(interfazPokemonCambiar.name));
+
+        int indexPokemonSeleccionado = jugador.EquipoPokemon.IndexOf(pokemonSeleccionado),
+            indexPokemonCambiar = jugador.EquipoPokemon.IndexOf(pokemonCambiar),
+            numeroEquipadoPokemonSeleccionado = pokemonSeleccionado.NumeroEquipado;
+
+        pokemonSeleccionado.NumeroEquipado = pokemonCambiar.NumeroEquipado;
+        pokemonCambiar.NumeroEquipado = numeroEquipadoPokemonSeleccionado;
+
+        jugador.EquipoPokemon[indexPokemonSeleccionado] = pokemonCambiar;
+        jugador.EquipoPokemon[indexPokemonCambiar] = pokemonSeleccionado;
+
+        GameObject contentPokemons = menuEquipo.transform.Find("ContentPokemons").gameObject,
+             interfazPokemonCambiarMenuEquipo;
+        interfazPokemonCambiarMenuEquipo = contentPokemons.transform.Find(pokemonCambiar.PokemonNumero.ToString()).gameObject;
+
+        Vector3 positionPokemonSeleccionado = interfazPokemonSeleccionado.transform.position;
+        interfazPokemonSeleccionado.transform.position = interfazPokemonCambiarMenuEquipo.transform.position;
+        interfazPokemonCambiarMenuEquipo.transform.position = positionPokemonSeleccionado;
+
+        Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion").SetActive(false);
+    }
+
+
+    private void limpiarPokemonsMenu(GameObject content)
+    {
+        if (content.transform.childCount > 0)
+        {
+            foreach (Transform child in content.transform)
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
         }
     }
 }
