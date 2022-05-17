@@ -45,8 +45,8 @@ public class APIListadosPokemonBL
     {
         return await APIListadosPokemonDAL.obtenerMovimientosAleatoriosPokemon(pokemonMoves);
     }
-
+    /*
     public static async Task asignarImagenesPokemonsJugador(List<PokemonJugador> pokemonsJugador) {
         await APIListadosPokemonDAL.asignarImagenesPokemonsJugador(pokemonsJugador);
-    }
+    }*/
 }

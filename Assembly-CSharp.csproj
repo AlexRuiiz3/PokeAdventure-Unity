@@ -78,7 +78,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesSystemaBatalla.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuJugadorMochila.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuMochila.cs" />
     <Compile Include="Assets\Scripts\BBDD\Entidades\PokemonJugador.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Scripts\Scripts\Configuraciones\ConfiguracionObjectoInteractable.cs" />
@@ -136,6 +136,10 @@
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosItemDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuPokedex.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonEncontradosJugadorBL.cs" />
+    <Compile Include="Assets\Scripts\Modelos\PokemonEncontrado.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonEncontradosJugadorDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

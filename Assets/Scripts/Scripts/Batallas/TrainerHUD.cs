@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +14,12 @@ public class TrainerHUD : MonoBehaviour
     public Sprite spritePokeball;
     public Image imagenPokemon;
 
-    public void inicializarDatos(string nombre,int nivel, int hp, int hpMaximos,byte[] imagen) {
-        nombrePokemon.text = nombre.Substring(0, 1).ToUpper() + nombre.Substring(1);
-        setBarraSalud(hp,hpMaximos);
-        setTextNivel(nivel);
-        if (imagen != null) {
-            imagenPokemon.sprite = Utilidades.convertirArrayBytesASprite(imagen);
-        }
+    public void inicializarDatos(PokemonJugador pokemon) {
+        nombrePokemon.text = pokemon.Nombre.Substring(0, 1).ToUpper() + pokemon.Nombre.Substring(1);
+        setBarraSalud(pokemon.HP, pokemon.HPMaximos);
+        setTextNivel(pokemon.Nivel);
+        imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Back/" + pokemon.ID).First();
+        
     }
     /// <summary>
     /// Metodo que modifica de la caja HP del usuario los campos del nombre del pokemon 

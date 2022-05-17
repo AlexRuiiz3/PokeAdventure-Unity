@@ -139,8 +139,9 @@ public class ListadosItemDAL
         }
         catch (Exception)
         {
-            throw;
             Debug.Log("Error en la obtencion de los datos de los items del jugador");
+            throw;
+           
         }
         finally
         {

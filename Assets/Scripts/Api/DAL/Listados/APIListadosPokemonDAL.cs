@@ -133,7 +133,7 @@ public class APIListadosPokemonDAL
 
         return nombre;
     }
-
+    /*
     public static async Task asignarImagenesPokemonsJugador(List<PokemonJugador> pokemonsJugador) {
         PokeAPI.Pokemon pokemonApi;
         string urlSpriteFrente;
@@ -153,5 +153,5 @@ public class APIListadosPokemonDAL
                 pokemonJugador.ImagenDeEspalda = Utilidades.obtenerImagenDeUrl(urlSpriteEspalda);
             }
         }
-    }
+    }*/
 }

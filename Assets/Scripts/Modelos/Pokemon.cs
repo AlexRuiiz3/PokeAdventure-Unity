@@ -26,12 +26,10 @@ public class Pokemon
         Movimientos = new List<MovimientoPokemon>();
         Tipos = new List<string>();
         Debilidades = new List<string>();
-        ImagenDeFrente = new byte[0];
-        ImagenDeEspalda = new byte[0];
         HPMaximos = 100;
     }
     //Constructor con parametros
-    public Pokemon(int id, string nombre, int hp, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades, byte[] imagenDeFrente, byte[] imagenDeEspalda)
+    public Pokemon(int id, string nombre, int hp, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades)
     {
         ID = id;
         Nombre = nombre;
@@ -43,8 +41,6 @@ public class Pokemon
         Movimientos = movimientos;
         Tipos = tipos;
         Debilidades = debilidades;
-        ImagenDeFrente = imagenDeFrente;
-        ImagenDeEspalda = imagenDeEspalda;
         HPMaximos = hp;
     }
 
@@ -65,21 +61,7 @@ public class Pokemon
         Velocidad = (from pokemonStats in pokemonApi.Stats
                      where pokemonStats.Stat.Name == "speed"
                      select pokemonStats.BaseValue).First();
-        HPMaximos = hp;
-
-        //Si no tiene sprite masculino de frente se coge el de hembra
-        string urlSpriteFrente = (pokemonApi.Sprites.FrontMale != null) ? pokemonApi.Sprites.FrontMale : pokemonApi.Sprites.FrontFemale;
-        if (urlSpriteFrente != null) //si no tiene ni hembra ni maculino se dejara vacio.
-        {
-            ImagenDeFrente = Utilidades.obtenerImagenDeUrl(urlSpriteFrente);
-        }
-        
-        string urlSpriteEspalda = (pokemonApi.Sprites.BackMale != null) ? pokemonApi.Sprites.BackMale : pokemonApi.Sprites.BackFemale;
-        if (urlSpriteEspalda != null)
-        {
-            ImagenDeEspalda = Utilidades.obtenerImagenDeUrl(urlSpriteEspalda);
-        }
-        
+        HPMaximos = hp;      
     }
     #endregion
 
@@ -138,10 +120,6 @@ public class Pokemon
     public List<string> Tipos { get; set; }
     //debilidades
     public List<string> Debilidades { get; set; }
-    //ImagenDeFrente
-    public byte[] ImagenDeFrente { get; set; }
-    //ImagenDeEspalda
-    public byte[] ImagenDeEspalda { get; set; }
     #endregion
 
     //Este metodo es asi ya que en el constructor no puede a ver metodos async 

@@ -5,6 +5,7 @@ using System.Net;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class Utilidades
 {
@@ -100,10 +101,8 @@ public class Utilidades
             }
 
             imagenPokemon = (Image)componentesBoton[1]; //No se tiene encuenta la posicion 0 porque en esa esta la imagen del propio boton(Boton en el que se encuentra la Image y los 3 Text)
-            if (pokemon.ImagenDeFrente != null)
-            {
-                imagenPokemon.sprite = Utilidades.convertirArrayBytesASprite(pokemon.ImagenDeFrente);
-            }
+ 
+            imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
 
             textNombrePokemon = (TextMeshProUGUI)componentesBoton[2];
             textNombrePokemon.text = pokemon.Nombre;

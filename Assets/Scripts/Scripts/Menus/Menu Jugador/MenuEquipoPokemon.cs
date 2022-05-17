@@ -20,14 +20,14 @@ public class MenuEquipoPokemon : MonoBehaviour
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
         contentPokemons = menuEquipo.transform.Find("ContentPokemons").gameObject;
-        limpiarPokemonsMenu(contentPokemons);
+        UtilidadesEscena.eliminarHijosGameObject(contentPokemons);
         menuEquipo.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)//jugador.EquipoPokemon.Count
         {
             pokemon = jugador.EquipoPokemon[i];
             interfazPokemon = Instantiate(plantillaInterfazPokemon);
             interfazPokemon.name = pokemon.PokemonNumero.ToString();
-            interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Utilidades.convertirArrayBytesASprite((pokemon.ImagenDeFrente != null) ? pokemon.ImagenDeFrente: pokemon.ImagenDeEspalda);
+            interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             interfazPokemon.GetComponentsInChildren<Image>()[2].transform.localScale = new Vector3((float)pokemon.HP / pokemon.HPMaximos, 1f, 1f);
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
@@ -54,7 +54,7 @@ public class MenuEquipoPokemon : MonoBehaviour
     }
 
     public void opcionVerDatos(GameObject menuDatos) {
-        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Utilidades.convertirArrayBytesASprite((pokemonSeleccionado.ImagenDeFrente != null) ? pokemonSeleccionado.ImagenDeFrente:pokemonSeleccionado.ImagenDeEspalda);
+        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemonSeleccionado.ID).First();
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemonSeleccionado.Nombre;
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemonSeleccionado.Nivel}";
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemonSeleccionado.HP}/{pokemonSeleccionado.HPMaximos}";
@@ -91,13 +91,13 @@ public class MenuEquipoPokemon : MonoBehaviour
         GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion"),
             content = menuCambiarPosicion.transform.Find("Content").gameObject,
             interfazPokemonCambiar;
-        limpiarPokemonsMenu(content);
+        UtilidadesEscena.eliminarHijosGameObject(content);
         foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
             interfazPokemonCambiar = Instantiate(plantillaPokemonCambiar);
             interfazPokemonCambiar.name = pokemon.PokemonNumero.ToString();
-            interfazPokemonCambiar.GetComponentsInChildren<Image>()[1].sprite = Utilidades.convertirArrayBytesASprite((pokemon.ImagenDeFrente != null) ? pokemon.ImagenDeFrente : pokemon.ImagenDeEspalda);
+            interfazPokemonCambiar.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
-            interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = $"Nvl{pokemon.Nivel}";
+            interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl {pokemon.Nivel}";
             if (pokemon.Equals(pokemonSeleccionado)) {
                 interfazPokemonCambiar.GetComponent<Button>().interactable = false;
             }
@@ -130,20 +130,5 @@ public class MenuEquipoPokemon : MonoBehaviour
         interfazPokemonCambiarMenuEquipo.transform.position = positionPokemonSeleccionado;
 
         Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion").SetActive(false);
-    }
-
-
-    private void limpiarPokemonsMenu(GameObject content)
-    {
-        if (content.transform.childCount > 0)
-        {
-            foreach (Transform child in content.transform)
-            {
-                if (child.gameObject.activeSelf)
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-        }
     }
 }

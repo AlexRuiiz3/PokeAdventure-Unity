@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS PokemonsJugadores  (
 CREATE TABLE IF NOT EXISTS PokemonsEncontradosJugadores(
 		IDPokemon INTEGER NOT NULL,
 		IDJugador INTEGER NOT NULL,
+		NombrePokemon INTEGER NOT NULL,
 
 		--Primary Key
 		PRIMARY KEY(IDJugador,IDPokemon),
@@ -226,6 +227,16 @@ INSERT INTO TiposTiposDebiles VALUES (18,16);
 
 --INSERT DE PRUEBA ELIMINAR
 INSERT INTO Jugadores (NombreUsuario,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES('a','a','correo',0,NULL);
+
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(1,1,'Bulbasaur');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(152,1,'Chikorita');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(252,1,'Treecko');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(405,1,'Luxray');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(495,1,'Snivy');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(650,1,'Chespin');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(722,1,'Rowlet');
+INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(810,1,'Grokey');
+
 
 INSERT INTO PokemonsJugadores VALUES(1,337,1,'PokemonPrueba',1,2,1,4,5,1,1);
 INSERT INTO PokemonsJugadores VALUES(1,211,2,'PokemonPrueba2',1,2,2,4,5,2,1);

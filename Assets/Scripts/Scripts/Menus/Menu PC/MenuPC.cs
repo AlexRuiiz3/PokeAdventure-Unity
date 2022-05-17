@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,12 +37,10 @@ public class MenuPC : MonoBehaviour
 
     private void configurarBotonesPokemonsEquipo() 
     {
-        byte[] imagenPokemon;
-        for (int i = 0; i < jugador.EquipoPokemon.Count; i++) {
-            //Hay pokemons que no tienen imagen de frente, entonces se coge la imagen de espalda
-            imagenPokemon = (jugador.EquipoPokemon[i].ImagenDeFrente != null) ? jugador.EquipoPokemon[i].ImagenDeFrente : jugador.EquipoPokemon[i].ImagenDeEspalda;
+
+        for (int i = 0; i < jugador.EquipoPokemon.Count; i++) {         
+            botonesPokemonsEquipo[i].GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + jugador.EquipoPokemon[i].ID).First();
             botonesPokemonsEquipo[i].gameObject.SetActive(true);
-            botonesPokemonsEquipo[i].GetComponent<Image>().sprite = Utilidades.convertirArrayBytesASprite(imagenPokemon);
         }
     }
 

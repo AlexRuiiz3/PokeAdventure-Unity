@@ -17,7 +17,7 @@ public class PokemonJugador : Pokemon
         experiencia = 0;
     }
 
-    public PokemonJugador(Pokemon pokemon, int idJugador, int pokemonNumero, int numeroEquipado, int experiencia) : base(pokemon.ID, pokemon.Nombre, pokemon.HP, pokemon.Nivel, pokemon.Ataque, pokemon.Defensa, pokemon.Velocidad, pokemon.Movimientos, pokemon.Tipos, pokemon.Debilidades, pokemon.ImagenDeFrente, pokemon.ImagenDeEspalda)
+    public PokemonJugador(Pokemon pokemon, int idJugador, int pokemonNumero, int numeroEquipado, int experiencia) : base(pokemon.ID, pokemon.Nombre, pokemon.HP, pokemon.Nivel, pokemon.Ataque, pokemon.Defensa, pokemon.Velocidad, pokemon.Movimientos, pokemon.Tipos, pokemon.Debilidades)
     {
         IDJugador = idJugador;
         PokemonNumero = pokemonNumero;

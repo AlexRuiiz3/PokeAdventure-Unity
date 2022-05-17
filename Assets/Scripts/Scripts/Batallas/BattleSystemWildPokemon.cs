@@ -63,7 +63,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         pokemonJugadorLuchando = (from pokemon in jugador.EquipoPokemon
                                   where pokemon.HP > 0
                                   select pokemon).First();
-        trainerHUD.inicializarDatos(pokemonJugadorLuchando.Nombre, pokemonJugadorLuchando.Nivel, pokemonJugadorLuchando.HP, pokemonJugadorLuchando.HPMaximos, pokemonJugadorLuchando.ImagenDeEspalda);
+        trainerHUD.inicializarDatos(pokemonJugadorLuchando);
         trainerHUD.prepararIconosPokemosDisponibles(jugador.EquipoPokemon.Count);
         wildPokemonHUD.inicializarDatos(wildPokemon);
         Utilidades.prepararBotonesPokemonsEquipo(jugador.EquipoPokemon, botonesPokemonsEquipo);
@@ -141,7 +141,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
                 {
                     activarDesactivarMenuEquipo(true, false);
                     pokemonJugadorLuchando = jugador.EquipoPokemon[numeroBotonPulsado - 1];
-                    trainerHUD.inicializarDatos(pokemonJugadorLuchando.Nombre, pokemonJugadorLuchando.Nivel, pokemonJugadorLuchando.HP, pokemonJugadorLuchando.HPMaximos, (pokemonJugadorLuchando.ImagenDeEspalda) != null ? pokemonJugadorLuchando.ImagenDeEspalda : pokemonJugadorLuchando.ImagenDeFrente);
+                    trainerHUD.inicializarDatos(pokemonJugadorLuchando);
                     prepararBannerIconosMovimientos();
                     textoDialogo.text = $"{pokemonJugadorLuchando.Nombre} te elijo a ti";
                     if (battleState == BattleState.PLAYERTURN)
@@ -471,14 +471,21 @@ public class BattleSystemWildPokemon : MonoBehaviour
     /// <param name="activacion"></param>
     public void configurarMenuEquipo(bool activacion)
     {
-        foreach (Button button in botonesPokemonsEquipo)
+        for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
         {
+            if (activacion && jugador.EquipoPokemon[i].HP < jugador.EquipoPokemon[i].HPMaximos)
+            {
+                botonesPokemonsEquipo[i].interactable = true;
+            }
+            else {
+                botonesPokemonsEquipo[i].interactable = false;
+            }
             //Boton que corresponde a un pokemon
-            button.interactable = activacion;
+
             //Boton del menu equipo que corresponde a ver los movimientos de un pokemon en especifico
-            button.gameObject.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = !activacion;
+            botonesPokemonsEquipo[i].gameObject.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = !activacion;
             //Boton que corresponde que corresponde a ver los datos de un pokemon en especifico
-            button.gameObject.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = !activacion;
+            botonesPokemonsEquipo[i].gameObject.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = !activacion;
         }
         menuEquipo.SetActive(activacion);
     }
@@ -575,7 +582,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         else {
             textoDialogo.text = $"Oh no el pokemon se ha escapado";
             wildPokemonHUD.imagenPokemon.transform.localScale = new Vector3(1f, 1f, 1f);
-            wildPokemonHUD.imagenPokemon.sprite = (wildPokemon.ImagenDeFrente != null) ? Utilidades.convertirArrayBytesASprite(wildPokemon.ImagenDeFrente) : Utilidades.convertirArrayBytesASprite(wildPokemon.ImagenDeEspalda);
+            wildPokemonHUD.imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + wildPokemon.ID).First();
             wildPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -1.48f);
             yield return new WaitForSeconds(2f);
             battleState = BattleState.ENEMYTURN;

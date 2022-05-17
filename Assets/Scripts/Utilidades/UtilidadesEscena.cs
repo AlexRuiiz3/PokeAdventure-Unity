@@ -107,5 +107,19 @@ public class UtilidadesEscena : MonoBehaviour
         menuError.GetComponentsInChildren<TextMeshProUGUI>()[1].text = mensaje;
         menuError.SetActive(true);
     }
+
+    public static void eliminarHijosGameObject(GameObject contentScrollView)
+    {
+        if (contentScrollView.transform.childCount > 0)
+        {
+            foreach (Transform child in contentScrollView.transform)
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+        }
+    }
 }
 

@@ -20,13 +20,13 @@ public class PlayerController : MonoBehaviour
     public Jugador Jugador { get; set; }
 
     // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
-    async void Start()
+    void Start()
     {
         PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());// Quitar
         PlayerPrefs.SetString("GameLanguage", "es"); //Quitar de aqui es solo prueba porque esto va en em MenuPrincipal 
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        await obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
+        obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
@@ -100,13 +100,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private async Task obtenerDatosJugador(string nombreUsuario, string contrasenha)
+    private void obtenerDatosJugador(string nombreUsuario, string contrasenha)
     {
         try
         {
             ClsJugador jugadorBase = ListadosJugadorBL.obtenerJugador(nombreUsuario, contrasenha);
             List<PokemonJugador> pokemonsJugador = ListadosPokemonsJugadorBL.obtenerPokemonsJugadorEquipados(jugadorBase.ID);
-            await APIListadosPokemonBL.asignarImagenesPokemonsJugador(pokemonsJugador);
             List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
 
             Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);

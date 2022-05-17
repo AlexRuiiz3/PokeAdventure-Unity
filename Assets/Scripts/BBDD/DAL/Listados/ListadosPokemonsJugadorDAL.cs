@@ -40,7 +40,7 @@ public class ListadosPokemonsJugadorDAL
                     
                     pokemonsJugador.Add(new PokemonJugador(
                         new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4),
-                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8),movimientosPokemon,tiposPokemon,debilidadesPokemon, new byte[0], new byte[0])
+                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8),movimientosPokemon,tiposPokemon,debilidadesPokemon)
                         , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(9), reader.GetInt32(10)
                         ));
                 }
@@ -90,10 +90,9 @@ public class ListadosPokemonsJugadorDAL
                     }
                     debilidadesPokemon = debilidadesPokemon.Distinct().ToList();//Se eliminan los tipos repetidos que existan.Por ejemplo pokemon tipo planta e hielo tendria duplicado el tipo debilad fuego, se elimina ya que ocuparia un espacio innecesario
 
-
                     pokemonsJugador.Add(new PokemonJugador(
                         new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4),
-                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), movimientosPokemon, tiposPokemon, debilidadesPokemon, new byte[0], new byte[0])
+                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), movimientosPokemon, tiposPokemon, debilidadesPokemon)
                         , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(9), reader.GetInt32(10)
                         ));
                 }
@@ -101,8 +100,9 @@ public class ListadosPokemonsJugadorDAL
         }
         catch (Exception)
         {
-            throw;
             Debug.Log("Error en la obtencion de los pokemons equipados");
+            throw;
+            
         }
         finally
         {
