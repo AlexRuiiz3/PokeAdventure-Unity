@@ -58,10 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BBDD\Entidades\ClsJugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu PC\MenuPC.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonEncontradosJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Modelos\Jugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Trainer NPC\TrainerNPC.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraPokemonEncontradosJugadorBL.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosJugadorDAL.cs" />
     <Compile Include="Assets\Scripts\Api\BL\Listados\APIListadosPokemonBL.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonsJugadorDAL.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Api\DAL\Listados\APIListadosPokemonDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuPokedex.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosMovimientoDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
@@ -81,7 +84,7 @@
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuMochila.cs" />
     <Compile Include="Assets\Scripts\BBDD\Entidades\PokemonJugador.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Configuraciones\ConfiguracionObjectoInteractable.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Extras\ConfiguracionObjectoInteractable.cs" />
     <Compile Include="Assets\Scripts\Modelos\Pokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -97,7 +100,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\Scripts\Dialogos\Textos.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Configuraciones\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Extras\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\BattleSystemWildPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraItemDAL.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraJugadorBL.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuEquipoPokemon.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\SceneTransition.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonEncontradosJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\ConfiguracionEscenaAventura.cs" />
@@ -132,14 +136,13 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonsJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Scripts\Modelos\PokemonEncontrado.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Extras\DatosGuardarJugador.cs" />
     <Compile Include="Assets\Scripts\BBDD\ConfiguracionDB.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosItemDAL.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonEncontradosJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuPokedex.cs" />
-    <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonEncontradosJugadorBL.cs" />
-    <Compile Include="Assets\Scripts\Modelos\PokemonEncontrado.cs" />
-    <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosPokemonEncontradosJugadorDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

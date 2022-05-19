@@ -6,18 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuJugador : MonoBehaviour
 {
-    public GameObject menu;
-
-    private void Start()
-    {
-    }
-
+    public GameObject menuJugador;
     private void Update()
     {
         if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString() && Input.GetKeyDown(KeyCode.C))
         {
-            UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menu);
+            UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menuJugador);
         }
+    }
+
+    public void guardarPartida()
+    {
+
+    }
+    public void cerrarMenu()
+    {
+        UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menuJugador);
     }
     public void salir()
     {

@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS PokemonsJugadores  (
 
 --Tabla PokemonsEncontradosJugadores
 CREATE TABLE IF NOT EXISTS PokemonsEncontradosJugadores(
-		IDPokemon INTEGER NOT NULL,
 		IDJugador INTEGER NOT NULL,
+		IDPokemon INTEGER NOT NULL,
 		NombrePokemon INTEGER NOT NULL,
 
 		--Primary Key
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS PokemonsJugadoresMovimientos (
 		IDJugador INTEGER NOT NULL,
 		IDPokemon INTEGER NOT NULL,
 		NumeroPokemon smallint NOT NULL,
-		IDMovimiento smallint NOT NULL,
+		IDMovimiento INTEGER NOT NULL,
 
 		--Primary Key
 		PRIMARY KEY(IDJugador,IDPokemon,NumeroPokemon,IDMovimiento),
@@ -228,21 +228,21 @@ INSERT INTO TiposTiposDebiles VALUES (18,16);
 --INSERT DE PRUEBA ELIMINAR
 INSERT INTO Jugadores (NombreUsuario,Contrasenha,CorreoElectronico,Dinero,Foto) VALUES('a','a','correo',0,NULL);
 
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(1,1,'Bulbasaur');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(152,1,'Chikorita');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(252,1,'Treecko');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(405,1,'Luxray');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(495,1,'Snivy');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(650,1,'Chespin');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(722,1,'Rowlet');
-INSERT INTO PokemonsEncontradosJugadores (IDPokemon,IDJugador,NombrePokemon) VALUES(810,1,'Grokey');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,1,'Bulbasaur');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,152,'Chikorita');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,252,'Treecko');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,405,'Luxray');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,495,'Snivy');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,650,'Chespin');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,722,'Rowlet');
+INSERT INTO PokemonsEncontradosJugadores (IDJugador,IDPokemon,NombrePokemon) VALUES(1,810,'Grokey');
 
 
 INSERT INTO PokemonsJugadores VALUES(1,337,1,'PokemonPrueba',1,2,1,4,5,1,1);
 INSERT INTO PokemonsJugadores VALUES(1,211,2,'PokemonPrueba2',1,2,2,4,5,2,1);
 INSERT INTO PokemonsJugadores VALUES(1,428,3,'PokemonPrueba3',1,2,3,4,5,3,1);
 INSERT INTO PokemonsJugadores VALUES(1,211,4,'PokemonPrueba2',1,2,2,4,5,4,1);
-INSERT INTO PokemonsJugadores VALUES(1,337,5,'PokemonPrueba',1,2,1,4,5,0,1);
+INSERT INTO PokemonsJugadores VALUES(1,337,5,'PokemonNoEquipado',1,2,1,4,5,0,1);
 
 INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba',1,2,3,8);
 INSERT INTO Movimientos (Nombre,Danho,Precision,PP,Tipo) VALUES('MovimientoPrueba2',1,2,3,1);

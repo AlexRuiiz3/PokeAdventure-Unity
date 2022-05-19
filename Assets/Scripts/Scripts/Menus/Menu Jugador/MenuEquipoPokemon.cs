@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class MenuEquipoPokemon : MonoBehaviour
 {
-    public GameObject menuEquipo;
     private Jugador jugador;
     private GameObject interfazPokemonSeleccionado;
     private PokemonJugador pokemonSeleccionado;
@@ -16,19 +15,24 @@ public class MenuEquipoPokemon : MonoBehaviour
     public void prepararMenuEquipo(GameObject plantillaInterfazPokemon) { 
         GameObject interfazPokemon = null, contentPokemons;
         PokemonJugador pokemon;
-        menuEquipo = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuPokemons");
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
-        contentPokemons = menuEquipo.transform.Find("ContentPokemons").gameObject;
+        //Eliminar
+        jugador.EquipoPokemon[0].HPMaximos = 100;
+        jugador.EquipoPokemon[0].HP = 45;
+        jugador.EquipoPokemon[1].HPMaximos = 100;
+        jugador.EquipoPokemon[1].HP = 1;
+
+        contentPokemons = gameObject.transform.Find("ContentPokemons").gameObject;
         UtilidadesEscena.eliminarHijosGameObject(contentPokemons);
-        menuEquipo.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
+        gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)//jugador.EquipoPokemon.Count
         {
             pokemon = jugador.EquipoPokemon[i];
             interfazPokemon = Instantiate(plantillaInterfazPokemon);
             interfazPokemon.name = pokemon.PokemonNumero.ToString();
             interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
-            interfazPokemon.GetComponentsInChildren<Image>()[2].transform.localScale = new Vector3((float)pokemon.HP / pokemon.HPMaximos, 1f, 1f);
+            UtilidadesEscena.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[3],pokemon.HP,pokemon.HPMaximos);
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Nvl.{pokemon.Nivel}";
@@ -42,7 +46,7 @@ public class MenuEquipoPokemon : MonoBehaviour
           Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuOpcionesPokemon").transform.Find("ButtonCambiarPosicion").gameObject.GetComponent<Button>().interactable = false;
 
         }
-        menuEquipo.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void mostrarConfigurarMenuOpcionesPokemon(GameObject interfazPokemon) {
@@ -121,7 +125,7 @@ public class MenuEquipoPokemon : MonoBehaviour
         jugador.EquipoPokemon[indexPokemonSeleccionado] = pokemonCambiar;
         jugador.EquipoPokemon[indexPokemonCambiar] = pokemonSeleccionado;
 
-        GameObject contentPokemons = menuEquipo.transform.Find("ContentPokemons").gameObject,
+        GameObject contentPokemons = gameObject.transform.Find("ContentPokemons").gameObject,
              interfazPokemonCambiarMenuEquipo;
         interfazPokemonCambiarMenuEquipo = contentPokemons.transform.Find(pokemonCambiar.PokemonNumero.ToString()).gameObject;
 

@@ -26,7 +26,7 @@ public class TrainerHUD : MonoBehaviour
     /// </summary>
     /// <param name="pokemon"></param>
     public void setBarraSalud(int hp, int hpMaximos) {
-        barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos, 1f,1f);
+        UtilidadesEscena.modificarBarraSalud(barraSalud, hp, hpMaximos);
     }
     public void setTextNivel(int nivel) {
         nivelPokemon.text = $"Lv{nivel}";

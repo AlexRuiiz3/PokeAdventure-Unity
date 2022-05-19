@@ -20,6 +20,6 @@ public class WildPokemonHUD : MonoBehaviour
         
     }
     public void setBarraSalud(int hp, int hpMaximos) {
-        barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos,1f,1f);
+        UtilidadesEscena.modificarBarraSalud(barraSalud, hp, hpMaximos);
     }
 }

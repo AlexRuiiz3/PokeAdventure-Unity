@@ -9,11 +9,20 @@ using UnityEngine.UI;
 
 public class MenuPokedex : MonoBehaviour
 {
-    public GameObject menuPokedex;
+
+    private Jugador jugador;
+    public void activarMenuPokedex() {
+        GameObject menuPokedex = gameObject; //gameObject hace referencia a el gameObject que tendra el script en este caso menuPokedex
+        jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador; 
+        //Text de Menu Pokedex
+        menuPokedex.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Pokemons encontrados {DatosGuardarJugador.PokemonsEncontradosJugador.Count}/898";
+        menuPokedex.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Pokemons atrapados {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
+
+        menuPokedex.SetActive(true);
+    }
 
     public void configurarPrepararMenuPokemonsGeneracion(string limitesPokemonGeneracion) {
-        //menuPokedex = gameObject;
-        GameObject scrollViewPokemons = menuPokedex.transform.Find("ScrollViewPokemonsGeneraciones").gameObject;
+        GameObject scrollViewPokemons = gameObject.transform.Find("ScrollViewPokemonsGeneraciones").gameObject;
         scrollViewPokemons.GetComponentInChildren<Scrollbar>().value = 1;
         
         GameObject content = scrollViewPokemons.transform.GetChild(0).Find("Content").gameObject,
@@ -22,27 +31,20 @@ public class MenuPokedex : MonoBehaviour
         int idPokemonInicioGeneracion = int.Parse(limitesPokemonGeneracion.Split('/')[0]), 
             idPokemonFinGeneracion = int.Parse(limitesPokemonGeneracion.Split('/')[1]);
         UtilidadesEscena.eliminarHijosGameObject(content);
-        //Cambiar nombre usuario y poner try catch
-        List<PokemonEncontrado> pokemonsEncontrados = ListadosPokemonEncontradosJugadorBL.obtenerPokemonsEncontradosDeJugador("a");
+        //poner try catch
         PokemonEncontrado pokemon = null;
         for (int i = idPokemonInicioGeneracion; i <= idPokemonFinGeneracion; i++) {
-            pokemon = pokemonsEncontrados.Find(g => g.Id == i);
+            pokemon = DatosGuardarJugador.PokemonsEncontradosJugador.Find(g => g.Id == i);
             interfazPokemon = Instantiate(plantillaInterfazPokemon);
             if (pokemon != null)
             {
                 interfazPokemon.GetComponentsInChildren<Image>()[3].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + i).First();
                 interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[0].text = i.ToString();
                 interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = pokemon.Nombre;
-
-                interfazPokemon.transform.SetParent(content.transform);
-                interfazPokemon.transform.localScale = new Vector3(1, 1, 1);
-                interfazPokemon.SetActive(true);
             }
-            else {
-                interfazPokemon.transform.SetParent(content.transform);
-                interfazPokemon.transform.localScale = new Vector3(1,1,1);
-                interfazPokemon.SetActive(true);
-            }
+            interfazPokemon.transform.SetParent(content.transform);
+            interfazPokemon.transform.localScale = new Vector3(1, 1, 1);
+            interfazPokemon.SetActive(true);
         }
         scrollViewPokemons.SetActive(true);
     }

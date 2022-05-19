@@ -19,7 +19,7 @@ public class ListadosPokemonsJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado == 0 ORDER BY PokemonNumero;", conexion);
+            command = new SqliteCommand("SELECT * FROM PokemonsJugadores WHERE IDJugador = @ID AND NumeroEquipado == 0 ORDER BY NumeroPokemon;", conexion);
             command.Parameters.Add("@ID", System.Data.DbType.UInt32).Value = id;
             reader = command.ExecuteReader();
 
@@ -115,6 +115,41 @@ public class ListadosPokemonsJugadorDAL
         return pokemonsJugador;
     }
 
+    public static int obtenerNumeroPokemonsJugador(int id)
+    {
+        int numeroPokemons = 0;
+        SqliteConnection conexion = null;
+        SqliteCommand command;
+        SqliteDataReader reader = null;
+
+        try
+        {
+            conexion = ConfiguracionDB.establecerConexion();
+            command = new SqliteCommand("SELECT COUNT(*) FROM PokemonsJugadores WHERE IDJugador = @ID GROUP BY IDJugador;", conexion);
+            command.Parameters.Add("@ID", System.Data.DbType.Int32).Value = id;
+            reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                numeroPokemons = reader.GetInt32(0);
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("Error en la obtencion del numero de pokemons del jugador");
+            throw;
+        }
+        finally
+        {
+            ConfiguracionDB.cerrarConexion(conexion);
+            if (reader != null)
+            {
+                reader.Close();
+            }
+        }
+        return numeroPokemons;
+    }
 
 }
 

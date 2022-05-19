@@ -16,5 +16,10 @@ public class ListadosPokemonsJugadorBL
     {
         return ListadosPokemonsJugadorDAL.obtenerPokemonsJugadorEquipados(id);
     }
+    
+    public static int obtenerNumeroPokemonsJugador(int id)
+    {
+        return ListadosPokemonsJugadorDAL.obtenerNumeroPokemonsJugador(id);
+    }
 }
 

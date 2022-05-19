@@ -108,6 +108,22 @@ public class UtilidadesEscena : MonoBehaviour
         menuError.SetActive(true);
     }
 
+    public static void modificarBarraSalud(Image barraSalud, int hp, int hpMaximos) {
+        barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos, 1f, 1f);
+
+        if (barraSalud.transform.localScale.x >= 0.5f)
+        {
+            barraSalud.color = new Color32(0, 255, 106,255);//Verde
+        }
+        else if (barraSalud.transform.localScale.x < 0.15f)
+        {
+            barraSalud.color = Color.red;
+        }
+        else {
+            barraSalud.color = Color.yellow;
+        }
+    }
+
     public static void eliminarHijosGameObject(GameObject contentScrollView)
     {
         if (contentScrollView.transform.childCount > 0)

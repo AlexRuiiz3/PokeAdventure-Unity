@@ -9,17 +9,14 @@ using UnityEngine.UI;
 
 public class MenuMochila : MonoBehaviour
 {
-    public GameObject menuMochila;
+    public GameObject interfazItemUsar;
     private Jugador jugador;
-    GameObject interfazItemUsar;
 
     public void prepararMenuMochila(GameObject plantillaItem) {
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
         GameObject contentListMochila = plantillaItem.transform.parent.gameObject;
         GameObject interfazItem;
         UtilidadesEscena.eliminarHijosGameObject(contentListMochila); //Necesario sino salen duplicados los items
-        jugador.EquipoPokemon[0].HPMaximos = 100;
-        jugador.EquipoPokemon[0].HP = 50;
         foreach (ItemConCantidad item in jugador.Mochila) {
             interfazItem = Instantiate(plantillaItem);
 
@@ -38,7 +35,7 @@ public class MenuMochila : MonoBehaviour
             interfazItem.transform.localScale = plantillaItem.transform.localScale;
             interfazItem.SetActive(true);
         }
-        menuMochila.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void clickButtonUsarItem(GameObject interfazItem) {
@@ -63,7 +60,7 @@ public class MenuMochila : MonoBehaviour
                 interfazPokemon.GetComponentsInChildren<Text>()[0].text = pokemon.Nombre;
                 interfazPokemon.GetComponentsInChildren<Text>()[1].text = $"lv. {pokemon.Nivel}";
                 interfazPokemon.GetComponentsInChildren<Text>()[2].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
-                interfazPokemon.GetComponentsInChildren<Image>()[2].transform.localScale = new Vector3((float)pokemon.HP / pokemon.HPMaximos, 1f, 1f);
+                UtilidadesEscena.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[2], pokemon.HP, pokemon.HPMaximos);
                 interfazPokemon.GetComponentsInChildren<Image>()[4].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
                 interfazPokemon.SetActive(true);
             }

@@ -47,6 +47,13 @@ public class BattleSystemWildPokemon : MonoBehaviour
         await prepararPokemonRival();
         configurarMenuMochila();
         StartCoroutine(prepararBatalla());
+
+        PokemonEncontrado pokemonEncontrado = new PokemonEncontrado(wildPokemon.ID,wildPokemon.Nombre);
+        if (!DatosGuardarJugador.PokemonsEncontradosJugador.Exists(g => g.Id == pokemonEncontrado.Id)) {
+            DatosGuardarJugador.PokemonsEncontradosJugador.Add(pokemonEncontrado);
+        }
+        //Eso va en el metodo guardar
+        //GestoraPokemonEncontradosJugadorBL.insertarPokemonEncontradoAJugador(jugador.ID, wildPokemon.ID, wildPokemon.Nombre);
     }
 
     /// <summary>
@@ -570,12 +577,14 @@ public class BattleSystemWildPokemon : MonoBehaviour
         wildPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -34.18f);
         yield return new WaitForSeconds(3.5f);
 
-        bool pokemonCapturado = UtilidadesSystemaBatalla.determinarCapturarPokemon(itemAUsar.IndiceExito,wildPokemon.HPMaximos,wildPokemon.HP);
+        bool pokemonCapturado = true;//UtilidadesSystemaBatalla.determinarCapturarPokemon(itemAUsar.IndiceExito,wildPokemon.HPMaximos,wildPokemon.HP);
 
         if (pokemonCapturado)
         {
             wildPokemonHUD.imagenPokemon.color = Color.grey;
             textoDialogo.text = $"{wildPokemon.Nombre} atrapado!";
+            yield return new WaitForSeconds(2f);
+            guardarPokemonCapturado();
             yield return new WaitForSeconds(3.5f);
             abandonarBatallaButton();
         }
@@ -589,6 +598,22 @@ public class BattleSystemWildPokemon : MonoBehaviour
             StartCoroutine(atacarWildPokemon());
             StopCoroutine(lanzarPokeball());
         }
+    }
 
+    public void guardarPokemonCapturado() {
+        List<PokemonJugador> totalPokemonsJugador = DatosGuardarJugador.PokemonsAlmacenadosPC.Concat(jugador.EquipoPokemon).ToList();
+        int numeroPokemonMaximo = totalPokemonsJugador.Max(g => g.PokemonNumero);
+        PokemonJugador pokemonNuevo = new PokemonJugador(wildPokemon,jugador.ID,numeroPokemonMaximo + 1,0,0);
+        if (jugador.EquipoPokemon.Count < 6)
+        {
+            pokemonNuevo.NumeroEquipado = jugador.EquipoPokemon.Count + 1;
+            jugador.EquipoPokemon.Add(pokemonNuevo);
+            textoDialogo.text = $"{pokemonNuevo.Nombre} se unio al equipo!";
+        }
+        else
+        {
+            DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonNuevo);
+            textoDialogo.text = $"{pokemonNuevo.Nombre} se almaceno en el PC!";
+        }
     }
 }

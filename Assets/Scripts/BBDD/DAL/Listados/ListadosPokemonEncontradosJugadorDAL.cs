@@ -13,7 +13,7 @@ public class ListadosPokemonEncontradosJugadorDAL
     /// 
     /// </summary>
     /// <returns></returns>
-    public static List<PokemonEncontrado> obtenerPokemonsEncontradosDeJugador(string nombreUsuario)
+    public static List<PokemonEncontrado> obtenerPokemonsEncontradosDeJugador(int id)
     {
         List<PokemonEncontrado> pokemons = new List<PokemonEncontrado>();
         SqliteConnection conexion = null;
@@ -23,10 +23,9 @@ public class ListadosPokemonEncontradosJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT PEJ.IDPokemon,PEJ.NombrePokemon FROM PokemonsEncontradosJugadores AS PEJ " +
-                "INNER JOIN Jugadores AS J ON PEJ.IDJugador = J.ID " +
-                "WHERE J.NombreUsuario = @NombreUsuario;", conexion);
-            command.Parameters.Add("@NombreUsuario",System.Data.DbType.String).Value = nombreUsuario;
+            command = new SqliteCommand("SELECT IDPokemon, NombrePokemon FROM PokemonsEncontradosJugadores " +
+                "WHERE IDJugador = @ID;", conexion);
+            command.Parameters.Add("@ID", System.Data.DbType.UInt32).Value = id;
             reader = command.ExecuteReader();
 
             if (reader.HasRows)
@@ -49,6 +48,44 @@ public class ListadosPokemonEncontradosJugadorDAL
             }
         }
         return pokemons;
+    }
+
+    public static int obtenerNumeroPokemonsEncontradosDeJugador(int id)
+    {
+        int pokemonsEncontrados = 0;
+        SqliteConnection conexion = null;
+        SqliteCommand command;
+        SqliteDataReader reader = null;
+
+        try
+        {
+            conexion = ConfiguracionDB.establecerConexion();
+            command = new SqliteCommand("SELECT COUNT(*) FROM PokemonsEncontradosJugadores " +
+                                        "WHERE IDJugador = @ID " +
+                                        "GROUP BY IDJugador;", conexion);
+            command.Parameters.Add("@ID", System.Data.DbType.UInt32).Value = id;
+            reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                pokemonsEncontrados = reader.GetInt32(0);
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("Error en la obtencion del numero de pokemons encontrados del jugador");
+            throw;
+        }
+        finally
+        {
+            ConfiguracionDB.cerrarConexion(conexion);
+            if (reader != null)
+            {
+                reader.Close();
+            }
+        }
+        return pokemonsEncontrados;
     }
 }
 
