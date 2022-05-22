@@ -14,10 +14,12 @@ public class MenuPC : MonoBehaviour
     public List<Button> botonesPokemonsEquipo;
     public GameObject plantillaButtonPokemonPC;
     private PokemonJugador pokemonSeleccionado;
+    private GameObject interfazPokemonSeleccionado;
     private Jugador jugador;
 
     private void OnEnable()
     {
+
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Total Pokemons: {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
 
@@ -25,22 +27,24 @@ public class MenuPC : MonoBehaviour
         configurarBotonesPokemonPC();
     }
 
+    private void OnDisable()
+    {
+        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
+        UtilidadesEscena.eliminarHijosGameObject(content);
+    }
     public void verOpcionesPokemon(GameObject menuOpciones)
     {
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
-        switch (EventSystem.current.currentSelectedGameObject.transform.parent.name)
+        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador")
         {
-
-            case "ZonaPokemonsPC":
-                pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));
-                break;
-
-            case "ZonaEquipoJugador":
-                int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
-                pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1];
-                break;
-
+            int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
+            pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1]; 
         }
+        else
+        {
+            pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));
+        }
+        interfazPokemonSeleccionado = EventSystem.current.currentSelectedGameObject;
         menuOpciones.SetActive(true);
     }
 
@@ -58,18 +62,11 @@ public class MenuPC : MonoBehaviour
     {
         try
         {
-            GameObject content = gameObject.transform.Find("ZonaPokemonsPC").gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject,
-                interfazPokemonPC;
+            GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
             List<PokemonJugador> pokemonNoEquipados = DatosGuardarJugador.PokemonsAlmacenadosPC;
             foreach (PokemonJugador pokemon in pokemonNoEquipados)
             {
-                interfazPokemonPC = Instantiate(plantillaButtonPokemonPC);
-                interfazPokemonPC.name = pokemon.NumeroEquipado.ToString();
-                interfazPokemonPC.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
-
-                interfazPokemonPC.transform.SetParent(content.transform);
-                interfazPokemonPC.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
-                interfazPokemonPC.SetActive(true);
+                configurarMostrarPokemonPC(content,pokemon);
             }
         }
         catch (Mono.Data.Sqlite.SqliteException)
@@ -83,6 +80,40 @@ public class MenuPC : MonoBehaviour
 
     }
 
+    public void opcionVerDatos(GameObject menuDatos)
+    {
+        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemonSeleccionado.ID).First();
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemonSeleccionado.Nombre;
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemonSeleccionado.Nivel}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemonSeleccionado.HP}/{pokemonSeleccionado.HPMaximos}";
+
+        GameObject movimientos = menuDatos.transform.Find("Movimientos").gameObject, movimientoInterfaz;
+        MovimientoPokemon movimientoPokemon;
+        for (int i = 1; i < movimientos.transform.childCount; i++)
+        { //Empieza en 1 porque ese hijo no es un movimiento sino un titulo
+            movimientoPokemon = pokemonSeleccionado.Movimientos[i - 1];
+            movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
+            movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
+            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;
+            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Potencia: {movimientoPokemon.Danho}";
+            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Presicion: {movimientoPokemon.Precicion}";
+            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"PP {movimientoPokemon.PP}/{movimientoPokemon.PPMaximo}";
+        }
+        menuDatos.SetActive(true);
+    }
+
+    public void buttonAceptarCambiarNombre(Text input)
+    {
+        if (!Utilidades.comprobarCadenaVacia(input.text))
+        {
+            pokemonSeleccionado.Nombre = input.text;
+            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false); 
+        }
+        else
+        {
+            UtilidadesEscena.mostrarMensajeError("El nombre no puede estar vacio");
+        }
+    }
 
     public void liberarPokemon(GameObject menuOpcionesPokemon)
     {
@@ -104,7 +135,60 @@ public class MenuPC : MonoBehaviour
         }
         else
         {  //Cuando sea en la zona de los pokemons del PC
-
+            DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
+            Destroy(interfazPokemonSeleccionado);
+            menuOpcionesPokemon.SetActive(false);
         }
+        menuOpcionesPokemon.transform.Find("Menus").transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
+    }
+
+    public void equiparPokemon() {
+        if (jugador.EquipoPokemon.Count < 6)
+        {
+            //Se quita la interfaz del pokemon del menu de almacenamiento
+            DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
+            Destroy(interfazPokemonSeleccionado);
+
+            //Se añade la interfaz del pokemon al menu equipo 
+            jugador.EquipoPokemon.Add(pokemonSeleccionado);
+            UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
+            configurarBotonesPokemonsEquipo();
+
+            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
+        }
+        else {
+            UtilidadesEscena.mostrarMensajeError("El equipo ya esta completo. Deja antes un pokemon");
+        }
+    }
+
+    public void dejarPokemon() {
+        if (jugador.EquipoPokemon.Count > 1)
+        {
+            //Se quita la interfaz del pokemon del menu equipo 
+            jugador.EquipoPokemon.Remove(pokemonSeleccionado);
+            UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
+            configurarBotonesPokemonsEquipo();
+
+            //Se añade la intefaz del pokemon al menu de almacenamiento
+            DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonSeleccionado);
+            GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
+            configurarMostrarPokemonPC(content, pokemonSeleccionado);
+
+            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            UtilidadesEscena.mostrarMensajeError("Debes tener minimo un pokemon equipado");
+        }
+    }
+
+    private void configurarMostrarPokemonPC(GameObject content, PokemonJugador pokemon) {
+        GameObject interfazPokemonPC = Instantiate(plantillaButtonPokemonPC);
+        interfazPokemonPC.name = pokemon.PokemonNumero.ToString();
+        interfazPokemonPC.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
+
+        interfazPokemonPC.transform.SetParent(content.transform);
+        interfazPokemonPC.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+        interfazPokemonPC.SetActive(true);
     }
 }

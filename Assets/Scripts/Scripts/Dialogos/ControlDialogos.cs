@@ -55,7 +55,7 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObejct q
         {
             reproduciendoTexto = true;
             textoPantalla.text += caracter;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.025f);
         }
         reproduciendoTexto = false;
     }

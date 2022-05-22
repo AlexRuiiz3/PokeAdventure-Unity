@@ -27,12 +27,13 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
+
         if (!DatosGuardarJugador.ListasObtenidas) {
             DatosGuardarJugador.PokemonsEncontradosJugador = ListadosPokemonEncontradosJugadorBL.obtenerPokemonsEncontradosDeJugador(Jugador.ID);//Eliminar de aqui
             DatosGuardarJugador.PokemonsAlmacenadosPC = ListadosPokemonsJugadorBL.obtenerPokemonsNoEquipadosJugador(Jugador.ID);
             DatosGuardarJugador.ListasObtenidas = true;
         }
-        
+                DatosGuardarJugador.PokemonsAlmacenadosPC.Add(Jugador.EquipoPokemon[2]);
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)

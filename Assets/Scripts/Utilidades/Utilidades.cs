@@ -74,11 +74,6 @@ public class Utilidades
         PokemonJugador pokemon;
         List<Component> componentesBoton = new List<Component>();
 
-        foreach (Button button in botones) //Primero se desactivan todos
-        {
-            button.gameObject.SetActive(false);
-        }
-
         for (int i = 0; i < pokemonsJugador.Count; i++) //Por cada pokemon que tenga el jugador se activa y prepara un boton
         {
             //for (int i = 0; i < scriptPlayer.Jugador.EquipoPokemon.Count; i++)

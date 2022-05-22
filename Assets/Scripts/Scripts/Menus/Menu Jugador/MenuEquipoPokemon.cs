@@ -20,8 +20,6 @@ public class MenuEquipoPokemon : MonoBehaviour
         //Eliminar
         jugador.EquipoPokemon[0].HPMaximos = 100;
         jugador.EquipoPokemon[0].HP = 45;
-        jugador.EquipoPokemon[1].HPMaximos = 100;
-        jugador.EquipoPokemon[1].HP = 1;
 
         contentPokemons = gameObject.transform.Find("ContentPokemons").gameObject;
         UtilidadesEscena.eliminarHijosGameObject(contentPokemons);
@@ -71,7 +69,7 @@ public class MenuEquipoPokemon : MonoBehaviour
             movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Potencia: {movimientoPokemon.Danho}";
-            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Precicion: {movimientoPokemon.Precicion}";
+            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Preicion: {movimientoPokemon.Precicion}";
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"PP {movimientoPokemon.PP}/{movimientoPokemon.PPMaximo}";
         }
         menuDatos.SetActive(true);

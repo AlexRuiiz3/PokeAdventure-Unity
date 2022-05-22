@@ -66,6 +66,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
     /// </summary>
     IEnumerator prepararBatalla()//Se hace en una corrutina para poder poner pausa y que los mensajes que se muestran no se cambien tan rapido
     {
+        activarDesactivarBotonesMenuAcciones(false);
         textoDialogo.text = $"Un {wildPokemon.Nombre} salvaje aparecio!";
         pokemonJugadorLuchando = (from pokemon in jugador.EquipoPokemon
                                   where pokemon.HP > 0
@@ -85,7 +86,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
         }
         else
         {
-            activarDesactivarBotonesMenuAcciones(false);
             battleState = BattleState.ENEMYTURN;
             StartCoroutine(atacarWildPokemon());
         }
@@ -331,6 +331,9 @@ public class BattleSystemWildPokemon : MonoBehaviour
             //El pokemon del jugador recibe el daño y se actualiza su interfaz       
             pokemonJugadorVivo = pokemonJugadorLuchando.recibirDanho(danhoPokemonCausado);
             trainerHUD.setBarraSalud(pokemonJugadorLuchando.HP, pokemonJugadorLuchando.HPMaximos);
+
+            int numeroBotonPokemon = jugador.EquipoPokemon.IndexOf(pokemonJugadorLuchando);
+            botonesPokemonsEquipo[numeroBotonPokemon].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemonJugadorLuchando.HP} / {pokemonJugadorLuchando.HPMaximos}";
             if (!pokemonJugadorVivo) //Si el pokemon despues de recibir daño no esta vivo
             {
                 yield return new WaitForSeconds(2f);
@@ -345,6 +348,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
                 }
                 else
                 {
+                    
                     yield return new WaitForSeconds(1f);
                     textoDialogo.text = "Elige un pokemon para luchar";
                 }
@@ -382,10 +386,10 @@ public class BattleSystemWildPokemon : MonoBehaviour
     //Metodo que activa el menu del equipo del jugador y bloquea el boton de salir del menu
     private void activarDesactivarMenuEquipo(bool activarBoton, bool activarMenu)
     {
-        var a = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "ButtonAtrasMenuEquipo");
+        var botonAtras = menuEquipo.transform.Find("ButtonAtrasMenuEquipo");
+        botonAtras.GetComponent<Button>().interactable = activarBoton;
         menuEquipo.SetActive(activarMenu);
-        var c = a.GetComponent<Button>();
-        c.interactable = activarBoton;
+        //c.interactable = activarBoton;
     }
     //Metodo que se encarga generar y configurar un pokemon rival de forma aleatoria
     private async Task prepararPokemonRival()
@@ -417,7 +421,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
     public void configurarMenuMochila()
     {
         GameObject plantillaItem = menuMochila.transform.GetChild(1).gameObject,
-        contentScroView = menuMochila.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        contentScroView = menuMochila.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         GameObject interfazItem;
 
         foreach (ItemConCantidad item in jugador.Mochila)
@@ -480,7 +484,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
     {
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
         {
-            if (activacion && jugador.EquipoPokemon[i].HP < jugador.EquipoPokemon[i].HPMaximos)
+            if (activacion && jugador.EquipoPokemon[i].HP > 0  && jugador.EquipoPokemon[i].HP < jugador.EquipoPokemon[i].HPMaximos)
             {
                 botonesPokemonsEquipo[i].interactable = true;
             }
@@ -509,6 +513,8 @@ public class BattleSystemWildPokemon : MonoBehaviour
     /// </summary>
     public void usarItem()
     {
+        menuMochila.SetActive(false); 
+        activarDesactivarBotonesMenuAcciones(false);
         switch (itemAUsar.Tipo) //Necesario ya que este metodo se llamara desde el codigo y desde el inspector de unity
         {
             case "Pocion":
@@ -549,8 +555,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
         textoDialogo.text = $"Has restaurado {itemAUsar.CuracionPS}PS a {pokemonJugadorLuchando.Nombre}";
         //Se actualiza la vida de la interfaz del pokemon de ver equipo
         botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {jugador.EquipoPokemon[numeroBotonPulsado].HP} / {jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
-        activarDesactivarBotonesMenuAcciones(false);
-        menuEquipo.SetActive(false);
+        configurarMenuEquipo(false);
         yield return new WaitForSeconds(2f);
         battleState = BattleState.ENEMYTURN;
         StartCoroutine(atacarWildPokemon());
@@ -568,8 +573,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
     ///                  2: Si el pokmeon salvaje no es capturado, se pasa al turno del pokemon salvaje.
     /// </summary>
     IEnumerator lanzarPokeball() {
-        menuMochila.SetActive(false);
-        activarDesactivarBotonesMenuAcciones(false);
 
         textoDialogo.text = $"Has lanzado una {itemAUsar.Nombre}";
         wildPokemonHUD.imagenPokemon.sprite = interfazItemAUsar.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
