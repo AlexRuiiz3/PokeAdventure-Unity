@@ -11,21 +11,30 @@ public class APIListadosPokemonDAL
 {
 
     /// <summary>
-    /// 
+    /// Cabecera: public static async Task<PokeAPI.Pokemon> obtenerPokemonDeApi(int id)
+    /// Comentario: Este metodo se encarga de obtener de una api(PokeAPi) un pokemon especifico 
+    /// Entradas: int id
+    /// Salidas: PokeAPI.Pokemon  
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un objeto de tipo PokeAPI.Pokemon. Si el id no coincide con el de ningun pokemon, se devolvera null.
     /// </summary>
     /// <param name="id"></param>
-    /// <returns></returns>
+    /// <returns>PokeAPI.Pokemon</returns>
     public static async Task<PokeAPI.Pokemon> obtenerPokemonDeApi(int id)
     {
-        PokeAPI.Pokemon pokemonSolicitado = await DataFetcher.GetApiObject<PokeAPI.Pokemon>(id);
-        return pokemonSolicitado;
+        return await DataFetcher.GetApiObject<PokeAPI.Pokemon>(id);
     }
+    
     /// <summary>
-    /// 
+    /// Cabecera: public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon)
+    /// Comentario: Este metodo se encarga de obtener los tipos(Solo el nombre) de un pokemon.
+    /// Entradas: PokemonTypeMap[] tiposPokemon
+    /// Salidas: List<string>
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera una lista de string que tendra como valores los tipos de un pokemon. Si se produce algun error, se devolvera la lista vacia.
     /// </summary>
     /// <param name="tiposPokemon"></param>
-    /// <param name="idioma"></param>
-    /// <returns></returns>
+    /// <returns>List<string></returns>
     public static async Task<List<string>> obtenerNombreTiposPokemon(PokemonTypeMap[] tiposPokemon)
     {
         List<string> nombreTiposPokemon = new List<string>();
@@ -41,11 +50,15 @@ public class APIListadosPokemonDAL
         return nombreTiposPokemon;
     }
     /// <summary>
-    /// 
+    /// Cabecera: public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon)
+    /// Comentario: Este metodo se encarga de obtener los tipos debiles de un pokemon.
+    /// Entradas: PokemonTypeMap[] tiposPokemon
+    /// Salidas: List<string>
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera una lista de string que tendra como valores los tipos de un pokemon. Si se produce algun error, se devolvera la lista vacia.
     /// </summary>
     /// <param name="tiposPokemon"></param>
-    /// <param name="idioma"></param>
-    /// <returns></returns>
+    /// <returns>List<string></returns>
     public static async Task<List<string>> obtenerNombreTiposDebilesPokemon(PokemonTypeMap[] tiposPokemon)
     {
         List<string> listadosTiposDobleDanho = new List<string>();
@@ -80,7 +93,7 @@ public class APIListadosPokemonDAL
             aleatorio = random.Next(pokemonMoves.Length - 1);
             if (!comprobarMovimientoYaObtenido(listadoMovimientos, pokemonMoves[aleatorio].Move.ID))//Si el movimiento obtenido de forma aleatoria no se ha seleccionado antes
             {
-                movimiento = await DataFetcher.GetApiObject<Move>(pokemonMoves[aleatorio].Move.ID); //Hay que obtener de la api el objeto de tip Move, ya que tiene toda la inforacion de los movimientos, y asi se puede comprobar si es un movimiento que causa daño, ya que seran los unicos que se obtendran
+                movimiento = await DataFetcher.GetApiObject<Move>(pokemonMoves[aleatorio].Move.ID); //Hay que obtener de la api el objeto de tip Move, ya que tiene toda la inforacion de los movimientos, y asi se puede comprobar si es un movimiento que causa daÃ±o, ya que seran los unicos que se obtendran
                 if (movimiento.Power != null && movimiento.Power > 0 && movimiento.Accuracy > 0)
                 {
                     listadoMovimientos.Add(movimiento);
