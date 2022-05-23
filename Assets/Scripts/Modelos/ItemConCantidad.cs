@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 public class ItemConCantidad : Item
 {
+    //Constructor con parametros
     public ItemConCantidad(Item item, int cantidad) : base(item.ID, item.Nombre, item.Descripcion, item.IndiceExito, item.CuracionPS, item.Precio,item.Tipo) {
         Cantidad = cantidad;
     }
+    
+    //Metodos fundalementales
+        //Cantidad
+        public int Cantidad { get; set; }
 
-    public int Cantidad { get; set; }
-
-
+    //Metodos heredados
     public override bool Equals(object obj)
     {
         bool iguales = false;
@@ -30,6 +33,4 @@ public class ItemConCantidad : Item
         }
         return iguales;
     }
-
 }
-
