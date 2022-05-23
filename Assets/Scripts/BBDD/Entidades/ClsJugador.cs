@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ClsJugador
 {
-    #region Constructor sin parametros
+    #region Constructores
+    //Constructor sin parametros
     public ClsJugador()
     {
         ID = 0;
@@ -14,9 +15,8 @@ public class ClsJugador
         Dinero = 0;
         Foto = new byte[0];
     }
-    #endregion 
         
-    #region Constructor con parametros
+    //Constructor con parametros
     public ClsJugador(int id, string nombreUsuario, string contrasenha, string correoElectronico, int dinero, byte[] foto)
     {
         ID = id;
