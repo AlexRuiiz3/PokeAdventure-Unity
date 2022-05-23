@@ -8,11 +8,17 @@ using UnityEngine;
 
 public class ListadosPokemonEncontradosJugadorDAL
 {
-
     /// <summary>
-    /// 
+    /// Cabecera: public static List<PokemonEncontrado> obtenerPokemonsEncontradosDeJugador(int id)
+    /// Comentario: Este metodo se encarga de obtener los pokemons que un jugador en especifico sea encontrado.
+    /// Entradas: in id
+    /// Salidas: List<PokemonEncontrado> pokemons 
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera una lista de objetos PokemonEncontrado. Si se produce una excepcion, 
+    ///                  el id no corresponde con el de ningun jugador o la consulta no tiene resultado, la lista devuelta estara vacia.
     /// </summary>
-    /// <returns></returns>
+    /// <param name="id"></param>
+    /// <returns>List<PokemonEncontrado></returns>
     public static List<PokemonEncontrado> obtenerPokemonsEncontradosDeJugador(int id)
     {
         List<PokemonEncontrado> pokemons = new List<PokemonEncontrado>();
@@ -37,7 +43,6 @@ public class ListadosPokemonEncontradosJugadorDAL
         }
         catch (Exception)
         {
-            Debug.Log("Error en la obtencion de los pokemons encontrados del jugador");
         }
         finally
         {
@@ -50,6 +55,17 @@ public class ListadosPokemonEncontradosJugadorDAL
         return pokemons;
     }
 
+    /// <summary>
+    /// Cabecera: public static int obtenerNumeroPokemonsEncontradosDeJugador(int id)
+    /// Comentario: Este metodo se encarga de obtener el numero de pokemons que un jugador en especifico sea encontrado.
+    /// Entradas: int id
+    /// Salidas: int pokemonsEncontrados
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un entero que representa el numero de pokemons que un jugador sea encontrado. Si se produce una excepcion, 
+    ///                  el id no corresponde con el de ningun jugador o la consulta no tiene resultado, se devolvera 0.
+    /// </summary>
+    /// <param name="nombreUsuario"></param>
+    /// <returns></returns>
     public static int obtenerNumeroPokemonsEncontradosDeJugador(int id)
     {
         int pokemonsEncontrados = 0;
@@ -74,8 +90,6 @@ public class ListadosPokemonEncontradosJugadorDAL
         }
         catch (Exception)
         {
-            Debug.Log("Error en la obtencion del numero de pokemons encontrados del jugador");
-            throw;
         }
         finally
         {
@@ -88,4 +102,3 @@ public class ListadosPokemonEncontradosJugadorDAL
         return pokemonsEncontrados;
     }
 }
-
