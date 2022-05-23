@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+* Clase que sirve para englobar la posicion y las orientaciones que tendra un Entrenador NPC
+*/
 public class PosicionTrainerNPC
 {
     public PosicionTrainerNPC(Vector2 posicion, List<string> orientaciones) {
