@@ -9,9 +9,21 @@ using UnityEngine;
 public class ListadosMovimientoDAL
 {
 
+    /// <summary>
+    /// Cabecera: public static List<MovimientoPokemon> obtenerMovimientosPokemon(int idJugador, int idPokemon, int numeroPokemon)
+    /// Comentario: Este metodo se encarga de obtener de la base de datos los movimientos que tiene asociados un pokemon. 
+    /// Entradas: int idJugador, int idPokemon, int numeroPokemon
+    /// Salidas: List<MovimientoPokemon> movimientos
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera una lista de objetos de tipo MovmientosPokemon, si se produce alguna excepcion o no se encuentran resultados en la consulta, 
+    ///                  la lista devuelta estara vacia.
+    /// </summary>
+    /// <param name="idJugador"></param>
+    /// <param name="idPokemon"></param>
+    /// <param name="numeroPokemon"></param>
+    /// <returns>List<MovimientoPokemon></returns>
     public static List<MovimientoPokemon> obtenerMovimientosPokemon(int idJugador, int idPokemon, int numeroPokemon) {
         List<MovimientoPokemon> movimientos = new List<MovimientoPokemon>();
-
         SqliteConnection conexion = null;
         SqliteCommand command;
         SqliteDataReader reader = null;
@@ -39,8 +51,6 @@ public class ListadosMovimientoDAL
         }
         catch (Exception)
         {
-            throw;
-            Debug.Log("Error en la obtencion de los movimientos de los pokemons");
         }
         finally
         {
@@ -50,11 +60,6 @@ public class ListadosMovimientoDAL
                 reader.Close();
             }
         }
-
         return movimientos; 
-    
     }
-
 }
-
-
