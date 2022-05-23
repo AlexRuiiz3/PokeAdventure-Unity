@@ -6,6 +6,16 @@ using UnityEngine;
 
 public class GestoraJugadorDAL
 {
+    /// <summary>
+    /// Cabecera: public static void insertarJugador(ClsJugador jugador)
+    /// Comentario: Este metodo se encarga de guardar en la base datos un nuevo jugador.
+    /// Entradas: ClsJugador jugador
+    /// Salidas: Ninguna
+    /// Precondiciones: jugador no debera ser distinto de null
+    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se einsertara en la base de datos.
+    /// </summary>
+    /// <param name="jugador"></param>
+    /// <returns></returns>
     public static void insertarJugador(ClsJugador jugador)
     {
         SqliteConnection conexion = null;
@@ -22,7 +32,6 @@ public class GestoraJugadorDAL
         }
         catch (Exception)
         {
-            throw;
         }
         finally
         {
