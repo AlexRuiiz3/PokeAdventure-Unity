@@ -123,6 +123,7 @@ public class ListadosItemDAL
     ///                  Si se produce alguna excepcion o el id recibido no coincide con el de ningun jugador o el jugador no tiene ningun item asignado 
     ///                  se devolvera una lista de Item vacia.
     /// </summary>
+    /// <param name="id"></param>
     /// <returns>List<ItemConCantidad></returns>
     public static List<ItemConCantidad> obtenerItemsJugador(int id)
     {
@@ -181,6 +182,7 @@ public class ListadosItemDAL
     /// Postcondiciones: Se devolvera una lista de objetos de tipo ItemConCantidad que tiene un jugador especifico.
     ///                  Si se produce alguna excepcion o no se encuentra ningun item con el id recibido, se devolvera un item con los valores por defecto.
     /// </summary>
+    /// <param name="id"></param>
     /// <returns>Item</returns>
     public static Item obtenerItem(int id)
     {
