@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClsJugador
 {
+    #region Constructor sin parametros
     public ClsJugador()
     {
         ID = 0;
@@ -13,7 +14,9 @@ public class ClsJugador
         Dinero = 0;
         Foto = new byte[0];
     }
-
+    #endregion 
+        
+    #region Constructor con parametros
     public ClsJugador(int id, string nombreUsuario, string contrasenha, string correoElectronico, int dinero, byte[] foto)
     {
         ID = id;
@@ -23,12 +26,20 @@ public class ClsJugador
         Dinero = dinero;
         Foto = foto;
     }
-
-    public int ID { get; }
-    public string NombreUsuario { get; }
-    public string Contrasenha { get; }
-    public string CorreoElectronico { get; set; }
-    public int Dinero { get; set; }
-    public byte[] Foto { get; set; }
-
+    #endregion 
+        
+    #region Metodos fundamentales
+        //id
+        public int ID { get; }
+        //nombreUsuario
+        public string NombreUsuario { get; }
+        //contrasenha
+        public string Contrasenha { get; }
+        //correoElectronico
+        public string CorreoElectronico { get; set; }
+        //dinero
+        public int Dinero { get; set; }
+        //foto
+        public byte[] Foto { get; set; }
+    #endregion
 }
