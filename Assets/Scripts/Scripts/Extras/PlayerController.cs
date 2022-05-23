@@ -13,11 +13,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigidBody; //Atributo que hara referencia al componente RigidBody2D de Unity que tiene el Jugador
     private Animator animator;
-    public LayerMask zonaHierba;
     private float movimientoHorizontal;
     private float movimientoVertical;
 
-    public Jugador Jugador { get; set; }
+    public LayerMask zonaHierba; //Atributo que servira para poder detectar cuando un jugador este por una zona de hierba
+    public Jugador Jugador { get;}
 
     // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
     void Start()
@@ -33,23 +33,22 @@ public class PlayerController : MonoBehaviour
             DatosGuardarJugador.PokemonsAlmacenadosPC = ListadosPokemonsJugadorBL.obtenerPokemonsNoEquipadosJugador(Jugador.ID);
             DatosGuardarJugador.ListasObtenidas = true;
         }
-                DatosGuardarJugador.PokemonsAlmacenadosPC.Add(Jugador.EquipoPokemon[2]);
+        DatosGuardarJugador.PokemonsAlmacenadosPC.Add(Jugador.EquipoPokemon[2]);
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
     void Update()
     {
-        //PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
-        if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())//Para evitar que cuandoel usuario este en un combate o interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
-        {
+        //if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())//Para evitar que cuando el usuario este en interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
+        //{
             //Se obtiene el input del jugador(Teclado)
-            movimientoHorizontal = Input.GetAxisRaw("Horizontal") * 1.5f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
-            movimientoVertical = Input.GetAxisRaw("Vertical") * 1.5f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
+            movimientoHorizontal = Input.GetAxisRaw("Horizontal") * 1.9f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
+            movimientoVertical = Input.GetAxisRaw("Vertical") * 1.9f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift)) //Para que el jugador vaya mas rapido(Correr)
             {
-                movimientoHorizontal *= 2.2f;
-                movimientoVertical *= 2.2f;
+                movimientoHorizontal *= 2.5f;
+                movimientoVertical *= 2.5f;
 
             }
 
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("isMoving", false);
             }
-        }
+        //}
     }
 
     /// <summary>
@@ -73,41 +72,38 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     { //Es un metodo que tiene que actualizarce de manera mucho mas habitual que el Update(Este depende de a cuantos frame por segundos vayas), por eso aqui es donde se mete lo de la fisica
-
         //Vector representa un vector con dos posiciones X e Y en el mundo 
-        rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
-
+        rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical)
     }
 
     //Getters y setters
-    //MovimientoHorizontal
-    public float getMovimientoHorizontal() => movimientoHorizontal;
-    public void setMovimientoHorizontal(float movimientoHorizontal) { this.movimientoHorizontal = movimientoHorizontal; }
+        //MovimientoHorizontal
+        public float getMovimientoHorizontal() => movimientoHorizontal;
+        public void setMovimientoHorizontal(float movimientoHorizontal) { this.movimientoHorizontal = movimientoHorizontal; }
 
-    //MovimientoVertical
-    public float getMovimientoVertical() => movimientoVertical;
-    public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
+        //MovimientoVertical
+        public float getMovimientoVertical() => movimientoVertical;
+        public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
 
-    //Metodos añadidos
+    //Metodos aÃ±adidos
     private void comprobarZonaHierba()
     {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
         {
             if (UnityEngine.Random.Range(1, 851) <= 2)
             {   
-                GameObject jugador = GameObject.FindGameObjectWithTag("Player");
                 UtilidadesEscena.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
-                DontDestroyOnLoad(jugador);//this
+                DontDestroyOnLoad(gameObject);
                 SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
                 //yield return new WaitForSeconds(1);
-                jugador.SetActive(false);
-
+                gameObject.SetActive(false);
                 //StartCoroutine(cargarEscenaCombatePokemonSalvaje());
             }
         }
     }
 
-    private void obtenerDatosJugador(string nombreUsuario, string contrasenha)
+
+    private void obtenerDatosJugador(string nombreUsuario, string contrasenha)//No va aqui va cuando se inicia sesion y despues de resgistrase
     {
         try
         {
@@ -116,17 +112,17 @@ public class PlayerController : MonoBehaviour
             List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
 
             Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);
-            Jugador.Dinero = 2000;
+            Jugador.Dinero = 2000;// De prueba, eliminar de aqui 
         }
         catch (Exception)
         {
-            throw;
-            //Debug.Log("Error recuperando los datos del jugador");
         }
     }
+    //Metodo 
     public void iniciarCoroutineAsignarObjetoEncontrado() {
         StartCoroutine(asignarObjetoEncontrado());
     }
+    
     IEnumerator asignarObjetoEncontrado() //Deberia de ir en ultilidadesObjetoInteractable, pero al ser una corrutina debe de ir en un script que este asociado a un gameObject del juego
     {
         GameObject canvasObjetoRecogigo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasObjetoRecogido");
@@ -147,10 +143,8 @@ public class PlayerController : MonoBehaviour
         {
             Jugador.Mochila.Add(itemRecogido);
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         canvasObjetoRecogigo.gameObject.SetActive(false);
-
         StopCoroutine(asignarObjetoEncontrado());
-
     }
 }
