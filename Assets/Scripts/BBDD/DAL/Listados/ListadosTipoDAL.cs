@@ -8,11 +8,20 @@ using UnityEngine;
 
 public class ListadosTipoDAL
 {
-
+    /// <summary>
+    /// Cabecera: public static List<string> obtenerTiposPokemon(int idPokemon)
+    /// Comentario: Este metodo se encarga de obtener los tipos que tiene un pokemon especifico de la base de datos.
+    /// Entradas: int idPokemon
+    /// Salidas: List<string> tipos
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un lista de string que contendra los tipos de un pokemon en especifico. Si se produce una excepcion o no se encuentra un pokemon 
+    //                   con el id recibido o la consulta no tiene resultados, la lista devuelta estara vacia.
+    /// </summary>
+    /// <param name="idPokemon"></param>
+    /// <returns>List<string></returns>
     public static List<string> obtenerTiposPokemon(int idPokemon)
     {
         List<string> tipos = new List<string>();
-
         SqliteConnection conexion = null;
         SqliteCommand command;
         SqliteDataReader reader = null;
@@ -36,7 +45,6 @@ public class ListadosTipoDAL
         }
         catch (Exception)
         {
-            Debug.Log("Error en la obtencion de los tipos de un pokemon");
         }
         finally
         {
@@ -49,10 +57,20 @@ public class ListadosTipoDAL
         return tipos;
     }
 
+    /// <summary>
+    /// Cabecera: public static List<string> obtenerTiposDebilesTipo(string tipo)
+    /// Comentario: Este metodo se encarga de obtener los tipos frente a los que es debil un pokemon especifico de la base de datos.
+    /// Entradas: string tipo
+    /// Salidas: List<string> tiposDebiles
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un lista de string que contendra los tipos debiles de un pokemon en especifico. Si se produce una excepcion o no se encuentra un pokemon 
+    //                   con el id recibido o la consulta no tiene resultados, la lista devuelta estara vacia.
+    /// </summary>
+    /// <param name="tipo"></param>
+    /// <returns>List<string></returns>
     public static List<string> obtenerTiposDebilesTipo(string tipo)
     {
         List<string> tiposDebiles = new List<string>();
-
         SqliteConnection conexion = null;
         SqliteCommand command;
         SqliteDataReader reader = null;
@@ -75,7 +93,6 @@ public class ListadosTipoDAL
         }
         catch (Exception)
         {
-            Debug.Log("Error en la obtencion de los tipos debiles de un tipo");
         }
         finally
         {
@@ -88,5 +105,3 @@ public class ListadosTipoDAL
         return tiposDebiles;
     }
 }
-
-
