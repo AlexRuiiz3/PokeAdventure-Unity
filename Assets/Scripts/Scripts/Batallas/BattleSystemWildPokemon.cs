@@ -14,19 +14,19 @@ public enum BattleState { START, WIN, LOST, PLAYERTURN, ENEMYTURN, POKEMONJUGADO
 public class BattleSystemWildPokemon : MonoBehaviour
 {
     public GameObject imagenBackGround;
-    private BattleState battleState;
     public TextMeshProUGUI textoDialogo;
-    private Jugador jugador;
-    private Pokemon wildPokemon;
     public TrainerHUD trainerHUD;
     public WildPokemonHUD wildPokemonHUD;
-    private PokemonJugador pokemonJugadorLuchando;
     public List<Button> botonesPokemonsEquipo;
     public List<Button> botonesMovimientos;
     public GameObject menuEquipo;
     public GameObject menuAtaque;
     public GameObject menuMochila;
 
+    private BattleState battleState;
+    private Jugador jugador;
+    private Pokemon wildPokemon;
+    private PokemonJugador pokemonJugadorLuchando;
     private ItemConCantidad itemAUsar;
     private GameObject interfazItemAUsar;
 
@@ -347,8 +347,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
                     abandonarBatallaButton();//Aqui se abandonara la corrutina, la escena
                 }
                 else
-                {
-                    
+                {                   
                     yield return new WaitForSeconds(1f);
                     textoDialogo.text = "Elige un pokemon para luchar";
                 }
@@ -369,7 +368,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
     private bool determinarDerrotaJugador()
     {
         bool derrota = true;
-
         var pokemonsJugadorVivos = (from pokemon in jugador.EquipoPokemon
                                     where pokemon.HP > 0
                                     select pokemon).FirstOrDefault(); //Devolvera null si no hay ninguno.
@@ -466,7 +464,6 @@ public class BattleSystemWildPokemon : MonoBehaviour
         {
             usarItem();
         }
-
     }
 
     /// <summary>
@@ -563,7 +560,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
     }
 
     /// <summary>
-    /// Cabecera: IEnumerator aplicarPocionPokemon()
+    /// Cabecera: IEnumerator lanzarPokeball()
     /// Comentario: Esta corrutina se encarga de realizar la accion de lanzar una pokeball contra un pokemon salvaje.
     /// Entradas: Ninguna
     /// Salidas: Niguna
@@ -602,11 +599,20 @@ public class BattleSystemWildPokemon : MonoBehaviour
             StopCoroutine(lanzarPokeball());
         }
     }
-
-    public void guardarPokemonCapturado() {
+    /// <summary>
+    /// Cabecera: private void guardarPokemonCapturado()
+    /// Comentario: Esta metodo se encarga de guardar en registrar el pokemon que ha capturado un jugador
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se registrara el pokemon capturado a el jugador. Se puede guardar en dos lugares:
+    ///                  1:Si el jugador no tiene en su equipo 6 pokemons, el pokemon capturado se guarda en su equipo
+    ///                  2:Si el jugador tiene 6 pokemons en su equipo, el pokemom capturado se guarda en el almacenamiento del PC 
+    /// </summary>
+    private void guardarPokemonCapturado() {
         List<PokemonJugador> totalPokemonsJugador = DatosGuardarJugador.PokemonsAlmacenadosPC.Concat(jugador.EquipoPokemon).ToList();
-        int numeroPokemonMaximo = totalPokemonsJugador.Max(g => g.PokemonNumero);
-        PokemonJugador pokemonNuevo = new PokemonJugador(wildPokemon,jugador.ID,numeroPokemonMaximo + 1,0,0);
+        int pokemonNumeroMaximo = totalPokemonsJugador.Max(g => g.PokemonNumero);
+        PokemonJugador pokemonNuevo = new PokemonJugador(wildPokemon,jugador.ID,pokemonNumeroMaximo + 1,0,0);
         if (jugador.EquipoPokemon.Count < 6)
         {
             pokemonNuevo.NumeroEquipado = jugador.EquipoPokemon.Count + 1;
