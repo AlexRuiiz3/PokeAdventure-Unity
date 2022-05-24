@@ -33,7 +33,6 @@ public class ItemConCantidad : Item
     #endregion
     
     #region Metodos Fundalementales(Propiedades)
-    //Cantidad
     public int Cantidad { get; set; }
     #endregion
     
