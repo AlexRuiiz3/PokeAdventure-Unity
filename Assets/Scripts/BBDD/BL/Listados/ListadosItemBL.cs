@@ -8,7 +8,7 @@ public class ListadosItemBL
 {
     /// <summary>
     /// Cabecera: public static Item obtenerItemAleatorio()
-    /// Comentario: Este metodo se encarga de obtener de la base de datos un objeto de tipo Item de forma aleatoria
+    /// Comentario: Este metodo se encarga de llamar al metodo obtenerItemAleatorio de la clase ListadosItemDAL de la capa DAL. 
     /// Entradas: Ninguna
     /// Salidas: Item item
     /// Precondiciones: Ninguna
@@ -23,7 +23,7 @@ public class ListadosItemBL
     
     /// <summary>
     /// Cabecera: public static List<Item> obtenerItems()
-    /// Comentario: Este metodo se encarga de obtener todos los items que existan en la base de datos.
+    /// Comentario: Este metodo se encarga de llamar al metodo obtenerItems de la clase ListadosItemDAL de la capa DAL.
     /// Entradas: Ninguna
     /// Salidas: List<Item> item
     /// Precondiciones: Ninguna
@@ -38,7 +38,7 @@ public class ListadosItemBL
     
     /// <summary>
     /// Cabecera: public static List<ItemConCantidad> obtenerItemsJugador(int id)
-    /// Comentario: Este metodo se encarga de obtener todos los items que tiene asociados un jugador.
+    /// Comentario: Este metodo se encarga de llamar al metodo obtenerItemsJugador de la clase ListadosItemDAL de la capa DAL.
     /// Entradas: int id
     /// Salidas: List<ItemConCantidad> items
     /// Precondiciones: Ninguna
@@ -55,7 +55,7 @@ public class ListadosItemBL
     
     /// <summary>
     /// Cabecera: public static Item obtenerItem(int id)
-    /// Comentario: Este metodo se encarga de obtener un item especifico de la base de datos.
+    /// Comentario: Este metodo se encarga de llamar al metodo obtenerItem de la clase ListadosItemDAL de la capa DAL. 
     /// Entradas: int id
     /// Salidas: Item item
     /// Precondiciones: Ninguna
