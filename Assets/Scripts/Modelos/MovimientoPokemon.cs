@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 /*
  * Clase: MovimientoPokemon
  * 
@@ -26,11 +22,15 @@ using UnityEngine;
  *              pp: public int PP{get}
  *              tipo: public string Tipo{get}
  * 
- * Metodos añadidos: Ninguno.
+ * Metodos aÃ±adidos: Ninguno.
  * 
  * Metodos heredados: Ninguno.
  * 
  */
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class MovimientoPokemon
 {
 
