@@ -1,3 +1,43 @@
+/*
+ * Clase: Pokemon
+ * 
+ * Comentario: Esta clase representa a un pokemon de con los atributos basicos de un pokemon.
+ * 
+ * Atributos:
+ *          Basicos:
+ *              id: Entero, Consultable, Modificable.
+ *              nombre: Cadena, Consultable, Modificable.
+ *              hp: Entero, Consultable, Modificable.
+ *              hpMaximos: Entero, Consultable.
+ *              nivel: Entero, Consultable, Modificable.
+ *              ataque: Entero, Consultable, Modificable.
+ *              defensa: Entero, Consultable, Modificable.
+ *              velocidad: Entero, Consultable, Modificable.
+ *              movimientos: Listado, Consultable, Modificable.
+ *              tipos: Listado, Consultable, Modificable.
+ *              debilidades: Listado, Consultable, Modificable.
+ *          Derivados: Ninguno.
+ *          Compartidos: Ninguno.
+ *          
+ * Metodos fundamentales(Propiedades)
+ *              ID: public int ID { get; }
+ *              Nombre: public string Nombre { get; set; }
+ *              Hp: public int HP {get; set;}
+ *              HpMaximos: public int HPMaximos {get; set;}
+ *              Nivel: public int Nivel {get; set;}
+ *              Ataque: public int Atque {get; set;}
+ *              Defensa: public int Defensa {get; set;}
+ *              Velocidad: public int Velocidad {get; set;}
+ *              Movimientos: public int Movimientos {get; set;}
+ *              Tipos: public int Tipos {get; set;}
+ *              Debilidades: public int Debilidades {get; set;}
+ * Metodos añadidos: 
+ *                  public async Task obtenerDatosAsincronos(PokeAPI.Pokemon pokeAPI)
+ *                  public bool recibirDanho(int danho).
+ * 
+ * Metodos heredados: Ninguno.
+ * 
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +66,7 @@ public class Pokemon
         Movimientos = new List<MovimientoPokemon>();
         Tipos = new List<string>();
         Debilidades = new List<string>();
-        HPMaximos = 100;
+        HPMaximos = 0;
     }
     //Constructor con parametros
     public Pokemon(int id, string nombre, int hp, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades)
@@ -43,7 +83,7 @@ public class Pokemon
         Debilidades = debilidades;
         HPMaximos = hp;
     }
-
+    //Constructor a partir de un PokeAPI.Pokemon 
     public Pokemon(PokeAPI.Pokemon pokemonApi)
     {
         ID = pokemonApi.ID;
@@ -66,11 +106,8 @@ public class Pokemon
     #endregion
 
     #region Metodos Fundamentales(Propiedades)
-    //id
     public int ID { get; }
-    //nombre
     public string Nombre { get; set; }
-    //ps
     public int HP
     {
         get { return hp; }
@@ -93,10 +130,8 @@ public class Pokemon
             }
         }
     }
-    //HPMaximos
+    //Quitar el set, al terminar el proyecto
     public int HPMaximos { get; set; } //Servira para tener guardado los ps maximo de un pokemon ya que cuando se cure a un pokemon hay que saber hasta donde curarlo.
-
-    //Nivel
     public int Nivel
     {
         get { return nivel; }
@@ -108,37 +143,41 @@ public class Pokemon
             }
         }
     }
-    //ataque
     public int Ataque { get; set; }
-    //defensa
     public int Defensa { get; set; }
-    //velocidad
     public int Velocidad { get; set; }
-    //movimientos
     public List<MovimientoPokemon> Movimientos { get; set; }
-    //tipos
     public List<string> Tipos { get; set; }
-    //debilidades
     public List<string> Debilidades { get; set; }
     #endregion
 
-    //Este metodo es asi ya que en el constructor no puede a ver metodos async 
+    #region Metodos Añadidos 
+    //Este metodo es necesario ya que en el constructor no puede a ver metodos async 
     public async Task obtenerDatosAsincronos(PokeAPI.Pokemon pokeAPI)
     {
         Tipos = await APIListadosPokemonBL.obtenerNombreTiposPokemon(pokeAPI.Types);
         Debilidades = await APIListadosPokemonBL.obtenerNombreTiposDebilesPokemon(pokeAPI.Types);
         Movimientos = await APIListadosPokemonBL.obtenerMovimientosAleatoriosPokemon(pokeAPI.Moves);
     }
-
+    /// <sumary>
+    /// Cabecera: public bool recibirDanho(int danho) 
+    /// Comentario: Este metodo se encarga de restar los hp de un pokemon en funcion del daño recibido.
+    /// Entradas: int danho 
+    /// Salidas: bool vivo
+    /// Precondiciones: danho debera ser mayor que 0 sino al pokemon en vez de restarle vida, le incrementara.
+    /// PostCondiciones: Se reducira el hp de un pokemon y se devolvera un bool cuyo valor puede ser:
+    ///                  true: Si el hp del pokemon es superior a 0 despues de restarle el daño recibido.
+    ///                  false: Si el hp del pokemon es inferior o igual a 0 despues de restarle el daño recibido.
+    /// </summary>
+    /// <param name="danho"></param>
+    /// <returns>bool</returns>
     public bool recibirDanho(int danho) {
         bool vivo = true;
-
         hp -= danho;
         if (hp <= 0) {
             hp = 0;
             vivo = false;
         }
-
         return vivo;
     }
 }
