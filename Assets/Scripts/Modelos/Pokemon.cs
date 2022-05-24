@@ -101,7 +101,7 @@ public class Pokemon
         Velocidad = (from pokemonStats in pokemonApi.Stats
                      where pokemonStats.Stat.Name == "speed"
                      select pokemonStats.BaseValue).First();
-        HPMaximos = hp;      
+        HPMaximos = hp;
     }
     #endregion
 
@@ -171,13 +171,16 @@ public class Pokemon
     /// </summary>
     /// <param name="danho"></param>
     /// <returns>bool</returns>
-    public bool recibirDanho(int danho) {
+    public bool recibirDanho(int danho)
+    {
         bool vivo = true;
         hp -= danho;
-        if (hp <= 0) {
+        if (hp <= 0)
+        {
             hp = 0;
             vivo = false;
         }
         return vivo;
     }
+    #endregion
 }

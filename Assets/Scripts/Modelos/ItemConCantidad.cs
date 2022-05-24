@@ -59,4 +59,5 @@ public class ItemConCantidad : Item
         }
         return iguales;
     }
+    #endregion
 }

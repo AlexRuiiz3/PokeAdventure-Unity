@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float movimientoVertical;
 
     public LayerMask zonaHierba; //Atributo que servira para poder detectar cuando un jugador este por una zona de hierba
-    public Jugador Jugador { get;}
+    public Jugador Jugador { get; set; }
 
     // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
     void Start()
@@ -39,16 +39,16 @@ public class PlayerController : MonoBehaviour
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
     void Update()
     {
-        //if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())//Para evitar que cuando el usuario este en interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
-        //{
+        if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())//Para evitar que cuando el usuario este en interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
+        {
             //Se obtiene el input del jugador(Teclado)
             movimientoHorizontal = Input.GetAxisRaw("Horizontal") * 1.9f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
             movimientoVertical = Input.GetAxisRaw("Vertical") * 1.9f; //Metodo que devuelve 1 si pulsa la W o la S y -1 cualquier otra tecla
 
             if (Input.GetKey(KeyCode.LeftShift)) //Para que el jugador vaya mas rapido(Correr)
             {
-                movimientoHorizontal *= 2.5f;
-                movimientoVertical *= 2.5f;
+                movimientoHorizontal *= 2.15f;
+                movimientoVertical *= 2.15f;
 
             }
 
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("isMoving", false);
             }
-        //}
+        }
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     { //Es un metodo que tiene que actualizarce de manera mucho mas habitual que el Update(Este depende de a cuantos frame por segundos vayas), por eso aqui es donde se mete lo de la fisica
         //Vector representa un vector con dos posiciones X e Y en el mundo 
-        rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical)
+        rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
     }
 
     //Getters y setters

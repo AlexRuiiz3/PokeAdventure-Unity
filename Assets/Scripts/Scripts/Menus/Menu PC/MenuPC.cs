@@ -34,14 +34,24 @@ public class MenuPC : MonoBehaviour
     }
     public void verOpcionesPokemon(GameObject menuOpciones)
     {
+        GameObject menu;
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
         if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador")
         {
+            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonPC");
+            if (menu.activeSelf) { 
+                menu.SetActive(false);  
+            }
             int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
             pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1]; 
         }
         else
         {
+            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonEquipo");
+            if (menu.activeSelf)
+            {
+                menu.SetActive(false);
+            }
             pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));
         }
         interfazPokemonSeleccionado = EventSystem.current.currentSelectedGameObject;
