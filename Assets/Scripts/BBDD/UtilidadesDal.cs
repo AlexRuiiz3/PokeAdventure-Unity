@@ -9,10 +9,18 @@ using System.Threading.Tasks;
 public class UtilidadesDal
 {
     /// <summary>
-    /// 
+    /// Cabecera: public static bool comprobarSiExisteNombreUsuario(string nombreUsuario)
+    /// Comentario: Este metodo se encarga de comprobar en la base de datos si existe un jugador con un nombre de usuario determinado.
+    /// Entradas: string nombreUsuario
+    /// Salidas: bool existe
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un dato booleano cuyo valor puede ser:
+    ///                  true: Cuando en la base de datos exista algun jugador cuyo nombre de usuario sea igual al recibido.
+    ///                  false: Cuando en la base de datos no exista ningun jugador cuyo nombre de usuario sea igual al recibido o cuando se produzca cualquier 
+    ///                         tipo de excepcion.
     /// </summary>
     /// <param name="nombreUsuario"></param>
-    /// <returns></returns>
+    /// <returns>bool</returns>
     public static bool comprobarSiExisteNombreUsuario(string nombreUsuario) {
         bool existeNombreUsuario = false;
         SqliteConnection conexion = null;
@@ -27,13 +35,10 @@ public class UtilidadesDal
         }
         catch (Exception)
         {
-            throw;
         }
         finally {
             ConfiguracionDB.cerrarConexion(conexion);
         }
-
         return existeNombreUsuario;
     }
 }
-
