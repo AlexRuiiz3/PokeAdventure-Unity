@@ -33,8 +33,8 @@ using UnityEngine;
 
 public class MovimientoPokemon
 {
-
-    #region Constructor por defecto
+    #region Constructores
+    //Constructor por defecto
     public MovimientoPokemon()
     {
         MT = 0;
@@ -45,9 +45,7 @@ public class MovimientoPokemon
         PPMaximo = 0;
         Tipo = "";
     }
-    #endregion
-
-    #region Constructor con parametros
+    //Constructor con parametros
     public MovimientoPokemon(int mt, string nombre, int danho, int precision, int pp, string tipo)
     {
         MT = mt;
@@ -61,21 +59,12 @@ public class MovimientoPokemon
     #endregion
 
     #region Metodos Fundamentales(Propiedades)
-    //mt
     public int MT { get; }
-    //nombre
     public string Nombre { get; }
-    //danho
     public int Danho { get; }
-    //precision
     public int Precicion { get; }
-    //pp
     public int PP { get; }
     public int PPMaximo { get; }
-    //tipo
     public string Tipo { get; }
     #endregion
 }
-
-
-
