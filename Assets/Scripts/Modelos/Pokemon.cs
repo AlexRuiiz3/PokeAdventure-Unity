@@ -1,7 +1,7 @@
 /*
  * Clase: Pokemon
  * 
- * Comentario: Esta clase representa a un pokemon de con los atributos basicos de un pokemon.
+ * Comentario: Esta clase representa a un pokemon con los atributos basicos de un pokemon.
  * 
  * Atributos:
  *          Basicos:
