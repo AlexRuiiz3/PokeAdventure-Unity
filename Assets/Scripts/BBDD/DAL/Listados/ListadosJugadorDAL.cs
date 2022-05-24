@@ -8,49 +8,6 @@ using UnityEngine;
 public class ListadosJugadorDAL
 {
     /// <summary>
-    /// Cabecera: public static bool comprobarExistenciaNombreUsuario(string nombreUsuario)
-    /// Comentario: Este metodo se encarga de comprobar en la base de datos si existe un jugador con un nombre de usuario determinado.
-    /// Entradas: string nombreUsuario
-    /// Salidas: bool existe
-    /// Precondiciones: Ninguna
-    /// Postcondiciones: Se devolvera un dato booleano cuyo valor puede ser:
-    ///                  true: Cuando en la base de datos exista algun jugador cuyo nombre de usuario sea igual al recibido.
-    ///                  false: Cuando en la base de datos no exista ningun jugador cuyo nombre de usuario sea igual al recibido o cuando se produzca cualquier 
-    ///                         tipo de excepcion.
-    /// </summary>
-    /// <param name="nombreUsuario"></param>
-    /// <returns>bool</returns>
-    public static bool comprobarExistenciaNombreUsuario(string nombreUsuario)
-    {
-        bool existe = false;
-        SqliteConnection conexion = null;
-        SqliteCommand command;
-        SqliteDataReader reader = null;
-
-        try
-        {
-            conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT * FROM Jugadores WHERE NombreUsuario = @NombreUsuario", conexion);
-            command.Parameters.Add("@NombreUsuario", System.Data.DbType.String).Value = nombreUsuario;
-            reader = command.ExecuteReader();
-
-            existe = reader.HasRows;
-        }
-        catch (Exception)
-        {
-        }
-        finally
-        {
-            ConfiguracionDB.cerrarConexion(conexion);
-            if (reader != null)
-            {
-                reader.Close();
-            }
-        }
-        return existe;
-    }
-
-    /// <summary>
     /// Cabecera: public static bool comprobarExistenciaNombreUsuarioContrasenha(string nombreUsuario, string contrasenha)
     /// Comentario: Este metodo se encarga de comprobar en la base de datos si existe un jugador con un nombre de usuario y contraseña determinados.
     /// Entradas: string nombreUsuario, string contrasenha
