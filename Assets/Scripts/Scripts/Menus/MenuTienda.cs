@@ -113,7 +113,7 @@ public class MenuTienda : MonoBehaviour
                 interfazItem.SetActive(true);
             }
         }catch(Exception){
-            UtilidadesEscena.mostrarMensajeError("Error en la obteccion de los items almacenados en la base de datos");
+            UtilidadesEscena.mostrarMensajeError("Error obteniendo los items almacenados en la base de datos");
         }        
     }
 }
