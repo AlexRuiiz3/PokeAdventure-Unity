@@ -17,50 +17,25 @@ public class MenuPC : MonoBehaviour
     private GameObject interfazPokemonSeleccionado;
     private Jugador jugador;
 
+    //Cuando se active el menu
     private void OnEnable()
     {
-
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Total Pokemons: {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
 
         configurarBotonesPokemonsEquipo();
         configurarBotonesPokemonPC();
     }
-
+    //Cuando se desactive el menu
     private void OnDisable()
     {
         GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
         UtilidadesEscena.eliminarHijosGameObject(content);
     }
-    public void verOpcionesPokemon(GameObject menuOpciones)
-    {
-        GameObject menu;
-        string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
-        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador")
-        {
-            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonPC");
-            if (menu.activeSelf) { 
-                menu.SetActive(false);  
-            }
-            int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
-            pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1]; 
-        }
-        else
-        {
-            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonEquipo");
-            if (menu.activeSelf)
-            {
-                menu.SetActive(false);
-            }
-            pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));
-        }
-        interfazPokemonSeleccionado = EventSystem.current.currentSelectedGameObject;
-        menuOpciones.SetActive(true);
-    }
 
+    //Metodo que configura y activa los botones del menu del equipo actual del jugador. El numero de botones que se activaran dependeran del numero de pokemon que el jugador tenga equipados.
     private void configurarBotonesPokemonsEquipo()
     {
-
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
         {
             botonesPokemonsEquipo[i].GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + jugador.EquipoPokemon[i].ID).First();
@@ -68,39 +43,89 @@ public class MenuPC : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public void configurarBotonesPokemonPC()
+    /// Comentario: Este metodo se encarga de configurar y activar los pokemons(Son botones) de la parte del menu de almacenamiento del PC. 
+    ///             Los pokemons mostrados seran los que el jugador no tiene equipado en su equipo y el numero de botones que se crearan dependeran del 
+    ///             numero de pokemons no equipados que tenga el jugador.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se crearan por cada pokemon que el jugador no tenga equipado un boton que representa un pokemon no equipado. 
+    /// </summary>
     public void configurarBotonesPokemonPC()
     {
-        try
+        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
+        List<PokemonJugador> pokemonNoEquipados = DatosGuardarJugador.PokemonsAlmacenadosPC;
+        foreach (PokemonJugador pokemon in pokemonNoEquipados)
         {
-            GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
-            List<PokemonJugador> pokemonNoEquipados = DatosGuardarJugador.PokemonsAlmacenadosPC;
-            foreach (PokemonJugador pokemon in pokemonNoEquipados)
-            {
-                configurarMostrarPokemonPC(content,pokemon);
+            configurarMostrarPokemonPC(content,pokemon);
+        }
+    }
+   
+    /// <summary>
+    /// Cabecera: public void verOpcionesPokemon(GameObject menuOpciones)
+    /// Comentario: Este metodo se encarga de obtener cual es el pokemon que sea seleccionado y mostrar el menu correspondiente en funcion de donde este el pokemon 
+    ///             que se haya seleccionado.
+    /// Entradas: GameObject menuOpciones
+    /// Salidas: Ninguna
+    /// Precondiciones: menuOpciones no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se obtiene el pokemon seleccionado y el menu correspondiente a la ubicacion del pokemon seleccionado. 
+    ///                  Si el menu del pokemon de la zona opuesta esta activado, se desactiva.
+    /// </summary>
+    /// <param name="menuOpciones"></param>
+    public void verOpcionesPokemon(GameObject menuOpciones)
+    {
+        GameObject menu;
+        string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
+        //Si el boton que se pulsa esta en la zona del equipo del jugador
+        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador") 
+        {
+            //Si el menu de la zona del pc esta activado, se desactiva
+            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonPC");
+            if (menu.activeSelf) { 
+                menu.SetActive(false);  
             }
+            int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);//nombreBoton en este caso, al final tienen un entero que indica que numero de boton es
+            pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1]; 
         }
-        catch (Mono.Data.Sqlite.SqliteException)
+        else //Sino si el boton que se pulsa esta en la zona del PC
         {
-            UtilidadesEscena.mostrarMensajeError("Un error ocurrio mientras se obtenian los pokemons almacenados en el pc (No equipados)");
+            //Si el menu de la zona del equoipo pokemon esta activado, se desactiva
+            menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonEquipo");
+            if (menu.activeSelf)
+            {
+                menu.SetActive(false);
+            }
+            pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));//nombreBoton en este caso, al final tienen un entero unico que indica el numero de pokemon del jugador.
         }
-        catch (Exception)
-        {
-            UtilidadesEscena.mostrarMensajeError("Error desconocido en la preparacion de los pokemons almacenados");
-        }
-
+        interfazPokemonSeleccionado = EventSystem.current.currentSelectedGameObject;
+        menuOpciones.SetActive(true);
     }
 
+    /// <summary>
+    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
+    /// Comentario: Este metodo se encarga de configurar y activar el menu con los datos de un pokemon.
+    /// Entradas: GameObject menuDatos
+    /// Salidas: Ninguna
+    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se obtiene el pokemon seleccionado y se el menu correspodiente a la ubicacion del pokemon seleccionado. 
+    ///                  Si el menu del pokemon de la zona opuesta esta activado, se desactiva.
+    /// </summary>
+    /// <param name="menuDatos"></param>
     public void opcionVerDatos(GameObject menuDatos)
     {
+        //Se prepara el menu con la informacion del pokemon seleccionado    
         menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemonSeleccionado.ID).First();
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemonSeleccionado.Nombre;
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemonSeleccionado.Nivel}";
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemonSeleccionado.HP}/{pokemonSeleccionado.HPMaximos}";
 
+        //Se prepara la parte de los movimientos del pokemon 
         GameObject movimientos = menuDatos.transform.Find("Movimientos").gameObject, movimientoInterfaz;
         MovimientoPokemon movimientoPokemon;
         for (int i = 1; i < movimientos.transform.childCount; i++)
-        { //Empieza en 1 porque ese hijo no es un movimiento sino un titulo
+        { //Empieza en 1 porque es hijo 0 no es un movimiento sino un titulo
             movimientoPokemon = pokemonSeleccionado.Movimientos[i - 1];
             movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
             movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
@@ -112,6 +137,16 @@ public class MenuPC : MonoBehaviour
         menuDatos.SetActive(true);
     }
 
+    /// <summary>
+    /// Cabecera: public void buttonAceptarCambiarNombre(Text input)
+    /// Comentario: Este metodo se encarga de cambiar el nombre a un pokemon seleccionado con el valor recibido por parametros. 
+    /// Entradas: Text input
+    /// Salidas: Ninguna
+    /// Precondiciones: input no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se modificara el nombre del pokemon seleccionado. 
+    ///                  Si el texto del valor recibido esta vacio el nombre no se modifica y se informa al jugador de ello.
+    /// </summary>
+    /// <param name="input"></param>
     public void buttonAceptarCambiarNombre(Text input)
     {
         if (!Utilidades.comprobarCadenaVacia(input.text))
@@ -125,14 +160,25 @@ public class MenuPC : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public void liberarPokemon(GameObject menuOpcionesPokemon)
+    /// Comentario: Este metodo se encarga de eliminar para siempre el pokemon seleccionado del jugador.
+    /// Entradas: GameObject menuOpcionesPokemon
+    /// Salidas: Ninguna
+    /// Precondiciones: menuOpcionesPokemon no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se eliminara un pokemon del juagador. Dependiendo de la zona donde este el pokemon, se eliminara del equipo actual del jugador o del almacenamiento del PC
+    ///                  El pokemon no se eliminara en los siguientes casos:
+    ///                  1: Si el pokemon a eliminar esta en la zona de equipo actual de jugador y es el ultimo que tiene el jugador en su equipo, no se elimina y se informa al jugador de ello. 
+    ///                  2: Si se produce alguna excepcion el pokemon no se eliminara.
+    /// </summary>
+    /// <param name="menuOpcionesPokemon"></param>
     public void liberarPokemon(GameObject menuOpcionesPokemon)
     {
         string nombreZona = menuOpcionesPokemon.transform.parent.name;
-        if (nombreZona == "ZonaEquipoJugador")
+        if (nombreZona == "ZonaEquipoJugador") //Cuando sea en la zona del equipo del jugador
         {
             if (jugador.EquipoPokemon.Count > 1)
             {
-                //Si el boton pulsado es que esta en la zona
                 jugador.EquipoPokemon.Remove(pokemonSeleccionado);
                 UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
                 configurarBotonesPokemonsEquipo();
@@ -143,8 +189,8 @@ public class MenuPC : MonoBehaviour
                 UtilidadesEscena.mostrarMensajeError("Debes tener minimo un pokemon equipado");
             }
         }
-        else
-        {  //Cuando sea en la zona de los pokemons del PC
+        else //Cuando sea en la zona de los pokemons del PC
+        {  
             DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
             Destroy(interfazPokemonSeleccionado);
             menuOpcionesPokemon.SetActive(false);
@@ -152,6 +198,16 @@ public class MenuPC : MonoBehaviour
         menuOpcionesPokemon.transform.Find("Menus").transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Cabecera: public void equiparPokemon()
+    /// Comentario: Este metodo se encarga de incluir en el equipo actual de jugador un pokemon seleccionado.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se añadira en el equipo actual del jugador el pokemon seleccionado. El pokemon no se añadira al equipo de jugador en los siguientes casos:
+    ///                  1: Si el numero de pokemons que tiene el jugador en su equipo es 6, el pokemon no se añadira y se informara al jugador de ello. 
+    ///                  2: Si se produce alguna excepcion el pokemon no se añadira.
+    /// </summary>
     public void equiparPokemon() {
         if (jugador.EquipoPokemon.Count < 6)
         {
@@ -159,18 +215,28 @@ public class MenuPC : MonoBehaviour
             DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
             Destroy(interfazPokemonSeleccionado);
 
-            //Se a�ade la interfaz del pokemon al menu equipo 
+            //Se añade la interfaz del pokemon al menu equipo 
             jugador.EquipoPokemon.Add(pokemonSeleccionado);
             UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
             configurarBotonesPokemonsEquipo();
 
-            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
+            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);//Se desactiva el menu del pokemon seleccionado
         }
         else {
             UtilidadesEscena.mostrarMensajeError("El equipo ya esta completo. Deja antes un pokemon");
         }
     }
 
+    /// <summary>
+    /// Cabecera: public void dejarPokemon() 
+    /// Comentario: Este metodo se encarga de quitar del equipo actual de jugador un pokemon seleccionado.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se quitara del equipo actual del jugador el pokemon seleccionado. El pokemon no se quitara del equipo de jugador en los siguientes casos:
+    ///                  1: Si el pokemon que se quiere dejar es el ultimo que tiene el jugador en su equipo, el pokemon no se quitara y se informara al jugador de ello. 
+    ///                  2: Si se produce alguna excepcion el pokemon no se quitara.
+    /// </summary>
     public void dejarPokemon() {
         if (jugador.EquipoPokemon.Count > 1)
         {
@@ -179,7 +245,7 @@ public class MenuPC : MonoBehaviour
             UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
             configurarBotonesPokemonsEquipo();
 
-            //Se a�ade la intefaz del pokemon al menu de almacenamiento
+            //Se añade la intefaz del pokemon al menu de almacenamiento
             DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonSeleccionado);
             GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
             configurarMostrarPokemonPC(content, pokemonSeleccionado);
@@ -192,6 +258,7 @@ public class MenuPC : MonoBehaviour
         }
     }
 
+    //Metodo que se encarga de crear, configurar y activar un boton(Pokemon) ubicado en la zona de los pokemons almacenados en el PC(Los no equipados)  
     private void configurarMostrarPokemonPC(GameObject content, PokemonJugador pokemon) {
         GameObject interfazPokemonPC = Instantiate(plantillaButtonPokemonPC);
         interfazPokemonPC.name = pokemon.PokemonNumero.ToString();
