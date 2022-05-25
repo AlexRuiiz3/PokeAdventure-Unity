@@ -25,7 +25,7 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     {
         GameObject jugador = GameObject.Find("Player");
 
-        //Se pausa el movimiento y animacion de jugador
+        //Se para en seco el movimiento y animacion de jugador
         if (SceneManager.GetActiveScene().name != "GetFirstPokemonScene") {
             jugador.GetComponent<PlayerController>().setMovimientoHorizontal(0);
             jugador.GetComponent<PlayerController>().setMovimientoVertical(0);
