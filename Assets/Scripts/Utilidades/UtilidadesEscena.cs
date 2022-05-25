@@ -176,19 +176,19 @@ public class UtilidadesEscena : MonoBehaviour
     }
 
     /// <summary>
-    /// Cabecera: public static void eliminarHijosGameObject(GameObject contentScrollView)
+    /// Cabecera: public static void eliminarHijosGameObject(GameObject gameObject)
     /// Comentario: Este metodo se encarga de eliminar todos los hijos que tenga un gameObject.
-    /// Entradas: GameObject object 
+    /// Entradas: GameObject gameObject 
     /// Salidas: Ninguna
     /// Precondiciones: object no debe estar a null(Sino se producira un NullPointerException)
     /// Postcondiciones: Se eliminaran todos los hijos de un gameObject.
     /// </summary>
-    /// <param name="object"></param>
-    public static void eliminarHijosGameObject(GameObject object)
+    /// <param name="gameObject"></param>
+    public static void eliminarHijosGameObject(GameObject gameObject)
     {
-        if (object.transform.childCount > 0)
+        if (gameObject.transform.childCount > 0)
         {
-            foreach (Transform child in object.transform)
+            foreach (Transform child in gameObject.transform)
             {
                 if (child.gameObject.activeSelf)
                 {
@@ -211,17 +211,17 @@ public class UtilidadesEscena : MonoBehaviour
     public static void configurarMenuDatosPokemon(GameObject menuDatos, PokemonJugador pokemon)
     {
         //Se prepara el menu con la informacion del pokemon seleccionado    
-        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemonSeleccionado.ID).First();
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemonSeleccionado.Nombre;
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemonSeleccionado.Nivel}";
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemonSeleccionado.HP}/{pokemonSeleccionado.HPMaximos}";
+        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemon.Nivel}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemon.HP}/{pokemon.HPMaximos}";
 
         //Se prepara la parte de los movimientos del pokemon 
         GameObject movimientos = menuDatos.transform.Find("Movimientos").gameObject, movimientoInterfaz;
         MovimientoPokemon movimientoPokemon;
         for (int i = 1; i < movimientos.transform.childCount; i++)
         { //Empieza en 1 porque es hijo 0 no es un movimiento sino un titulo
-            movimientoPokemon = pokemonSeleccionado.Movimientos[i - 1];
+            movimientoPokemon = pokemon.Movimientos[i - 1];
             movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
             movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;

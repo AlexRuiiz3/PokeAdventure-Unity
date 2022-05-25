@@ -4,35 +4,36 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuEquipoPokemon : MonoBehaviour
 {
+    public List<Button> interfacesPokemons;
+    public List<Button> interfacesPokemonsMenuCambiarPosicion;
     private Jugador jugador;
     private GameObject interfazPokemonSeleccionado;
     private PokemonJugador pokemonSeleccionado;
 
     /// <summary>
-    /// Cabecera: public void prepararMenuEquipo(GameObject plantillaInterfazPokemon)
+    /// Cabecera: public void prepararMenuEquipo()
     /// Comentario: Este metodo se encarga configurar y activar el menu de equipo del jugador.
-    /// Entradas: GameObject plantillaInterfazPokemon
+    /// Entradas: Ninguna
     /// Salidas: Ninguna
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se mostrara el menu del equipo del jugador preparado con los pokemons que el jugador tenga en su equipo.
     /// </summary>
-    /// <param name="plantillaInterfazPokemon"></param>
-    public void prepararMenuEquipo(GameObject plantillaInterfazPokemon) { 
-        GameObject interfazPokemon, 
-                   contentPokemons = gameObject.transform.Find("ContentPokemons").gameObject;
+    public void prepararMenuEquipo() {
+        Button interfazPokemon;
         PokemonJugador pokemon;
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
-        UtilidadesEscena.eliminarHijosGameObject(contentPokemons);//Si se accede al menu y ya hay algo, se eliminan, evitando asi que se dupliquen los pokemon del equipo
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
+        UtilidadesEscena.activarDesactivarBotones(interfacesPokemons,false);
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
         {
             pokemon = jugador.EquipoPokemon[i];
-            interfazPokemon = Instantiate(plantillaInterfazPokemon);
+            interfazPokemon = interfacesPokemons[i];
             interfazPokemon.name = pokemon.PokemonNumero.ToString();
             interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             UtilidadesEscena.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[3],pokemon.HP,pokemon.HPMaximos);
@@ -40,9 +41,7 @@ public class MenuEquipoPokemon : MonoBehaviour
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Nvl.{pokemon.Nivel}";
 
-            interfazPokemon.transform.SetParent(contentPokemons.transform); //Se agrega la interfaz del pokemon creada al content del scrollView
-            interfazPokemon.transform.localScale = new Vector3(1,1,1);
-            interfazPokemon.SetActive(true);
+            interfazPokemon.gameObject.SetActive(true);
         }
         if (jugador.EquipoPokemon.Count < 2)//Si el jugador tiene solo un pokemon, del menu de opciones del pokemon se desactiva el boton de cambiar posicion
         {
@@ -108,21 +107,21 @@ public class MenuEquipoPokemon : MonoBehaviour
     }
 
     /// <summary>
-    /// Cabecera: public void mostrarConfigurarMenuCambiarPosicion(GameObject plantillaPokemonCambiar)
+    /// Cabecera: public void mostrarConfigurarMenuCambiarPosicion()
     /// Comentario: Este metodo se encarga de configurar y activar el menu que permite al jugador intercambiar la posicion entre dos pokemons.
-    /// Entradas: GameObject plantillaPokemonCambiar
+    /// Entradas: Ninguna
     /// Salidas: Ninguna
-    /// Precondiciones: plantillaPokemonCambiar no debe estar a null(Sino se producira un NullPointerException)
+    /// Precondiciones: Ninguna
     /// Postcondiciones: Se mostrara un menu con botones por cada pokemon que tenga el jugador en su equipo.
     /// </summary>
-    /// <param name="plantillaPokemonCambiar"></param>
-    public void mostrarConfigurarMenuCambiarPosicion(GameObject plantillaPokemonCambiar) {
-        GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion"),
-                   content = menuCambiarPosicion.transform.Find("Content").gameObject,
-                   interfazPokemonCambiar;
-        UtilidadesEscena.eliminarHijosGameObject(content);
-        foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
-            interfazPokemonCambiar = Instantiate(plantillaPokemonCambiar);
+    public void mostrarConfigurarMenuCambiarPosicion() {
+        GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion");
+        Button interfazPokemonCambiar;
+        PokemonJugador pokemon;
+        UtilidadesEscena.activarDesactivarBotones(interfacesPokemonsMenuCambiarPosicion, false);
+        for (int i = 0; i < jugador.EquipoPokemon.Count; i++) {
+            pokemon = jugador.EquipoPokemon[i];
+            interfazPokemonCambiar = interfacesPokemonsMenuCambiarPosicion[i];
             interfazPokemonCambiar.name = pokemon.PokemonNumero.ToString();
             interfazPokemonCambiar.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
@@ -130,9 +129,7 @@ public class MenuEquipoPokemon : MonoBehaviour
             if (pokemon.Equals(pokemonSeleccionado)) {
                 interfazPokemonCambiar.GetComponent<Button>().interactable = false;
             }
-            interfazPokemonCambiar.transform.SetParent(content.transform);
-            interfazPokemonCambiar.transform.localScale = new Vector3(1,1,1);
-            interfazPokemonCambiar.SetActive(true);
+            interfazPokemonCambiar.gameObject.SetActive(true);
         }
         menuCambiarPosicion.SetActive(true);
     }
