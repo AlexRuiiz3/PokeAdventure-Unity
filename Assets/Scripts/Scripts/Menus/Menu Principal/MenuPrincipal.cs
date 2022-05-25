@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class MenuPrincipal : MonoBehaviour
 {
-
     public InputField inputNombreUsuario;
     public InputField inputContrasenha;
     public TMP_InputField inputNombreUsuarioRegistro;
@@ -24,7 +23,14 @@ public class MenuPrincipal : MonoBehaviour
          ConfiguracionDB.createDB();
         }
     }
-
+    /// <summary>
+    /// Cabecera: public void iniciarSesion()
+    /// Comentario: Este metodo se encargar de obtener el nombre de usuario y contraseÃ±a de los campos, y comprobar si son validos para dar acceso a un jugador.  
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se concedera acceso al usuario si los el valor de los campos nombre de usuario y contraseÃ±a son validos(Estan registrados).
+    /// </summary>
     public void iniciarSesion() {
         string nombreUsuario = inputNombreUsuario.text,
                contrasenha = inputContrasenha.text;
@@ -49,19 +55,26 @@ public class MenuPrincipal : MonoBehaviour
             UtilidadesEscena.mostrarMensajeError("El usuario y la contrasena son campos obligatorios");
         }     
     }
-
+    
+    /// <summary>
+    /// Cabecera: public void registrarUsuario()
+    /// Comentario: Este metodo se encarga de obtener los datos necesarios para crear una cuenta a un jugador, si algun dato no es valido la cuenta del jugador no se creara y se informara al usuario del motivo por el que no se pudo crear la cuenta.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se registrara en la base datos un usuario. Si alguna informacion no es valida el usuario no se registrara en la base de datos y se informara al jugador de ello. 
+    /// </summary>
     public void registrarUsuario()
     {
-
         bool existeNombreUsuario;
         if (!Utilidades.comprobarCadenaVacia(inputNombreUsuarioRegistro.text)) //Si el nombre de usuario no esta vacio o es null
         {
             existeNombreUsuario = UtilidadesDal.comprobarSiExisteNombreUsuario(inputNombreUsuarioRegistro.text);
             if (!existeNombreUsuario) //Si no existe ese nombre de usuario
             {
-                if (!Utilidades.comprobarCadenaVacia(inputContrasenhaRegistro.text)) //Si la contraseña no esta vacia
+                if (!Utilidades.comprobarCadenaVacia(inputContrasenhaRegistro.text)) //Si la contraseÃ±a no esta vacia
                 {
-                    if (inputContrasenhaRegistro.text.Equals(inputContrasenhaRepetida.text)) //Si las contraseñas coinciden
+                    if (inputContrasenhaRegistro.text.Equals(inputContrasenhaRepetida.text)) //Si las contraseÃ±as coinciden
                     {
                         if (!Utilidades.comprobarCadenaVacia(inputCorreoElectronico.text)) //Si el correo electronico esta vacio 
                         {
@@ -82,19 +95,16 @@ public class MenuPrincipal : MonoBehaviour
                     }
                     else
                     {
-                        //Las contraseñas no coinciden 
                         UtilidadesEscena.mostrarMensajeError("Las contrasenas no coinciden");
                     }
                 }
                 else
                 {
-                    //La contraseña esta vacia
                     UtilidadesEscena.mostrarMensajeError("La contrasena no puede estar vacia");
                 }
             }
             else
             {
-                //NombreUsuario ya existe
                 UtilidadesEscena.mostrarMensajeError("El nombre de usuario ya existe");
             }
         }
@@ -103,5 +113,4 @@ public class MenuPrincipal : MonoBehaviour
             UtilidadesEscena.mostrarMensajeError("El nombre de usuario no puede estar vacio");
         }
     }
-
 }
