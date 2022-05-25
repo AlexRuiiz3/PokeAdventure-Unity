@@ -21,7 +21,6 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se preparara e iniciara un dialogo
     /// </summary>
-    /// <returns></returns>
     public void activarDialogo()
     {
         GameObject jugador = GameObject.Find("Player");
@@ -49,8 +48,6 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     /// Precondiciones: Ningnua
     /// Postcondiciones: Se pasara a la siguiente frase de un dialogo. Si ya no hay mas frases y sea terminado el dialogo, se realizara una accion de fin de dialogo.
     /// </summary>
-    /// <param name="nombreUsuario"></param>
-    /// <returns></returns>
     public void siguienteFrase()
     {
         if (colaTextos.Count != 0 && !reproduciendoTexto)
@@ -77,7 +74,6 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     /// Postcondiciones: Se mostrara en pantalla una frase caracter por caracter.
     /// </summary>
     /// <param name="frase"></param>
-    /// <returns></returns>
     IEnumerator mostrarTextoPorCaracteres(string frase)
     {
         foreach (char caracter in frase.ToCharArray())
