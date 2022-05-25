@@ -105,36 +105,16 @@ public class MenuPC : MonoBehaviour
 
     /// <summary>
     /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
-    /// Comentario: Este metodo se encarga de configurar y activar el menu con los datos de un pokemon.
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
     /// Entradas: GameObject menuDatos
     /// Salidas: Ninguna
     /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
-    /// Postcondiciones: Se obtiene el pokemon seleccionado y se el menu correspodiente a la ubicacion del pokemon seleccionado. 
-    ///                  Si el menu del pokemon de la zona opuesta esta activado, se desactiva.
+    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
     /// </summary>
     /// <param name="menuDatos"></param>
     public void opcionVerDatos(GameObject menuDatos)
     {
-        //Se prepara el menu con la informacion del pokemon seleccionado    
-        menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemonSeleccionado.ID).First();
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemonSeleccionado.Nombre;
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemonSeleccionado.Nivel}";
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemonSeleccionado.HP}/{pokemonSeleccionado.HPMaximos}";
-
-        //Se prepara la parte de los movimientos del pokemon 
-        GameObject movimientos = menuDatos.transform.Find("Movimientos").gameObject, movimientoInterfaz;
-        MovimientoPokemon movimientoPokemon;
-        for (int i = 1; i < movimientos.transform.childCount; i++)
-        { //Empieza en 1 porque es hijo 0 no es un movimiento sino un titulo
-            movimientoPokemon = pokemonSeleccionado.Movimientos[i - 1];
-            movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
-            movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
-            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;
-            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Potencia: {movimientoPokemon.Danho}";
-            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Presicion: {movimientoPokemon.Precicion}";
-            movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"PP {movimientoPokemon.PP}/{movimientoPokemon.PPMaximo}";
-        }
-        menuDatos.SetActive(true);
+        UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
     }
 
     /// <summary>
