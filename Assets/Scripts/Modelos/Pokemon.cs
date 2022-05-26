@@ -182,5 +182,10 @@ public class Pokemon
         }
         return vivo;
     }
+    
+    public void subirEstadisticas(){
+        PS = 10 + Nivel /100 * (PS * 2);
+        PS = 10 + (1 / 100 * (40 * 2) );
+    }
     #endregion
 }
