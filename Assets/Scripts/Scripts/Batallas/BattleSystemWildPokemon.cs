@@ -44,7 +44,7 @@ public class BattleSystemWildPokemon : MonoBehaviour
                            .GetComponent<PlayerController>().Jugador;
 
 
-        await prepararPokemonRival();
+        wildPokemon = await generarObtenerPokemonRival();
         configurarMenuMochila();
         StartCoroutine(prepararBatalla());
 
@@ -390,13 +390,15 @@ public class BattleSystemWildPokemon : MonoBehaviour
         //c.interactable = activarBoton;
     }
     //Metodo que se encarga generar y configurar un pokemon rival de forma aleatoria
-    private async Task prepararPokemonRival()
+    private async Task<Pokemon> generarObtenerPokemonRival()
     {
         int nivelWildPokemon = UtilidadesSystemaBatalla.determinarNivelPokemonRival(jugador.EquipoPokemon);
         PokeAPI.Pokemon wildPokemonApi = await APIListadosPokemonBL.obtenerPokemonDeApi(UnityEngine.Random.Range(1, 899));
-        wildPokemon = new Pokemon(wildPokemonApi);
+        Pokemon pokemonGenerado = new Pokemon(wildPokemonApi);
         wildPokemon.Nivel = nivelWildPokemon;
         await wildPokemon.obtenerDatosAsincronos(wildPokemonApi);
+        
+        return pokemonGenerado;
     }
     //Metodo que bloquea los botones de la acciones principales que puede elegir un jugador en la batalla
     private void activarDesactivarBotonesMenuAcciones(bool estado)
@@ -624,5 +626,28 @@ public class BattleSystemWildPokemon : MonoBehaviour
             DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonNuevo);
             textoDialogo.text = $"{pokemonNuevo.Nombre} se almaceno en el PC!";
         }
+    }
+    private void generarEquipoPokemonRival(){
+        int numeroPokemons = generarCantidadPokemonsEquipo();
+        
+        for(int i = 0; i < numeroPokemons; i++){
+         //trainerNPC.Equipo().Add(generarObtenerPokemonRival());
+        }
+    }
+    
+    private int generarCantidadPokemonsEquipo(){
+        int pokemonsEquipoRival;
+        bool randomValido = false;
+        while(!randomValido){ //Para que sea mas dificil que se genere un equipo de 5 o 6 pokemon, ya que seria mas complicado de derrotar
+            random = UnityEngine.Random.Range(1, 7);
+            if(pokemonsEquipoRival == 5 || pokemonsEquipoRival == 6){
+                if(UnityEngine.Random.Range(1, 5) == 1){ //25% de que se de como valido el numero 5 y 6
+                    randomValido = true;
+                }
+            }else{
+                randomValido = true;
+            }
+        }
+        return pokemonsEquipoRival;
     }
 }
