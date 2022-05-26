@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class MenuPC : MonoBehaviour
 {
-    public List<Button> botonesPokemonsEquipo;
+    public List<GameObject> botonesPokemonsEquipo;
     public GameObject plantillaButtonPokemonPC;
     private PokemonJugador pokemonSeleccionado;
     private GameObject interfazPokemonSeleccionado;
@@ -160,7 +160,7 @@ public class MenuPC : MonoBehaviour
             if (jugador.EquipoPokemon.Count > 1)
             {
                 jugador.EquipoPokemon.Remove(pokemonSeleccionado);
-                UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
+                UtilidadesEscena.activarDesactivarGameObjects(botonesPokemonsEquipo, false);//Se desactivan todos
                 configurarBotonesPokemonsEquipo();
                 menuOpcionesPokemon.SetActive(false);
             }
@@ -197,7 +197,7 @@ public class MenuPC : MonoBehaviour
 
             //Se añade la interfaz del pokemon al menu equipo 
             jugador.EquipoPokemon.Add(pokemonSeleccionado);
-            UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
+            UtilidadesEscena.activarDesactivarGameObjects(botonesPokemonsEquipo, false);//Se desactivan todos
             configurarBotonesPokemonsEquipo();
 
             EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);//Se desactiva el menu del pokemon seleccionado
@@ -222,7 +222,7 @@ public class MenuPC : MonoBehaviour
         {
             //Se quita la interfaz del pokemon del menu equipo 
             jugador.EquipoPokemon.Remove(pokemonSeleccionado);
-            UtilidadesEscena.activarDesactivarBotones(botonesPokemonsEquipo, false);//Se desactivan todos
+            UtilidadesEscena.activarDesactivarGameObjects(botonesPokemonsEquipo, false);//Se desactivan todos
             configurarBotonesPokemonsEquipo();
 
             //Se añade la intefaz del pokemon al menu de almacenamiento

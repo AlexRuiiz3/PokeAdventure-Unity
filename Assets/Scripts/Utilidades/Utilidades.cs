@@ -67,6 +67,7 @@ public class Utilidades
         cadena = cadena.Substring(0, 1).ToUpper() + cadena.Substring(1);
     }
 
+    //mejorar y poner en utilidades escena
     public static void prepararBotonesPokemonsEquipo(List<PokemonJugador> pokemonsJugador, List<Button> botones)
     {
         Image imagenPokemon;

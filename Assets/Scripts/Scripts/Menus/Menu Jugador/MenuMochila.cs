@@ -113,7 +113,7 @@ public class MenuMochila : MonoBehaviour
             Destroy(interfazItemUsar);
             jugador.Mochila.Remove(itemAplicar);
         }else{
-            interfazItemUsar.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{--itemAplicar.Cantidad}";
+            interfazItemUsar.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{itemAplicar.Cantidad}";
         }
         Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuAplicarItemPokemon").SetActive(false);
     }

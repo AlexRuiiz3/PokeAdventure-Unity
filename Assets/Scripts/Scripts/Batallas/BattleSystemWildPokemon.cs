@@ -636,10 +636,10 @@ public class BattleSystemWildPokemon : MonoBehaviour
     }
     
     private int generarCantidadPokemonsEquipo(){
-        int pokemonsEquipoRival;
+        int pokemonsEquipoRival = 1;
         bool randomValido = false;
         while(!randomValido){ //Para que sea mas dificil que se genere un equipo de 5 o 6 pokemon, ya que seria mas complicado de derrotar
-            random = UnityEngine.Random.Range(1, 7);
+            pokemonsEquipoRival = UnityEngine.Random.Range(1, 7);
             if(pokemonsEquipoRival == 5 || pokemonsEquipoRival == 6){
                 if(UnityEngine.Random.Range(1, 5) == 1){ //25% de que se de como valido el numero 5 y 6
                     randomValido = true;

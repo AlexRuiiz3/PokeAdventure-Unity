@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 public class MenuEquipoPokemon : MonoBehaviour
 {
-    public List<Button> interfacesPokemons;
-    public List<Button> interfacesPokemonsMenuCambiarPosicion;
+    public List<GameObject> interfacesPokemons;
+    public List<GameObject> interfacesPokemonsMenuCambiarPosicion;
     private Jugador jugador;
     private GameObject interfazPokemonSeleccionado;
     private PokemonJugador pokemonSeleccionado;
@@ -24,12 +24,12 @@ public class MenuEquipoPokemon : MonoBehaviour
     /// Postcondiciones: Se mostrara el menu del equipo del jugador preparado con los pokemons que el jugador tenga en su equipo.
     /// </summary>
     public void prepararMenuEquipo() {
-        Button interfazPokemon;
+        GameObject interfazPokemon;
         PokemonJugador pokemon;
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Equipo Actual {jugador.EquipoPokemon.Count}/6";
-        UtilidadesEscena.activarDesactivarBotones(interfacesPokemons,false);
+        UtilidadesEscena.activarDesactivarGameObjects(interfacesPokemons,false);
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
         {
             pokemon = jugador.EquipoPokemon[i];
@@ -116,9 +116,9 @@ public class MenuEquipoPokemon : MonoBehaviour
     /// </summary>
     public void mostrarConfigurarMenuCambiarPosicion() {
         GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion");
-        Button interfazPokemonCambiar;
+        GameObject interfazPokemonCambiar;
         PokemonJugador pokemon;
-        UtilidadesEscena.activarDesactivarBotones(interfacesPokemonsMenuCambiarPosicion, false);
+        UtilidadesEscena.activarDesactivarGameObjects(interfacesPokemonsMenuCambiarPosicion, false);
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++) {
             pokemon = jugador.EquipoPokemon[i];
             interfazPokemonCambiar = interfacesPokemonsMenuCambiarPosicion[i];

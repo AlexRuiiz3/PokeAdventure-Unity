@@ -27,7 +27,10 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
-
+        Jugador.EquipoPokemon[0].HPMaximos = 100;
+        Jugador.EquipoPokemon[0].HP = 49;
+        Jugador.EquipoPokemon[1].HPMaximos = 100;
+        Jugador.EquipoPokemon[1].HP = 1;
         if (!DatosGuardarJugador.ListasObtenidas) {
             DatosGuardarJugador.PokemonsEncontradosJugador = ListadosPokemonEncontradosJugadorBL.obtenerPokemonsEncontradosDeJugador(Jugador.ID);//Eliminar de aqui
             DatosGuardarJugador.PokemonsAlmacenadosPC = ListadosPokemonsJugadorBL.obtenerPokemonsNoEquipadosJugador(Jugador.ID);

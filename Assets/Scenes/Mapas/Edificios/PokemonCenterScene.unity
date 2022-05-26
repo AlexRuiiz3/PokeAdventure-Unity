@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 10611980}
   - component: {fileID: 10611979}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo6
+  m_Name: Pokemon6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2055,7 +2055,7 @@ GameObject:
   - component: {fileID: 231188910}
   - component: {fileID: 231188909}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo1
+  m_Name: Pokemon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2427,12 +2427,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botonesPokemonsEquipo:
-  - {fileID: 231188909}
-  - {fileID: 597694456}
-  - {fileID: 523069974}
-  - {fileID: 488041676}
-  - {fileID: 1995800638}
-  - {fileID: 10611979}
+  - {fileID: 231188907}
+  - {fileID: 597694454}
+  - {fileID: 523069972}
+  - {fileID: 488041674}
+  - {fileID: 1995800636}
+  - {fileID: 10611977}
   plantillaButtonPokemonPC: {fileID: 1720071136}
 --- !u!114 &279008605
 MonoBehaviour:
@@ -3229,7 +3229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0491643, y: 0.252}
   m_AnchorMax: {x: 0.95100003, y: 0.43867007}
-  m_AnchoredPosition: {x: -0.3493042, y: -0.44000244}
+  m_AnchoredPosition: {x: -0.3493042, y: -0.44000196}
   m_SizeDelta: {x: 1.7192993, y: -0.34399414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365962173
@@ -6624,7 +6624,7 @@ GameObject:
   - component: {fileID: 488041677}
   - component: {fileID: 488041676}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo4
+  m_Name: Pokemon4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7157,7 +7157,7 @@ GameObject:
   - component: {fileID: 523069975}
   - component: {fileID: 523069974}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo3
+  m_Name: Pokemon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7826,7 +7826,7 @@ GameObject:
   - component: {fileID: 597694457}
   - component: {fileID: 597694456}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo2
+  m_Name: Pokemon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19317,7 +19317,7 @@ GameObject:
   - component: {fileID: 1995800639}
   - component: {fileID: 1995800638}
   m_Layer: 5
-  m_Name: ButtonPokemonEquipo5
+  m_Name: Pokemon5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

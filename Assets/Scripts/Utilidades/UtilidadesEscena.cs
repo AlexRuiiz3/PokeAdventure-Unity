@@ -61,11 +61,11 @@ public class UtilidadesEscena : MonoBehaviour
     /// </summary>
     /// <param name="botones"></param>
     /// <param name="modo"></param>
-    public static void activarDesactivarBotones(List<Button> botones, bool modo)
+    public static void activarDesactivarGameObjects(List<GameObject> gameObjects, bool modo)
     {
-        foreach (Button boton in botones)
+        foreach (GameObject gameObject in gameObjects)
         {
-            boton.gameObject.SetActive(modo);
+            gameObject.SetActive(modo);
         }
     }
     /// <summary>
