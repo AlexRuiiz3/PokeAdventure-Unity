@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable CS0659 // El tipo reemplaza a Object.Equals(object o), pero no reemplaza a Object.GetHashCode()
 public class PokemonJugador : Pokemon
+#pragma warning restore CS0659 // El tipo reemplaza a Object.Equals(object o), pero no reemplaza a Object.GetHashCode()
 {
     #region Atributos
     private int experiencia;
@@ -71,8 +73,16 @@ public class PokemonJugador : Pokemon
             Nivel += 1; //De esta manera se entra en set de Nivel y se controlara que el nivel no pase de 100
             experiencia = 0;//Se resetea la experiencia del pokemon
             experienciaSiguienteNivel += 100; //Aumenta la experiencia requerida para el siguiente nivel
+            subirEstadisticas();
         }
         return subidaNivel;
+    }
+
+    private void subirEstadisticas() {
+        HP += Random.Range(4, 11);
+        Ataque += Random.Range(4, 11);
+        Defensa += Random.Range(4, 11);
+        Velocidad += Random.Range(4, 11);
     }
     #endregion
     

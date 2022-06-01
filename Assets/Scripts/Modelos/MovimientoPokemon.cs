@@ -61,8 +61,8 @@ public class MovimientoPokemon
     #region Metodos Fundamentales(Propiedades)
     public int MT { get; }
     public string Nombre { get; }
-    public int Danho { get; }
-    public int Precicion { get; }
+    public int Danho { get; set; }
+    public int Precicion { get; set; } //Quitar SETS
     public int PP { get; }
     public int PPMaximo { get; }
     public string Tipo { get; }

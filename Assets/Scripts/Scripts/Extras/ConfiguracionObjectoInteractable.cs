@@ -12,9 +12,12 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
 
     private void Update()
     {
+        //TODO HACER METODO PARA DETERMINAR QUE AUDIO HAY QUE COGER 
         //Si el jugador esta dentro del rango, pulsa la tecla E y no hay un dialogo iniciado 
         if (jugadorDentroRango && Input.GetKey(KeyCode.E) && PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())
         {
+            UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
+            //UtilidadesEscena.activarMusicaIteraccionConAlgo("Get Item");
             PlayerPrefs.SetString("InteraccionConObjeto", gameObject.tag);//Se guarda el tipo de objeto con el que sea interactuado
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
             ControlDialogos controlDialogos = dialogo.transform.GetChild(0).gameObject.GetComponent<ControlDialogos>();
@@ -26,8 +29,12 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
                     PlayerPrefs.SetString("InteraccionConObjeto", "Trainer derrotado");
                 }
                 else {
+                    UtilidadesEscena.activarMusicaIteraccionConAlgo("Get Item");
+                    DatosGenerales.trainerLuchando = trainer;
                     controlDialogos.ListaFrases = trainer.Frases.ToArray();
                     StartCoroutine(trainer.activarExclamacionTrainerCombate());
+                    GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
+                    DontDestroyOnLoad(jugador);
                 }
             } else{
                 controlDialogos.ListaFrases = frases.ToArray();

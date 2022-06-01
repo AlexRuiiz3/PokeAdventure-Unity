@@ -186,13 +186,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -983,7 +983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055000003, y: 0.81738937}
   m_AnchorMax: {x: 0.3054777, y: 0.9464494}
-  m_AnchoredPosition: {x: 0.4081726, y: -0.3999939}
+  m_AnchoredPosition: {x: 0.40841675, y: -0.3999939}
   m_SizeDelta: {x: -0.42299986, y: -0.47899997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176047260
@@ -2336,13 +2336,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4362,13 +4362,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5169,13 +5169,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5650,7 +5650,6 @@ GameObject:
   - component: {fileID: 725163957}
   - component: {fileID: 725163956}
   - component: {fileID: 725163951}
-  - component: {fileID: 725163958}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5860,6 +5859,7 @@ MonoBehaviour:
   nivelPokemon: {fileID: 530772424}
   barraSalud: {fileID: 259074931}
   imagenPokemon: {fileID: 997882334}
+  pokemonsDisponibles: {fileID: 0}
 --- !u!114 &725163957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5876,16 +5876,7 @@ MonoBehaviour:
   nivelPokemon: {fileID: 1519407023}
   barraSalud: {fileID: 69683505}
   pokemonsDisponibles: {fileID: 1515677407}
-  spritePokeball: {fileID: 21300000, guid: 9b17444a81a04ca429e9708fbaaf35ee, type: 3}
   imagenPokemon: {fileID: 872261884}
---- !u!81 &725163958
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725163950}
-  m_Enabled: 1
 --- !u!1 &733613485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6783,13 +6774,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9114,7 +9105,7 @@ MonoBehaviour:
   imagenBackGround: {fileID: 271496556}
   textoDialogo: {fileID: 902806265}
   trainerHUD: {fileID: 1406604887}
-  wildPokemonHUD: {fileID: 1747663326}
+  rivalPokemonHUD: {fileID: 1747663326}
   botonesPokemonsEquipo:
   - {fileID: 347456546}
   - {fileID: 2058600887}
@@ -10444,7 +10435,6 @@ MonoBehaviour:
   nivelPokemon: {fileID: 1519407023}
   barraSalud: {fileID: 69683505}
   pokemonsDisponibles: {fileID: 1515677407}
-  spritePokeball: {fileID: 21300000, guid: 9b17444a81a04ca429e9708fbaaf35ee, type: 3}
   imagenPokemon: {fileID: 872261884}
 --- !u!1 &1414894920
 GameObject:
@@ -10943,7 +10933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055000003, y: 0.44300002}
   m_AnchorMax: {x: 0.32873195, y: 0.8011298}
-  m_AnchoredPosition: {x: 0.9949646, y: -0.19100189}
+  m_AnchoredPosition: {x: 0.9948425, y: -0.19100189}
   m_SizeDelta: {x: 0.7528, y: 0.7757988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472777155
@@ -11660,7 +11650,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1158368795}
-        m_TargetAssemblyTypeName: BattleSystemWildPokemon, Assembly-CSharp
+        m_TargetAssemblyTypeName: ComunBattleSystem, Assembly-CSharp
         m_MethodName: cambiarPokemon
         m_Mode: 1
         m_Arguments:
@@ -12151,6 +12141,7 @@ MonoBehaviour:
   nivelPokemon: {fileID: 530772424}
   barraSalud: {fileID: 259074931}
   imagenPokemon: {fileID: 997882334}
+  pokemonsDisponibles: {fileID: 0}
 --- !u!1 &1805255998
 GameObject:
   m_ObjectHideFlags: 0
@@ -14264,13 +14255,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

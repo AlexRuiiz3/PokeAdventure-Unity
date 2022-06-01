@@ -9,6 +9,7 @@ public class TrainerNPC : MonoBehaviour
     {
         if (!derrotado && collision.CompareTag("Player") && !collision.isTrigger)//Si entra en contacto con el jugador  
         {
+            DatosGenerales.trainerLuchando = this;
             PlayerPrefs.SetString("InteraccionConObjeto", transform.parent.tag);
             StartCoroutine(activarExclamacionTrainerCombate());
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
@@ -38,11 +39,11 @@ public class TrainerNPC : MonoBehaviour
     public TrainerNPC() {
         Frases = new List<string>();
         EquipoPokemon = new List<Pokemon>();
-        Mochila = new List<Item>();
+        Mochila = new List<ItemConCantidad>();
         derrotado = false;
     }
     //Constructor con parametros
-    public TrainerNPC(List<string> frases, List<Pokemon> equipoPokemon, List<Item> mochila)
+    public TrainerNPC(List<string> frases, List<Pokemon> equipoPokemon, List<ItemConCantidad> mochila)
     {
         Frases = frases;
         EquipoPokemon = equipoPokemon;
@@ -55,11 +56,12 @@ public class TrainerNPC : MonoBehaviour
     public List<string> Frases { get; set; }
     public List<string> FrasesDerrotado { get; set; }
     public bool derrotado { get; set; }
+    public int dineroAlDerrotar { get; set; }
 
     //EquipoPokemon
-    public List<Pokemon> EquipoPokemon { get; }
+    public List<Pokemon> EquipoPokemon { get; set; }
     //Mochila
-    public List<Item> Mochila { get; set; }
+    public List<ItemConCantidad> Mochila { get; set; }
     #endregion
 
     

@@ -153,11 +153,13 @@ public class Pokemon
 
     #region Metodos Añadidos 
     //Este metodo es necesario ya que en el constructor no puede a ver metodos async 
-    public async Task obtenerDatosAsincronos(PokeAPI.Pokemon pokeAPI)
+    public async Task<bool> obtenerDatosAsincronos(PokeAPI.Pokemon pokeAPI)
     {
         Tipos = await APIListadosPokemonBL.obtenerNombreTiposPokemon(pokeAPI.Types);
         Debilidades = await APIListadosPokemonBL.obtenerNombreTiposDebilesPokemon(pokeAPI.Types);
         Movimientos = await APIListadosPokemonBL.obtenerMovimientosAleatoriosPokemon(pokeAPI.Moves);
+
+        return true;
     }
     /// <sumary>
     /// Cabecera: public bool recibirDanho(int danho) 
@@ -182,10 +184,15 @@ public class Pokemon
         }
         return vivo;
     }
-    /*
-    public void subirEstadisticas(){
-        PS = 10 + Nivel /100 * (PS * 2);
-        PS = 10 + (1 / 100 * (40 * 2) );
-    }*/
+ 
+    public void establecerEstadisticasAlNivelActual(){
+        if (nivel > 1)
+        {
+            HP += nivel * Random.Range(4, 11);
+            Ataque += nivel * Random.Range(4, 11);
+            Defensa += nivel * Random.Range(4, 11);
+            Velocidad += nivel * Random.Range(4, 11);
+        }
+    }
     #endregion
 }

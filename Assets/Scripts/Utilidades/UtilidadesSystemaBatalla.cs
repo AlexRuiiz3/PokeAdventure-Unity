@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 public class UtilidadesSystemaBatalla
 {
+    
     public static int obtenerMultiplicadorPorEfectividad(List<string> debilidadesPokemon, string tipoMovimientoAtaca, TextMeshProUGUI textoMostrarResultado)
     {
         int multiplicador = 1;
@@ -81,5 +83,10 @@ public class UtilidadesSystemaBatalla
         int numero = (3 * psMaximos - 2 * psActuales) * indicePokeball;
         numero /= (3 * psMaximos);
         return random <= numero;
+    }
+
+    public static bool comprobarPokemonsVivos(List<Pokemon> pokemons)
+    {
+        return pokemons.Exists(g => g.HP > 0);
     }
 }

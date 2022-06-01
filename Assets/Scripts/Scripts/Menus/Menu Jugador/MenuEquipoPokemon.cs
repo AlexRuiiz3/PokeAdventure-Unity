@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class MenuEquipoPokemon : MonoBehaviour
 {
     public List<GameObject> interfacesPokemons;
-    public List<GameObject> interfacesPokemonsMenuCambiarPosicion;
     private Jugador jugador;
     private GameObject interfazPokemonSeleccionado;
     private PokemonJugador pokemonSeleccionado;
@@ -114,14 +113,15 @@ public class MenuEquipoPokemon : MonoBehaviour
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se mostrara un menu con botones por cada pokemon que tenga el jugador en su equipo.
     /// </summary>
-    public void mostrarConfigurarMenuCambiarPosicion() {
+    public void mostrarConfigurarMenuCambiarPosicion(GameObject plantilla) {
         GameObject menuCambiarPosicion = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MenuCambiarPosicion");
         GameObject interfazPokemonCambiar;
+        GameObject contentPokemons = menuCambiarPosicion.transform.Find("ContentPokemons").gameObject;
         PokemonJugador pokemon;
-        UtilidadesEscena.activarDesactivarGameObjects(interfacesPokemonsMenuCambiarPosicion, false);
+        UtilidadesEscena.eliminarHijosGameObject(contentPokemons);
         for (int i = 0; i < jugador.EquipoPokemon.Count; i++) {
             pokemon = jugador.EquipoPokemon[i];
-            interfazPokemonCambiar = interfacesPokemonsMenuCambiarPosicion[i];
+            interfazPokemonCambiar = Instantiate(plantilla);
             interfazPokemonCambiar.name = pokemon.PokemonNumero.ToString();
             interfazPokemonCambiar.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             interfazPokemonCambiar.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
@@ -129,6 +129,8 @@ public class MenuEquipoPokemon : MonoBehaviour
             if (pokemon.Equals(pokemonSeleccionado)) {
                 interfazPokemonCambiar.GetComponent<Button>().interactable = false;
             }
+            interfazPokemonCambiar.transform.SetParent(contentPokemons.transform);
+            interfazPokemonCambiar.transform.localScale = new Vector3(1,1,1);
             interfazPokemonCambiar.gameObject.SetActive(true);
         }
         menuCambiarPosicion.SetActive(true);

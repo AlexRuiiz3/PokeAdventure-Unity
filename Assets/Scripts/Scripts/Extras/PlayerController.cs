@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
-        Jugador.EquipoPokemon[0].HPMaximos = 100;
-        Jugador.EquipoPokemon[0].HP = 49;
+        Jugador.EquipoPokemon[0].HPMaximos = 2000;
+        Jugador.EquipoPokemon[0].HP = 2000;
+        Jugador.EquipoPokemon[0].Ataque = 200;
+        Jugador.EquipoPokemon[0].Movimientos[0].Precicion = 100;
+        Jugador.EquipoPokemon[0].Movimientos[0].Danho = 150;
         Jugador.EquipoPokemon[1].HPMaximos = 100;
         Jugador.EquipoPokemon[1].HP = 1;
         if (!DatosGuardarJugador.ListasObtenidas) {
@@ -94,17 +97,15 @@ public class PlayerController : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
         {
             if (UnityEngine.Random.Range(1, 851) <= 2)
-            {   
-                UtilidadesEscena.pausarMusicaEscenaActiva();//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
-                DontDestroyOnLoad(gameObject);
-                SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
-                //yield return new WaitForSeconds(1);
-                gameObject.SetActive(false);
-                //StartCoroutine(cargarEscenaCombatePokemonSalvaje());
+            {
+                GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
+                DontDestroyOnLoad(jugador);
+                UtilidadesEscena.activarPausarMusicaEscenaActiva(false);//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
+                PlayerPrefs.SetString("NameNextScene", "BattleWildPokemonScene");
+                SceneManager.LoadScene("BattleWildPokemonScene",LoadSceneMode.Additive);
             }
         }
     }
-
 
     private void obtenerDatosJugador(string nombreUsuario, string contrasenha)//No va aqui va cuando se inicia sesion y despues de resgistrase
     {

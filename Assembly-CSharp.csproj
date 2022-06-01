@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BBDD\Entidades\ClsJugador.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu PC\MenuPC.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Escenas\CargarEscena.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonEncontradosJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesSystemaBatalla.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuMochila.cs" />
     <Compile Include="Assets\Scripts\BBDD\Entidades\PokemonJugador.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Extras\DatosGenerales.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Scripts\Scripts\Extras\ConfiguracionObjectoInteractable.cs" />
     <Compile Include="Assets\Scripts\Modelos\Pokemon.cs" />
@@ -93,11 +95,13 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesObjetosInteractables.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosTipoBL.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Batallas\BattleSystemPokemonTrainer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Batallas\ComunBattleSystem.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\Scripts\Extras\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Scripts\Batallas\BattleSystemWildPokemon.cs" />
@@ -116,7 +120,7 @@
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosTipoDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Utilidades\UtilidadesEscena.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Batallas\WildPokemonHUD.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Batallas\RivalPokemonHUD.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraJugadorBL.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\Menu Jugador\MenuEquipoPokemon.cs" />
@@ -397,6 +401,9 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -874,6 +881,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{B3A501EB-0CA6-0D64-0EFE-82A1C5783AE3}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

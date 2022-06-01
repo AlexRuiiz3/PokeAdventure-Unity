@@ -4,12 +4,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /* Clase con metodos que realizan alguna iteracion con los elementos de una escena, como activar o desactivar algo, 
  * o mostrar o eliminar algun elemento de una escena.
  */
 public class UtilidadesEscena : MonoBehaviour
 {
+    public static void precargarEscena(string escenaSiguiente)
+    {
+        GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
+        DontDestroyOnLoad(jugador);
+        PlayerPrefs.SetString("NameNextScene", escenaSiguiente);
+        SceneManager.LoadScene("LoadingScene");
+    }
     /// <summary>
     /// Cabecera: public static void eliminarGameObjectsItemsYEntrenadores()
     /// Comentario: Este metodo se encarga de eliminar todos los gameObjects que tengan el tag Trainer y los que tengan el tag Item 
@@ -79,7 +87,8 @@ public class UtilidadesEscena : MonoBehaviour
     ///                  2: Si el menu recibido no esta activado, se pausara el tiempo de juego y se activara el menu.
     /// </summary>
     /// <param name="menu"></param>
-    public static void activarDesactivarMenuYTiempoJuego(GameObject menu) {
+    public static void activarDesactivarMenuYTiempoJuego(GameObject menu)
+    {
         if (menu.activeSelf)
         {
             Time.timeScale = 1f; //El tiempo del juego se reactiva
@@ -100,7 +109,7 @@ public class UtilidadesEscena : MonoBehaviour
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se parara la musica que tiene la escena que se encuentre activa. Si la escena no tiene musica, no se pausara la musica.
     /// </summary>
-    public static void pausarMusicaEscenaActiva()
+    public static void activarPausarMusicaEscenaActiva(bool modo)
     {
         bool encontrado = false;
         GameObject[] gameObjectsEscena = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -109,29 +118,29 @@ public class UtilidadesEscena : MonoBehaviour
             if (gameObjectsEscena[i].name == "Grid")
             {
                 encontrado = true;
-                gameObjectsEscena[i].GetComponent<AudioSource>().Stop();
-                gameObjectsEscena[i].GetComponent<AudioSource>().enabled = false;
-                gameObjectsEscena[i].GetComponent<AudioListener>().enabled = false;
+                if (modo)
+                {
+                    gameObjectsEscena[i].GetComponent<AudioSource>().Play();
+                }
+                else
+                {
+                    gameObjectsEscena[i].GetComponent<AudioSource>().Pause();
+                }
             }
         }
     }
 
-    //Creo que este metodo no es necesario, no se usa
-    public static void activarMusicaEscenaActiva()
+    public static void activarMusicaIteraccionConAlgo(string iteracion)
     {
-        bool encontrado = false;
-        GameObject[] gameObjectsEscena = SceneManager.GetActiveScene().GetRootGameObjects();
-        for (int i = 0; i < gameObjectsEscena.Length && !encontrado; i++)
-        {
-            if (gameObjectsEscena[i].name == "Grid")
-            {
-                encontrado = true;
-                gameObjectsEscena[i].GetComponent<AudioSource>().Play();
-                gameObjectsEscena[i].GetComponent<AudioSource>().enabled = true;
-                gameObjectsEscena[i].GetComponent<AudioListener>().enabled = true;
-            }
-        }
+        GameObject audioTemporal = new GameObject();
+        audioTemporal.transform.position = new Vector3(0,0,0);
+        audioTemporal.name = "AudioTemporal";
+        AudioSource audioSource = audioTemporal.AddComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>($"Audio/{iteracion}");
+
+        audioSource.Play();
     }
+
     /// <summary>
     /// Cabecera: public static void mostrarMensajeError(string mensaje) 
     /// Comentario: Este metodo se encarga de mostrar en un menu personalizado el mensaje recibo.
@@ -141,7 +150,7 @@ public class UtilidadesEscena : MonoBehaviour
     /// Postcondiciones: Se mostrara un menu personalizado que contendra el mensaje recibido como parametro.
     /// </summary>
     /// <param name="mensaje"></param>
-    public static void mostrarMensajeError(string mensaje) 
+    public static void mostrarMensajeError(string mensaje)
     {
         GameObject menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MensajeError");
         menuError.GetComponentsInChildren<TextMeshProUGUI>()[1].text = mensaje;
@@ -159,18 +168,20 @@ public class UtilidadesEscena : MonoBehaviour
     /// <param name="barraSalud"></param>
     /// <param name="hp"></param>
     /// <param name="hpMaximos"></param>
-    public static void modificarBarraSalud(Image barraSalud, int hp, int hpMaximos) {
+    public static void modificarBarraSalud(Image barraSalud, int hp, int hpMaximos)
+    {
         barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos, 1f, 1f);
 
         if (barraSalud.transform.localScale.x >= 0.5f)
         {
-            barraSalud.color = new Color32(0, 255, 106,255);//Verde
+            barraSalud.color = new Color32(0, 255, 106, 255);//Verde
         }
         else if (barraSalud.transform.localScale.x < 0.15f)
         {
             barraSalud.color = Color.red;
         }
-        else {
+        else
+        {
             barraSalud.color = Color.yellow;
         }
     }
@@ -197,7 +208,7 @@ public class UtilidadesEscena : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// Cabecera: public static void configurarMenuDatosPokemon(GameObject menuDatos, PokemonJugador pokemon)
     /// Comentario: Este metodo se encarga de configurar y activar el menu con los datos de un pokemon.
