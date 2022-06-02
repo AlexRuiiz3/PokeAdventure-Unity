@@ -16,20 +16,22 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
         //Si el jugador esta dentro del rango, pulsa la tecla E y no hay un dialogo iniciado 
         if (jugadorDentroRango && Input.GetKey(KeyCode.E) && PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())
         {
-            UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
-            //UtilidadesEscena.activarMusicaIteraccionConAlgo("Get Item");
             PlayerPrefs.SetString("InteraccionConObjeto", gameObject.tag);//Se guarda el tipo de objeto con el que sea interactuado
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
             ControlDialogos controlDialogos = dialogo.transform.GetChild(0).gameObject.GetComponent<ControlDialogos>();
             if (gameObject.tag == "Trainer") { //Si se interactua con un entrenador
                 TrainerNPC trainer = gameObject.transform.parent.gameObject.transform.GetChild(0).GetComponentInChildren<TrainerNPC>();
+                trainer.Imagen = (from spriteNPC in Resources.LoadAll<Sprite>("Imagenes/Trainers/" + transform.parent.gameObject.name)
+                                 where spriteNPC.name == "Abajo"
+                                 select spriteNPC).First();
                 if (trainer.derrotado)
                 {
                     controlDialogos.ListaFrases = trainer.FrasesDerrotado.ToArray();
                     PlayerPrefs.SetString("InteraccionConObjeto", "Trainer derrotado");
                 }
                 else {
-                    UtilidadesEscena.activarMusicaIteraccionConAlgo("Get Item");
+                    UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
+                    UtilidadesEscena.activarMusicaTemporal($"Batalla/TrainerSeesYou{Random.Range(1, 5)}", true);
                     DatosGenerales.trainerLuchando = trainer;
                     controlDialogos.ListaFrases = trainer.Frases.ToArray();
                     StartCoroutine(trainer.activarExclamacionTrainerCombate());
@@ -37,11 +39,8 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
                     DontDestroyOnLoad(jugador);
                 }
             } else{
+                determinarAccionSegunObjecto(gameObject.tag);
                 controlDialogos.ListaFrases = frases.ToArray();
-            }
-
-            if (gameObject.tag == "Objeto") { //Si se trara de un objeto, se destruye ya que se suma al inventario del jugador
-                Destroy(gameObject);
             }
             //Se muestra la interfaz del dialogo y se activa
             dialogo.SetActive(true);
@@ -82,5 +81,17 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
 
         gameObject.SetActive(false); //Se desactiva el gameObject que tiene el boxCollider, asi solo se podra combatir con el mismo entrenador solo una vez
         StopCoroutine(activarExclamacionTrainerCombate());
+    }
+
+    private void determinarAccionSegunObjecto(string tag) {
+        switch (tag)
+        {
+            case "PC": UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/OpenPC",1.5f); break;
+            case "Objeto":
+                UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
+                UtilidadesEscena.activarMusicaTemporal("Iteracion/GetItem", false);
+                Destroy(gameObject); 
+                break;
+        }
     }
 }

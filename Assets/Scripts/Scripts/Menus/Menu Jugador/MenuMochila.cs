@@ -79,7 +79,7 @@ public class MenuMochila : MonoBehaviour
                 interfazPokemon.GetComponentsInChildren<Text>()[0].text = pokemon.Nombre;
                 interfazPokemon.GetComponentsInChildren<Text>()[1].text = $"lv. {pokemon.Nivel}";
                 interfazPokemon.GetComponentsInChildren<Text>()[2].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
-                UtilidadesEscena.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[2], pokemon.HP, pokemon.HPMaximos);
+                UtilidadesSystemaBatalla.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[2], pokemon.HP, pokemon.HPMaximos);
                 interfazPokemon.GetComponentsInChildren<Image>()[4].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
                 interfazPokemon.SetActive(true);
             }
@@ -106,7 +106,7 @@ public class MenuMochila : MonoBehaviour
     public void aplicarItemAPokemon(GameObject interfazPokemon){
         ItemConCantidad itemAplicar = jugador.Mochila.Find(g => g.ID == Int16.Parse(interfazItemUsar.name));
         --itemAplicar.Cantidad;
-        
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion",1f);
         jugador.EquipoPokemon.Find(g => g.ID == Int16.Parse(interfazPokemon.name)).HP += itemAplicar.CuracionPS;
         if (itemAplicar.Cantidad == 0)
         {

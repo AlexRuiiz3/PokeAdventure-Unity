@@ -28,6 +28,9 @@ public class BattleSystemWildPokemon : ComunBattleSystem
 
 
         PokemonRivalLuchando = await generarObtenerPokemonRival();
+        pantallaCarga.SetActive(false);
+        audio.Play();
+        
         configurarMenuMochila();
         StartCoroutine(prepararIniciarBatalla());
 
@@ -202,17 +205,20 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                 yield return new WaitForSeconds(2f);
                 if (!wildPokemonVivo) //Si el pokemon despues de recibir daño no esta vivo
                 {
+                    audio.Pause();
+                    audio.clip = Resources.Load<AudioClip>("Audio/Batalla/VictoryBattle");
+                    audio.Play();
                     textoDialogo.text = $"¡El {PokemonRivalLuchando.Nombre} enemigo se debilito!";
                     yield return new WaitForSeconds(2f);
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
                     textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} puntos de experiencia";
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
+                        yield return new WaitForSeconds(3.5f);
                         trainerHUD.setTextNivel(PokemonJugadorLuchando.Nivel);
-                        yield return new WaitForSeconds(4f);
+                        UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/LevelUp", 1f);
                         textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}";
                     }
-
                     yield return new WaitForSeconds(3f);
                     textoDialogo.text = "¡Victoria! Saliendo del combate...";
                     BattleState = BattleState.WIN;
@@ -333,19 +339,27 @@ public class BattleSystemWildPokemon : ComunBattleSystem
 
         textoDialogo.text = $"Has lanzado una {ItemAUsar.Nombre}";
         rivalPokemonHUD.imagenPokemon.sprite = InterfazItemAUsar.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
-        rivalPokemonHUD.imagenPokemon.transform.localScale = new Vector3(0.35f, 0.55f, 1f);
+        rivalPokemonHUD.imagenPokemon.transform.localScale = new Vector3(0.35f, 0.52f, 1f);
         rivalPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -34.18f);
-        yield return new WaitForSeconds(3.5f);
-
         bool pokemonCapturado = true;//UtilidadesSystemaBatalla.determinarCapturarPokemon(itemAUsar.IndiceExito,wildPokemon.HPMaximos,wildPokemon.HP);
+        if (pokemonCapturado) {
+            UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/PokemonCapturado", 3.5f);
+        }
+        else {
+            UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/PokemonNoCapturado", 3.5f);
+        }
+
+        yield return new WaitForSeconds(3.25f);
 
         if (pokemonCapturado)
         {
+            UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
+            UtilidadesEscena.activarMusicaTemporal("Batallas/GetPokemon", true);
             rivalPokemonHUD.imagenPokemon.color = Color.grey;
             textoDialogo.text = $"{PokemonRivalLuchando.Nombre} atrapado!";
             yield return new WaitForSeconds(2f);
             guardarPokemonCapturado();
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(4.5f);
             abandonarBatallaButton();
         }
         else {

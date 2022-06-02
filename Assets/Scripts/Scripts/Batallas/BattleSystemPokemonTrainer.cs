@@ -16,6 +16,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     private TrainerNPC trainerNPC;
     async void Start()
     {
+        trainerNPC = DatosGenerales.trainerLuchando;
+        rivalPokemonHUD.imagenRival.sprite = trainerNPC.Imagen;
         CorrutinaAtaqueRival = atacarEntranadorRival();
         //Se obtiene la imagen de fondo del campos de batalla(Se escogera la imagen que corresponde con la escena que esta activa) 
         imagenBackGround.GetComponent<Image>().sprite = (from sprite in Resources.LoadAll<Sprite>("Imagenes/UI/EscenasBatalla/BattleBackgrounds")
@@ -27,6 +29,9 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                            .GetComponent<PlayerController>().Jugador;
 
         await prepararEntrenadorRival();
+        pantallaCarga.SetActive(false);
+        audio.clip = Resources.Load<AudioClip>($"Audio/Batalla/BattleTrainer{UnityEngine.Random.Range(1, 5)}");
+        audio.Play();
 
         configurarMenuMochila();
         StartCoroutine(prepararIniciarBatalla());
@@ -108,7 +113,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
 
             int aleatorioPrecicion = UnityEngine.Random.Range(1, 100);//num aleatorio entre (1 y 100) 100 es el valor maximo que puede tener la precicion de un movimiento
             int danhoMovimiento, danhoPokemonCausado, multiplicadorEfectividad, experienciaGanada;
-            bool wildPokemonVivo;
+            bool rivalPokemonVivo;
             if (aleatorioPrecicion <= movimientoUsado.Precicion)//Si precicion(60 <= 90(Precicion del movimiento)) se ataca, si es mayor que 90 que es la precicion del movimiento, no se raliaza el ataque
             {
                 trainerHUD.imagenPokemon.gameObject.transform.DOMove(new Vector3(trainerHUD.imagenPokemon.gameObject.transform.position.x + 20, trainerHUD.imagenPokemon.gameObject.transform.position.y + 20, 0), 0.3f);
@@ -134,31 +139,34 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     danhoMovimiento, multiplicadorEfectividad, PokemonJugadorLuchando.Ataque, PokemonRivalLuchando.Defensa);
 
                 //El pokemon rival recibe el daño y se actualiza su interfaz
-                wildPokemonVivo = PokemonRivalLuchando.recibirDanho(danhoPokemonCausado);
+                rivalPokemonVivo = PokemonRivalLuchando.recibirDanho(danhoPokemonCausado);
                 rivalPokemonHUD.setBarraSalud(PokemonRivalLuchando.HP, PokemonRivalLuchando.HPMaximos);
                 yield return new WaitForSeconds(0.15f);
                 trainerHUD.imagenPokemon.gameObject.transform.DOMove(new Vector3(trainerHUD.imagenPokemon.gameObject.transform.position.x - 20, trainerHUD.imagenPokemon.gameObject.transform.position.y - 20, 0), 0.3f);
                 yield return new WaitForSeconds(2f);
-                if (!wildPokemonVivo) //Si el pokemon despues de recibir daño esta vivo
+                if (!rivalPokemonVivo) //Si el pokemon despues de recibir daño esta vivo
                 {
-                    yield return new WaitForSeconds(2f);
                     textoDialogo.text = $"¡{PokemonRivalLuchando.Nombre} enemigo se debilito!";
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
                     yield return new WaitForSeconds(2f);
                     textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} de experiencia";
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
+                        yield return new WaitForSeconds(3.5f);
                         trainerHUD.setTextNivel(PokemonJugadorLuchando.Nivel);
-                        yield return new WaitForSeconds(4f);
+                        UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/LevelUp", 1f);
                         textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}";
                     }
 
                     if (determinarDerrotaRival())
                     {
+                        audio.Pause();
+                        audio.clip = Resources.Load<AudioClip>("Audio/Batalla/VictoryBattle");
+                        audio.Play();
                         trainerNPC.derrotado = true;
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(3f);
                         textoDialogo.text = $"Has derrotado al entrenador rival y obtenido {trainerNPC.dineroAlDerrotar}$";
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(3f);
                         textoDialogo.text = "Saliendo del combate...";
                         BattleState = BattleState.WIN;
                         yield return new WaitForSeconds(4f);
@@ -421,7 +429,6 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     private async Task prepararEntrenadorRival()
     {
         int numeroItems = 1;//UnityEngine.Random.Range(0, 2);
-        trainerNPC = DatosGenerales.trainerLuchando;
         if (numeroItems > 0)
         {
             trainerNPC.Mochila = generarItemsEntrenadorRival(numeroItems);

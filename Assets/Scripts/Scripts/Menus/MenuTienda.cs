@@ -89,6 +89,7 @@ public class MenuTienda : MonoBehaviour
         }
         jugador.Dinero -= costeCompra;
         textSaldo.text = $"Saldo {jugador.Dinero}$";
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/ComprarItem",1f);
         menuConfirmacionCompra.SetActive(false);
     }
     //Metodo que se encarga de configurar y preparar la interfaz del menu de la tienda 

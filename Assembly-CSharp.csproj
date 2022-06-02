@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BBDD\Entidades\ClsJugador.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu PC\MenuPC.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\MenuPC.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\CargarEscena.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosPokemonEncontradosJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="Assets\Scripts\BBDD\DAL\Listados\ListadosItemDAL.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonEncontradosJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\Scripts\Menus\Menu Principal\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\Scripts\Menus\MenuPrincipal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -9,6 +9,11 @@ public class TrainerNPC : MonoBehaviour
     {
         if (!derrotado && collision.CompareTag("Player") && !collision.isTrigger)//Si entra en contacto con el jugador  
         {
+            Imagen = (from spriteNPC in Resources.LoadAll<Sprite>("Imagenes/Trainers/" + transform.parent.gameObject.name)
+                                       where spriteNPC.name == "Abajo"
+                                       select spriteNPC).First();
+            UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
+            UtilidadesEscena.activarMusicaTemporal($"Batalla/TrainerSeesYou{Random.Range(1, 5)}", true);
             DatosGenerales.trainerLuchando = this;
             PlayerPrefs.SetString("InteraccionConObjeto", transform.parent.tag);
             StartCoroutine(activarExclamacionTrainerCombate());
@@ -53,6 +58,7 @@ public class TrainerNPC : MonoBehaviour
 
     #region Metodos fundamentales(Propiedades)
     //Frases
+    public Sprite Imagen { get; set; }
     public List<string> Frases { get; set; }
     public List<string> FrasesDerrotado { get; set; }
     public bool derrotado { get; set; }

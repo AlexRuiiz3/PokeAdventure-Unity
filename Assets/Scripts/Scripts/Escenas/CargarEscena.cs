@@ -28,18 +28,6 @@ public class CargarEscena : MonoBehaviour
                 jugador.SetActive(true);
             };
             yield return operation;
-        /*
-        operation.allowSceneActivation = false;
-        while (!operation.isDone) {
-           yield return null;
-        }
-        jugador.SetActive(true);*/
-        /*
-        if (operation.isDone)
-        {
-            operation.allowSceneActivation = true;
-        }*/
-        //StopCoroutine(cargarEscena());
     }
     private void determinarPosicionJugador() {
 

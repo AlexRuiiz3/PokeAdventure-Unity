@@ -9,7 +9,35 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 public class UtilidadesSystemaBatalla
 {
-    
+
+    /// <summary>
+    /// Cabecera: public static void modificarBarraSalud(Image barraSalud, int hp, int hpMaximos)
+    /// Comentario: Este metodo se encarga de modificar la imagen que representa la vida de un pokemon en funcion de la vida que tenga este.
+    /// Entradas: Image barraSalud, int hp, int hpMaximos
+    /// Salidas: Ninguna
+    /// Precondiciones: barraSalud no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se modificara la imagen de vida de un pokemon, cambiando el color de esta en funcion de la vida que tenga el pokemon.
+    /// </summary>
+    /// <param name="barraSalud"></param>
+    /// <param name="hp"></param>
+    /// <param name="hpMaximos"></param>
+    public static void modificarBarraSalud(Image barraSalud, int hp, int hpMaximos)
+    {
+        barraSalud.transform.localScale = new Vector3((float)hp / hpMaximos, 1f, 1f);
+
+        if (barraSalud.transform.localScale.x >= 0.5f)
+        {
+            barraSalud.color = new Color32(0, 255, 106, 255);//Verde
+        }
+        else if (barraSalud.transform.localScale.x < 0.15f)
+        {
+            barraSalud.color = Color.red;
+        }
+        else
+        {
+            barraSalud.color = Color.yellow;
+        }
+    }
     public static int obtenerMultiplicadorPorEfectividad(List<string> debilidadesPokemon, string tipoMovimientoAtaca, TextMeshProUGUI textoMostrarResultado)
     {
         int multiplicador = 1;

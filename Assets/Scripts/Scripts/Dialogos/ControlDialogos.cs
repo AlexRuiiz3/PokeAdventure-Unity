@@ -12,8 +12,15 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     public string[] ListaFrases;
     [SerializeField] public TextMeshProUGUI textoPantalla;
     private bool reproduciendoTexto;
+    private bool primeraFraseMostrada; //Para controlar la musica que se hace cuando se hace click en la siguiente frase
 
-     /// <summary>
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.F) && !reproduciendoTexto) {
+            siguienteFrase();
+        }
+    }
+    /// <summary>
     /// Cabecera: public void activarDialogo()
     /// Comentario: Este metodo se encarga de preparar e iniciar un dialogo
     /// Entradas: Ninguna
@@ -24,7 +31,7 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     public void activarDialogo()
     {
         GameObject jugador = GameObject.Find("Player");
-
+        primeraFraseMostrada = false;
         //Se para en seco el movimiento y animacion de jugador
         if (SceneManager.GetActiveScene().name != "GetFirstPokemonScene") {
             jugador.GetComponent<PlayerController>().setMovimientoHorizontal(0);
@@ -50,14 +57,21 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
     /// </summary>
     public void siguienteFrase()
     {
+        if (primeraFraseMostrada && !reproduciendoTexto)
+        {
+            UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/NextText",1f);
+        }
         if (colaTextos.Count != 0 && !reproduciendoTexto)
         {
             PlayerPrefs.SetString("EstadoDialogo", DialogEstate.PLAY.ToString());
             textoPantalla.text = "";
             StartCoroutine(mostrarTextoPorCaracteres(colaTextos.Dequeue()));
+            primeraFraseMostrada = true;
+
         }
         else if (colaTextos.Count == 0 && !reproduciendoTexto)
         {
+            
             gameObject.SetActive(false);
             new UtilidadesObjetosInteractables().determinarAccionFinDialogo();
             PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());

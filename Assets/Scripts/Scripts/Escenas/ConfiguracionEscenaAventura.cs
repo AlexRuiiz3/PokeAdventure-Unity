@@ -50,7 +50,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(-20.16f, -11.09f),new List<string>{ORIENTACION_ABAJO}),
                     new PosicionTrainerNPC(new Vector2(-14.06f, -5.49f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(8.38f, 1.48f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_IZQUIERDA}),
-                    new PosicionTrainerNPC(new Vector2(2.51f, 5.39f),new List<string>{ORIENTACION_ABAJO})
+                    new PosicionTrainerNPC(new Vector2(1.51f, 3.41f),new List<string>{ORIENTACION_ABAJO})
                 };
 
                 break;
@@ -93,7 +93,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
                     new PosicionTrainerNPC(new Vector2(20.83f, 6f),new List<string>{ORIENTACION_IZQUIERDA}),
                     new PosicionTrainerNPC(new Vector2(-17.46f, -1.19f),new List<string>{ORIENTACION_ABAJO,ORIENTACION_DERECHA}),
                     new PosicionTrainerNPC(new Vector2(-8.55f, 6.45f),new List<string>{ORIENTACION_ABAJO}),
-                    new PosicionTrainerNPC(new Vector2(-18.53f, -11.51f),new List<string>{ORIENTACION_ABAJO})
+                    new PosicionTrainerNPC(new Vector2(-18.53f, -11.51f),new List<string>{ORIENTACION_ARRIBA})
                 };
                 break;
         }
@@ -217,7 +217,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         {
             //Se crea el gameObject que sera un entrenador
             GameObject trainer = new GameObject();
-            trainer.name = $"Trainer{i}";
+
             trainer.tag = "Trainer";
 
             //Se obtiene una posicion de forma aleatoria y se le añade al gameObject. Despues se le añade un escalado
@@ -242,8 +242,8 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
 
             //Se obtiene una textura(Sera una imagen de un NPC) de forma aleatoria
             texturaAleatoria = obtenerTexturaAleatoriaTrainer();
+            trainer.name = texturaAleatoria.name;
 
-            
             //Para asignar el sprite al SpriteRenderer. Se obtienen todos los sprite que tiene la textura que se obtuvo de forma
             //aleatoria.Los sprite de la textura son siempre 4 y el nombre que tienen es Arriba,Abajo,Derecha,Izquierda.
             //Entonces se va obteniendo uno a uno los sprite y el que su nombre coincida con el de la orientacion(Obtenida de

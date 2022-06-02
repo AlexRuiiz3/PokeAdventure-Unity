@@ -24,7 +24,8 @@ public class ComunBattleSystem : MonoBehaviour
     public GameObject menuEquipo;
     public GameObject menuAtaque;
     public GameObject menuMochila;
-
+    public GameObject pantallaCarga;
+    public AudioSource audio;
     //Propiedades publicas, para que las clases que hereden de estas puedan usarlas
     public BattleState BattleState { get; set; }
     public Jugador Jugador { get; set; }
@@ -224,6 +225,7 @@ public class ComunBattleSystem : MonoBehaviour
         StopAllCoroutines();
         PlayerPrefs.SetString("NameLastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).name);
+        UtilidadesEscena.activarPausarMusicaEscenaActiva(true);
         GameObject player = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
         player.SetActive(true);
     }
@@ -314,6 +316,8 @@ public class ComunBattleSystem : MonoBehaviour
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name; //El nombre del boton corresponde a la posicion-1 de un pokemon dentro de la lista Equipo del jugador 
         int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]) - 1;
         Jugador.EquipoPokemon[numeroBotonPulsado].HP += ItemAUsar.CuracionPS;
+
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion", 1f);
 
         if (PokemonJugadorLuchando.Equals(Jugador.EquipoPokemon[numeroBotonPulsado]))
         { //Si se cura el pokemon que esta luchando, para que se actualice la interfaz de la vida

@@ -10,22 +10,23 @@ using System.Linq;
 public class UtilidadesObjetosInteractables
 {
     public void determinarAccionFinDialogo() {// No es static porque sino no se podria usar StartCoroutine
-        GameObject.Destroy(GameObject.Find("AudioTemporal"));
         string objetoInteraccion = PlayerPrefs.GetString("InteraccionConObjeto");
-        UtilidadesEscena.activarPausarMusicaEscenaActiva(true);
+
         switch (objetoInteraccion) {
-            case "Medico": curarPokemonsJugador(); break;
+            case "Medico":
+                UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery",2f);
+                curarPokemonsJugador(); break;
             case "Vendedor": activarMenuObjeto("MenuTienda"); break;
             case "PC": activarMenuObjeto("MenuPC"); break;
             case "Objeto":
-
+                UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
+                UtilidadesEscena.activarPausarMusicaEscenaActiva(true);
                 PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
                 playerController.iniciarCoroutineAsignarObjetoEncontrado();
                 //StartCoroutine(playerController.asignarObjetoEncontrado()); //No se puede hacer aqui ya que esta clase no esta asociada a ningun gameObject del juego
                 break;
             case "Trainer":
-                UtilidadesEscena.activarPausarMusicaEscenaActiva(false);//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
-                
+                UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
                 PlayerPrefs.SetString("NameNextScene", "BattleTrainerScene");
                 SceneManager.LoadScene("BattleTrainerScene", LoadSceneMode.Additive);
                 break;
@@ -38,6 +39,7 @@ public class UtilidadesObjetosInteractables
         foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
             pokemon.HP = pokemon.HPMaximos;
         }
+        UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
     }
     private static void activarMenuObjeto(string nombreMenu) {
         GameObject menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == nombreMenu);

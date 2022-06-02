@@ -35,7 +35,7 @@ public class MenuEquipoPokemon : MonoBehaviour
             interfazPokemon = interfacesPokemons[i];
             interfazPokemon.name = pokemon.PokemonNumero.ToString();
             interfazPokemon.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
-            UtilidadesEscena.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[3],pokemon.HP,pokemon.HPMaximos);
+            UtilidadesSystemaBatalla.modificarBarraSalud(interfazPokemon.GetComponentsInChildren<Image>()[3],pokemon.HP,pokemon.HPMaximos);
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
             interfazPokemon.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Nvl.{pokemon.Nivel}";
