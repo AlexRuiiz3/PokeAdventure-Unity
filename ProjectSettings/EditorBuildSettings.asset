@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Titulo/GetFirstPokemonScene.unity
+    guid: d724b1fa0ddb17d4180604c36a8d7aaa
+  - enabled: 1
     path: Assets/Scenes/Mapas/CityScene.unity
     guid: ffba8410802693e4eb6996a75ca8c021
   - enabled: 1
@@ -36,6 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Mapas/Edificios/PokemonShopScene.unity
     guid: fec79894345ec8048a7765861b71f70d
   - enabled: 1
-    path: Assets/Scenes/Mapas/LoadingScene.unity
+    path: Assets/Scenes/EscenaCarga/LoadingScene.unity
     guid: 8a9bc106eda6f5f43bbb49188f0d1e58
   m_configObjects: {}

@@ -146,6 +146,8 @@
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonEncontradosJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonsJugadorDAL.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraPokemonsJugadorBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

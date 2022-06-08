@@ -205,6 +205,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                 yield return new WaitForSeconds(2f);
                 if (!wildPokemonVivo) //Si el pokemon despues de recibir daño no esta vivo
                 {
+                    rivalPokemonHUD.imagenPokemon.enabled = true;
                     audio.Pause();
                     audio.clip = Resources.Load<AudioClip>("Audio/Batalla/VictoryBattle");
                     audio.Play();
@@ -294,6 +295,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             CorrutinaAtaqueRival = atacarWildPokemon();//Importante para que no se quede pillado en el atacarJugador de la clase padre
             if (!pokemonJugadorVivo) //Si el pokemon despues de recibir daño no esta vivo
             {
+                prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
                 yield return new WaitForSeconds(2f);
                 textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} se ha debilitado";
                 if (determinarDerrotaJugador())
@@ -386,7 +388,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
     private void guardarPokemonCapturado() {
         List<PokemonJugador> totalPokemonsJugador = DatosGuardarJugador.PokemonsAlmacenadosPC.Concat(Jugador.EquipoPokemon).ToList();
         int pokemonNumeroMaximo = totalPokemonsJugador.Max(g => g.PokemonNumero);
-        PokemonJugador pokemonNuevo = new PokemonJugador(PokemonRivalLuchando,Jugador.ID,pokemonNumeroMaximo + 1,0,0);
+        PokemonJugador pokemonNuevo = new PokemonJugador(PokemonRivalLuchando,Jugador.ID,pokemonNumeroMaximo + 1,0,0,PokemonRivalLuchando.Nivel * 50);
         if (Jugador.EquipoPokemon.Count < 6)
         {
             pokemonNuevo.NumeroEquipado = Jugador.EquipoPokemon.Count + 1;

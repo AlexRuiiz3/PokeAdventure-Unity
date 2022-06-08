@@ -49,9 +49,9 @@ public class ListadosPokemonsJugadorBL
     /// </summary>
     /// <param name="id"></param>
     /// <returns>int</returns>
-    public static int obtenerNumeroPokemonsJugador(int id)
+    public static int obtenerNumeroPokemonsJugador(string nombreUsuario, string contrasenha)
     {
-        return ListadosPokemonsJugadorDAL.obtenerNumeroPokemonsJugador(id);
+        return ListadosPokemonsJugadorDAL.obtenerNumeroPokemonsJugador(nombreUsuario,contrasenha);
     }
 }
 

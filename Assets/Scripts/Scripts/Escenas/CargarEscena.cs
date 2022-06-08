@@ -8,6 +8,8 @@ public class CargarEscena : MonoBehaviour
 {
     private GameObject jugador;
     private string escenaSiguiente;
+
+
     private void Start()
     {
         jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
@@ -17,15 +19,22 @@ public class CargarEscena : MonoBehaviour
 
     IEnumerator cargarEscena() {
         jugador.SetActive(false);
-        determinarPosicionJugador();
-
-        AsyncOperation 
-            operation = SceneManager.LoadSceneAsync(escenaSiguiente, LoadSceneMode.Single);
-            operation.allowSceneActivation = false;
-            yield return new WaitForSeconds(1f);
+        bool escenasTitulo = true;
+        float segundosEspera = 2f;
+        if (escenaSiguiente != "GetFirstPokemonScene" && escenaSiguiente != "MainScene")
+        {
+            determinarPosicionJugador();
+            escenasTitulo = false;
+            segundosEspera = Random.Range(3, 7);
+        }
+        AsyncOperation operation = SceneManager.LoadSceneAsync(escenaSiguiente, LoadSceneMode.Single);
+        operation.allowSceneActivation = false;
+            yield return new WaitForSeconds(segundosEspera);
             operation.allowSceneActivation = true;
             operation.completed += (asyncOperation) =>{
-                jugador.SetActive(true);
+                if (!escenasTitulo) {
+                    jugador.SetActive(true);
+                }
             };
             yield return operation;
     }
@@ -67,7 +76,7 @@ public class CargarEscena : MonoBehaviour
                 posicionNuevaJugador = new Vector2(-7.52f, -5.09f);
                 break;
             case "LobbyScene":
-                switch (SceneManager.GetActiveScene().name)
+                switch (PlayerPrefs.GetString("NameLastScene"))
                 {
                     case "SnowScene":
                     case "RouteScene":

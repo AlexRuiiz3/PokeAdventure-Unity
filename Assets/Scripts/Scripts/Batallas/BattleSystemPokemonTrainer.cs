@@ -146,9 +146,11 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                 yield return new WaitForSeconds(2f);
                 if (!rivalPokemonVivo) //Si el pokemon despues de recibir daño esta vivo
                 {
+                    rivalPokemonHUD.imagenPokemon.enabled = false;
+                    prepararIconosPokemosDisponibles(trainerNPC.EquipoPokemon, rivalPokemonHUD.pokemonsDisponibles);
                     textoDialogo.text = $"¡{PokemonRivalLuchando.Nombre} enemigo se debilito!";
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(3f);
                     textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} de experiencia";
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
@@ -164,20 +166,22 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                         audio.clip = Resources.Load<AudioClip>("Audio/Batalla/VictoryBattle");
                         audio.Play();
                         trainerNPC.derrotado = true;
-                        yield return new WaitForSeconds(3f);
+                        yield return new WaitForSeconds(3.5f);
+                        Jugador.Dinero += trainerNPC.dineroAlDerrotar;
                         textoDialogo.text = $"Has derrotado al entrenador rival y obtenido {trainerNPC.dineroAlDerrotar}$";
-                        yield return new WaitForSeconds(3f);
+                        yield return new WaitForSeconds(3.5f);
                         textoDialogo.text = "Saliendo del combate...";
                         BattleState = BattleState.WIN;
                         yield return new WaitForSeconds(4f);
                         abandonarBatallaButton();//Aqui se abandonara la corrutina, la escena
                     }
                     else {
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(3f);
                         PokemonRivalLuchando = trainerNPC.EquipoPokemon.First(g => g.HP > 0);
                         rivalPokemonHUD.inicializarDatos(PokemonRivalLuchando);
+                        rivalPokemonHUD.imagenPokemon.enabled = true;
                         textoDialogo.text = $"El entrendador rival saca a {PokemonRivalLuchando.Nombre}";
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(3f);
                     }
                 }
             }
@@ -251,6 +255,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                 CorrutinaAtaqueRival = atacarEntranadorRival();//Importante para que no se quede pillado en el atacarJugador de la clase padre
                 if (!pokemonJugadorVivo) //Si el pokemon despues de recibir daño no esta vivo
                 {
+                    prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
                     yield return new WaitForSeconds(2f);
                     textoDialogo.text = $"¡{PokemonJugadorLuchando.Nombre} se debilito!";
                     if (determinarDerrotaJugador())
@@ -292,7 +297,6 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
         if (UtilidadesSystemaBatalla.comprobarPokemonsVivos(trainerNPC.EquipoPokemon))
         {
             derrota = false;
-            prepararIconosPokemosDisponibles(trainerNPC.EquipoPokemon, rivalPokemonHUD.pokemonsDisponibles);
         }
         return derrota;
     }
@@ -306,9 +310,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     {
         int randomItemUsar = UnityEngine.Random.Range(0, trainerNPC.Mochila.Count);
         ItemConCantidad itemUsar = trainerNPC.Mochila[randomItemUsar];
-
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion", 1f);
         textoDialogo.text = $"El entrenador rival uso {itemUsar.Nombre}";
-
         PokemonRivalLuchando.HP += itemUsar.CuracionPS;
         rivalPokemonHUD.setBarraSalud(PokemonRivalLuchando.HP, PokemonRivalLuchando.HPMaximos);
 
@@ -428,7 +431,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     }
     private async Task prepararEntrenadorRival()
     {
-        int numeroItems = 1;//UnityEngine.Random.Range(0, 2);
+        int numeroItems = UnityEngine.Random.Range(0, 2);
         if (numeroItems > 0)
         {
             trainerNPC.Mochila = generarItemsEntrenadorRival(numeroItems);

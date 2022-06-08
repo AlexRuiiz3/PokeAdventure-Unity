@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -18,9 +19,16 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetString("InteraccionConObjeto","");
+        PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
+        Time.timeScale = 1f;
+        GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
+        DontDestroyOnLoad(jugador);
+        PlayerPrefs.SetString("NameLastScene", "");
         PlayerPrefs.SetString("GameLanguage", "es");
-        if (PlayerPrefs.GetInt("BaseDatosCreada") == 0) { 
-         ConfiguracionDB.createDB();
+        if (PlayerPrefs.GetInt("BaseDatosCreada") == 0)
+        {
+            ConfiguracionDB.createDB();
         }
     }
     /// <summary>
@@ -31,31 +39,46 @@ public class MenuPrincipal : MonoBehaviour
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se concedera acceso al usuario si los el valor de los campos nombre de usuario y contraseña son validos(Estan registrados).
     /// </summary>
-    public void iniciarSesion() {
+    public void iniciarSesion()
+    {
         string nombreUsuario = inputNombreUsuario.text,
                contrasenha = inputContrasenha.text;
 
         if (!string.IsNullOrEmpty(nombreUsuario.Trim()) && !string.IsNullOrEmpty(contrasenha.Trim()))
         {
-            try {
-                if (ListadosJugadorBL.comprobarExistenciaNombreUsuarioContrasenha(nombreUsuario,contrasenha)) 
+            try
+            {
+                if (ListadosJugadorBL.comprobarExistenciaNombreUsuarioContrasenha(nombreUsuario, contrasenha))
                 {
-                    SceneManager.LoadScene("LobbyScene");
+
+                    if (ListadosPokemonsJugadorBL.obtenerNumeroPokemonsJugador(nombreUsuario, contrasenha) < 1)
+                    {
+                        PlayerPrefs.SetString("NombreUsuarioIniciado", nombreUsuario);
+                        PlayerPrefs.SetString("ContrasenhaUsuarioIniciado", contrasenha);
+                        UtilidadesEscena.precargarEscena("GetFirstPokemonScene");
+                    }
+                    else
+                    {
+                        Utilidades.obtenerDatosJugador(nombreUsuario, contrasenha);
+                        UtilidadesEscena.precargarEscena("LobbyScene");
+                    }
                 }
                 else
                 {
                     UtilidadesEscena.mostrarMensajeError("El usuario o la contrasena no son validos");
                 }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 UtilidadesEscena.mostrarMensajeError("Ocurrio un error al intentar acceder a la base de datos");
             }
         }
-        else {
+        else
+        {
             UtilidadesEscena.mostrarMensajeError("El usuario y la contrasena son campos obligatorios");
-        }     
+        }
     }
-    
+
     /// <summary>
     /// Cabecera: public void registrarUsuario()
     /// Comentario: Este metodo se encarga de obtener los datos necesarios para crear una cuenta a un jugador, si algun dato no es valido la cuenta del jugador no se creara y se informara al usuario del motivo por el que no se pudo crear la cuenta.
@@ -80,8 +103,10 @@ public class MenuPrincipal : MonoBehaviour
                         {
                             if (inputCorreoElectronico.text.EndsWith("@gmail.com") || inputCorreoElectronico.text.EndsWith("@gmail.es")) //Si el correo electronico termina por @gmail.com o @gmail.es
                             {
-                                GestoraJugadorBL.insertarJugador(new ClsJugador(0, inputNombreUsuarioRegistro.text, inputContrasenhaRegistro.text, inputCorreoElectronico.text, 0, new byte[0]));
-                                Debug.Log("Usuario registrado");
+                                PlayerPrefs.SetString("NombreUsuarioIniciado", inputNombreUsuarioRegistro.text);
+                                PlayerPrefs.SetString("ContrasenhaUsuarioIniciado", inputContrasenhaRegistro.text);
+                                GestoraJugadorBL.insertarJugador(new ClsJugador(0, inputNombreUsuarioRegistro.text, inputContrasenhaRegistro.text, inputCorreoElectronico.text, 250, new byte[0]));
+                                UtilidadesEscena.precargarEscena("GetFirstPokemonScene");
                             }
                             else
                             {

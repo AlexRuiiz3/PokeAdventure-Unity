@@ -246,7 +246,6 @@ public class ComunBattleSystem : MonoBehaviour
             activarDesactivarMenuEquipo(false, true);
             derrota = false;
             BattleState = BattleState.POKEMONJUGADORDEBILITADO;
-            prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
         }
         return derrota;
     }

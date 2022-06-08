@@ -12,30 +12,35 @@ public class GestoraItemDAL
     {
         int inserciones = 0;
         SqliteConnection conexion = null;
-        SqliteCommand command; 
-
-        try
+        SqliteCommand command;
+        if (items.Count > 0)
         {
-            conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("DELETE FROM ItemsJugadores WHERE IDJugador = @IDJugador;",conexion);
-            command.Parameters.Add("@IDJugador",System.Data.DbType.UInt32).Value = idJugador;
-
-            foreach (ItemConCantidad item in items) {
-                if (item.Cantidad > 0) {
-                    command.Parameters.Add("@IDItem", System.Data.DbType.UInt32).Value = item.ID;
-                    command.Parameters.Add("@Cantidad", System.Data.DbType.UInt32).Value = item.Cantidad;
-                    command.CommandText += "INSERT INTO ItemsJugadores VALUES(@IDItem,@IDJugador,@Cantidad);";
+            try
+            {
+                conexion = ConfiguracionDB.establecerConexion();
+                string commandText = "DELETE FROM ItemsJugadores WHERE IDJugador = @IDJugador AND IDItem NOT IN (",
+                    commandTextInserts = "";
+                foreach (ItemConCantidad item in items)
+                {
+                    commandText += $"'{item.ID}',";
+                    commandTextInserts += $"INSERT OR REPLACE INTO ItemsJugadores (IDItem, IDJugador,Cantidad) VALUES({item.ID},@IDJugador,{item.Cantidad}); ";
                 }
+                commandText = commandText.Remove(commandText.Length - 1);
+                commandText += "); ";
+                commandText += commandTextInserts;
+                command = new SqliteCommand(commandText, conexion);
+                command.Parameters.Add("@IDJugador", System.Data.DbType.UInt32).Value = idJugador;
+                inserciones = command.ExecuteNonQuery();
             }
-            inserciones = command.ExecuteNonQuery();
-        }
-        catch (Exception)
-        {
-            Debug.Log("Error en la obtencion de los datos de un item");
-        }
-        finally
-        {
-            ConfiguracionDB.cerrarConexion(conexion);
+            catch (Exception)
+            {
+                throw;
+                Debug.Log("Error en la obtencion de los datos de un item");
+            }
+            finally
+            {
+                ConfiguracionDB.cerrarConexion(conexion);
+            }
         }
         return inserciones;
     }

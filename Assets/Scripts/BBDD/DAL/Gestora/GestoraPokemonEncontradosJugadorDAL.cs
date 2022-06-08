@@ -8,19 +8,21 @@ using System.Threading.Tasks;
 public class GestoraPokemonEncontradosJugadorDAL
 {
 
-    public static void insertarPokemonEncontradoAJugador(int idJugador, int idPokemon, string nombrePokemon)
+    public static void insertarPokemonsEncontradosAJugador(int idJugador, List<PokemonEncontrado> pokemonsEncontrados)
     {
         SqliteConnection conexion = null;
+        string commandText = "";
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            SqliteCommand command = new SqliteCommand("INSERT INTO PokemonsEncontradosJugadores (IdJugador,IdPokemon,NombrePokemon)" +
-                "SELECT @IdJugador, @IdPokemon, @NombrePokemon " +
-                "WHERE NOT EXISTS(SELECT 1 FROM PokemonsEncontradosJugadores " +
-                                 "WHERE IdJugador = @IdJugador AND IdPokemon = @IdPokemon); ", conexion);
+            foreach (PokemonEncontrado pokemon in pokemonsEncontrados) {
+                commandText += "INSERT INTO PokemonsEncontradosJugadores (IdJugador,IdPokemon,NombrePokemon)" +
+                $"SELECT @IdJugador, {pokemon.Id}, '{pokemon.Nombre}' " +
+                $"WHERE NOT EXISTS(SELECT 1 FROM PokemonsEncontradosJugadores WHERE IdJugador = @IdJugador AND IdPokemon = {pokemon.Id}); ";
+            }
+
+            SqliteCommand command = new SqliteCommand(commandText, conexion);
             command.Parameters.Add("@IdJugador", System.Data.DbType.Int32).Value = idJugador;
-            command.Parameters.Add("@IdPokemon", System.Data.DbType.Int32).Value = idPokemon;
-            command.Parameters.Add("@NombrePokemon", System.Data.DbType.String).Value = nombrePokemon;
             command.ExecuteNonQuery();
         }
         catch (Exception)

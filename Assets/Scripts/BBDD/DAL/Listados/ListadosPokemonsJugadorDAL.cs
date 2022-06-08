@@ -51,9 +51,9 @@ public class ListadosPokemonsJugadorDAL
                     debilidadesPokemon = debilidadesPokemon.Distinct().ToList();//Se eliminan los tipos repetidos que existan.Por ejemplo pokemon tipo planta e hielo tendria duplicado el tipo debilad fuego, se elimina ya que ocuparia un espacio innecesario
                     
                     pokemonsJugador.Add(new PokemonJugador(
-                        new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4),
-                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8),movimientosPokemon,tiposPokemon,debilidadesPokemon)
-                        , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(9), reader.GetInt32(10)
+                        new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5),
+                        reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9),movimientosPokemon,tiposPokemon,debilidadesPokemon)
+                        , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(10), reader.GetInt32(11), reader.GetInt32(12)
                         ));
                 }
             }
@@ -113,9 +113,9 @@ public class ListadosPokemonsJugadorDAL
                     debilidadesPokemon = debilidadesPokemon.Distinct().ToList();//Se eliminan los tipos repetidos que existan.Por ejemplo pokemon tipo planta e hielo tendria duplicado el tipo debilad fuego, se elimina ya que ocuparia un espacio innecesario
 
                     pokemonsJugador.Add(new PokemonJugador(
-                        new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4),
-                        reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), movimientosPokemon, tiposPokemon, debilidadesPokemon)
-                        , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(9), reader.GetInt32(10)
+                        new Pokemon(reader.GetInt32(1), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5),
+                        reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9), movimientosPokemon, tiposPokemon, debilidadesPokemon)
+                        , reader.GetInt32(0), reader.GetInt32(2), reader.GetInt32(10), reader.GetInt32(11), reader.GetInt32(12)
                         ));
                 }
             }
@@ -145,7 +145,7 @@ public class ListadosPokemonsJugadorDAL
     /// </summary>
     /// <param name="id"></param>
     /// <returns>int</returns>
-    public static int obtenerNumeroPokemonsJugador(int id)
+    public static int obtenerNumeroPokemonsJugador(string nombreUsuario, string contrasenha)
     {
         int numeroPokemons = 0;
         SqliteConnection conexion = null;
@@ -155,8 +155,10 @@ public class ListadosPokemonsJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            command = new SqliteCommand("SELECT COUNT(*) FROM PokemonsJugadores WHERE IDJugador = @ID GROUP BY IDJugador;", conexion);
-            command.Parameters.Add("@ID", System.Data.DbType.Int32).Value = id;
+            command = new SqliteCommand("SELECT COUNT(*) FROM PokemonsJugadores AS PJ INNER JOIN Jugadores AS J ON PJ.IDJugador = J.ID " +
+                "WHERE J.NombreUsuario = @NombreUsuario AND J.Contrasenha = @Contrasenha GROUP BY J.ID;", conexion);
+            command.Parameters.Add("@NombreUsuario", System.Data.DbType.String).Value = nombreUsuario;
+            command.Parameters.Add("@Contrasenha", System.Data.DbType.String).Value = contrasenha;
             reader = command.ExecuteReader();
 
             if (reader.HasRows)
@@ -167,6 +169,7 @@ public class ListadosPokemonsJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

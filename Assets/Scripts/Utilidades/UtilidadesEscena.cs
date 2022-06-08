@@ -14,8 +14,6 @@ public class UtilidadesEscena : MonoBehaviour
 {
     public static void precargarEscena(string escenaSiguiente)
     {
-        GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
-        DontDestroyOnLoad(jugador);
         PlayerPrefs.SetString("NameNextScene", escenaSiguiente);
         SceneManager.LoadScene("LoadingScene");
     }
@@ -30,8 +28,8 @@ public class UtilidadesEscena : MonoBehaviour
     public static void eliminarGameObjectsItemsYEntrenadores()
     {
         GameObject[] trainersYItems = GameObject.FindGameObjectsWithTag("Trainer");
-        trainersYItems.Concat(GameObject.FindGameObjectsWithTag("Item"));
 
+        trainersYItems = trainersYItems.Concat(GameObject.FindGameObjectsWithTag("Item")).ToArray();
         foreach (GameObject gameObject in trainersYItems)
         {
             Destroy(gameObject);
@@ -58,6 +56,23 @@ public class UtilidadesEscena : MonoBehaviour
         }
     }
 
+    public static void cerrarMenus(GameObject menu) {
+        List<GameObject> subMenus = obtenerMenusHijosActivados(menu);
+        activarDesactivarGameObjects(subMenus,false);
+    }
+
+    public static List<GameObject> obtenerMenusHijosActivados(GameObject menu) {
+        List<GameObject> subMenus = new List<GameObject>();
+        foreach (Transform child in menu.transform)
+        {
+            if (child.gameObject.name.Contains("Menu") && child.gameObject.activeSelf)
+            {
+                subMenus = subMenus.Concat(obtenerMenusHijosActivados(child.gameObject)).ToList();
+            }
+        }
+        subMenus.Add(menu);
+        return subMenus;
+    }
     /// <summary>
     /// Cabecera: public static void activarDesactivarBotones(List<Button> botones, bool modo)
     /// Comentario: Este metodo se encarga de activar o desactivar una lista de botones que recibe.
@@ -130,28 +145,31 @@ public class UtilidadesEscena : MonoBehaviour
             }
         }
     }
-    public static void destruirGameObjectEspecifico(string nombre) {
+    public static void destruirGameObjectEspecifico(string nombre)
+    {
         Destroy(GameObject.Find(nombre));
     }
     public static void activarMusicaTemporal(string musicaActivar, bool enBucle)
     {
         GameObject audioTemporal = new GameObject();
-        audioTemporal.transform.position = new Vector3(0,0,0);
+        audioTemporal.transform.position = new Vector3(0, 0, 0);
         audioTemporal.name = "AudioTemporal";
         AudioSource audioSource = audioTemporal.AddComponent<AudioSource>();
         audioSource.clip = Resources.Load<AudioClip>($"Audio/{musicaActivar}");
         audioSource.loop = enBucle;
         audioSource.Play();
     }
-    public static void llamarActivarAudioMomentaneo(string musica,float duracion) { //Engloba la llamada al metodo que inicia la musica momentanea
+    public static void llamarActivarAudioMomentaneo(string musica, float duracion)
+    { //Engloba la llamada al metodo que inicia la musica momentanea
         GameObject.Find("Utilidades").GetComponent<UtilidadesEscena>().activarAudioMomentaneo(musica, duracion);
     }
-    public void activarAudioMomentaneo(string musica, float duracion)//Necesario para la corrutina
+    private void activarAudioMomentaneo(string musica, float duracion)//Necesario para la corrutina
     {
         StartCoroutine(activarMusica(musica, duracion));
     }
-    IEnumerator activarMusica(string musica, float duracion) {
-        
+    IEnumerator activarMusica(string musica, float duracion)
+    {
+
         GameObject audioTemporal = new GameObject();
         audioTemporal.transform.position = new Vector3(0, 0, 0);
         audioTemporal.name = "AudioMomentaneo";
@@ -160,7 +178,7 @@ public class UtilidadesEscena : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(duracion);
         Destroy(audioTemporal);
-        StopCoroutine(activarMusica("",0));
+        StopCoroutine(activarMusica("", 0));
     }
     /// <summary>
     /// Cabecera: public static void mostrarMensajeError(string mensaje) 
@@ -173,12 +191,20 @@ public class UtilidadesEscena : MonoBehaviour
     /// <param name="mensaje"></param>
     public static void mostrarMensajeError(string mensaje)
     {
-        GameObject menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MensajeError");
+        GameObject menuError;
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault<GameObject>(g => g.name == "MensajeErrorMainScene");
+        }
+        else
+        {
+            menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault<GameObject>(g => g.name == "MensajeError");
+        }
         menuError.GetComponentsInChildren<TextMeshProUGUI>()[1].text = mensaje;
         menuError.SetActive(true);
     }
 
-   
+
 
     /// <summary>
     /// Cabecera: public static void eliminarHijosGameObject(GameObject gameObject)
@@ -228,7 +254,7 @@ public class UtilidadesEscena : MonoBehaviour
         { //Empieza en 1 porque es hijo 0 no es un movimiento sino un titulo
             movimientoPokemon = pokemon.Movimientos[i - 1];
             movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
-            movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo)[0]; ;
+            movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo).First();
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Potencia: {movimientoPokemon.Danho}";
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Presicion: {movimientoPokemon.Precicion}";

@@ -18,4 +18,7 @@ public class GestoraJugadorBL
     {
         GestoraJugadorDAL.insertarJugador(jugador);
     }
+    public static int actualizarDineroJugador(int id, int dinero) {
+        return GestoraJugadorDAL.actualizarDineroJugador(id,dinero);
+    }
 }

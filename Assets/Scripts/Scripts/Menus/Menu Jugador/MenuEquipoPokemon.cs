@@ -160,6 +160,13 @@ public class MenuEquipoPokemon : MonoBehaviour
         jugador.EquipoPokemon[indexPokemonSeleccionado] = pokemonCambiar;
         jugador.EquipoPokemon[indexPokemonCambiar] = pokemonSeleccionado;
 
+        GameObject interfazBotonPokemonCambiar = interfacesPokemons.Find(g => g.name == interfazPokemonCambiar.name);
+        int indexInterfazPokemonSelecionado = interfacesPokemons.IndexOf(interfazPokemonSeleccionado),
+            indexInterfazPokemonCambiar = interfacesPokemons.IndexOf(interfazBotonPokemonCambiar);
+
+        interfacesPokemons[indexInterfazPokemonSelecionado] = interfazBotonPokemonCambiar;
+        interfacesPokemons[indexInterfazPokemonCambiar] = interfazPokemonSeleccionado;
+
         //Se realiza el intercambio de las interfaces de los pokemons
         GameObject contentPokemons = gameObject.transform.Find("ContentPokemons").gameObject,
                    interfazPokemonCambiarMenuEquipo = contentPokemons.transform.Find(pokemonCambiar.PokemonNumero.ToString()).gameObject;

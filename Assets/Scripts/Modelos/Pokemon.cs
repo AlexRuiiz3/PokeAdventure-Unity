@@ -69,7 +69,7 @@ public class Pokemon
         HPMaximos = 0;
     }
     //Constructor con parametros
-    public Pokemon(int id, string nombre, int hp, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades)
+    public Pokemon(int id, string nombre, int hp,int hpMaximos, int nivel, int ataque, int defensa, int velocidad, List<MovimientoPokemon> movimientos, List<string> tipos, List<string> debilidades)
     {
         ID = id;
         Nombre = nombre;
@@ -81,7 +81,7 @@ public class Pokemon
         Movimientos = movimientos;
         Tipos = tipos;
         Debilidades = debilidades;
-        HPMaximos = hp;
+        HPMaximos = hpMaximos;
     }
     //Constructor a partir de un PokeAPI.Pokemon 
     public Pokemon(PokeAPI.Pokemon pokemonApi)
@@ -189,6 +189,7 @@ public class Pokemon
         if (nivel > 1)
         {
             HP += nivel * Random.Range(4, 11);
+            HPMaximos = HP;
             Ataque += nivel * Random.Range(4, 11);
             Defensa += nivel * Random.Range(4, 11);
             Velocidad += nivel * Random.Range(4, 11);

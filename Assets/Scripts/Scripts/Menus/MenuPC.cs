@@ -29,9 +29,10 @@ public class MenuPC : MonoBehaviour
     //Cuando se desactive el menu
     private void OnDisable()
     {
+        Time.timeScale = 1f;
         GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
         UtilidadesEscena.eliminarHijosGameObject(content);
-        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/ClosePC",1.5f);
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/ClosePC", 1.5f);
     }
 
     //Metodo que configura y activa los botones del menu del equipo actual del jugador. El numero de botones que se activaran dependeran del numero de pokemon que el jugador tenga equipados.
@@ -56,14 +57,24 @@ public class MenuPC : MonoBehaviour
     /// </summary>
     public void configurarBotonesPokemonPC()
     {
-        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
+        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject,
+            textSinPokemons = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados");
         List<PokemonJugador> pokemonNoEquipados = DatosGuardarJugador.PokemonsAlmacenadosPC;
-        foreach (PokemonJugador pokemon in pokemonNoEquipados)
+
+        if (pokemonNoEquipados.Count > 0)
         {
-            configurarMostrarPokemonPC(content,pokemon);
+            textSinPokemons.SetActive(false);
+            foreach (PokemonJugador pokemon in pokemonNoEquipados)
+            {
+                configurarMostrarPokemonPC(content, pokemon);
+            }
+        }
+        else
+        {
+            textSinPokemons.SetActive(true);
         }
     }
-   
+
     /// <summary>
     /// Cabecera: public void verOpcionesPokemon(GameObject menuOpciones)
     /// Comentario: Este metodo se encarga de obtener cual es el pokemon que sea seleccionado y mostrar el menu correspondiente en funcion de donde este el pokemon 
@@ -80,15 +91,16 @@ public class MenuPC : MonoBehaviour
         GameObject menu;
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
         //Si el boton que se pulsa esta en la zona del equipo del jugador
-        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador") 
+        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugadorMenu")
         {
             //Si el menu de la zona del pc esta activado, se desactiva
             menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonPC");
-            if (menu.activeSelf) { 
-                menu.SetActive(false);  
+            if (menu.activeSelf)
+            {
+                menu.SetActive(false);
             }
             int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);//nombreBoton en este caso, al final tienen un entero que indica que numero de boton es
-            pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1]; 
+            pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1];
         }
         else //Sino si el boton que se pulsa esta en la zona del PC
         {
@@ -133,7 +145,7 @@ public class MenuPC : MonoBehaviour
         if (!Utilidades.comprobarCadenaVacia(input.text))
         {
             pokemonSeleccionado.Nombre = input.text;
-            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false); 
+            EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
         }
         else
         {
@@ -156,7 +168,7 @@ public class MenuPC : MonoBehaviour
     public void liberarPokemon(GameObject menuOpcionesPokemon)
     {
         string nombreZona = menuOpcionesPokemon.transform.parent.name;
-        if (nombreZona == "ZonaEquipoJugador") //Cuando sea en la zona del equipo del jugador
+        if (nombreZona == "ZonaEquipoJugadorMenu") //Cuando sea en la zona del equipo del jugador
         {
             if (jugador.EquipoPokemon.Count > 1)
             {
@@ -171,9 +183,8 @@ public class MenuPC : MonoBehaviour
             }
         }
         else //Cuando sea en la zona de los pokemons del PC
-        {  
-            DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
-            Destroy(interfazPokemonSeleccionado);
+        {
+            eliminarPokemonAlmacenado();
             menuOpcionesPokemon.SetActive(false);
         }
         menuOpcionesPokemon.transform.Find("Menus").transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
@@ -189,13 +200,14 @@ public class MenuPC : MonoBehaviour
     ///                  1: Si el numero de pokemons que tiene el jugador en su equipo es 6, el pokemon no se añadira y se informara al jugador de ello. 
     ///                  2: Si se produce alguna excepcion el pokemon no se añadira.
     /// </summary>
-    public void equiparPokemon() {
+    public void equiparPokemon()
+    {
         if (jugador.EquipoPokemon.Count < 6)
         {
             //Se quita la interfaz del pokemon del menu de almacenamiento
-            DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
-            Destroy(interfazPokemonSeleccionado);
+            eliminarPokemonAlmacenado();
 
+            pokemonSeleccionado.NumeroEquipado = jugador.EquipoPokemon.Count + 1;
             //Se añade la interfaz del pokemon al menu equipo 
             jugador.EquipoPokemon.Add(pokemonSeleccionado);
             UtilidadesEscena.activarDesactivarGameObjects(botonesPokemonsEquipo, false);//Se desactivan todos
@@ -203,7 +215,8 @@ public class MenuPC : MonoBehaviour
 
             EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);//Se desactiva el menu del pokemon seleccionado
         }
-        else {
+        else
+        {
             UtilidadesEscena.mostrarMensajeError("El equipo ya esta completo. Deja antes un pokemon");
         }
     }
@@ -218,17 +231,23 @@ public class MenuPC : MonoBehaviour
     ///                  1: Si el pokemon que se quiere dejar es el ultimo que tiene el jugador en su equipo, el pokemon no se quitara y se informara al jugador de ello. 
     ///                  2: Si se produce alguna excepcion el pokemon no se quitara.
     /// </summary>
-    public void dejarPokemon() {
+    public void dejarPokemon()
+    {
         if (jugador.EquipoPokemon.Count > 1)
         {
             //Se quita la interfaz del pokemon del menu equipo 
             jugador.EquipoPokemon.Remove(pokemonSeleccionado);
             UtilidadesEscena.activarDesactivarGameObjects(botonesPokemonsEquipo, false);//Se desactivan todos
             configurarBotonesPokemonsEquipo();
-
+            for (int i = 0; i < jugador.EquipoPokemon.Count; i++)
+            {
+                jugador.EquipoPokemon[i].NumeroEquipado = i + 1;
+            }
+            pokemonSeleccionado.NumeroEquipado = 0;
             //Se añade la intefaz del pokemon al menu de almacenamiento
             DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonSeleccionado);
             GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
+            Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados").SetActive(false);
             configurarMostrarPokemonPC(content, pokemonSeleccionado);
 
             EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
@@ -240,7 +259,8 @@ public class MenuPC : MonoBehaviour
     }
 
     //Metodo que se encarga de crear, configurar y activar un boton(Pokemon) ubicado en la zona de los pokemons almacenados en el PC(Los no equipados)  
-    private void configurarMostrarPokemonPC(GameObject content, PokemonJugador pokemon) {
+    private void configurarMostrarPokemonPC(GameObject content, PokemonJugador pokemon)
+    {
         GameObject interfazPokemonPC = Instantiate(plantillaButtonPokemonPC);
         interfazPokemonPC.name = pokemon.PokemonNumero.ToString();
         interfazPokemonPC.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
@@ -248,5 +268,15 @@ public class MenuPC : MonoBehaviour
         interfazPokemonPC.transform.SetParent(content.transform);
         interfazPokemonPC.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
         interfazPokemonPC.SetActive(true);
+    }
+
+    private void eliminarPokemonAlmacenado()
+    {
+        DatosGuardarJugador.PokemonsAlmacenadosPC.Remove(pokemonSeleccionado);
+        Destroy(interfazPokemonSeleccionado);
+        if (DatosGuardarJugador.PokemonsAlmacenadosPC.Count < 1)
+        {
+            Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados").SetActive(true);
+        }
     }
 }

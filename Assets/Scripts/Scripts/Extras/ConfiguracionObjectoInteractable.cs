@@ -19,7 +19,7 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
             PlayerPrefs.SetString("InteraccionConObjeto", gameObject.tag);//Se guarda el tipo de objeto con el que sea interactuado
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
             ControlDialogos controlDialogos = dialogo.transform.GetChild(0).gameObject.GetComponent<ControlDialogos>();
-            if (gameObject.tag == "Trainer") { //Si se interactua con un entrenador
+            if (gameObject.tag == "TrainerInteracion") { //Si se interactua con un entrenador
                 TrainerNPC trainer = gameObject.transform.parent.gameObject.transform.GetChild(0).GetComponentInChildren<TrainerNPC>();
                 trainer.Imagen = (from spriteNPC in Resources.LoadAll<Sprite>("Imagenes/Trainers/" + transform.parent.gameObject.name)
                                  where spriteNPC.name == "Abajo"

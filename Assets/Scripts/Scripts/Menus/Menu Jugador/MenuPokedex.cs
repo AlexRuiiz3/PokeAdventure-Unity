@@ -42,7 +42,7 @@ public class MenuPokedex : MonoBehaviour
     /// </summary>
     /// <param name="limitesPokemonGeneracion"></param>
     public void configurarPrepararMenuPokemonsGeneracion(string limitesPokemonGeneracion) {
-        GameObject scrollViewPokemons = gameObject.transform.Find("ScrollViewPokemonsGeneraciones").gameObject;
+        GameObject scrollViewPokemons = gameObject.transform.Find("MenuPokemonsGeneraciones").gameObject;
         scrollViewPokemons.GetComponentInChildren<Scrollbar>().value = 1; //Esto no funciona no resetea la barra de scroll
         
         GameObject content = scrollViewPokemons.transform.GetChild(0).Find("Content").gameObject,

@@ -150,7 +150,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         int randomPosicionObjeto,
             numeroObjetos = (int)Random.Range(1f, 4f); //Entrenadores entre 1 y 3
         string tipoObjeto;
-        Debug.Log("Numero objetos: "+numeroObjetos);
+
         for (int i = 0; i < numeroObjetos; i++) {
             //Se generan tipo del objeto y la cantida que le dara al jugador
             tipoObjeto = obtenerTipoObjetoAleatorio();
@@ -159,7 +159,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
             //Se crea el objeto y se le asigna un tag
             GameObject objeto = new GameObject();
             objeto.name = tipoObjeto;
-            objeto.tag = "Objeto";
+            objeto.tag = "Item";
 
             //Añadir su posicion y escalado
             objeto.transform.position = posicionesObjetos[randomPosicionObjeto];
@@ -183,8 +183,6 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
             spriteRenderer.sprite = imagenPokeball.sprite;
             spriteRenderer.sortingLayerName = "NPC";
             DontDestroyOnLoad(objeto);
-
-            Debug.Log("Posicion objeto "+i+" X:"+ posicionesObjetos[randomPosicionObjeto].x+" Y:"+ posicionesObjetos[randomPosicionObjeto].y);
         }
     }
 
@@ -355,7 +353,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
     {
         GameObject zonaIteracion = new GameObject();
         zonaIteracion.name = "Zona Iteracion";
-        zonaIteracion.tag = "Trainer";
+        zonaIteracion.tag = "TrainerInteracion";
         CapsuleCollider2D capsuleCollider2D = zonaIteracion.AddComponent<CapsuleCollider2D>();
         capsuleCollider2D.isTrigger = true;
         capsuleCollider2D.offset = trainer.transform.position;

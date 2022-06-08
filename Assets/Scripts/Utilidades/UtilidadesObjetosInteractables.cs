@@ -14,7 +14,7 @@ public class UtilidadesObjetosInteractables
 
         switch (objetoInteraccion) {
             case "Medico":
-                UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery",2f);
+                UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery",3f);
                 curarPokemonsJugador(); break;
             case "Vendedor": activarMenuObjeto("MenuTienda"); break;
             case "PC": activarMenuObjeto("MenuPC"); break;
@@ -25,7 +25,7 @@ public class UtilidadesObjetosInteractables
                 playerController.iniciarCoroutineAsignarObjetoEncontrado();
                 //StartCoroutine(playerController.asignarObjetoEncontrado()); //No se puede hacer aqui ya que esta clase no esta asociada a ningun gameObject del juego
                 break;
-            case "Trainer":
+            case "TrainerInteracion":
                 UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
                 PlayerPrefs.SetString("NameNextScene", "BattleTrainerScene");
                 SceneManager.LoadScene("BattleTrainerScene", LoadSceneMode.Additive);
@@ -39,7 +39,6 @@ public class UtilidadesObjetosInteractables
         foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
             pokemon.HP = pokemon.HPMaximos;
         }
-        UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
     }
     private static void activarMenuObjeto(string nombreMenu) {
         GameObject menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == nombreMenu);

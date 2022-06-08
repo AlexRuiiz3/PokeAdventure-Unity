@@ -6,9 +6,32 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 public class Utilidades
 {
+
+    public static void obtenerDatosJugador(string nombreUsuario, string contrasenha)
+    {
+        try
+        {
+            ClsJugador jugadorBase = ListadosJugadorBL.obtenerJugador(nombreUsuario, contrasenha);
+            List<PokemonJugador> pokemonsJugador = ListadosPokemonsJugadorBL.obtenerPokemonsJugadorEquipados(jugadorBase.ID);
+            List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
+
+            Resources.FindObjectsOfTypeAll<GameObject>()
+                       .FirstOrDefault(g => g.CompareTag("Player"))
+                       .GetComponent<PlayerController>().Jugador = new Jugador(jugadorBase, pokemonsJugador, itemsJugador);
+
+            DatosGuardarJugador.PokemonsEncontradosJugador = ListadosPokemonEncontradosJugadorBL.obtenerPokemonsEncontradosDeJugador(jugadorBase.ID);
+            DatosGuardarJugador.PokemonsAlmacenadosPC = ListadosPokemonsJugadorBL.obtenerPokemonsNoEquipadosJugador(jugadorBase.ID);
+        }
+        catch (Exception)
+        {
+            throw new Exception();
+        }
+
+    }
     /// <summary>
     /// Cabecera: public static bool comprobarCadenaVacia(string cadena)
     /// Comentario: Este metodo se encarga de comprobar si la cadena rebidida como parametros se encuentra vacia.
@@ -97,7 +120,7 @@ public class Utilidades
             }
 
             imagenPokemon = (Image)componentesBoton[1]; //No se tiene encuenta la posicion 0 porque en esa esta la imagen del propio boton(Boton en el que se encuentra la Image y los 3 Text)
- 
+
             imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
 
             textNombrePokemon = (TextMeshProUGUI)componentesBoton[2];
@@ -121,8 +144,9 @@ public class Utilidades
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se obtendra un List<string>
     /// </summary>
-    public static List<string> obtenerFrasesAleatoriasTrainer() { 
-    List<List<string>> frasesEntrenadores = new List<List<string>> { 
+    public static List<string> obtenerFrasesAleatoriasTrainer()
+    {
+        List<List<string>> frasesEntrenadores = new List<List<string>> {
         new List<string> { "Hola viajero, veo que tienes un buen equipo.", "Dejame que compruebe si es verdad." },
         new List<string> { "¡Eh! ¡Tu equipo Pokémon me da buenas vibraciones! ", "¿Te importa que vea lo entrenado que está?" },
         new List<string> { "Te voy hacer comer polvo.", "Para que te hagas una idea, como el que va a comer Santi con el proyecto final." },
@@ -136,7 +160,7 @@ public class Utilidades
         new List<string> { "F7", "." },
         new List<string> { "F8", "." }
     };
-        return frasesEntrenadores[Random.Range(0, frasesEntrenadores.Count)];
+        return frasesEntrenadores[UnityEngine.Random.Range(0, frasesEntrenadores.Count)];
     }
 
     /// <summary>
@@ -163,6 +187,6 @@ public class Utilidades
         new List<string> { "FD7", "." },
         new List<string> { "FD8", "." }
     };
-        return frasesEntrenadoresDerotao[Random.Range(0, frasesEntrenadoresDerotao.Count)];
+        return frasesEntrenadoresDerotao[UnityEngine.Random.Range(0, frasesEntrenadoresDerotao.Count)];
     }
 }

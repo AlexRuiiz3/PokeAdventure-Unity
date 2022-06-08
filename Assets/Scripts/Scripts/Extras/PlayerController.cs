@@ -22,24 +22,8 @@ public class PlayerController : MonoBehaviour
     // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
     void Start()
     {
-        PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());// Quitar
-        PlayerPrefs.SetString("GameLanguage", "es"); //Quitar de aqui es solo prueba porque esto va en em MenuPrincipal 
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        obtenerDatosJugador("a","a");//Eliminar de aqui iria en la de inicio y tmb en la de registro
-        Jugador.EquipoPokemon[0].HPMaximos = 2000;
-        Jugador.EquipoPokemon[0].HP = 2000;
-        Jugador.EquipoPokemon[0].Ataque = 200;
-        Jugador.EquipoPokemon[0].Movimientos[0].Precicion = 100;
-        Jugador.EquipoPokemon[0].Movimientos[0].Danho = 150;
-        Jugador.EquipoPokemon[1].HPMaximos = 100;
-        Jugador.EquipoPokemon[1].HP = 1;
-        if (!DatosGuardarJugador.ListasObtenidas) {
-            DatosGuardarJugador.PokemonsEncontradosJugador = ListadosPokemonEncontradosJugadorBL.obtenerPokemonsEncontradosDeJugador(Jugador.ID);//Eliminar de aqui
-            DatosGuardarJugador.PokemonsAlmacenadosPC = ListadosPokemonsJugadorBL.obtenerPokemonsNoEquipadosJugador(Jugador.ID);
-            DatosGuardarJugador.ListasObtenidas = true;
-        }
-        DatosGuardarJugador.PokemonsAlmacenadosPC.Add(Jugador.EquipoPokemon[2]);
     }
 
     // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
@@ -107,21 +91,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void obtenerDatosJugador(string nombreUsuario, string contrasenha)//No va aqui va cuando se inicia sesion y despues de resgistrase
-    {
-        try
-        {
-            ClsJugador jugadorBase = ListadosJugadorBL.obtenerJugador(nombreUsuario, contrasenha);
-            List<PokemonJugador> pokemonsJugador = ListadosPokemonsJugadorBL.obtenerPokemonsJugadorEquipados(jugadorBase.ID);
-            List<ItemConCantidad> itemsJugador = ListadosItemBL.obtenerItemsJugador(jugadorBase.ID);
-
-            Jugador = new Jugador(jugadorBase,pokemonsJugador,itemsJugador);
-            Jugador.Dinero = 2000;// De prueba, eliminar de aqui 
-        }
-        catch (Exception)
-        {
-        }
-    }
     //Metodo 
     public void iniciarCoroutineAsignarObjetoEncontrado() {
         StartCoroutine(asignarObjetoEncontrado());

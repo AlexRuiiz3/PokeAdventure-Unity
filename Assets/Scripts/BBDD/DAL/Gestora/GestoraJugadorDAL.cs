@@ -46,7 +46,7 @@ public class GestoraJugadorDAL
         try
         {
             conexion = ConfiguracionDB.establecerConexion();
-            SqliteCommand command = new SqliteCommand("UPDATE Jugadores SET Dinero = @Dinero WHERE ID = @ID", conexion);
+            SqliteCommand command = new SqliteCommand("UPDATE Jugadores SET Dinero = @Dinero WHERE ID = @ID;", conexion);
             command.Parameters.Add("@ID", System.Data.DbType.Int32).Value = id;
             command.Parameters.Add("@Dinero", System.Data.DbType.Int32).Value = dinero;
             actualizaciones = command.ExecuteNonQuery();

@@ -8,5 +8,6 @@ using System.Threading.Tasks;
 public class DatosGenerales
 {
     public static TrainerNPC trainerLuchando;
+
 }
 

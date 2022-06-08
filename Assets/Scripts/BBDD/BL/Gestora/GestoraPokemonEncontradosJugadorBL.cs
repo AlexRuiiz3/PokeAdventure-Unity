@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GestoraPokemonEncontradosJugadorBL
 {
-    public static void insertarPokemonEncontradoAJugador(int idJugador, int idPokemon, string nombrePokemon) 
+    public static void insertarPokemonsEncontradosAJugador(int idJugador, List<PokemonEncontrado> pokemonsEncontrados) 
     {
-        GestoraPokemonEncontradosJugadorDAL.insertarPokemonEncontradoAJugador(idJugador, idPokemon, nombrePokemon);
+        GestoraPokemonEncontradosJugadorDAL.insertarPokemonsEncontradosAJugador(idJugador, pokemonsEncontrados);
     }
 }

@@ -71,9 +71,10 @@ public class ControlDialogos : MonoBehaviour //Script que ira en el gameObject q
         }
         else if (colaTextos.Count == 0 && !reproduciendoTexto)
         {
-            
-            gameObject.SetActive(false);
-            new UtilidadesObjetosInteractables().determinarAccionFinDialogo();
+            if (SceneManager.GetActiveScene().name != "GetFirstPokemonScene") {
+                gameObject.SetActive(false);
+                new UtilidadesObjetosInteractables().determinarAccionFinDialogo();
+            }
             PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
             StopCoroutine(mostrarTextoPorCaracteres(""));
         }

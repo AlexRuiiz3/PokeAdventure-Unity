@@ -8,7 +8,6 @@ public class PokemonJugador : Pokemon
 {
     #region Atributos
     private int experiencia;
-    private int experienciaSiguienteNivel = 1;
     #endregion
     
     #region Atributos
@@ -21,18 +20,19 @@ public class PokemonJugador : Pokemon
         experiencia = 0;
     }
     //Constructor con parametros
-    public PokemonJugador(Pokemon pokemon, int idJugador, int pokemonNumero, int numeroEquipado, int experiencia) : base(pokemon.ID, pokemon.Nombre, pokemon.HP, pokemon.Nivel, pokemon.Ataque, pokemon.Defensa, pokemon.Velocidad, pokemon.Movimientos, pokemon.Tipos, pokemon.Debilidades)
+    public PokemonJugador(Pokemon pokemon, int idJugador, int pokemonNumero, int numeroEquipado, int experiencia, int experiensiaSiguienteNivel) : base(pokemon.ID, pokemon.Nombre, pokemon.HP, pokemon.HPMaximos, pokemon.Nivel, pokemon.Ataque, pokemon.Defensa, pokemon.Velocidad, pokemon.Movimientos, pokemon.Tipos, pokemon.Debilidades)
     {
         IDJugador = idJugador;
         PokemonNumero = pokemonNumero;
         NumeroEquipado = numeroEquipado;
         Experiencia = experiencia;
+        ExperienciaSiguienteNivel = experiensiaSiguienteNivel;
     }
     #endregion 
     
     #region Metodos Fundamentales(Propiedades)
     //IdJugador
-    public int IDJugador { get; }
+    public int IDJugador { get; set; }
     //PokemonNumero
     public int PokemonNumero { get; set; }
     //NumeroEquipado
@@ -49,6 +49,7 @@ public class PokemonJugador : Pokemon
             }
         }
     }
+    public int ExperienciaSiguienteNivel { get; set; }
     #endregion 
 
     #region Metodos añadidos
@@ -67,12 +68,12 @@ public class PokemonJugador : Pokemon
     {
         bool subidaNivel = false;
         //experiencia += experiencia;
-        if (experiencia >= experienciaSiguienteNivel)
+        if (experiencia >= ExperienciaSiguienteNivel)
         {
             subidaNivel = true;
             Nivel += 1; //De esta manera se entra en set de Nivel y se controlara que el nivel no pase de 100
             experiencia = 0;//Se resetea la experiencia del pokemon
-            experienciaSiguienteNivel += 100; //Aumenta la experiencia requerida para el siguiente nivel
+            ExperienciaSiguienteNivel += 50; //Aumenta la experiencia requerida para el siguiente nivel
             subirEstadisticas();
         }
         return subidaNivel;
