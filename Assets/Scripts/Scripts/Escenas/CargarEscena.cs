@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Cinemachine;
 public class CargarEscena : MonoBehaviour
 {
     private GameObject jugador;
@@ -47,6 +47,9 @@ public class CargarEscena : MonoBehaviour
     }
     private void determinarPosicionJugador() {
 
+       
+
+        //camara.GetComponent<CinemachineCame>();
         bool modificarPosicionJugador = true;
         Vector2 posicionNuevaJugador = new Vector2(1f, 1f);
         switch (escenaSiguiente)
@@ -66,7 +69,7 @@ public class CargarEscena : MonoBehaviour
                         PlayerPrefs.SetString("EscenaAventura", "FondoBatallaHierba");
                         break;
                     case "ForestScene":
-                        posicionNuevaJugador = new Vector2(0.6f, -21.12f);
+                        posicionNuevaJugador = new Vector2(0.5f, -19.18f);
                         PlayerPrefs.SetString("EscenaAventura", "FondoBatallaMontaña");
                         break;
                     case "CityScene":
@@ -80,7 +83,7 @@ public class CargarEscena : MonoBehaviour
                 if (PlayerPrefs.GetString("NameLastScene").Contains("Battle"))
                 {
                     UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery", 3f);
-                    posicionNuevaJugador = new Vector2(-3f, 3.8f);
+                    posicionNuevaJugador = new Vector2(-3f, 3.5f);
                 }
                 else {
                     posicionNuevaJugador = new Vector2(-2.9f, -1.2f);

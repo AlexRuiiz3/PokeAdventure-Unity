@@ -472,6 +472,9 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
         {
             Jugador.Mochila.Remove(ItemAUsar);
             Destroy(InterfazItemAUsar);
+            if (Jugador.Mochila.Count <= 0) {
+                textSinItems.SetActive(true);
+            }
         }
         else
         {

@@ -76,10 +76,22 @@ public class MenuEquipoPokemon : MonoBehaviour
     /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
     /// </summary>
     /// <param name="menuDatos"></param>
-    public void opcionVerDatos(GameObject menuDatos) {
+    public void opcionVerMenuDatos(GameObject menuDatos) {
         UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
     }
-
+    /// <summary>
+    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
+    /// Entradas: GameObject menuDatos
+    /// Salidas: Ninguna
+    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
+    /// </summary>
+    /// <param name="menuDatos"></param>
+    public void opcionVerMovimientos(GameObject menu)
+    {
+        UtilidadesEscena.configurarMostrarMenuMovimientos(menu, pokemonSeleccionado);
+    }
     /// <summary>
     /// Cabecera: public void buttonAceptarCambiarNombre(Text input)
     /// Comentario: Este metodo se encarga de cambiar el nombre a un pokemon seleccionado con el valor recibido por parametros. 

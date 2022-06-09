@@ -36,8 +36,13 @@ public class ObtenerPrimerPokemon : MonoBehaviour
             pokemon = pokemonsIniciales[i];
             menusPokemons[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
             menusPokemons[i].GetComponentsInChildren<Image>()[2].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[0]).First();
-            if (pokemon.Tipos.Count > 1) {
-                menusPokemons[i].GetComponentsInChildren<Image>()[2].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombres/" + pokemon.Tipos[0]).First();
+            if (pokemon.Tipos.Count > 1)
+            {
+                menusPokemons[i].GetComponentsInChildren<Image>()[3].gameObject.SetActive(true);
+                menusPokemons[i].GetComponentsInChildren<Image>()[3].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[1]).First();
+            }
+            else {
+                menusPokemons[i].GetComponentsInChildren<Image>()[3].gameObject.SetActive(false);
             }
             menusPokemons[i].GetComponentsInChildren<Text>()[0].text = pokemon.Nombre;
             menusPokemons[i].GetComponentsInChildren<Text>()[1].text = pokemon.HP.ToString();
@@ -130,6 +135,6 @@ public class ObtenerPrimerPokemon : MonoBehaviour
 
         pokemonsIniciales.Add(pokemonsInicialesFuego[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
         pokemonsIniciales.Add(pokemonsInicialesAgua[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
-        pokemonsIniciales.Add(pokemonsInicialesPlanta[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
+        pokemonsIniciales.Add(pokemonsInicialesPlanta[5]);//UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
     }
 }

@@ -6,12 +6,25 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
+using Cinemachine;
 
 /* Clase con metodos que realizan alguna iteracion con los elementos de una escena, como activar o desactivar algo, 
  * o mostrar o eliminar algun elemento de una escena.
  */
 public class UtilidadesEscena : MonoBehaviour
 {
+
+    private void Start()
+    {
+        GameObject camara = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == $"CM"+SceneManager.GetActiveScene().name);
+
+        if (camara != null)
+        {
+            GameObject player = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g =>  g.CompareTag("Player"));
+            camara.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
+        }
+    }
+
     public static void precargarEscena(string escenaSiguiente)
     {
         PlayerPrefs.SetString("NameNextScene", escenaSiguiente);
@@ -240,6 +253,7 @@ public class UtilidadesEscena : MonoBehaviour
             pokemon = pokemonsJugador[i];
 
             botones[i].gameObject.SetActive(true);
+            botones[i].gameObject.name = pokemonsJugador[i].PokemonNumero.ToString();
             /* Se obtienen todos los componentes del boton, sus hijos seran el Image y los 3 Text que se esta buscando. 
              * Para encontrarlos al boton hay que llamar al metodo GetComponentsInChildren que devolvera todos los compoentes 
              * hijos que tiene el boton y los atributos de estos.
@@ -287,22 +301,41 @@ public class UtilidadesEscena : MonoBehaviour
         //Se prepara el menu con la informacion del pokemon seleccionado    
         menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Nvl.{pokemon.Nivel}";
-        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"PS: {pokemon.HP}/{pokemon.HPMaximos}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"N:{pokemon.ID}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Nvl.{pokemon.Nivel}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"Experiencia: {pokemon.Experiencia} Exp";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[4].text = $"Siguiente nivel: {pokemon.ExperienciaSiguienteNivel} Exp";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[5].text = $"Ataque: {pokemon.Ataque}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[6].text = $"Defensa: {pokemon.Defensa}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[7].text = $"Velocidad: {pokemon.Velocidad}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[8].text = $"HP: {pokemon.HP}";
+        menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[9].text = $"HPMax: {pokemon.HPMaximos}";
 
-        //Se prepara la parte de los movimientos del pokemon 
-        GameObject movimientos = menuDatos.transform.Find("Movimientos").gameObject, movimientoInterfaz;
+        menuDatos.GetComponentsInChildren<Image>()[3].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[0]).First();
+        if (pokemon.Tipos.Count > 1)
+        {
+            menuDatos.GetComponentsInChildren<Image>()[4].gameObject.SetActive(true);
+            menuDatos.GetComponentsInChildren<Image>()[4].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[1]).First();
+        }
+        else {
+            menuDatos.GetComponentsInChildren<Image>()[4].gameObject.SetActive(false);
+        }
+        menuDatos.SetActive(true);
+    }
+
+    public static void configurarMostrarMenuMovimientos(GameObject menuMovimientos, PokemonJugador pokemon) {
+        GameObject movimientoInterfaz;
         MovimientoPokemon movimientoPokemon;
-        for (int i = 1; i < movimientos.transform.childCount; i++)
+        for (int i = 1; i < menuMovimientos.transform.childCount - 1; i++)
         { //Empieza en 1 porque es hijo 0 no es un movimiento sino un titulo
             movimientoPokemon = pokemon.Movimientos[i - 1];
-            movimientoInterfaz = movimientos.transform.GetChild(i).gameObject;
+            movimientoInterfaz = menuMovimientos.transform.GetChild(i).gameObject;
             movimientoInterfaz.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/Banners/" + movimientoPokemon.Tipo).First();
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[0].text = movimientoPokemon.Nombre;
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Potencia: {movimientoPokemon.Danho}";
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[2].text = $"Presicion: {movimientoPokemon.Precicion}";
             movimientoInterfaz.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"PP {movimientoPokemon.PP}/{movimientoPokemon.PPMaximo}";
         }
-        menuDatos.SetActive(true);
+        menuMovimientos.SetActive(true);
     }
 }

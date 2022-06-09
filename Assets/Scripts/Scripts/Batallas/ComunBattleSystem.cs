@@ -26,6 +26,7 @@ public class ComunBattleSystem : MonoBehaviour
     public GameObject menuMochila;
     public GameObject pantallaCarga;
     public AudioSource audio;
+    public GameObject textSinItems;
     //Propiedades publicas, para que las clases que hereden de estas puedan usarlas
     public BattleState BattleState { get; set; }
     public Jugador Jugador { get; set; }
@@ -33,10 +34,12 @@ public class ComunBattleSystem : MonoBehaviour
     public PokemonJugador PokemonJugadorLuchando { get; set; }
     public ItemConCantidad ItemAUsar { get; set; }
 
+
     public GameObject InterfazItemAUsar { get; set; }
 
     public readonly int PROBABILIDAD_CRITICO = 2;
 
+    private PokemonJugador pokemonSeleccionado;
 
     public void prepararConfigurarDatosJugador()
     {
@@ -58,28 +61,35 @@ public class ComunBattleSystem : MonoBehaviour
     /// </summary>
     public void configurarMenuMochila()
     {
-        GameObject plantillaItem = menuMochila.transform.GetChild(1).gameObject,
-        contentScroView = menuMochila.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        GameObject plantillaItem = menuMochila.transform.GetChild(2).gameObject,
+        contentScroView = menuMochila.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         GameObject interfazItem;
-
-        foreach (ItemConCantidad item in Jugador.Mochila)
+        if (Jugador.Mochila.Count > 0)
         {
-
-            interfazItem = Instantiate(plantillaItem);
-            //Imagen
-            interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
-            //Text Nombre
-            interfazItem.gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = (item.CuracionPS != 0) ? $"{item.Nombre}. {item.CuracionPS}PS" : item.Nombre;
-            //Text Cantidad
-            interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{item.Cantidad}";
-            if (SceneManager.GetSceneByName("BattleTrainerScene").isLoaded && item.Tipo == "Pokeball")
+            textSinItems.SetActive(false);
+            foreach (ItemConCantidad item in Jugador.Mochila)
             {
-                Destroy(interfazItem.transform.Find("Button").gameObject);
+
+                interfazItem = Instantiate(plantillaItem);
+                //Imagen
+                interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
+                //Text Nombre
+                interfazItem.gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = (item.CuracionPS != 0) ? $"{item.Nombre}. {item.CuracionPS}PS" : item.Nombre;
+                //Text Cantidad
+                interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{item.Cantidad}";
+                if (SceneManager.GetSceneByName("BattleTrainerScene").isLoaded && item.Tipo == "Pokeball")
+                {
+                    Destroy(interfazItem.transform.Find("Button").gameObject);
+                }
+                //Asignacion al content del scrollView
+                interfazItem.transform.SetParent(contentScroView.transform);
+                interfazItem.SetActive(true);
             }
-            //Asignacion al content del scrollView
-            interfazItem.transform.SetParent(contentScroView.transform);
-            interfazItem.SetActive(true);
         }
+        else {
+            textSinItems.SetActive(true);
+        }
+        //menuMochila.SetActive
     }
 
     public void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
@@ -237,7 +247,34 @@ public class ComunBattleSystem : MonoBehaviour
         }
         menuEquipo.SetActive(activacion);
     }
-
+    /// <summary>
+    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
+    /// Entradas: GameObject menuDatos
+    /// Salidas: Ninguna
+    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
+    /// </summary>
+    /// <param name="menuDatos"></param>
+    public void opcionVerMenuDatos(GameObject menuDatos)
+    {
+        int PokemonNumero = Int16.Parse(EventSystem.current.currentSelectedGameObject.transform.parent.name);
+        pokemonSeleccionado = Jugador.EquipoPokemon.Find(g => g.PokemonNumero == PokemonNumero);
+        UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
+    }
+    /// <summary>
+    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
+    /// Entradas: GameObject menuDatos
+    /// Salidas: Ninguna
+    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
+    /// </summary>
+    /// <param name="menuDatos"></param>
+    public void opcionVerMovimientos(GameObject menu)
+    {
+        UtilidadesEscena.configurarMostrarMenuMovimientos(menu, pokemonSeleccionado);
+    }
     public async Task<Pokemon> generarObtenerPokemonRival()
     {
 
@@ -257,6 +294,8 @@ public class ComunBattleSystem : MonoBehaviour
             pokemonGenerado.Movimientos.Add(new MovimientoPokemon(999,"Daño secreto",50,100,15,"Normal"));
         }
     }
+
+
     public void configurarDerrotaJugador()
     {
         PlayerPrefs.SetString("NameLastScene", SceneManager.GetSceneAt(1).name);
