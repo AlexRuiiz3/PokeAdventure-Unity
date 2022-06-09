@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public enum BattleState { START, WIN, LOST, PLAYERTURN, ENEMYTURN, POKEMONJUGADORDEBILITADO };
 public class ComunBattleSystem : MonoBehaviour
 {
-    //Atributos publicos para que dese unity se le pueda asignar un valor
+    //Atributos publicos para que desde unity se le pueda asignar un valor
     public GameObject imagenBackGround;
     public TextMeshProUGUI textoDialogo;
     public TrainerHUD trainerHUD;
@@ -34,18 +34,18 @@ public class ComunBattleSystem : MonoBehaviour
     public ItemConCantidad ItemAUsar { get; set; }
 
     public GameObject InterfazItemAUsar { get; set; }
-    public IEnumerator CorrutinaAtaqueRival { get; set; } 
 
     public readonly int PROBABILIDAD_CRITICO = 2;
 
 
-    public void prepararConfigurarDatosJugador() {
+    public void prepararConfigurarDatosJugador()
+    {
         PokemonJugadorLuchando = (from pokemon in Jugador.EquipoPokemon
                                   where pokemon.HP > 0
                                   select pokemon).First();
         trainerHUD.inicializarDatos(PokemonJugadorLuchando);
         prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
-        Utilidades.prepararBotonesPokemonsEquipo(Jugador.EquipoPokemon, botonesPokemonsEquipo);
+        UtilidadesEscena.prepararBotonesPokemonsEquipo(Jugador.EquipoPokemon, botonesPokemonsEquipo);
         prepararBannerIconosMovimientos();
     }
     /// <summary>
@@ -64,7 +64,7 @@ public class ComunBattleSystem : MonoBehaviour
 
         foreach (ItemConCantidad item in Jugador.Mochila)
         {
-            
+
             interfazItem = Instantiate(plantillaItem);
             //Imagen
             interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
@@ -72,8 +72,9 @@ public class ComunBattleSystem : MonoBehaviour
             interfazItem.gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = (item.CuracionPS != 0) ? $"{item.Nombre}. {item.CuracionPS}PS" : item.Nombre;
             //Text Cantidad
             interfazItem.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = $"x{item.Cantidad}";
-            if (SceneManager.GetSceneByName("BattleTrainerScene").isLoaded && item.Tipo == "Pokeball") {
-                Destroy(interfazItem.transform.Find("Button").gameObject); 
+            if (SceneManager.GetSceneByName("BattleTrainerScene").isLoaded && item.Tipo == "Pokeball")
+            {
+                Destroy(interfazItem.transform.Find("Button").gameObject);
             }
             //Asignacion al content del scrollView
             interfazItem.transform.SetParent(contentScroView.transform);
@@ -81,7 +82,7 @@ public class ComunBattleSystem : MonoBehaviour
         }
     }
 
-    public static void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
+    public void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
     {
         UtilidadesEscena.eliminarHijosGameObject(interfazPokemonsDisponibles);
         GameObject gameObjectImagen;
@@ -144,71 +145,6 @@ public class ComunBattleSystem : MonoBehaviour
             textPrecicion.text = $"Precicion: {movimiento.Precicion}";
 
             componentesBoton.Clear(); //Se limpia la lista con los componentes del boton para que despues guardar los componentes del siguiente boton y asi las posicion 1,2,3,4 corresponderan a los componentes del boton que le toque en la iteracion
-        }
-    }
-
-    /// <summary>
-    /// Cabecera: public void cambiarPokemon()
-    /// Comentario: Este metodo se encarga de cambiar el pokemon del jugador que esta luchando, tanto si el quiere cambiarlo por otro, como si el pokemon que estaba luchando se debilito.
-    /// Entradas: Ninguna
-    /// Salidas: Niguna
-    /// Precondiciones: Ninguna
-    /// Postcondiciones: El pokemon que este luchando del jugador cambiar por otro de sus pokemon, ocurriendo posteriormente dos casos:
-    ///                  1: Cuando es el turno del jugador y quiere cambiar un pokemon, se realiza el cambio y se pasa al turno del rival
-    ///                  2: Cuando el pokemon del jugador que estaba luchando se debilito, se realizada el cambio y se continua con el turno del jugador
-    /// </summary>
-    /// <summary>
-    /// Cabecera: public void cambiarPokemon()
-    /// Comentario: Este metodo se encarga de cambiar el pokemon del jugador que esta luchando, tanto si el quiere cambiarlo por otro, como si el pokemon que estaba luchando se debilito.
-    /// Entradas: Ninguna
-    /// Salidas: Niguna
-    /// Precondiciones: Ninguna
-    /// Postcondiciones: El pokemon que este luchando del jugador cambiar por otro de sus pokemon, ocurriendo posteriormente dos casos:
-    ///                  1: Cuando es el turno del jugador y quiere cambiar un pokemon, se realiza el cambio y se pasa al turno del rival
-    ///                  2: Cuando el pokemon del jugador que estaba luchando se debilito, se realizada el cambio y se continua con el turno del jugador
-    /// </summary>
-    public void cambiarPokemon()
-    {
-        if (BattleState == BattleState.PLAYERTURN || BattleState == BattleState.POKEMONJUGADORDEBILITADO)
-        {
-            string nombreBoton = EventSystem.current.currentSelectedGameObject.transform.parent.name;
-            int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
-
-            if (PokemonJugadorLuchando.NumeroEquipado != Jugador.EquipoPokemon[numeroBotonPulsado - 1].NumeroEquipado)//Se controla que el pokemon que este luchando, no se elija otra vez para luchar
-            {
-                if (Jugador.EquipoPokemon[numeroBotonPulsado - 1].HP > 0) //Si la vida del pokemon al que quiere cambiar en mayor que 0
-                {
-                    activarDesactivarMenuEquipo(true, false);
-                    PokemonJugadorLuchando = Jugador.EquipoPokemon[numeroBotonPulsado - 1];
-                    trainerHUD.inicializarDatos(PokemonJugadorLuchando);
-                    prepararBannerIconosMovimientos();
-                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti";
-                    if (BattleState == BattleState.PLAYERTURN)
-                    {
-                        activarDesactivarBotonesMenuAcciones(false);
-                        BattleState = BattleState.ENEMYTURN;
-                        StartCoroutine(CorrutinaAtaqueRival);
-                    }
-                    else//(battleState == BattleState.POKEMONJUGADORDEBILITADO)
-                    {
-                        turnoJugador();
-                    }
-                }
-                else
-                {
-                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar";
-                }
-
-            }
-            else
-            {
-                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando";
-            }
-
-        }
-        else
-        {
-            Debug.Log("No es tu turno");
         }
     }
 
@@ -302,36 +238,6 @@ public class ComunBattleSystem : MonoBehaviour
         menuEquipo.SetActive(activacion);
     }
 
-    /// <summary>
-    /// Cabecera: IEnumerator aplicarPocionPokemon()
-    /// Comentario: Esta corrutina se encarga de aplicar un item de tipo pocion a un pokemon concreto del jugador.
-    /// Entradas: Ninguna
-    /// Salidas: Niguna
-    /// Precondiciones: Ninguna
-    /// Postcondiciones: Se restablece un numero determinado de cantidad de la vida de un pokemon especifico del jugador.
-    /// </summary>
-    public IEnumerator aplicarPocionPokemon()
-    {
-        string nombreBoton = EventSystem.current.currentSelectedGameObject.name; //El nombre del boton corresponde a la posicion-1 de un pokemon dentro de la lista Equipo del jugador 
-        int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]) - 1;
-        Jugador.EquipoPokemon[numeroBotonPulsado].HP += ItemAUsar.CuracionPS;
-
-        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion", 1f);
-
-        if (PokemonJugadorLuchando.Equals(Jugador.EquipoPokemon[numeroBotonPulsado]))
-        { //Si se cura el pokemon que esta luchando, para que se actualice la interfaz de la vida
-            trainerHUD.setBarraSalud(PokemonJugadorLuchando.HP, PokemonJugadorLuchando.HPMaximos);
-        }
-
-        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}";
-        //Se actualiza la vida de la interfaz del pokemon de ver equipo
-        botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {Jugador.EquipoPokemon[numeroBotonPulsado].HP} / {Jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
-        configurarMenuEquipo(false);
-        yield return new WaitForSeconds(2f);
-        BattleState = BattleState.ENEMYTURN;
-        StartCoroutine(CorrutinaAtaqueRival);
-        StopCoroutine(aplicarPocionPokemon());
-    }
     public async Task<Pokemon> generarObtenerPokemonRival()
     {
 
@@ -341,39 +247,60 @@ public class ComunBattleSystem : MonoBehaviour
         pokemonGenerado.Nivel = nivelWildPokemon;
         pokemonGenerado.establecerEstadisticasAlNivelActual();
         await pokemonGenerado.obtenerDatosAsincronos(wildPokemonApi);
+        anhadirMovimientosFaltantes(pokemonGenerado);
         return pokemonGenerado;
     }
-        /*
-        //Metodo que se encarga generar y configurar un pokemon rival de forma aleatoria
-        public async Task<Pokemon> generarObtenerPokemonRival()
+    private void anhadirMovimientosFaltantes(Pokemon pokemonGenerado)//Metodo por si el pokemon que vienen de la pokeApi no tiene 4 movimientos
+    {
+        for (int i = pokemonGenerado.Movimientos.Count; i < 4;)
         {
-            Pokemon pokemonGenerado = null;
-            bool datosAsincronosObtenidos = false;
-
-            while (pokemonGenerado is null || !datosAsincronosObtenidos) {
-                try
-                {
-                    int random = UnityEngine.Random.Range(898, 901);
-                    Debug.Log("Obteniendo pokemon de PokeApi: random:"+random);
-                    CancellationTokenSource s_cts = new CancellationTokenSource();
-                    s_cts.CancelAfter(5000);
-                    int nivelWildPokemon = UtilidadesSystemaBatalla.determinarNivelPokemonRival(Jugador.EquipoPokemon);
-                    Task<PokeAPI.Pokemon> b = APIListadosPokemonBL.obtenerPokemonDeApi(random);
-                    b.Wait(s_cts.Token);
-                    PokeAPI.Pokemon wildPokemonApi = await b;//UnityEngine.Random.Range(1, 899));
-                    pokemonGenerado = new Pokemon(wildPokemonApi);
-                    pokemonGenerado.Nivel = nivelWildPokemon;
-                    pokemonGenerado.establecerEstadisticasAlNivelActual();
-                    Task<bool> a = pokemonGenerado.obtenerDatosAsincronos(wildPokemonApi);
-                    a.Wait(s_cts.Token);
-                    datosAsincronosObtenidos = await a;
-                }
-                catch (Exception) {
-                    Debug.Log("Ocurrio un error PokeApi");
-                    pokemonGenerado = null;
-                    datosAsincronosObtenidos = false;
-                }
-            }
-            return pokemonGenerado;
-        }*/
+            pokemonGenerado.Movimientos.Add(new MovimientoPokemon(999,"Daño secreto",50,100,15,"Normal"));
+        }
     }
+    public void configurarDerrotaJugador()
+    {
+        PlayerPrefs.SetString("NameLastScene", SceneManager.GetSceneAt(1).name);
+        StopAllCoroutines();
+        foreach (Pokemon pokemon in Jugador.EquipoPokemon)
+        {
+            pokemon.HP = pokemon.HPMaximos;
+        }
+        UtilidadesEscena.eliminarGameObjectsItemsYEntrenadores();
+        Jugador.Dinero -= UnityEngine.Random.Range(100, 301);//Dinero que se pierde por perder la batalla
+        UtilidadesEscena.precargarEscena("PokemonCenterScene");
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
+    }
+    /*
+    //Metodo que se encarga generar y configurar un pokemon rival de forma aleatoria
+    public async Task<Pokemon> generarObtenerPokemonRival()
+    {
+        Pokemon pokemonGenerado = null;
+        bool datosAsincronosObtenidos = false;
+
+        while (pokemonGenerado is null || !datosAsincronosObtenidos) {
+            try
+            {
+                int random = UnityEngine.Random.Range(898, 901);
+                Debug.Log("Obteniendo pokemon de PokeApi: random:"+random);
+                CancellationTokenSource s_cts = new CancellationTokenSource();
+                s_cts.CancelAfter(5000);
+                int nivelWildPokemon = UtilidadesSystemaBatalla.determinarNivelPokemonRival(Jugador.EquipoPokemon);
+                Task<PokeAPI.Pokemon> b = APIListadosPokemonBL.obtenerPokemonDeApi(random);
+                b.Wait(s_cts.Token);
+                PokeAPI.Pokemon wildPokemonApi = await b;//UnityEngine.Random.Range(1, 899));
+                pokemonGenerado = new Pokemon(wildPokemonApi);
+                pokemonGenerado.Nivel = nivelWildPokemon;
+                pokemonGenerado.establecerEstadisticasAlNivelActual();
+                Task<bool> a = pokemonGenerado.obtenerDatosAsincronos(wildPokemonApi);
+                a.Wait(s_cts.Token);
+                datosAsincronosObtenidos = await a;
+            }
+            catch (Exception) {
+                Debug.Log("Ocurrio un error PokeApi");
+                pokemonGenerado = null;
+                datosAsincronosObtenidos = false;
+            }
+        }
+        return pokemonGenerado;
+    }*/
+}

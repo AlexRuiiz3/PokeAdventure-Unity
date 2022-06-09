@@ -12,7 +12,7 @@ TagManager:
   - Trainer
   - PC
   - Item
-  - TrainerInteracion
+  - TrainerInteraccion
   layers:
   - Default
   - TransparentFX

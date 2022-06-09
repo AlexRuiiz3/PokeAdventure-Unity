@@ -80,10 +80,10 @@ public class PokemonJugador : Pokemon
     }
 
     private void subirEstadisticas() {
-        HP += Random.Range(4, 11);
-        Ataque += Random.Range(4, 11);
-        Defensa += Random.Range(4, 11);
-        Velocidad += Random.Range(4, 11);
+        HP += Random.Range(2, 5);
+        Ataque += Random.Range(2, 5);
+        Defensa += Random.Range(2, 5);
+        Velocidad += Random.Range(2, 5);
     }
     #endregion
     

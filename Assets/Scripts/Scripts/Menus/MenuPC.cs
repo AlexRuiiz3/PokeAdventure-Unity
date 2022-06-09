@@ -13,6 +13,7 @@ public class MenuPC : MonoBehaviour
 {
     public List<GameObject> botonesPokemonsEquipo;
     public GameObject plantillaButtonPokemonPC;
+    public GameObject textSinPokemonsAlmacenados;
     private PokemonJugador pokemonSeleccionado;
     private GameObject interfazPokemonSeleccionado;
     private Jugador jugador;
@@ -20,6 +21,7 @@ public class MenuPC : MonoBehaviour
     //Cuando se active el menu
     private void OnEnable()
     {
+        PlayerPrefs.SetInt("MenuIteracionAbierto",1);
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Total Pokemons: {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
 
@@ -29,6 +31,7 @@ public class MenuPC : MonoBehaviour
     //Cuando se desactive el menu
     private void OnDisable()
     {
+        PlayerPrefs.SetInt("MenuIteracionAbierto", 0);
         Time.timeScale = 1f;
         GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
         UtilidadesEscena.eliminarHijosGameObject(content);
@@ -57,13 +60,12 @@ public class MenuPC : MonoBehaviour
     /// </summary>
     public void configurarBotonesPokemonPC()
     {
-        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject,
-            textSinPokemons = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados");
+        GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
         List<PokemonJugador> pokemonNoEquipados = DatosGuardarJugador.PokemonsAlmacenadosPC;
 
         if (pokemonNoEquipados.Count > 0)
         {
-            textSinPokemons.SetActive(false);
+            textSinPokemonsAlmacenados.SetActive(false);
             foreach (PokemonJugador pokemon in pokemonNoEquipados)
             {
                 configurarMostrarPokemonPC(content, pokemon);
@@ -71,7 +73,7 @@ public class MenuPC : MonoBehaviour
         }
         else
         {
-            textSinPokemons.SetActive(true);
+            textSinPokemonsAlmacenados.SetActive(true);
         }
     }
 
@@ -187,6 +189,7 @@ public class MenuPC : MonoBehaviour
             eliminarPokemonAlmacenado();
             menuOpcionesPokemon.SetActive(false);
         }
+        gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Total Pokemons: {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
         menuOpcionesPokemon.transform.Find("Menus").transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
     }
 
@@ -247,7 +250,7 @@ public class MenuPC : MonoBehaviour
             //Se añade la intefaz del pokemon al menu de almacenamiento
             DatosGuardarJugador.PokemonsAlmacenadosPC.Add(pokemonSeleccionado);
             GameObject content = plantillaButtonPokemonPC.transform.parent.gameObject;
-            Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados").SetActive(false);
+            textSinPokemonsAlmacenados.SetActive(false);
             configurarMostrarPokemonPC(content, pokemonSeleccionado);
 
             EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
@@ -276,7 +279,7 @@ public class MenuPC : MonoBehaviour
         Destroy(interfazPokemonSeleccionado);
         if (DatosGuardarJugador.PokemonsAlmacenadosPC.Count < 1)
         {
-            Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "TextSinPokemonsAlmacenados").SetActive(true);
+            textSinPokemonsAlmacenados.SetActive(true);
         }
     }
 }

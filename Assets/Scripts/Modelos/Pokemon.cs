@@ -88,7 +88,7 @@ public class Pokemon
     {
         ID = pokemonApi.ID;
         nivel = 1;
-        Nombre = pokemonApi.Name;
+        Nombre = pokemonApi.Name.Split('-')[0];//Hay pokemons de la pokeApi que viene con una extension en el nombre, se elimina esa extension
         hp = (from pokemonStats in pokemonApi.Stats
               where pokemonStats.Stat.Name == "hp"
               select pokemonStats.BaseValue).First();
@@ -188,11 +188,11 @@ public class Pokemon
     public void establecerEstadisticasAlNivelActual(){
         if (nivel > 1)
         {
-            HP += nivel * Random.Range(4, 11);
+            HP += nivel * Random.Range(2, 5);
             HPMaximos = HP;
-            Ataque += nivel * Random.Range(4, 11);
-            Defensa += nivel * Random.Range(4, 11);
-            Velocidad += nivel * Random.Range(4, 11);
+            Ataque += nivel * Random.Range(2, 5);
+            Defensa += nivel * Random.Range(2, 5);
+            Velocidad += nivel * Random.Range(2, 5);
         }
     }
     #endregion

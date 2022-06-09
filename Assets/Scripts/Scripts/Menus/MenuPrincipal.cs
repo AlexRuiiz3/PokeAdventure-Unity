@@ -19,13 +19,11 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetString("InteraccionConObjeto","");
-        PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
+        resetearPlayerPrefs();
         Time.timeScale = 1f;
         GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
         DontDestroyOnLoad(jugador);
-        PlayerPrefs.SetString("NameLastScene", "");
-        PlayerPrefs.SetString("GameLanguage", "es");
+
         if (PlayerPrefs.GetInt("BaseDatosCreada") == 0)
         {
             ConfiguracionDB.createDB();
@@ -137,5 +135,12 @@ public class MenuPrincipal : MonoBehaviour
         {
             UtilidadesEscena.mostrarMensajeError("El nombre de usuario no puede estar vacio");
         }
+    }
+    private void resetearPlayerPrefs() {
+        PlayerPrefs.SetString("NameLastScene", "");
+        PlayerPrefs.SetString("GameLanguage", "es");
+        PlayerPrefs.SetInt("MenuIteracionAbierto", 0);
+        PlayerPrefs.SetString("InteraccionConObjeto", "");
+        PlayerPrefs.SetString("EstadoDialogo", DialogEstate.END.ToString());
     }
 }

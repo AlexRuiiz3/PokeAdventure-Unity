@@ -78,12 +78,10 @@ public class PlayerController : MonoBehaviour
     //Metodos añadidos
     private void comprobarZonaHierba()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null && Time.timeScale == 1)
         {
             if (UnityEngine.Random.Range(1, 851) <= 2)
             {
-                GameObject jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
-                DontDestroyOnLoad(jugador);
                 UtilidadesEscena.activarPausarMusicaEscenaActiva(false);//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
                 PlayerPrefs.SetString("NameNextScene", "BattleWildPokemonScene");
                 SceneManager.LoadScene("BattleWildPokemonScene",LoadSceneMode.Additive);
@@ -91,12 +89,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Metodo 
-    public void iniciarCoroutineAsignarObjetoEncontrado() {
+    //Metodo
+    public void iniciarCoroutineAsignarObjetoEncontrado() { //Necesario ya que desde donde se llama no se puede llamar a StartCoroutine
         StartCoroutine(asignarObjetoEncontrado());
     }
     
-    IEnumerator asignarObjetoEncontrado() //Deberia de ir en ultilidadesObjetoInteractable, pero al ser una corrutina debe de ir en un script que este asociado a un gameObject del juego
+    public IEnumerator asignarObjetoEncontrado() //Deberia de ir en ultilidadesObjetoInteractable, pero al ser una corrutina debe de ir en un script que este asociado a un gameObject del juego
     {
         GameObject canvasObjetoRecogigo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasObjetoRecogido");
         int cantidadItem = (int)UnityEngine.Random.Range(1f, 3f);

@@ -9,9 +9,9 @@ using UnityEngine.UI;
 
 public class MenuMochila : MonoBehaviour
 {
-    public GameObject interfazItemUsar;
+    public GameObject textSinItems;
+    private GameObject interfazItemUsar;
     private Jugador jugador;
-
     /// <summary>
     /// Cabecera: public void prepararMenuMochila(GameObject plantillaItem)
     /// Comentario: Este metodo de configuarar y mostrar el menu mochila del jugador, con los items que este tenga.
@@ -26,23 +26,33 @@ public class MenuMochila : MonoBehaviour
         GameObject contentListMochila = plantillaItem.transform.parent.gameObject;
         GameObject interfazItem;
         UtilidadesEscena.eliminarHijosGameObject(contentListMochila); //Necesario sino salen duplicados los items
-        foreach (ItemConCantidad item in jugador.Mochila) {
-            interfazItem = Instantiate(plantillaItem);
+        if (jugador.Mochila.Count > 0) {
+            textSinItems.SetActive(false);
 
-            interfazItem.name = item.ID.ToString();
-            interfazItem.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
-            interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{item.Cantidad}";
+            foreach (ItemConCantidad item in jugador.Mochila)
+            {
+                interfazItem = Instantiate(plantillaItem);
 
-            if (item.Tipo == "Pocion") {
-                interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = $"{item.Nombre}.{item.CuracionPS}PS";
+                interfazItem.name = item.ID.ToString();
+                interfazItem.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
+                interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"x{item.Cantidad}";
+
+                if (item.Tipo == "Pocion")
+                {
+                    interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = $"{item.Nombre}.{item.CuracionPS}PS";
+                }
+                else
+                {
+                    interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = item.Nombre;
+                    Destroy(interfazItem.transform.Find("Button").gameObject);
+                }
+                interfazItem.transform.SetParent(contentListMochila.transform);
+                interfazItem.transform.localScale = plantillaItem.transform.localScale;
+                interfazItem.SetActive(true);
             }
-            else {
-                interfazItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = item.Nombre;
-                Destroy(interfazItem.transform.Find("Button").gameObject);
-            }
-            interfazItem.transform.SetParent(contentListMochila.transform);
-            interfazItem.transform.localScale = plantillaItem.transform.localScale;
-            interfazItem.SetActive(true);
+        }
+        else {
+            textSinItems.SetActive(true);
         }
         gameObject.SetActive(true);
     }

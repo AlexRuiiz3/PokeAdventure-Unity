@@ -21,7 +21,15 @@ public class MenuTienda : MonoBehaviour
         jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
         textSaldo.text = $"Saldo {jugador.Dinero}$";
     }
-    
+    private void OnEnable()
+    {
+        PlayerPrefs.SetInt("MenuIteracionAbierto", 1);
+    }
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("MenuIteracionAbierto", 0);
+        Time.timeScale = 1f;
+    }
     /// <summary>
     /// Cabecera: public void comprarItem(GameObject interfazItem)
     /// Comentario: Este metodo se encarga de determinar si un item se puede comprar y desplegar un menu de confirmacion de compra.

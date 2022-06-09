@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CargarEscena : MonoBehaviour
 {
     private GameObject jugador;
+    private bool jugadorMirandoArriba;
     private string escenaSiguiente;
 
 
@@ -34,6 +36,11 @@ public class CargarEscena : MonoBehaviour
             operation.completed += (asyncOperation) =>{
                 if (!escenasTitulo) {
                     jugador.SetActive(true);
+                    if (jugadorMirandoArriba) { //Para que funcione el cambio de animacion el jugador tiene que estar activado
+                        Animator animatorPlayer = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player")).GetComponent<PlayerController>().GetComponent<Animator>();
+                        animatorPlayer.SetFloat("moveY", 0.1f);
+                        animatorPlayer.SetBool("isMoving", true);
+                    }
                 }
             };
             yield return operation;
@@ -47,7 +54,7 @@ public class CargarEscena : MonoBehaviour
             case "AdventureZone":
                 string[] adventureScenes = { "SnowScene", "RouteScene", "ForestScene", "CityScene" };
                 escenaSiguiente = adventureScenes[(int)Random.Range(0f, 4f)]; //Numero entre 0 y 3
-
+                jugadorMirandoArriba = true;
                 switch (escenaSiguiente)
                 {
                     case "SnowScene":
@@ -70,9 +77,18 @@ public class CargarEscena : MonoBehaviour
                 break;
 
             case "PokemonCenterScene":
-                posicionNuevaJugador = new Vector2(-2.9f, -1.2f);
+                if (PlayerPrefs.GetString("NameLastScene").Contains("Battle"))
+                {
+                    UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery", 3f);
+                    posicionNuevaJugador = new Vector2(-3f, 3.8f);
+                }
+                else {
+                    posicionNuevaJugador = new Vector2(-2.9f, -1.2f);
+                }
+                jugadorMirandoArriba = true;
                 break;
             case "PokemonShopScene":
+                jugadorMirandoArriba = true;
                 posicionNuevaJugador = new Vector2(-7.52f, -5.09f);
                 break;
             case "LobbyScene":

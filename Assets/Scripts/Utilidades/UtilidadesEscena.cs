@@ -61,11 +61,11 @@ public class UtilidadesEscena : MonoBehaviour
         activarDesactivarGameObjects(subMenus,false);
     }
 
-    public static List<GameObject> obtenerMenusHijosActivados(GameObject menu) {
+    private static List<GameObject> obtenerMenusHijosActivados(GameObject menu) {
         List<GameObject> subMenus = new List<GameObject>();
         foreach (Transform child in menu.transform)
         {
-            if (child.gameObject.name.Contains("Menu") && child.gameObject.activeSelf)
+            if (child.gameObject.name.Contains("Menu") || child.gameObject.name.Contains("MensajeError") && child.gameObject.activeSelf)
             {
                 subMenus = subMenus.Concat(obtenerMenusHijosActivados(child.gameObject)).ToList();
             }
@@ -204,8 +204,6 @@ public class UtilidadesEscena : MonoBehaviour
         menuError.SetActive(true);
     }
 
-
-
     /// <summary>
     /// Cabecera: public static void eliminarHijosGameObject(GameObject gameObject)
     /// Comentario: Este metodo se encarga de eliminar todos los hijos que tenga un gameObject.
@@ -226,6 +224,51 @@ public class UtilidadesEscena : MonoBehaviour
                     Destroy(child.gameObject);
                 }
             }
+        }
+    }
+
+    public static void prepararBotonesPokemonsEquipo(List<PokemonJugador> pokemonsJugador, List<Button> botones)
+    {
+        Image imagenPokemon;
+        TextMeshProUGUI textNombrePokemon, textHPPokemon, textNivelPokemon;
+        PokemonJugador pokemon;
+        List<Component> componentesBoton = new List<Component>();
+
+        for (int i = 0; i < pokemonsJugador.Count; i++) //Por cada pokemon que tenga el jugador se activa y prepara un boton
+        {
+            //for (int i = 0; i < scriptPlayer.Jugador.EquipoPokemon.Count; i++)
+            pokemon = pokemonsJugador[i];
+
+            botones[i].gameObject.SetActive(true);
+            /* Se obtienen todos los componentes del boton, sus hijos seran el Image y los 3 Text que se esta buscando. 
+             * Para encontrarlos al boton hay que llamar al metodo GetComponentsInChildren que devolvera todos los compoentes 
+             * hijos que tiene el boton y los atributos de estos.
+             * Hay que hacer el foreach porque GetComponentsInChildren contiene todos los atributos de los 
+             * componentes(De la imagen y los text se coge CavasRenderer,RectTransform y Image o Text) y lo que 
+             * se necesita para modificar son el atributo Image o Text de los respectivos componetes Image o Text.
+             */
+            foreach (Component componente in botones[i].GetComponentsInChildren<Component>())
+            {
+                if (componente is TextMeshProUGUI || componente is Image)
+                {
+                    componentesBoton.Add(componente);
+                }
+            }
+
+            imagenPokemon = (Image)componentesBoton[1]; //No se tiene encuenta la posicion 0 porque en esa esta la imagen del propio boton(Boton en el que se encuentra la Image y los 3 Text)
+
+            imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
+
+            textNombrePokemon = (TextMeshProUGUI)componentesBoton[2];
+            textNombrePokemon.text = pokemon.Nombre;
+
+            textHPPokemon = (TextMeshProUGUI)componentesBoton[3];
+            textHPPokemon.text = $"PS: {pokemon.HP} / {pokemon.HPMaximos}";
+
+            textNivelPokemon = (TextMeshProUGUI)componentesBoton[4];
+            textNivelPokemon.text = $"Nvl. {pokemon.Nivel}";
+
+            componentesBoton.Clear(); //Se limpia la lista con los componentes del boton para que despues guardar los componentes del siguiente boton y asi las posicion 1,2,3,4 corresponderan a los componentes del boton que le toque en la iteracion
         }
     }
 

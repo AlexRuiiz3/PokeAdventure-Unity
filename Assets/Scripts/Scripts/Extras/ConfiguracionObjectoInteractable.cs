@@ -12,14 +12,14 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
 
     private void Update()
     {
-        //TODO HACER METODO PARA DETERMINAR QUE AUDIO HAY QUE COGER 
-        //Si el jugador esta dentro del rango, pulsa la tecla E y no hay un dialogo iniciado 
-        if (jugadorDentroRango && Input.GetKey(KeyCode.E) && PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())
+
+        //Si el jugador esta dentro del rango, pulsa la tecla E y no hay un dialogo iniciado  y no hay abierto un menu de iteracion
+        if (jugadorDentroRango && Input.GetKey(KeyCode.E) && PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString() && PlayerPrefs.GetInt("MenuIteracionAbierto") == 0)
         {
             PlayerPrefs.SetString("InteraccionConObjeto", gameObject.tag);//Se guarda el tipo de objeto con el que sea interactuado
             GameObject dialogo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasDialogo");
             ControlDialogos controlDialogos = dialogo.transform.GetChild(0).gameObject.GetComponent<ControlDialogos>();
-            if (gameObject.tag == "TrainerInteracion") { //Si se interactua con un entrenador
+            if (gameObject.tag == "TrainerInteraccion") { //Si se interactua con un entrenador
                 TrainerNPC trainer = gameObject.transform.parent.gameObject.transform.GetChild(0).GetComponentInChildren<TrainerNPC>();
                 trainer.Imagen = (from spriteNPC in Resources.LoadAll<Sprite>("Imagenes/Trainers/" + transform.parent.gameObject.name)
                                  where spriteNPC.name == "Abajo"
@@ -87,7 +87,7 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
         switch (tag)
         {
             case "PC": UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/OpenPC",1.5f); break;
-            case "Objeto":
+            case "Item":
                 UtilidadesEscena.activarPausarMusicaEscenaActiva(false);
                 UtilidadesEscena.activarMusicaTemporal("Iteracion/GetItem", false);
                 Destroy(gameObject); 

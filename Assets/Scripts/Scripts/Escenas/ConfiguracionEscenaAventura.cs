@@ -353,7 +353,7 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
     {
         GameObject zonaIteracion = new GameObject();
         zonaIteracion.name = "Zona Iteracion";
-        zonaIteracion.tag = "TrainerInteracion";
+        zonaIteracion.tag = "TrainerInteraccion";
         CapsuleCollider2D capsuleCollider2D = zonaIteracion.AddComponent<CapsuleCollider2D>();
         capsuleCollider2D.isTrigger = true;
         capsuleCollider2D.offset = trainer.transform.position;

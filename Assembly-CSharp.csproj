@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\Scripts\Batallas\BattleSystemWildPokemon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraItemDAL.cs" />
+    <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraPokemonsJugadorBL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\MenuTienda.cs" />
     <Compile Include="Assets\Scripts\Scripts\Escenas\ObtenerPrimerPokemon.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\BBDD\BL\Listados\ListadosItemBL.cs" />
     <Compile Include="Assets\Scripts\Utilidades\Utilidades.cs" />
+    <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonsJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -146,8 +148,6 @@
     <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonEncontradosJugadorDAL.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Scripts\Menus\MenuPrincipal.cs" />
-    <Compile Include="Assets\Scripts\BBDD\DAL\Gestora\GestoraPokemonsJugadorDAL.cs" />
-    <Compile Include="Assets\Scripts\BBDD\BL\Gestora\GestoraPokemonsJugadorBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -835,12 +835,6 @@
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>

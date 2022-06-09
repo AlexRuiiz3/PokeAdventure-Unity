@@ -14,18 +14,18 @@ public class UtilidadesObjetosInteractables
 
         switch (objetoInteraccion) {
             case "Medico":
-                UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery",3f);
                 curarPokemonsJugador(); break;
             case "Vendedor": activarMenuObjeto("MenuTienda"); break;
             case "PC": activarMenuObjeto("MenuPC"); break;
-            case "Objeto":
+            case "Item":
                 UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
                 UtilidadesEscena.activarPausarMusicaEscenaActiva(true);
                 PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
                 playerController.iniciarCoroutineAsignarObjetoEncontrado();
                 //StartCoroutine(playerController.asignarObjetoEncontrado()); //No se puede hacer aqui ya que esta clase no esta asociada a ningun gameObject del juego
                 break;
-            case "TrainerInteracion":
+            case "Trainer": case
+                "TrainerInteraccion":
                 UtilidadesEscena.destruirGameObjectEspecifico("AudioTemporal");
                 PlayerPrefs.SetString("NameNextScene", "BattleTrainerScene");
                 SceneManager.LoadScene("BattleTrainerScene", LoadSceneMode.Additive);
@@ -33,14 +33,15 @@ public class UtilidadesObjetosInteractables
         }
     }
 
-    private static void curarPokemonsJugador() {
+    private void curarPokemonsJugador() {
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery", 3f);
         Jugador jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
         foreach (PokemonJugador pokemon in jugador.EquipoPokemon) {
             pokemon.HP = pokemon.HPMaximos;
         }
     }
-    private static void activarMenuObjeto(string nombreMenu) {
+    private void activarMenuObjeto(string nombreMenu) {
         GameObject menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == nombreMenu);
         UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menu);
     }

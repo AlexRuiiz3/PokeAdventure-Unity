@@ -18,7 +18,6 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     {
         trainerNPC = DatosGenerales.trainerLuchando;
         rivalPokemonHUD.imagenRival.sprite = trainerNPC.Imagen;
-        CorrutinaAtaqueRival = atacarEntranadorRival();
         //Se obtiene la imagen de fondo del campos de batalla(Se escogera la imagen que corresponde con la escena que esta activa) 
         imagenBackGround.GetComponent<Image>().sprite = (from sprite in Resources.LoadAll<Sprite>("Imagenes/UI/EscenasBatalla/BattleBackgrounds")
                                                          where sprite.name == PlayerPrefs.GetString("EscenaAventura")
@@ -47,8 +46,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     /// </summary>
     IEnumerator prepararIniciarBatalla()//Se hace en una corrutina para poder poner pausa y que los mensajes que se muestran no se cambien tan rapido
     {
-        activarDesactivarBotonesMenuAcciones(false);
-        textoDialogo.text = $"Entrenador te desafia!";
+        //activarDesactivarBotonesMenuAcciones(false);
+        textoDialogo.text = $"Entrenador rival te desafia!";
         //Preparacion Jugador
         prepararConfigurarDatosJugador();
 
@@ -58,7 +57,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
         prepararIconosPokemosDisponibles(trainerNPC.EquipoPokemon.Cast<Pokemon>().ToList(), rivalPokemonHUD.pokemonsDisponibles);
 
 
-        int aleatorioComienzo = 1;//UnityEngine.Random.Range(1, 3); //Aleatorio en entre 1 y 2
+        int aleatorioComienzo = UnityEngine.Random.Range(1, 3); //Aleatorio en entre 1 y 2
 
         if (aleatorioComienzo == 1)
         {
@@ -67,12 +66,77 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
         }
         else
         {
+            activarDesactivarBotonesMenuAcciones(false);
             BattleState = BattleState.ENEMYTURN;
             StartCoroutine(atacarEntranadorRival());
         }
         StopCoroutine(prepararIniciarBatalla());
     }
 
+    /// <summary>
+    /// Cabecera: public void cambiarPokemon()
+    /// Comentario: Este metodo se encarga de cambiar el pokemon del jugador que esta luchando, tanto si el quiere cambiarlo por otro, como si el pokemon que estaba luchando se debilito.
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: El pokemon que este luchando del jugador cambiar por otro de sus pokemon, ocurriendo posteriormente dos casos:
+    ///                  1: Cuando es el turno del jugador y quiere cambiar un pokemon, se realiza el cambio y se pasa al turno del rival
+    ///                  2: Cuando el pokemon del jugador que estaba luchando se debilito, se realizada el cambio y se continua con el turno del jugador
+    /// </summary>
+    /// <summary>
+    /// Cabecera: public void cambiarPokemon()
+    /// Comentario: Este metodo se encarga de cambiar el pokemon del jugador que esta luchando, tanto si el quiere cambiarlo por otro, como si el pokemon que estaba luchando se debilito.
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: El pokemon que este luchando del jugador cambiar por otro de sus pokemon, ocurriendo posteriormente dos casos:
+    ///                  1: Cuando es el turno del jugador y quiere cambiar un pokemon, se realiza el cambio y se pasa al turno del rival
+    ///                  2: Cuando el pokemon del jugador que estaba luchando se debilito, se realizada el cambio y se continua con el turno del jugador
+    /// </summary>
+    public void cambiarPokemon()
+    {
+        if (BattleState == BattleState.PLAYERTURN || BattleState == BattleState.POKEMONJUGADORDEBILITADO)
+        {
+            string nombreBoton = EventSystem.current.currentSelectedGameObject.transform.parent.name;
+            int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);
+
+            if (PokemonJugadorLuchando.NumeroEquipado != Jugador.EquipoPokemon[numeroBotonPulsado - 1].NumeroEquipado)//Se controla que el pokemon que este luchando, no se elija otra vez para luchar
+            {
+                if (Jugador.EquipoPokemon[numeroBotonPulsado - 1].HP > 0) //Si la vida del pokemon al que quiere cambiar en mayor que 0
+                {
+                    activarDesactivarMenuEquipo(true, false);
+                    PokemonJugadorLuchando = Jugador.EquipoPokemon[numeroBotonPulsado - 1];
+                    trainerHUD.inicializarDatos(PokemonJugadorLuchando);
+                    prepararBannerIconosMovimientos();
+                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti";
+                    if (BattleState == BattleState.PLAYERTURN)
+                    {
+                        activarDesactivarBotonesMenuAcciones(false);
+                        BattleState = BattleState.ENEMYTURN;
+                        StartCoroutine(atacarEntranadorRival());
+                    }
+                    else//(battleState == BattleState.POKEMONJUGADORDEBILITADO)
+                    {
+                        turnoJugador();
+                    }
+                }
+                else
+                {
+                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar";
+                }
+
+            }
+            else
+            {
+                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando";
+            }
+
+        }
+        else
+        {
+            Debug.Log("No es tu turno");
+        }
+    }
 
     /// <summary>
     /// Cabecera: public void abandonarBatallaButton()
@@ -130,6 +194,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     rivalPokemonHUD.imagenPokemon.gameObject.SetActive(true);
                     yield return new WaitForSeconds(0.2f);
                 }
+                yield return new WaitForSeconds(0.2f);
                 //Se determina si habra un multiplicador por ser el movimiento efectivo contra el pokemon rival
                 multiplicadorEfectividad = UtilidadesSystemaBatalla.obtenerMultiplicadorPorEfectividad(
                     PokemonRivalLuchando.Debilidades, movimientoUsado.Tipo, textoDialogo);
@@ -170,7 +235,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                         Jugador.Dinero += trainerNPC.dineroAlDerrotar;
                         textoDialogo.text = $"Has derrotado al entrenador rival y obtenido {trainerNPC.dineroAlDerrotar}$";
                         yield return new WaitForSeconds(3.5f);
-                        textoDialogo.text = "Saliendo del combate...";
+                        textoDialogo.text = "¡Victoria! Saliendo del combate...";
                         BattleState = BattleState.WIN;
                         yield return new WaitForSeconds(4f);
                         abandonarBatallaButton();//Aqui se abandonara la corrutina, la escena
@@ -211,11 +276,11 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     {
         yield return new WaitForSeconds(2f);
         textoDialogo.text = $"Es el turno del {PokemonRivalLuchando.Nombre} rival";
-        yield return new WaitForSeconds(1.5f); //Para que no se junten los mensaje, se hace una pausa y asi da tiempo de ver los mensajes de ambos
+        yield return new WaitForSeconds(3f); //Para que no se junten los mensaje, se hace una pausa y asi da tiempo de ver los mensajes de ambos
 
         if (!determinarRivalUsaCuracion())
         { //Si no usa una curacion
-            int aleatorioMoviminento = UnityEngine.Random.Range(0, 4),
+            int aleatorioMoviminento = UnityEngine.Random.Range(0, PokemonRivalLuchando.Movimientos.Count),
                  aleatorioPrecicion = UnityEngine.Random.Range(1, 100), danhoMovimiento, danhoPokemonCausado, multiplicadorEfectividad;
             MovimientoPokemon movimientoUsado = PokemonRivalLuchando.Movimientos[aleatorioMoviminento];
             bool pokemonJugadorVivo;
@@ -235,6 +300,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     yield return new WaitForSeconds(0.2f);
                 }
 
+                yield return new WaitForSeconds(0.2f);
                 //Se determina si habra un multiplicador por ser el movimiento efectivo contra el pokemon rival
                 multiplicadorEfectividad = UtilidadesSystemaBatalla.obtenerMultiplicadorPorEfectividad(
                     PokemonJugadorLuchando.Debilidades, movimientoUsado.Tipo, textoDialogo);
@@ -252,7 +318,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
 
                 int numeroBotonPokemon = Jugador.EquipoPokemon.IndexOf(PokemonJugadorLuchando);
                 botonesPokemonsEquipo[numeroBotonPokemon].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {PokemonJugadorLuchando.HP} / {PokemonJugadorLuchando.HPMaximos}";
-                CorrutinaAtaqueRival = atacarEntranadorRival();//Importante para que no se quede pillado en el atacarJugador de la clase padre
+                
                 if (!pokemonJugadorVivo) //Si el pokemon despues de recibir daño no esta vivo
                 {
                     prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
@@ -261,16 +327,20 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     if (determinarDerrotaJugador())
                     {
                         yield return new WaitForSeconds(2f);
-                        textoDialogo.text = "Has Perdido";
+                        textoDialogo.text = "No te quedan pokemons para seguir luchando.";
+                        yield return new WaitForSeconds(2.5f);
+                        textoDialogo.text = "Abandonas el combate para ir a curar a tu equipo.";
+                        yield return new WaitForSeconds(2.5f);
+                        textoDialogo.text = "Con las prisas se te caen unas monedas...";
                         BattleState = BattleState.LOST;
-                        yield return new WaitForSeconds(5f);
-                        abandonarBatallaButton();//Aqui se abandonara la corrutina, la escena
+                        yield return new WaitForSeconds(2f);
+                        configurarDerrotaJugador();
                     }
                     else
                     {
                         yield return new WaitForSeconds(1f);
                         textoDialogo.text = "Elige un pokemon para luchar";
-                        StopCoroutine(CorrutinaAtaqueRival);
+                        StopCoroutine(atacarEntranadorRival());
                     }
                 }
             }
@@ -291,6 +361,38 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
             turnoJugador();
         }
     }
+
+    /// <summary>
+    /// Cabecera: IEnumerator aplicarPocionPokemon()
+    /// Comentario: Esta corrutina se encarga de aplicar un item de tipo pocion a un pokemon concreto del jugador.
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se restablece un numero determinado de cantidad de la vida de un pokemon especifico del jugador.
+    /// </summary>
+    public IEnumerator aplicarPocionPokemon()
+    {
+        string nombreBoton = EventSystem.current.currentSelectedGameObject.name; //El nombre del boton corresponde a la posicion-1 de un pokemon dentro de la lista Equipo del jugador 
+        int numeroBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]) - 1;
+        Jugador.EquipoPokemon[numeroBotonPulsado].HP += ItemAUsar.CuracionPS;
+
+        UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion", 1f);
+
+        if (PokemonJugadorLuchando.Equals(Jugador.EquipoPokemon[numeroBotonPulsado]))
+        { //Si se cura el pokemon que esta luchando, para que se actualice la interfaz de la vida
+            trainerHUD.setBarraSalud(PokemonJugadorLuchando.HP, PokemonJugadorLuchando.HPMaximos);
+        }
+
+        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}";
+        //Se actualiza la vida de la interfaz del pokemon de ver equipo
+        botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {Jugador.EquipoPokemon[numeroBotonPulsado].HP} / {Jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
+        configurarMenuEquipo(false);
+        yield return new WaitForSeconds(2f);
+        BattleState = BattleState.ENEMYTURN;
+        StartCoroutine(atacarEntranadorRival());
+        StopCoroutine(aplicarPocionPokemon());
+    }
+
     private bool determinarDerrotaRival()
     {
         bool derrota = true;
