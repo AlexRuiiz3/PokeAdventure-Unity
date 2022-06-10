@@ -75,11 +75,20 @@ public class APIListadosPokemonDAL
                 tipoIdioma = obtenerNombreEnUnIdioma(tipoDanho.Names);
                 listadosTiposDobleDanho.Add(tipoIdioma);
             }
-
         }
         return listadosTiposDobleDanho;
     }
 
+    /// <summary>
+    /// Cabecera: public static async Task<List<MovimientoPokemon>> obtenerMovimientosAleatoriosPokemon(PokemonMove[] pokemonMoves)
+    /// Comentario: Este metodo se encarga de obtener movimientos pokemons aleatorios y que hagan daño 
+    /// Entradas: PokemonMove[] pokemonMoves
+    /// Salidas: Task<List<MovimientoPokemon>>
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera con los movimientos pokemon mappeados a MovimientoPokemon
+    /// </summary>
+    /// <param name="pokemonMoves"></param>
+    /// <returns>Task<List<MovimientoPokemon>></returns>
     public static async Task<List<MovimientoPokemon>> obtenerMovimientosAleatoriosPokemon(PokemonMove[] pokemonMoves)
     {
         List<Move> listadoMovimientos = new List<Move>();
@@ -88,7 +97,7 @@ public class APIListadosPokemonDAL
         int aleatorio;
         System.Random random = new System.Random();
 
-        while (listadoMovimientos.Count < 4)//4 Porque son 4 los movimientos que se quieren obtener 
+        while (listadoMovimientos.Count < 4 && listadoMovimientos.Count < pokemonMoves.lenght)//4 Porque son 4 los movimientos que se quieren obtener 
         {
             aleatorio = random.Next(pokemonMoves.Length - 1);
             if (!comprobarMovimientoYaObtenido(listadoMovimientos, pokemonMoves[aleatorio].Move.ID))//Si el movimiento obtenido de forma aleatoria no se ha seleccionado antes
@@ -146,25 +155,4 @@ public class APIListadosPokemonDAL
 
         return nombre;
     }
-    /*
-    public static async Task asignarImagenesPokemonsJugador(List<PokemonJugador> pokemonsJugador) {
-        PokeAPI.Pokemon pokemonApi;
-        string urlSpriteFrente;
-        string urlSpriteEspalda;
-        foreach (PokemonJugador pokemonJugador in pokemonsJugador) {
-            pokemonApi = await obtenerPokemonDeApi(pokemonJugador.ID);
-            
-            urlSpriteFrente = (pokemonApi.Sprites.FrontMale != null) ? pokemonApi.Sprites.FrontMale : pokemonApi.Sprites.FrontFemale;
-            if (urlSpriteFrente != null) //si no tiene ni hembra ni maculino se dejara vacio.
-            {
-                pokemonJugador.ImagenDeFrente = Utilidades.obtenerImagenDeUrl(urlSpriteFrente);
-            }
-
-            urlSpriteEspalda = (pokemonApi.Sprites.BackMale != null) ? pokemonApi.Sprites.BackMale : pokemonApi.Sprites.BackFemale;
-            if (urlSpriteEspalda != null)
-            {
-                pokemonJugador.ImagenDeEspalda = Utilidades.obtenerImagenDeUrl(urlSpriteEspalda);
-            }
-        }
-    }*/
 }
