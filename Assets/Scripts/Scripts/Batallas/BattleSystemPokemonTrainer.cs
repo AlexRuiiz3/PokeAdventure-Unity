@@ -454,9 +454,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     /// Entradas: Ninguna
     /// Salidas: Niguna
     /// Precondiciones: Ninguna
-    /// Postcondiciones: Se realizaran dos acciones principales en funcion del tipo del item a usar:
+    /// Postcondiciones: Se realizara la siguiente accion:
     ///                  1:Si el tipo del item se trara de una pocion, se iniciara una corrutina que aplicara la pocion al pokemon.
-    ///                  2:Si el tipo del item se trara de una pokeball, se inciciara una corrutina asociado a la accion de una pokeball.
     /// </summary>
     public void usarItem()
     {
