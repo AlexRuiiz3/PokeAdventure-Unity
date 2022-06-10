@@ -76,8 +76,6 @@ public class ConfiguracionObjectoInteractable : MonoBehaviour
         iconoExclamacion.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         iconoExclamacion.SetActive(false);
-       // Vector3 a = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
-        //iconoExclamacion.transform.position = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
 
         gameObject.SetActive(false); //Se desactiva el gameObject que tiene el boxCollider, asi solo se podra combatir con el mismo entrenador solo una vez
         StopCoroutine(activarExclamacionTrainerCombate());
