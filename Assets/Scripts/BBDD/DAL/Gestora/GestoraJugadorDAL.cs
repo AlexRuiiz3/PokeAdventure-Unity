@@ -39,6 +39,18 @@ public class GestoraJugadorDAL
         }
     }
 
+    /// <summary>
+    /// Cabecera: public static int actualizarDineroJugador(int id, int dinero)
+    /// Comentario: Este metodo se encarga actualizar el campos dinero de un jugador determinado.
+    /// Entradas: int id, int dinero
+    /// Salidas: int actualizaciones
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se actualizara el campo dinero de un jugador en la base de datos. Si el id del jugador no es valido, o no corresponde con ningun jugador, 
+    ///                  No se realizara ninguna actualizacion y el resulato devuelto sera 0.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="dinero"></param>
+    /// <returns>int</returns>
     public static int actualizarDineroJugador(int id, int dinero)
     {
         int actualizaciones = 0;
