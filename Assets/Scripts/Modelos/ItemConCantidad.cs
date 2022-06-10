@@ -1,7 +1,7 @@
 /*
  * Clase: ItemConCantidad
  * 
- * Comentario: Esta clase representa a los ItemConCantidad item que tienen los jugadores y por lo tanto necesitan una cantidad. Hereda de la clase Item.
+ * Comentario: Esta clase representa a los item que tienen los jugadores y por lo tanto necesitan una cantidad. Hereda de la clase Item.
  * 
  * Atributos:
  *          Basicos:
