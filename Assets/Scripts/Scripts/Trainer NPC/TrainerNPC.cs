@@ -5,6 +5,39 @@ using UnityEngine;
 
 public class TrainerNPC : MonoBehaviour
 {
+    #region Constructores
+    //Constructor sin parametros
+    public TrainerNPC() {
+        Frases = new List<string>();
+        EquipoPokemon = new List<Pokemon>();
+        Mochila = new List<ItemConCantidad>();
+        derrotado = false;
+    }
+    //Constructor con parametros
+    public TrainerNPC(List<string> frases, List<Pokemon> equipoPokemon, List<ItemConCantidad> mochila)
+    {
+        Frases = frases;
+        EquipoPokemon = equipoPokemon;
+        Mochila = mochila;
+    }
+    #endregion
+    
+    #region Metodos fundamentales(Propiedades)
+    //Frases
+    public Sprite Imagen { get; set; }
+    public List<string> Frases { get; set; }
+    public List<string> FrasesDerrotado { get; set; }
+    public bool derrotado { get; set; }
+    public int dineroAlDerrotar { get; set; }
+
+    //EquipoPokemon
+    public List<Pokemon> EquipoPokemon { get; set; }
+    //Mochila
+    public List<ItemConCantidad> Mochila { get; set; }
+    #endregion
+
+
+    #region Metodos añadidos
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!derrotado && collision.CompareTag("Player") && !collision.isTrigger)//Si entra en contacto con el jugador  
@@ -26,6 +59,15 @@ public class TrainerNPC : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: IEnumerator activarExclamacionTrainerCombate()
+    /// Comentario: Esta corrutina se encarga de activar la imagen de exclamacion que tiene un entrenador
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se activara la imagen de una exclacion duranto un breve periodo de tiempo y despues se desactivara
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator activarExclamacionTrainerCombate()
     {
         PlayerPrefs.SetString("EntrenadorLuchando", transform.parent.name);
@@ -33,42 +75,9 @@ public class TrainerNPC : MonoBehaviour
         iconoExclamacion.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         iconoExclamacion.SetActive(false);
-        // Vector3 a = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
-        //iconoExclamacion.transform.position = gameObject.transform.parent.gameObject.transform.position - GameObject.Find("Player").transform.position;
-
+        
         gameObject.SetActive(false); //Se desactiva el gameObject que tiene el boxCollider, asi solo se podra combatir con el mismo entrenador solo una vez
         StopCoroutine(activarExclamacionTrainerCombate());
     }
-
-    //Constructor sin parametros
-    public TrainerNPC() {
-        Frases = new List<string>();
-        EquipoPokemon = new List<Pokemon>();
-        Mochila = new List<ItemConCantidad>();
-        derrotado = false;
-    }
-    //Constructor con parametros
-    public TrainerNPC(List<string> frases, List<Pokemon> equipoPokemon, List<ItemConCantidad> mochila)
-    {
-        Frases = frases;
-        EquipoPokemon = equipoPokemon;
-        Mochila = mochila;
-    }
-
-
-    #region Metodos fundamentales(Propiedades)
-    //Frases
-    public Sprite Imagen { get; set; }
-    public List<string> Frases { get; set; }
-    public List<string> FrasesDerrotado { get; set; }
-    public bool derrotado { get; set; }
-    public int dineroAlDerrotar { get; set; }
-
-    //EquipoPokemon
-    public List<Pokemon> EquipoPokemon { get; set; }
-    //Mochila
-    public List<ItemConCantidad> Mochila { get; set; }
     #endregion
-
-    
 }
