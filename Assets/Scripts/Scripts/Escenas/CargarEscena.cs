@@ -10,8 +10,7 @@ public class CargarEscena : MonoBehaviour
     private GameObject jugador;
     private bool jugadorMirandoArriba;
     private string escenaSiguiente;
-
-
+    
     private void Start()
     {
         jugador = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.CompareTag("Player"));
@@ -19,6 +18,7 @@ public class CargarEscena : MonoBehaviour
         StartCoroutine(cargarEscena());
     }
 
+    //Este metodo se encarga de cargar una escena en segundo plano y cuando este lista activarla 
     IEnumerator cargarEscena() {
         jugador.SetActive(false);
         bool escenasTitulo = true;
@@ -45,11 +45,9 @@ public class CargarEscena : MonoBehaviour
             };
             yield return operation;
     }
+    
+    //Metodo que se encarga de en funcion de la escena a la que vaya el jugador determinar que posicion inicial debe tener en esa escena
     private void determinarPosicionJugador() {
-
-       
-
-        //camara.GetComponent<CinemachineCame>();
         bool modificarPosicionJugador = true;
         Vector2 posicionNuevaJugador = new Vector2(1f, 1f);
         switch (escenaSiguiente)
@@ -70,7 +68,7 @@ public class CargarEscena : MonoBehaviour
                         break;
                     case "ForestScene":
                         posicionNuevaJugador = new Vector2(0.5f, -19.18f);
-                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaMontaña");
+                        PlayerPrefs.SetString("EscenaAventura", "FondoBatallaMontaÃ±a");
                         break;
                     case "CityScene":
                         posicionNuevaJugador = new Vector2(-0.04f, -8.83f);
