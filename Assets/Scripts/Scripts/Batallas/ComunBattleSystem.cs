@@ -371,8 +371,9 @@ public class ComunBattleSystem : MonoBehaviour
     //Metodo que añade a un pokemon un movimiento por defecto hasta que este tenga 4 movimiento. Si ya tiene 4 movimiento no se añade ninguno.
     private void anhadirMovimientosFaltantes(Pokemon pokemonGenerado)//Metodo por si el pokemon que vienen de la pokeApi no tiene 4 movimientos
     {
-        for (int i = pokemonGenerado.Movimientos.Count; i < 4;)
+        for (int i = pokemonGenerado.Movimientos.Count; i < 4; i++)
         {
+            Debug.Log("Pokemon sin 4 movimientos");
             pokemonGenerado.Movimientos.Add(new MovimientoPokemon(999,"Daño secreto",50,100,15,"Normal"));
         }
     }

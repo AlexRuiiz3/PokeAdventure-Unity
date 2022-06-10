@@ -458,8 +458,10 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             UtilidadesEscena.activarMusicaTemporal("Batallas/GetPokemon", true);
             rivalPokemonHUD.imagenPokemon.color = Color.grey;
             textoDialogo.text = $"{PokemonRivalLuchando.Nombre} atrapado!";
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.5f);
             guardarPokemonCapturado();
+            yield return new WaitForSeconds(3.5f);
+            textoDialogo.text = $"Saliendo del combate.";
             yield return new WaitForSeconds(4.5f);
             abandonarBatallaButton();
         }

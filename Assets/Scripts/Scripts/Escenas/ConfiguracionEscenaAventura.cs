@@ -210,7 +210,6 @@ public class ConfiguracionEscenaAventura : MonoBehaviour
         string orientacionAleatoria;
         int randomPosicionTrainer = (int)Random.Range(0f, posicionesEntrenadores.Count),
             numeroEntrenadores = (int) Random.Range(2f, 6f); //Entrenadores entre 2 y 5
-        Debug.Log("Numero entrenadores: "+numeroEntrenadores);
         for (int i = 0; i < numeroEntrenadores; i++)
         {
             //Se crea el gameObject que sera un entrenador

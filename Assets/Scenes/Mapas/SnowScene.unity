@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332994271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -12.4, z: -123.81688}
+  m_LocalPosition: {x: -1.76, y: -14.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1765089327}
@@ -495,7 +495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438298938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -12.4, z: -123.81688}
+  m_LocalPosition: {x: -1.7607167, y: -14.231505, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6227,6 +6227,7 @@ GameObject:
   - component: {fileID: 1666918818}
   - component: {fileID: 1666918817}
   - component: {fileID: 1666918816}
+  - component: {fileID: 1666918819}
   m_Layer: 0
   m_Name: Cartel
   m_TagString: Cartel
@@ -6325,6 +6326,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666918819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666918815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f64166823e023c47828a162feabad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frases:
+  - R*t* *27, cuid**o *on la ni*v*
 --- !u!1 &1765089326
 GameObject:
   m_ObjectHideFlags: 3
@@ -30443,7 +30458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033215940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.89, y: -15.63, z: 0}
+  m_LocalPosition: {x: -1.89, y: -16.11, z: 0}
   m_LocalScale: {x: 4.6628714, y: 1.2096213, z: 1.1659}
   m_Children: []
   m_Father: {fileID: 1332913134}

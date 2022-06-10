@@ -18,6 +18,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     {
         trainerNPC = DatosGenerales.trainerLuchando;
         rivalPokemonHUD.imagenRival.sprite = trainerNPC.Imagen;
+        pantallaCarga.transform.GetChild(0).GetComponent<Image>().sprite = trainerNPC.Imagen;
+
         //Se obtiene la imagen de fondo del campos de batalla(Se escogera la imagen que corresponde con la escena que esta activa) 
         imagenBackGround.GetComponent<Image>().sprite = (from sprite in Resources.LoadAll<Sprite>("Imagenes/UI/EscenasBatalla/BattleBackgrounds")
                                                          where sprite.name == PlayerPrefs.GetString("EscenaAventura")
@@ -494,8 +496,8 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
 
     private int generarCantidadPokemonsEquipo()
     {
-        int pokemonsEquipoRival = 2;
-        /*
+        int pokemonsEquipoRival = 1;
+        
         bool randomValido = false;
         while (!randomValido)
         { //Para que sea mas dificil que se genere un equipo de 5 o 6 pokemon, ya que seria mas complicado de derrotar
@@ -511,7 +513,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
             {
                 randomValido = true;
             }
-        }*/
+        }
         return pokemonsEquipoRival;
     }
     private List<ItemConCantidad> generarItemsEntrenadorRival(int numeroItems)

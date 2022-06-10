@@ -42,7 +42,7 @@ public class MenuJugador : MonoBehaviour
             List<PokemonJugador> listaPokemonsCompleta = new List<PokemonJugador>(DatosGuardarJugador.PokemonsAlmacenadosPC);
             jugador.EquipoPokemon.ForEach(p => listaPokemonsCompleta.Add(p));
             GestoraPokemonsJugadorBL.guardarPokemonsDeJugador(jugador.ID,listaPokemonsCompleta);
-            GestoraItemDAL.actualizarItemsJugador(jugador.Mochila,jugador.ID);
+            GestoraItemDAL.eliminarYActualizarItemsJugador(jugador.Mochila,jugador.ID);
             GestoraPokemonEncontradosJugadorBL.insertarPokemonsEncontradosAJugador(jugador.ID,DatosGuardarJugador.PokemonsEncontradosJugador);
             GestoraJugadorBL.actualizarDineroJugador(jugador.ID,jugador.Dinero);
 
@@ -52,6 +52,7 @@ public class MenuJugador : MonoBehaviour
         }
         catch (Exception)
         {
+            throw;
             UtilidadesEscena.mostrarMensajeError("Ocurrio un error realizando el guardado de la partida");
         }
     }

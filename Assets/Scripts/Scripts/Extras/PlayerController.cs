@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rigidBody; 
+    private Rigidbody2D rigidBody;
     private Animator animator;
     private float movimientoHorizontal;
     private float movimientoVertical;
@@ -60,13 +60,13 @@ public class PlayerController : MonoBehaviour
     }
 
     //Getters y setters
-        //MovimientoHorizontal
-        public float getMovimientoHorizontal() => movimientoHorizontal;
-        public void setMovimientoHorizontal(float movimientoHorizontal) { this.movimientoHorizontal = movimientoHorizontal; }
+    //MovimientoHorizontal
+    public float getMovimientoHorizontal() => movimientoHorizontal;
+    public void setMovimientoHorizontal(float movimientoHorizontal) { this.movimientoHorizontal = movimientoHorizontal; }
 
-        //MovimientoVertical
-        public float getMovimientoVertical() => movimientoVertical;
-        public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
+    //MovimientoVertical
+    public float getMovimientoVertical() => movimientoVertical;
+    public void setMovimientoVertical(float movimientoVertical) { this.movimientoVertical = movimientoVertical; }
 
     //Metodos añadidos
     private void comprobarZonaHierba()
@@ -75,18 +75,22 @@ public class PlayerController : MonoBehaviour
         {
             if (UnityEngine.Random.Range(1, 851) <= 2)
             {
+                setMovimientoHorizontal(0);
+                setMovimientoVertical(0);
+                animator.SetBool("isMoving", false);
                 UtilidadesEscena.activarPausarMusicaEscenaActiva(false);//Se tiene que pausar la musica por que LoadSceneMode.Additive hace que la escena aunque se carga otra, se mantenga activa
                 PlayerPrefs.SetString("NameNextScene", "BattleWildPokemonScene");
-                SceneManager.LoadScene("BattleWildPokemonScene",LoadSceneMode.Additive);
+                SceneManager.LoadScene("BattleWildPokemonScene", LoadSceneMode.Additive);
             }
         }
     }
 
     //Metodo para poder comenzar la corrutina desde el script ultilidadesObjetoInteractable
-    public void iniciarCoroutineAsignarObjetoEncontrado() { //Necesario ya que desde donde se llama no se puede llamar a StartCoroutine
+    public void iniciarCoroutineAsignarObjetoEncontrado()
+    { //Necesario ya que desde donde se llama no se puede llamar a StartCoroutine
         StartCoroutine(asignarObjetoEncontrado());
     }
-    
+
     /// <summary>
     /// Cabecera: public IEnumerator asignarObjetoEncontrado()
     /// Comentario: Esta corrutina se encarga de asignar al jugador un objecto que recoge. 
@@ -99,28 +103,32 @@ public class PlayerController : MonoBehaviour
     {
         GameObject canvasObjetoRecogigo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasObjetoRecogido");
         int cantidadItem = (int)UnityEngine.Random.Range(1f, 3f);
-        try{
-        ItemConCantidad itemRecogido = new ItemConCantidad(ListadosItemBL.obtenerItemAleatorio(), cantidadItem);
-        Sprite iconoItem = Resources.LoadAll<Sprite>("Imagenes/Items/").First(g => g.name == itemRecogido.Nombre);
 
-        //GetChild(0) hace referencia a la imagen de fondo
-        canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = iconoItem;
-        canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"+{cantidadItem}";
-        canvasObjetoRecogigo.gameObject.SetActive(true);
-        if (Jugador.Mochila.Contains(itemRecogido))
+        try
         {
-            Jugador.Mochila.Find(g => g.ID == itemRecogido.ID).Cantidad += itemRecogido.Cantidad;
+            ItemConCantidad itemRecogido = new ItemConCantidad(ListadosItemBL.obtenerItemAleatorio(), cantidadItem);
+            Sprite iconoItem = Resources.LoadAll<Sprite>("Imagenes/Items/").First(g => g.name == itemRecogido.Nombre);
+
+            //GetChild(0) hace referencia a la imagen de fondo
+            canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = iconoItem;
+            canvasObjetoRecogigo.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"+{cantidadItem}";
+            canvasObjetoRecogigo.gameObject.SetActive(true);
+            if (Jugador.Mochila.Contains(itemRecogido))
+            {
+                Jugador.Mochila.Find(g => g.ID == itemRecogido.ID).Cantidad += itemRecogido.Cantidad;
+            }
+            else
+            {
+                Jugador.Mochila.Add(itemRecogido);
+            }
         }
-        else
+        catch (Exception)
         {
-            Jugador.Mochila.Add(itemRecogido);
+            UtilidadesEscena.mostrarMensajeError("Error en la generacion del item");
+            StopCoroutine(asignarObjetoEncontrado());
         }
         yield return new WaitForSeconds(1.2f);
         canvasObjetoRecogigo.gameObject.SetActive(false);
         StopCoroutine(asignarObjetoEncontrado());
-        }catch(Exception){
-            UtilidadesEscena.mostrarMensajeError("Error en la generacion del item");
-            StopCoroutine(asignarObjetoEncontrado());
-        }
     }
 }

@@ -39,7 +39,7 @@ public class UtilidadesObjetosInteractables
         }
     }
     //Metodo que cura los pokemons del jugador
-    private void curarPokemonsJugador() {
+    private static void curarPokemonsJugador() {
         UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/Recovery", 3f);
         Jugador jugador = GameObject.Find("Player").GetComponent<PlayerController>().Jugador;
 
@@ -48,7 +48,7 @@ public class UtilidadesObjetosInteractables
         }
     }
     //Metodo que activa un menu en especifico, determinado por el parametro recibido 
-    private void activarMenuObjeto(string nombreMenu) {
+    private static void activarMenuObjeto(string nombreMenu) {
         GameObject menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == nombreMenu);
         UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menu);
     }

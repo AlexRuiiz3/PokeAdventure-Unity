@@ -97,7 +97,7 @@ public class APIListadosPokemonDAL
         int aleatorio;
         System.Random random = new System.Random();
 
-        while (listadoMovimientos.Count < 4 && listadoMovimientos.Count < pokemonMoves.lenght)
+        while (listadoMovimientos.Count < 4 && listadoMovimientos.Count < pokemonMoves.Length)
         {
             aleatorio = random.Next(pokemonMoves.Length - 1);
             if (!comprobarMovimientoYaObtenido(listadoMovimientos, pokemonMoves[aleatorio].Move.ID))//Si el movimiento obtenido de forma aleatoria no se ha seleccionado antes

@@ -164,7 +164,7 @@ public class UtilidadesEscena : MonoBehaviour
         GameObject[] gameObjectsEscena = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int i = 0; i < gameObjectsEscena.Length && !encontrado; i++)
         {
-            if (gameObjectsEscena[i].name == "Grid" || gameObjectsEscena[i].name == "Battle")
+            if (gameObjectsEscena[i].name == "Grid" || SceneManager.GetActiveScene().name.Contains("Battle"))
             {
                 encontrado = true;
                 if (modo)
@@ -217,7 +217,7 @@ public class UtilidadesEscena : MonoBehaviour
         audioSource.loop = enBucle;
         audioSource.Play();
     }
-    
+
     /// <summary>
     /// Cabecera: public static void activarAudioMomentaneo(string musica, float duracion)
     /// Comentario: Este metodo se encarga de realizar la llamada para iniciar la activacion de un audio momentaneo durante unos segundos.
@@ -228,10 +228,14 @@ public class UtilidadesEscena : MonoBehaviour
     /// <param name="musica"></param>
     /// <param name="duracion"></param>
     /// </summary>
-    public static void activarAudioMomentaneo(string musica, float duracion)//Necesario para acceder a el desde unity
+    public static void llamarActivarAudioMomentaneo(string musica, float duracion)//Necesario para acceder a el desde unity
     { 
-        StarCoroutine(GameObject.Find("Utilidades").GetComponent<UtilidadesEscena>().activarMusica(musica, duracion));
+        GameObject.Find("Utilidades").GetComponent<UtilidadesEscena>().activarAudioMomentaneo(musica, duracion);
     }
+    private void activarAudioMomentaneo(string musica, float duracion) { //Una corrutina no se puede llamar en un metodo static por eso se usa este metodo
+        StartCoroutine(activarMusica(musica,duracion));
+    }
+
     //Corrutina que activa la musica y la desactiva despues de los segundos que se haya indicado por parametro
     public IEnumerator activarMusica(string musica, float duracion)
     {
@@ -263,7 +267,7 @@ public class UtilidadesEscena : MonoBehaviour
         }
         else
         {
-            menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault<GameObject>(g => g.name == "MensajeError");
+            menuError = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault<GameObject>(g => g.name == "MenuMensajeError");
         }
         menuError.GetComponentsInChildren<TextMeshProUGUI>()[1].text = mensaje;
         menuError.SetActive(true);
@@ -359,6 +363,7 @@ public class UtilidadesEscena : MonoBehaviour
     /// <param name="pokemon"></param>
     public static void configurarMenuDatosPokemon(GameObject menuDatos, PokemonJugador pokemon)
     {
+        GameObject imagenTipo2 = menuDatos.transform.GetChild(4).gameObject;
         //Se prepara el menu con la informacion del pokemon seleccionado    
         menuDatos.GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
         menuDatos.GetComponentsInChildren<TextMeshProUGUI>()[0].text = pokemon.Nombre;
@@ -375,11 +380,11 @@ public class UtilidadesEscena : MonoBehaviour
         menuDatos.GetComponentsInChildren<Image>()[3].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[0]).First();
         if (pokemon.Tipos.Count > 1)
         {
-            menuDatos.GetComponentsInChildren<Image>()[4].gameObject.SetActive(true);
-            menuDatos.GetComponentsInChildren<Image>()[4].sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[1]).First();
+            imagenTipo2.SetActive(true);
+            imagenTipo2.GetComponentInChildren<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/UI/Tipos/IconosNombre/" + pokemon.Tipos[1]).First();
         }
         else {
-            menuDatos.GetComponentsInChildren<Image>()[4].gameObject.SetActive(false);
+            imagenTipo2.SetActive(false);
         }
         menuDatos.SetActive(true);
     }

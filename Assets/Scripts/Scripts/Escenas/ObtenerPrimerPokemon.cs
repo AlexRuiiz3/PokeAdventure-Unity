@@ -152,6 +152,6 @@ public class ObtenerPrimerPokemon : MonoBehaviour
 
         pokemonsIniciales.Add(pokemonsInicialesFuego[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
         pokemonsIniciales.Add(pokemonsInicialesAgua[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
-        pokemonsIniciales.Add(pokemonsInicialesPlanta[5]);//UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
+        pokemonsIniciales.Add(pokemonsInicialesPlanta[UnityEngine.Random.Range(0, pokemonsInicialesPlanta.Count)]);
     }
 }

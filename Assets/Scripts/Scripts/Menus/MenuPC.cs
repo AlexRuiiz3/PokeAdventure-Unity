@@ -38,6 +38,15 @@ public class MenuPC : MonoBehaviour
         UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/ClosePC", 1.5f);
     }
 
+
+    public void cerrarMenuPrincipal()
+    {
+
+        UtilidadesEscena.cerrarMenus(gameObject.transform.Find("ZonaEquipoJugador").transform.Find("MenuOpcionesPokemonEquipo").gameObject);
+        UtilidadesEscena.cerrarMenus(gameObject.transform.Find("ZonaPokemonsPC").transform.GetChild(1).transform.Find("MenuOpcionesPokemonPC").gameObject);
+        UtilidadesEscena.cerrarMenus(gameObject);
+    }
+
     //Metodo que configura y activa los botones del menu del equipo actual del jugador. El numero de botones que se activaran dependeran del numero de pokemon que el jugador tenga equipados.
     private void configurarBotonesPokemonsEquipo()
     {
@@ -93,13 +102,13 @@ public class MenuPC : MonoBehaviour
         GameObject menu;
         string nombreBoton = EventSystem.current.currentSelectedGameObject.name;
         //Si el boton que se pulsa esta en la zona del equipo del jugador
-        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugadorMenu")
+        if (EventSystem.current.currentSelectedGameObject.transform.parent.name == "ZonaEquipoJugador")
         {
             //Si el menu de la zona del pc esta activado, se desactiva
             menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonPC");
             if (menu.activeSelf)
             {
-                menu.SetActive(false);
+                UtilidadesEscena.cerrarMenus(menu);
             }
             int identificadorBotonPulsado = (int)char.GetNumericValue(nombreBoton[nombreBoton.Length - 1]);//nombreBoton en este caso, al final tienen un entero que indica que numero de boton es
             pokemonSeleccionado = jugador.EquipoPokemon[identificadorBotonPulsado - 1];
@@ -110,7 +119,7 @@ public class MenuPC : MonoBehaviour
             menu = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "MenuOpcionesPokemonEquipo");
             if (menu.activeSelf)
             {
-                menu.SetActive(false);
+                UtilidadesEscena.cerrarMenus(menu);
             }
             pokemonSeleccionado = DatosGuardarJugador.PokemonsAlmacenadosPC.Find(g => g.PokemonNumero == Int16.Parse(nombreBoton));//nombreBoton en este caso, al final tienen un entero unico que indica el numero de pokemon del jugador.
         }
@@ -129,7 +138,22 @@ public class MenuPC : MonoBehaviour
     /// <param name="menuDatos"></param>
     public void opcionVerDatos(GameObject menuDatos)
     {
+  
         UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
+    }
+
+    /// <summary>
+    /// Cabecera: public void opcionVerMovimientos(GameObject menu)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMostrarMenuMovimientos de la clase UtilidadesEscena.
+    /// Entradas: GameObject menu
+    /// Salidas: Ninguna
+    /// Precondiciones: menu no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de movimientos esta configurado con los valores del pokemon seleccionado
+    /// <param name="menu"></param>
+    /// </summary>
+    public void opcionVerMovimientos(GameObject menu)
+    {
+        UtilidadesEscena.configurarMostrarMenuMovimientos(menu, pokemonSeleccionado);
     }
 
     /// <summary>
@@ -170,7 +194,7 @@ public class MenuPC : MonoBehaviour
     public void liberarPokemon(GameObject menuOpcionesPokemon)
     {
         string nombreZona = menuOpcionesPokemon.transform.parent.name;
-        if (nombreZona == "ZonaEquipoJugadorMenu") //Cuando sea en la zona del equipo del jugador
+        if (nombreZona == "ZonaEquipoJugador") //Cuando sea en la zona del equipo del jugador
         {
             if (jugador.EquipoPokemon.Count > 1)
             {
@@ -190,7 +214,7 @@ public class MenuPC : MonoBehaviour
             menuOpcionesPokemon.SetActive(false);
         }
         gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"Total Pokemons: {jugador.EquipoPokemon.Count + DatosGuardarJugador.PokemonsAlmacenadosPC.Count}";
-        menuOpcionesPokemon.transform.Find("Menus").transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
+        menuOpcionesPokemon.transform.Find("MenuLiberarPokemon").gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -269,7 +293,7 @@ public class MenuPC : MonoBehaviour
         interfazPokemonPC.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + pokemon.ID).First();
 
         interfazPokemonPC.transform.SetParent(content.transform);
-        interfazPokemonPC.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+        interfazPokemonPC.transform.localScale = new Vector3(1f, 1f, 1f);
         interfazPokemonPC.SetActive(true);
     }
 

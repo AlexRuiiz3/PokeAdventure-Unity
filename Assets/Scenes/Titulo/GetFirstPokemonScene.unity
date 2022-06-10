@@ -4767,7 +4767,16 @@ MonoBehaviour:
   - "Haciendo limpieza en mi laboratorio he encontrado tres viejas pokeballs, puedes
     echarle un vistazo y elegir la que m\xE1s te guste."
   - Una vez hayas elegido una, tu aventura comenzara, asi que elige bien...
-  - "Un \xFAltimo consejo, ten mucho cuidado y recuerda no te olvides los sumarys."
+  - Antes de que se me olvide te dare una pautas para comenzar tu aventua.
+  - Puedes caminar pulsado las teclas A W S D o las flechas de direccion. Tambien
+    puedes correr pulsando una de esas teclas mas el SHIFT.
+  - Para interactuar con el entorno recuerda pulsar la E, ya sea para recoger un
+    objeto o hablar con alguien.
+  - Puedes avanzar el dialogo con la tecla F  y por ultimo abrir tu inventario con
+    la C.
+  - Eso es todo lo que necesitas saber. A espera una cosa mas...
+  - Ten mucho cuidado el mundo pokemon es muy peligroso, pero sobre todo que NO se
+    te olvide poner los sumarys de acuerdo?
   - Vamos el mundo pokemon te espera!!!
   textoPantalla: {fileID: 821661110}
 --- !u!1 &1408934385
@@ -4806,7 +4815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15348423, y: 0.101}
   m_AnchorMax: {x: 0.41964513, y: 0.31100002}
-  m_AnchoredPosition: {x: 0.10020065, y: -1}
+  m_AnchoredPosition: {x: 0.10013962, y: -1}
   m_SizeDelta: {x: 0.75440216, y: -0.17819977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1408934387
@@ -5549,7 +5558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1657734000
 RectTransform:
   m_ObjectHideFlags: 0
