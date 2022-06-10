@@ -12,7 +12,7 @@ public class GestoraJugadorDAL
     /// Entradas: ClsJugador jugador
     /// Salidas: Ninguna
     /// Precondiciones: jugador no debera ser distinto de null
-    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se einsertara en la base de datos.
+    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se insertara en la base de datos.
     /// </summary>
     /// <param name="jugador"></param>
     /// <returns></returns>
