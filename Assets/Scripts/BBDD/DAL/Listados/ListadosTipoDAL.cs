@@ -45,6 +45,7 @@ public class ListadosTipoDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {
@@ -93,6 +94,7 @@ public class ListadosTipoDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

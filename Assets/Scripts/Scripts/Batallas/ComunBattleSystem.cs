@@ -358,14 +358,20 @@ public class ComunBattleSystem : MonoBehaviour
     /// </summary>
     public async Task<Pokemon> generarObtenerPokemonRival()
     {
+        Pokemon pokemonGenerado = new Pokemon();
+        try {
+            int nivelWildPokemon = UtilidadesSystemaBatalla.determinarNivelPokemonRival(Jugador.EquipoPokemon);
+            PokeAPI.Pokemon wildPokemonApi = await APIListadosPokemonBL.obtenerPokemonDeApi(UnityEngine.Random.Range(1, 899)); //;
+            pokemonGenerado = new Pokemon(wildPokemonApi);
+            pokemonGenerado.Nivel = nivelWildPokemon;
+            pokemonGenerado.establecerEstadisticasAlNivelActual();
+            await pokemonGenerado.obtenerDatosAsincronos(wildPokemonApi);
+            anhadirMovimientosFaltantes(pokemonGenerado);
+        }
+        catch (Exception) {
+            UtilidadesEscena.mostrarMensajeError("Error en la generacion del pokemon rival");
+        }
 
-        int nivelWildPokemon = UtilidadesSystemaBatalla.determinarNivelPokemonRival(Jugador.EquipoPokemon);
-        PokeAPI.Pokemon wildPokemonApi = await APIListadosPokemonBL.obtenerPokemonDeApi(UnityEngine.Random.Range(1, 899)); //;
-        Pokemon pokemonGenerado = new Pokemon(wildPokemonApi);
-        pokemonGenerado.Nivel = nivelWildPokemon;
-        pokemonGenerado.establecerEstadisticasAlNivelActual();
-        await pokemonGenerado.obtenerDatosAsincronos(wildPokemonApi);
-        anhadirMovimientosFaltantes(pokemonGenerado);
         return pokemonGenerado;
     }
     //Metodo que añade a un pokemon un movimiento por defecto hasta que este tenga 4 movimiento. Si ya tiene 4 movimiento no se añade ninguno.

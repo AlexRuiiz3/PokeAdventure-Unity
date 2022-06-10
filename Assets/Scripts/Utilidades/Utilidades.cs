@@ -38,9 +38,8 @@ public class Utilidades
         }
         catch (Exception)
         {
-            throw;
+            UtilidadesEscena.mostrarMensajeError("Error obteniendo los datos de jugador");
         }
-
     }
     /// <summary>
     /// Cabecera: public static bool comprobarCadenaVacia(string cadena)

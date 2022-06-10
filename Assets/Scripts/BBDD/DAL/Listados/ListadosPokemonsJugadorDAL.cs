@@ -60,6 +60,7 @@ public class ListadosPokemonsJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {
@@ -122,6 +123,7 @@ public class ListadosPokemonsJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

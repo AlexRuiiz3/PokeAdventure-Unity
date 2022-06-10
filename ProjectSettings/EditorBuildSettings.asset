@@ -6,8 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Titulo/MainScene.unity
+    guid: b765ffdac677f674e889d518755692db
+  - enabled: 1
+    path: Assets/Scenes/EscenaCarga/LoadingScene.unity
+    guid: 8a9bc106eda6f5f43bbb49188f0d1e58
+  - enabled: 1
     path: Assets/Scenes/Titulo/GetFirstPokemonScene.unity
     guid: d724b1fa0ddb17d4180604c36a8d7aaa
+  - enabled: 1
+    path: Assets/Scenes/Mapas/LobbyScene.unity
+    guid: cd8b587273694ad48a206de66c0192f1
+  - enabled: 1
+    path: Assets/Scenes/Mapas/Edificios/PokemonCenterScene.unity
+    guid: d4d9391c0b0e00345a6bc4f5cb925fb7
+  - enabled: 1
+    path: Assets/Scenes/Mapas/Edificios/PokemonShopScene.unity
+    guid: fec79894345ec8048a7765861b71f70d
   - enabled: 1
     path: Assets/Scenes/Mapas/CityScene.unity
     guid: ffba8410802693e4eb6996a75ca8c021
@@ -15,30 +30,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Mapas/SnowScene.unity
     guid: 63d9232e6435a2e42a0b1690950944fe
   - enabled: 1
-    path: Assets/Scenes/Mapas/Edificios/PokemonCenterScene.unity
-    guid: d4d9391c0b0e00345a6bc4f5cb925fb7
-  - enabled: 1
-    path: Assets/Scenes/Mapas/LobbyScene.unity
-    guid: cd8b587273694ad48a206de66c0192f1
-  - enabled: 1
     path: Assets/Scenes/Mapas/ForestScene.unity
     guid: 82ad61c6554e35846822f8a7a457b875
-  - enabled: 1
-    path: Assets/Scenes/Batallas/BattleTrainerScene.unity
-    guid: 62bf334a2d0b45c4abb28a42b00e3b56
   - enabled: 1
     path: Assets/Scenes/Mapas/RouteScene.unity
     guid: e1c78856d6a56ae4c90c65b8ecb50741
   - enabled: 1
+    path: Assets/Scenes/Batallas/BattleTrainerScene.unity
+    guid: 62bf334a2d0b45c4abb28a42b00e3b56
+  - enabled: 1
     path: Assets/Scenes/Batallas/BattleWildPokemonScene.unity
     guid: 61c6218835a2f0f448c422838fb1123c
-  - enabled: 1
-    path: Assets/Scenes/Titulo/MainScene.unity
-    guid: b765ffdac677f674e889d518755692db
-  - enabled: 1
-    path: Assets/Scenes/Mapas/Edificios/PokemonShopScene.unity
-    guid: fec79894345ec8048a7765861b71f70d
-  - enabled: 1
-    path: Assets/Scenes/EscenaCarga/LoadingScene.unity
-    guid: 8a9bc106eda6f5f43bbb49188f0d1e58
   m_configObjects: {}

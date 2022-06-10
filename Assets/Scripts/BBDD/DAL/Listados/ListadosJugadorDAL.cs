@@ -40,6 +40,7 @@ public class ListadosJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {
@@ -95,6 +96,7 @@ public class ListadosJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

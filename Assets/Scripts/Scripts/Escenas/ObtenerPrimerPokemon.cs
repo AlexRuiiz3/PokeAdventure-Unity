@@ -90,8 +90,8 @@ public class ObtenerPrimerPokemon : MonoBehaviour
             Utilidades.obtenerDatosJugador(clsJugador.NombreUsuario,clsJugador.Contrasenha);
             UtilidadesEscena.precargarEscena("LobbyScene");
         }
-        catch (Exception) { 
-            Debug.Log("Error trabajando con los datos del jugador");
+        catch (Exception) {
+            UtilidadesEscena.mostrarMensajeError("Error trabajando con los datos del jugador");
         }
     }
     //Metodo se encarga de coger el pokemon seleccionado en funcion del menu que se haya activado. Cada menu corresponde con el de un tipo de pokemon y esta asociado a un pokemon

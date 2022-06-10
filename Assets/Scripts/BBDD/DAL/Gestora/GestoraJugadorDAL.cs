@@ -32,6 +32,7 @@ public class GestoraJugadorDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {
@@ -65,7 +66,7 @@ public class GestoraJugadorDAL
         }
         catch (Exception)
         {
-            Debug.Log("Error en la actualizacion del dato dinero del jugador");//throw;
+            throw;
         }
         finally
         {

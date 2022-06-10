@@ -48,6 +48,7 @@ public class ListadosItemDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

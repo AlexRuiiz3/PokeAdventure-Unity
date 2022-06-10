@@ -51,6 +51,7 @@ public class ListadosMovimientoDAL
         }
         catch (Exception)
         {
+            throw;
         }
         finally
         {

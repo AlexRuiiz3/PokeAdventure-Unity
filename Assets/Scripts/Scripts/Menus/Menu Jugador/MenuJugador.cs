@@ -52,7 +52,6 @@ public class MenuJugador : MonoBehaviour
         }
         catch (Exception)
         {
-            throw;
             UtilidadesEscena.mostrarMensajeError("Ocurrio un error realizando el guardado de la partida");
         }
     }

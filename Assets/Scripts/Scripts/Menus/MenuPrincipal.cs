@@ -90,45 +90,58 @@ public class MenuPrincipal : MonoBehaviour
         bool existeNombreUsuario;
         if (!Utilidades.comprobarCadenaVacia(inputNombreUsuarioRegistro.text)) //Si el nombre de usuario no esta vacio o es null
         {
-            existeNombreUsuario = UtilidadesDal.comprobarSiExisteNombreUsuario(inputNombreUsuarioRegistro.text);
-            if (!existeNombreUsuario) //Si no existe ese nombre de usuario
+            try
             {
-                if (!Utilidades.comprobarCadenaVacia(inputContrasenhaRegistro.text)) //Si la contraseña no esta vacia
+                existeNombreUsuario = UtilidadesDal.comprobarSiExisteNombreUsuario(inputNombreUsuarioRegistro.text);
+                if (!existeNombreUsuario) //Si no existe ese nombre de usuario
                 {
-                    if (inputContrasenhaRegistro.text.Equals(inputContrasenhaRepetida.text)) //Si las contraseñas coinciden
+                    if (!Utilidades.comprobarCadenaVacia(inputContrasenhaRegistro.text)) //Si la contraseña no esta vacia
                     {
-                        if (!Utilidades.comprobarCadenaVacia(inputCorreoElectronico.text)) //Si el correo electronico esta vacio 
+                        if (inputContrasenhaRegistro.text.Equals(inputContrasenhaRepetida.text)) //Si las contraseñas coinciden
                         {
-                            if (inputCorreoElectronico.text.EndsWith("@gmail.com") || inputCorreoElectronico.text.EndsWith("@gmail.es")) //Si el correo electronico termina por @gmail.com o @gmail.es
+                            if (!Utilidades.comprobarCadenaVacia(inputCorreoElectronico.text)) //Si el correo electronico esta vacio 
                             {
-                                PlayerPrefs.SetString("NombreUsuarioIniciado", inputNombreUsuarioRegistro.text);
-                                PlayerPrefs.SetString("ContrasenhaUsuarioIniciado", inputContrasenhaRegistro.text);
-                                GestoraJugadorBL.insertarJugador(new ClsJugador(0, inputNombreUsuarioRegistro.text, inputContrasenhaRegistro.text, inputCorreoElectronico.text, 250, new byte[0]));
-                                UtilidadesEscena.precargarEscena("GetFirstPokemonScene");
+                                if (inputCorreoElectronico.text.EndsWith("@gmail.com") || inputCorreoElectronico.text.EndsWith("@gmail.es")) //Si el correo electronico termina por @gmail.com o @gmail.es
+                                {
+                                    try
+                                    {
+                                        PlayerPrefs.SetString("NombreUsuarioIniciado", inputNombreUsuarioRegistro.text);
+                                        PlayerPrefs.SetString("ContrasenhaUsuarioIniciado", inputContrasenhaRegistro.text);
+                                        GestoraJugadorBL.insertarJugador(new ClsJugador(0, inputNombreUsuarioRegistro.text, inputContrasenhaRegistro.text, inputCorreoElectronico.text, 250, new byte[0]));
+                                        UtilidadesEscena.precargarEscena("GetFirstPokemonScene");
+                                    }
+                                    catch (Exception)
+                                    {
+                                        UtilidadesEscena.mostrarMensajeError("Error durante el guardado de los datos del jugador");
+                                    }
+
+                                }
+                                else
+                                {
+                                    UtilidadesEscena.mostrarMensajeError("Correo electronico mal escrito. Debe acabar en @gmail.com o @gmail.es");
+                                }
                             }
                             else
                             {
-                                UtilidadesEscena.mostrarMensajeError("Correo electronico mal escrito. Debe acabar en @gmail.com o @gmail.es");
+                                UtilidadesEscena.mostrarMensajeError("El correo electronico no puede estar vacio");
                             }
                         }
                         else
                         {
-                            UtilidadesEscena.mostrarMensajeError("El correo electronico no puede estar vacio");
+                            UtilidadesEscena.mostrarMensajeError("Las contrasenas no coinciden");
                         }
                     }
                     else
                     {
-                        UtilidadesEscena.mostrarMensajeError("Las contrasenas no coinciden");
+                        UtilidadesEscena.mostrarMensajeError("La contrasena no puede estar vacia");
                     }
                 }
                 else
                 {
-                    UtilidadesEscena.mostrarMensajeError("La contrasena no puede estar vacia");
+                    UtilidadesEscena.mostrarMensajeError("El nombre de usuario ya existe");
                 }
-            }
-            else
-            {
-                UtilidadesEscena.mostrarMensajeError("El nombre de usuario ya existe");
+            } catch (Exception) {
+                UtilidadesEscena.mostrarMensajeError("Error con los datos de la base de datos");
             }
         }
         else
