@@ -7,7 +7,18 @@ using System.Threading.Tasks;
 
 public class GestoraPokemonEncontradosJugadorDAL
 {
-
+    /// <summary>
+    /// Cabecera: public static void insertarPokemonsEncontradosAJugador(int idJugador, List<PokemonEncontrado> pokemonsEncontrados)
+    /// Comentario: Este metodo se encarga de guardar en la base datos un los pokemons que un jugador sea haya encontrado.
+    /// Entradas: int idJugador, List<PokemonEncontrado> pokemonsEncontrados
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se insertara en la base de datos registros en la tabla PokemonsEncontradosJugadores que seran los pokemons encontrados que se encuentra un juagdor.
+    ///                  Si se produce algun tipo de excepcion no se realizara ninguna insercion en la base de datos.
+    /// </summary>
+    /// <param name="idJugador"></param>
+    /// <param name="pokemonsEncontrados"></param>
+    /// <returns></returns>
     public static void insertarPokemonsEncontradosAJugador(int idJugador, List<PokemonEncontrado> pokemonsEncontrados)
     {
         SqliteConnection conexion = null;
