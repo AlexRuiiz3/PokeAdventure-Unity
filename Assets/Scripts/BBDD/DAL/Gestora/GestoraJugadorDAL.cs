@@ -41,7 +41,7 @@ public class GestoraJugadorDAL
 
     /// <summary>
     /// Cabecera: public static int actualizarDineroJugador(int id, int dinero)
-    /// Comentario: Este metodo se encarga actualizar el campos dinero de un jugador determinado.
+    /// Comentario: Este metodo se encarga actualizar en la tabla Jugadores de la base de datos el campo dinero de un jugador determinado.
     /// Entradas: int id, int dinero
     /// Salidas: int actualizaciones
     /// Precondiciones: Ninguna
