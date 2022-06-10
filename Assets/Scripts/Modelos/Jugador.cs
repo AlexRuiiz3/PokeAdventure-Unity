@@ -27,7 +27,7 @@ public class Jugador : ClsJugador
 {
     #region Constructores
     //Constructor con parametros
-    public Jugador(ClsJugador jugador, List<PokemonJugador> equipoPokemon, List<ItemConCantidad> mochila ) : base(jugador.ID, jugador.NombreUsuario, jugador.Contrasenha, jugador.Contrasenha, jugador.Dinero, jugador.Foto) {
+    public Jugador(ClsJugador jugador, List<PokemonJugador> equipoPokemon, List<ItemConCantidad> mochila ) : base(jugador.ID, jugador.NombreUsuario, jugador.Contrasenha, jugador.CorreoElectronico, jugador.Dinero, jugador.Foto) {
         EquipoPokemon = equipoPokemon;
         Mochila = mochila;
     }
