@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Clase que hace referencia a la tabla Jugadores de la base de datos
 public class ClsJugador
 {
 
