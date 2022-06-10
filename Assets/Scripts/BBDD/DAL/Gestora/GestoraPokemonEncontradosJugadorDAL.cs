@@ -13,7 +13,7 @@ public class GestoraPokemonEncontradosJugadorDAL
     /// Entradas: int idJugador, List<PokemonEncontrado> pokemonsEncontrados
     /// Salidas: Ninguna
     /// Precondiciones: Ninguna
-    /// Postcondiciones: Se insertara en la base de datos registros en la tabla PokemonsEncontradosJugadores que seran los pokemons encontrados que se encuentra un juagdor.
+    /// Postcondiciones: Se insertara en la base de datos registros en la tabla PokemonsEncontradosJugadores que seran los pokemons encontrados que se encuentra un jugador.
     ///                  Si se produce algun tipo de excepcion no se realizara ninguna insercion en la base de datos.
     /// </summary>
     /// <param name="idJugador"></param>
