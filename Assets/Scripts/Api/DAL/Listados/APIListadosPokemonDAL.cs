@@ -141,12 +141,7 @@ public class APIListadosPokemonDAL
         return obtenido;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="nombre"></param>
-    /// <param name="idioma"></param>
-    /// <returns></returns>
+    ///Metodo que se encarga de filtrar y obtener un nombre en otro idioma
     private static string obtenerNombreEnUnIdioma(ResourceName[] listadoNombres)
     {
         string nombre = (from nombreSeleccionado in listadoNombres
