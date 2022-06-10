@@ -80,14 +80,14 @@ public class MenuEquipoPokemon : MonoBehaviour
         UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
     }
     /// <summary>
-    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
-    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
-    /// Entradas: GameObject menuDatos
+    /// Cabecera: public void opcionVerMovimientos(GameObject menu)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMostrarMenuMovimientos de la clase UtilidadesEscena.
+    /// Entradas: GameObject menu
     /// Salidas: Ninguna
-    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
-    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
+    /// Precondiciones: menu no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de movimientos esta configurado con los valores del pokemon seleccionado
+    /// <param name="menu"></param>
     /// </summary>
-    /// <param name="menuDatos"></param>
     public void opcionVerMovimientos(GameObject menu)
     {
         UtilidadesEscena.configurarMostrarMenuMovimientos(menu, pokemonSeleccionado);
