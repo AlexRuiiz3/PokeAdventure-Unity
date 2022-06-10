@@ -97,7 +97,7 @@ public class APIListadosPokemonDAL
         int aleatorio;
         System.Random random = new System.Random();
 
-        while (listadoMovimientos.Count < 4 && listadoMovimientos.Count < pokemonMoves.lenght)//4 Porque son 4 los movimientos que se quieren obtener 
+        while (listadoMovimientos.Count < 4 && listadoMovimientos.Count < pokemonMoves.lenght)
         {
             aleatorio = random.Next(pokemonMoves.Length - 1);
             if (!comprobarMovimientoYaObtenido(listadoMovimientos, pokemonMoves[aleatorio].Move.ID))//Si el movimiento obtenido de forma aleatoria no se ha seleccionado antes
@@ -112,6 +112,7 @@ public class APIListadosPokemonDAL
         return await mappearListaMoveAMovimientoPokemon(listadoMovimientos);
     }
 
+    //Metodo que se encarga de convertir un objeto de tipo Move a MovimientoPokemon
     private static async Task<List<MovimientoPokemon>> mappearListaMoveAMovimientoPokemon(List<Move> movesPokemon)
     {
         List<MovimientoPokemon> listadoMovimientos = new List<MovimientoPokemon>();
@@ -127,6 +128,7 @@ public class APIListadosPokemonDAL
         }
         return listadoMovimientos;
     }
+    //Metodo que se encarga de comprobar en una lista de movimientos si un movimiento existe 
     private static bool comprobarMovimientoYaObtenido(List<Move> movesPokemon, int idMovimiento)
     {
         bool obtenido = false;
