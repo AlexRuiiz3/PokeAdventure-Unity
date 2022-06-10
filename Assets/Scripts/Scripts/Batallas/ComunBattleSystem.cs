@@ -69,7 +69,6 @@ public class ComunBattleSystem : MonoBehaviour
             textSinItems.SetActive(false);
             foreach (ItemConCantidad item in Jugador.Mochila)
             {
-
                 interfazItem = Instantiate(plantillaItem);
                 //Imagen
                 interfazItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Imagenes/Items/{item.Nombre}");
@@ -89,9 +88,17 @@ public class ComunBattleSystem : MonoBehaviour
         else {
             textSinItems.SetActive(true);
         }
-        //menuMochila.SetActive
     }
-
+    /// <summary>
+    /// Cabecera: public void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
+    /// Comentario: Este metodo se encarga preparar y configurar la interfaz que muestra los pokemons disponibles que tiene un jugador.
+    /// Entradas: List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Interfaz de pokemons disponibles del jugador configurada. Si se produce alguna excepcion, no se configurara la interfaz.   
+    /// <parama name="equipoPokemon"></param>
+    /// <parama name="interfazPokemonsDisponibles"></param>
+    /// </summary>
     public void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
     {
         UtilidadesEscena.eliminarHijosGameObject(interfazPokemonsDisponibles);
@@ -123,7 +130,14 @@ public class ComunBattleSystem : MonoBehaviour
         }
     }
 
-    //Metodo que configura la interfaz de los movimientos del pokemon del jugador que este luchando con los datos de sus movimientos
+    /// <summary>
+    /// Cabecera: public void prepararIconosPokemosDisponibles(List<Pokemon> equipoPokemon, GameObject interfazPokemonsDisponibles)
+    /// Comentario: Este metodo se encarga de preparar y configurar las interfaces de los movimientos que se encuentran en la zona de atacar de un pokemon.
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Interfaces de movimientos de ataque de un pokemon configuradas.    
+    /// </summary>
     public void prepararBannerIconosMovimientos()
     {
         Image imagenMovimiento, imagenNombreTipo;
@@ -176,14 +190,32 @@ public class ComunBattleSystem : MonoBehaviour
         player.SetActive(true);
     }
 
-    //Configuracion basica para cuando sea el turno de jugador
+    /// <summary>
+    /// Cabecera: public void abandonarBatallaButton()
+    /// Comentario: Este metodo se encarga de realizar las operaciones basicas para cuando sea el turno del jugador.
+    /// Entradas: Ninguna
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se indicara que es el turno del jugador y se activara la iteracion de los botones principales del combate. 
+    /// </summary>
     public void turnoJugador()
     {
         BattleState = BattleState.PLAYERTURN;
         textoDialogo.text = $"¿Que hara {PokemonJugadorLuchando.Nombre}?";
         activarDesactivarBotonesMenuAcciones(true);
     }
-    //Metodo que comprobara si el jugador tiene algun pokemon vivo para seguir luchando
+    
+    /// <summary>
+    /// Cabecera: public bool determinarDerrotaJugador()
+    /// Comentario: Este metodo se encarga de comprobarar si el jugador tiene algun pokemon vivo.
+    /// Entradas: Ninguna
+    /// Salidas: bool
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un booleano que puede tomar dos valores:
+    ///                  true: Si el jugador no tiene ningun pokemon con vida.
+    ///                  false:Si el jugador tiene algun pokemon con vida.
+    /// <returns>bool<returns>
+    /// </summary>
     public bool determinarDerrotaJugador()
     {
         bool derrota = true;
@@ -196,15 +228,32 @@ public class ComunBattleSystem : MonoBehaviour
         return derrota;
     }
 
-    //Metodo que activa el menu del equipo del jugador y bloquea el boton de salir del menu
+    /// <summary>
+    /// Cabecera: public void activarDesactivarMenuEquipo(bool activarBoton, bool activarMenu)
+    /// Comentario: Este metodo se encarga de activar/Desactivar el menu del equipo del jugador y bloquea/Activar el boton de salir del menu.
+    /// Entradas: bool activarBoton, bool activarMenu
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se activara o desactivara el menu equipo de combate del jugador y su boton de salir. 
+    /// <param name="activarBoton"></param>
+    /// <param name="activarMenu"></param>
+    /// </summary>
     public void activarDesactivarMenuEquipo(bool activarBoton, bool activarMenu)
     {
         var botonAtras = menuEquipo.transform.Find("ButtonAtrasMenuEquipo");
         botonAtras.GetComponent<Button>().interactable = activarBoton;
         menuEquipo.SetActive(activarMenu);
-        //c.interactable = activarBoton;
     }
 
+    /// <summary>
+    /// Cabecera: public void activarDesactivarBotonesMenuAcciones(bool estado)
+    /// Comentario: Este metodo se encarga de activar/Desactivar los botones del menu de acciones del combate.
+    /// Entradas: bool estado
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se activara/Desactivara los botones del menu de acciones del combate.  
+    /// <param name="estado"></param>
+    /// </summary>
     //Metodo que bloquea los botones de la acciones principales que puede elegir un jugador en la batalla
     public void activarDesactivarBotonesMenuAcciones(bool estado)
     {
@@ -238,8 +287,6 @@ public class ComunBattleSystem : MonoBehaviour
             {
                 botonesPokemonsEquipo[i].interactable = false;
             }
-            //Boton que corresponde a un pokemon
-
             //Boton del menu equipo que corresponde a ver los movimientos de un pokemon en especifico
             botonesPokemonsEquipo[i].gameObject.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = !activacion;
             //Boton que corresponde que corresponde a ver los datos de un pokemon en especifico
@@ -254,8 +301,8 @@ public class ComunBattleSystem : MonoBehaviour
     /// Salidas: Ninguna
     /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
     /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
-    /// </summary>
     /// <param name="menuDatos"></param>
+    /// </summary>
     public void opcionVerMenuDatos(GameObject menuDatos)
     {
         int PokemonNumero = Int16.Parse(EventSystem.current.currentSelectedGameObject.transform.parent.name);
@@ -263,18 +310,52 @@ public class ComunBattleSystem : MonoBehaviour
         UtilidadesEscena.configurarMenuDatosPokemon(menuDatos, pokemonSeleccionado);
     }
     /// <summary>
-    /// Cabecera: public void opcionVerDatos(GameObject menuDatos)
-    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMenuDatosPokemon de la clase UtilidadesEscena.
-    /// Entradas: GameObject menuDatos
+    /// Cabecera: public void opcionVerMovimientos(GameObject menu)
+    /// Comentario: Este metodo se encarga de recoger los datos necesarios para poder llamar al metodo configurarMostrarMenuMovimientos de la clase UtilidadesEscena.
+    /// Entradas: GameObject menu
     /// Salidas: Ninguna
-    /// Precondiciones: menuDatos no debe estar a null(Sino se producira un NullPointerException)
-    /// Postcondiciones: El menu de datos esta configurado con los valores del pokemon seleccionado
+    /// Precondiciones: menu no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de movimientos esta configurado con los valores del pokemon seleccionado
+    /// <param name="menu"></param>
     /// </summary>
-    /// <param name="menuDatos"></param>
     public void opcionVerMovimientos(GameObject menu)
     {
         UtilidadesEscena.configurarMostrarMenuMovimientos(menu, pokemonSeleccionado);
     }
+    
+    /// <summary>
+    /// Cabecera: public void configurarDerrotaJugador()
+    /// Comentario: Este metodo se encarga de realizar las operaciones necesarias para cuando el jugador sea derrotado 
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se saldra de la escena de combate y se llevara al jugador a la escena PokemonCenter 
+    /// </summary>
+    public void configurarDerrotaJugador()
+    {
+        PlayerPrefs.SetString("NameLastScene", SceneManager.GetSceneAt(1).name);
+        StopAllCoroutines();
+        foreach (Pokemon pokemon in Jugador.EquipoPokemon) //Se cura todo el equipo pokemon del jugador
+        {
+            pokemon.HP = pokemon.HPMaximos;
+        }
+        UtilidadesEscena.eliminarGameObjectsItemsYEntrenadores();
+        Jugador.Dinero -= UnityEngine.Random.Range(100, 301);//Dinero que se pierde por perder la batalla
+        UtilidadesEscena.precargarEscena("PokemonCenterScene"); //Se lleva al jugador a el centro pokemon
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
+    }
+    
+    /// <summary> 
+    /// Anotacion: Este metodo puede causar que el programa se quede congelado, ya que se realiza una llamada a una API y esta puede no responder, congelando asi el programa 
+    ///
+    /// Cabecera: public async Task<Pokemon> generarObtenerPokemonRival()
+    /// Comentario: Este metodo se encarga de realizar las operaciones necesarias para obtener un pokemon rival
+    /// Entradas: Ninguna
+    /// Salidas: Task<Pokemon> pokemonGenerado
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se devolvera un pokemon configurado.
+    /// <returns name="pokemonGenerado"></returns>
+    /// </summary>
     public async Task<Pokemon> generarObtenerPokemonRival()
     {
 
@@ -287,6 +368,7 @@ public class ComunBattleSystem : MonoBehaviour
         anhadirMovimientosFaltantes(pokemonGenerado);
         return pokemonGenerado;
     }
+    //Metodo que añade a un pokemon un movimiento por defecto hasta que este tenga 4 movimiento. Si ya tiene 4 movimiento no se añade ninguno.
     private void anhadirMovimientosFaltantes(Pokemon pokemonGenerado)//Metodo por si el pokemon que vienen de la pokeApi no tiene 4 movimientos
     {
         for (int i = pokemonGenerado.Movimientos.Count; i < 4;)
@@ -296,19 +378,6 @@ public class ComunBattleSystem : MonoBehaviour
     }
 
 
-    public void configurarDerrotaJugador()
-    {
-        PlayerPrefs.SetString("NameLastScene", SceneManager.GetSceneAt(1).name);
-        StopAllCoroutines();
-        foreach (Pokemon pokemon in Jugador.EquipoPokemon)
-        {
-            pokemon.HP = pokemon.HPMaximos;
-        }
-        UtilidadesEscena.eliminarGameObjectsItemsYEntrenadores();
-        Jugador.Dinero -= UnityEngine.Random.Range(100, 301);//Dinero que se pierde por perder la batalla
-        UtilidadesEscena.precargarEscena("PokemonCenterScene");
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
-    }
     /*
     //Metodo que se encarga generar y configurar un pokemon rival de forma aleatoria
     public async Task<Pokemon> generarObtenerPokemonRival()
