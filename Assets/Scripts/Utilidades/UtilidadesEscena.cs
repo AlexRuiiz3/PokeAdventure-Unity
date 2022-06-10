@@ -14,7 +14,7 @@ using Cinemachine;
 public class UtilidadesEscena : MonoBehaviour
 {
 
-    private void Start()
+    private void Start() 
     {
         GameObject camara = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == $"CM"+SceneManager.GetActiveScene().name);
 
@@ -25,6 +25,15 @@ public class UtilidadesEscena : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public static void precargarEscena(string escenaSiguiente)
+    /// Comentario: Este metodo se encarga de guardar cual es la siguiente escena a cargar y cargar una escena de cargando.
+    /// Entradas: string escenaSiguiente
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se cargara una escena de cargando.
+    /// <param name="escenaSiguiente"></param>
+    /// </summary>
     public static void precargarEscena(string escenaSiguiente)
     {
         PlayerPrefs.SetString("NameNextScene", escenaSiguiente);
@@ -69,11 +78,21 @@ public class UtilidadesEscena : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public static void cerrarMenus(GameObject menu)
+    /// Comentario: Este metodo se encarga desactivar todos los objetos menus. 
+    /// Entradas: GameObject menu
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se cargara una escena de cargando.
+    /// <param name="menu"></param>
+    /// </summary>
     public static void cerrarMenus(GameObject menu) {
         List<GameObject> subMenus = obtenerMenusHijosActivados(menu);
         activarDesactivarGameObjects(subMenus,false);
     }
 
+    //Metodo que se encarga de obtener todos los GameObject hijos que sean un menu de manera recursiva(De un hijo se obtendran sus hijos que sean un menu, etc)
     private static List<GameObject> obtenerMenusHijosActivados(GameObject menu) {
         List<GameObject> subMenus = new List<GameObject>();
         foreach (Transform child in menu.transform)
@@ -131,12 +150,13 @@ public class UtilidadesEscena : MonoBehaviour
     }
 
     /// <summary>
-    /// Cabecera: public static void pausarMusicaEscenaActiva()
+    /// Cabecera: public static void activarPausarMusicaEscenaActiva(bool modo)
     /// Comentario: Este metodo se encarga de pausar la musica que tenga la escena que se encuentra activa.
-    /// Entradas: Ninguna
+    /// Entradas: bool modo
     /// Salidas: Ninguna
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se parara la musica que tiene la escena que se encuentre activa. Si la escena no tiene musica, no se pausara la musica.
+    /// <param name="modo"></param>
     /// </summary>
     public static void activarPausarMusicaEscenaActiva(bool modo)
     {
@@ -158,10 +178,35 @@ public class UtilidadesEscena : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Cabecera: public static void destruirGameObjectEspecifico(string nombre)
+    /// Comentario: Este metodo se encarga destruir un GameObject en especifico
+    /// Entradas: string nombre
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se destruira un GameObject determinado. Si el GameObject que se desea eliminar no existe o no se encuentra, no se eliminara
+    /// <param name="nombre"></param>
+    /// </summary>
     public static void destruirGameObjectEspecifico(string nombre)
     {
-        Destroy(GameObject.Find(nombre));
+        GameObject objetoDestruir = GameObject.Find(nombre);
+        if(objetoDestruir != null)
+        {
+        Destroy(objetoDestruir);
+        }    
     }
+    
+    /// <summary>
+    /// Cabecera: public static void activarMusicaTemporal(string musicaActivar, bool enBucle)
+    /// Comentario: Este metodo se encarga de activar una musica temporalmente.
+    /// Entradas: string musicaActivar, bool enBucle
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se iniciara un audio temporal.
+    /// <param name="musicaActivar"></param>
+    /// <param name="enBucle"></param>
+    /// </summary>
     public static void activarMusicaTemporal(string musicaActivar, bool enBucle)
     {
         GameObject audioTemporal = new GameObject();
@@ -172,17 +217,24 @@ public class UtilidadesEscena : MonoBehaviour
         audioSource.loop = enBucle;
         audioSource.Play();
     }
-    public static void llamarActivarAudioMomentaneo(string musica, float duracion)
-    { //Engloba la llamada al metodo que inicia la musica momentanea
-        GameObject.Find("Utilidades").GetComponent<UtilidadesEscena>().activarAudioMomentaneo(musica, duracion);
+    
+    /// <summary>
+    /// Cabecera: public static void activarAudioMomentaneo(string musica, float duracion)
+    /// Comentario: Este metodo se encarga de realizar la llamada para iniciar la activacion de un audio momentaneo durante unos segundos.
+    /// Entradas: string musica, float duracion
+    /// Salidas: Niguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se iniciara un audio momentaneo unos segundos.
+    /// <param name="musica"></param>
+    /// <param name="duracion"></param>
+    /// </summary>
+    public static void activarAudioMomentaneo(string musica, float duracion)//Necesario para acceder a el desde unity
+    { 
+        StarCoroutine(GameObject.Find("Utilidades").GetComponent<UtilidadesEscena>().activarMusica(musica, duracion));
     }
-    private void activarAudioMomentaneo(string musica, float duracion)//Necesario para la corrutina
+    //Corrutina que activa la musica y la desactiva despues de los segundos que se haya indicado por parametro
+    public IEnumerator activarMusica(string musica, float duracion)
     {
-        StartCoroutine(activarMusica(musica, duracion));
-    }
-    IEnumerator activarMusica(string musica, float duracion)
-    {
-
         GameObject audioTemporal = new GameObject();
         audioTemporal.transform.position = new Vector3(0, 0, 0);
         audioTemporal.name = "AudioMomentaneo";
@@ -224,8 +276,8 @@ public class UtilidadesEscena : MonoBehaviour
     /// Salidas: Ninguna
     /// Precondiciones: object no debe estar a null(Sino se producira un NullPointerException)
     /// Postcondiciones: Se eliminaran todos los hijos de un gameObject.
-    /// </summary>
     /// <param name="gameObject"></param>
+    /// </summary>
     public static void eliminarHijosGameObject(GameObject gameObject)
     {
         if (gameObject.transform.childCount > 0)
@@ -239,7 +291,16 @@ public class UtilidadesEscena : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Cabecera: public static void prepararBotonesPokemonsEquipo(List<PokemonJugador> pokemonsJugador, List<Button> botones)
+    /// Comentario: Este metodo se encarga de configurar y preparar una lista de botones que hacen referencia a los pokemons del jugador en el menu de equipo.
+    /// Entradas: List<PokemonJugador> pokemonsJugador, List<Button> botones
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se configurar los botones recibidos por parametro.
+    /// </summary>
+    /// <param name="pokemonsJugador"></param>
+    /// <param name="botones"></param>
     public static void prepararBotonesPokemonsEquipo(List<PokemonJugador> pokemonsJugador, List<Button> botones)
     {
         Image imagenPokemon;
@@ -292,7 +353,7 @@ public class UtilidadesEscena : MonoBehaviour
     /// Entradas: GameObject menuDatos, PokemonJugador pokemon
     /// Salidas: Ninguna
     /// Precondiciones: menuDatos y pokemon no deben estar a null(Sino se producira un NullPointerException)
-    /// Postcondiciones: El menu de datos esta configurado y activado con los valores del pokemon seleccionado
+    /// Postcondiciones: El menu de datos esta configurado y activado con los valores del pokemon.
     /// </summary>
     /// <param name="menuDatos"></param>
     /// <param name="pokemon"></param>
@@ -322,7 +383,16 @@ public class UtilidadesEscena : MonoBehaviour
         }
         menuDatos.SetActive(true);
     }
-
+    /// <summary>
+    /// Cabecera: public static void configurarMostrarMenuMovimientos(GameObject menuMovimientos, PokemonJugador pokemon)
+    /// Comentario: Este metodo se encarga de configurar y mostrar el menu de movimientos que tiene un pokemon.
+    /// Entradas: GameObject menuMovimientos, PokemonJugador pokemon
+    /// Salidas: Ninguna
+    /// Precondiciones: menuMovimientos y pokemon no deben estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: El menu de movimientos esta configurado y activado con los valores del pokemon.
+    /// </summary>
+    /// <param name="menuMovimientos"></param>
+    /// <param name="pokemon"></param>
     public static void configurarMostrarMenuMovimientos(GameObject menuMovimientos, PokemonJugador pokemon) {
         GameObject movimientoInterfaz;
         MovimientoPokemon movimientoPokemon;
