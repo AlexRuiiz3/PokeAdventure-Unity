@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 public class MenuJugador : MonoBehaviour
 {
     public GameObject menuJugador;
+    
     private void Update()
     {
         if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString() && Input.GetKeyDown(KeyCode.C))
@@ -24,6 +25,14 @@ public class MenuJugador : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public void guardarPartida()
+    /// Comentario: Este metodo se encarga de realizar las llamadas a los metodos necesarios para guardar todos los datos de un jugador en la base de datos.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se guardaran en la base de datos todos los datos asociados a un jugador. Si se produce alguna expcecion, algunos datos no se guardaran.
+    /// </summary>
     public void guardarPartida()
     {
         try
@@ -46,12 +55,29 @@ public class MenuJugador : MonoBehaviour
             UtilidadesEscena.mostrarMensajeError("Ocurrio un error realizando el guardado de la partida");
         }
     }
+    /// <summary>
+    /// Cabecera: public void cerrarMenu()
+    /// Comentario: Este metodo se encarga de cerrar el menu principal del jugador.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: menuJugador no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se desactivara el menu principal del jugador.
+    /// </summary>
     public void cerrarMenu()
     { 
         UtilidadesEscena.cerrarMenus(menuJugador); 
         menuJugador.SetActive(true);
         UtilidadesEscena.activarDesactivarMenuYTiempoJuego(menuJugador);
     }
+    
+    /// <summary>
+    /// Cabecera: public void salir()
+    /// Comentario: Este metodo se encarga de salir de la partida actual del jugador.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se saldra de la escena en la que se encuentre el jugador y se cargara la escena MainScene.
+    /// </summary>
     public void salir()
     {
         UtilidadesEscena.cerrarMenus(menuJugador);
@@ -60,6 +86,15 @@ public class MenuJugador : MonoBehaviour
         UtilidadesEscena.precargarEscena("MainScene");
     }
 
+    /// <summary>
+    /// Cabecera: public void prepararMostrarMenuPerfil(GameObject menuPerfil)
+    /// Comentario: Este metodo se encarga de configurar y mostrar el menu de perfil del jugador.
+    /// Entradas: GameObject menu
+    /// Salidas: Ninguna
+    /// Precondiciones: menuPerfil no debe estar a null(Sino se producira un NullPointerException)
+    /// Postcondiciones: Se activara configurado el menu de perfil del jugador 
+    /// <param name="menuPerfil"></param>
+    /// </summary>
     public void prepararMostrarMenuPerfil(GameObject menuPerfil)
     {
         Jugador jugador = GetComponent<PlayerController>().Jugador;
@@ -70,6 +105,14 @@ public class MenuJugador : MonoBehaviour
         menuPerfil.SetActive(true);
     }
 
+    /// <summary>
+    /// Cabecera: IEnumerator mostrarGuardadoConExito()
+    /// Comentario: Esta corrutina se encarga de mostrar un mensaje de guardado con exito temporalmente durante unos segundos.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se activara un mensaje que se desactivara a los pocos segundos.
+    /// </summary>
     IEnumerator mostrarGuardadoConExito()
     {
         GameObject menuTemporal = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(g => g.name == "MensajeTemporal");
