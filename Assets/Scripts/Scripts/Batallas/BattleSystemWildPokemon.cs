@@ -39,7 +39,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
 
 
     /// <summary>
-    /// Cabecera:  IEnumerator prepararBatalla()
+    /// Cabecera:  IEnumerator prepararIniciarBatalla()
     /// Comentario: Este corrutina se encarga de configurar y preparar los campos necesarios de una batalla.
     /// Entradas: Ninguna
     /// Salidas: Niguna
@@ -103,7 +103,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                     PokemonJugadorLuchando = Jugador.EquipoPokemon[numeroBotonPulsado - 1];
                     trainerHUD.inicializarDatos(PokemonJugadorLuchando);
                     prepararBannerIconosMovimientos();
-                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti";
+                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti!";
                     if (BattleState == BattleState.PLAYERTURN)
                     {
                         activarDesactivarBotonesMenuAcciones(false);
@@ -117,13 +117,13 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                 }
                 else
                 {
-                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar";
+                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar.";
                 }
 
             }
             else
             {
-                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando";
+                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando!";
             }
 
         }
@@ -214,7 +214,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
     }
 
     /// <summary>
-    /// Cabecera: IEnumerator atacarJugador(int numeroBotonPulsado)
+    /// Cabecera: IEnumerator atacarJugador(int numeroBotonMovimiento)
     /// Comentario: Esta corrutina realizar la accion de ataque del pokemon de un jugador, en funcion del movimiento que se haya indicado
     /// Entradas: int numeroBotonMovimiento
     /// Salidas: Niguna
@@ -276,13 +276,13 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                     textoDialogo.text = $"¡El {PokemonRivalLuchando.Nombre} enemigo se debilito!";
                     yield return new WaitForSeconds(2f);
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
-                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} puntos de experiencia";
+                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} puntos de experiencia.";
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
                         yield return new WaitForSeconds(3.5f);
                         trainerHUD.setTextNivel(PokemonJugadorLuchando.Nivel);
                         UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/LevelUp", 1f);
-                        textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}";
+                        textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}!";
                     }
                     yield return new WaitForSeconds(3f);
                     textoDialogo.text = "¡Victoria! Saliendo del combate...";
@@ -294,7 +294,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             else
             {
                 yield return new WaitForSeconds(2f);
-                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} uso {movimientoUsado.Nombre}, pero ha fallado";
+                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} uso {movimientoUsado.Nombre}, pero ha fallado!";
             }
             BattleState = BattleState.ENEMYTURN;
             StartCoroutine(atacarWildPokemon());
@@ -317,7 +317,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
     IEnumerator atacarWildPokemon()
     {
         yield return new WaitForSeconds(2f);
-        textoDialogo.text = "Es el turno del pokemon salvaje";
+        textoDialogo.text = "Es el turno del pokemon salvaje!";
         yield return new WaitForSeconds(3f); //Para que no se junten los mensaje, se hace una pausa y asi da tiempo de ver los mensajes de ambos
         int aleatorioMoviminento = UnityEngine.Random.Range(0, PokemonRivalLuchando.Movimientos.Count),
              aleatorioPrecicion = UnityEngine.Random.Range(1, 100),danhoMovimiento, danhoPokemonCausado, multiplicadorEfectividad;
@@ -362,7 +362,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             {
                 prepararIconosPokemosDisponibles(Jugador.EquipoPokemon.Cast<Pokemon>().ToList(), trainerHUD.pokemonsDisponibles);
                 yield return new WaitForSeconds(2f);
-                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} se ha debilitado";
+                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} se ha debilitado!";
                 if (determinarDerrotaJugador())
                 {
                     yield return new WaitForSeconds(2f);
@@ -378,14 +378,14 @@ public class BattleSystemWildPokemon : ComunBattleSystem
                 else
                 {                   
                     yield return new WaitForSeconds(1.5f);
-                    textoDialogo.text = "Elige un pokemon para luchar";
+                    textoDialogo.text = "¡Elige un pokemon para luchar!";
                     StopCoroutine(atacarWildPokemon());
                 }
             }
         }
         else
         {
-            textoDialogo.text = $"El {PokemonRivalLuchando.Nombre} salvaje ha fallado ";
+            textoDialogo.text = $"El {PokemonRivalLuchando.Nombre} salvaje ha fallado!";
         }
         if (BattleState == BattleState.ENEMYTURN)
         {
@@ -416,7 +416,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             trainerHUD.setBarraSalud(PokemonJugadorLuchando.HP, PokemonJugadorLuchando.HPMaximos);
         }
 
-        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}";
+        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}.";
         //Se actualiza la vida de la interfaz del pokemon de ver equipo
         botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {Jugador.EquipoPokemon[numeroBotonPulsado].HP} / {Jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
         configurarMenuEquipo(false);
@@ -438,7 +438,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
     /// </summary>
     IEnumerator lanzarPokeball() {
 
-        textoDialogo.text = $"Has lanzado una {ItemAUsar.Nombre}";
+        textoDialogo.text = $"Has lanzado una {ItemAUsar.Nombre}!";
         rivalPokemonHUD.imagenPokemon.sprite = InterfazItemAUsar.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
         rivalPokemonHUD.imagenPokemon.transform.localScale = new Vector3(0.35f, 0.52f, 1f);
         rivalPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -34.18f);
@@ -464,7 +464,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
             abandonarBatallaButton();
         }
         else {
-            textoDialogo.text = $"Oh no el pokemon se ha escapado";
+            textoDialogo.text = $"Oh no el pokemon se ha escapado.";
             rivalPokemonHUD.imagenPokemon.transform.localScale = new Vector3(1f, 1f, 1f);
             rivalPokemonHUD.imagenPokemon.sprite = Resources.LoadAll<Sprite>("Imagenes/Pokemons/Front/" + PokemonRivalLuchando.ID).First();
             rivalPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -1.48f);
