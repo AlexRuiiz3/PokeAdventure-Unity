@@ -30,6 +30,7 @@ public class ObtenerPrimerPokemon : MonoBehaviour
         }
     }
 
+    //Metodo que configura los menus de los pokemos iniciales
     private void configurarMenusPokemons() {
         Pokemon pokemon;
         for (int i = 0; i < menusPokemons.Count; i++) {
@@ -52,11 +53,28 @@ public class ObtenerPrimerPokemon : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cabecera: public void mostrarMenuPokemonSeleccionado(GameObject menuPokemon)
+    /// Comentario: Este metodo se encarga de mostrar el menu del pokemon que se haya seleccionado.
+    /// Entradas: GameObject menuPokemon
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se activara el menu de un pokemon
+    /// </summary>
+    /// <params name="menuPokemon"></params>
     public void mostrarMenuPokemonSeleccionado(GameObject menuPokemon) {
         identificadorPokemonSeleccionado = menuPokemon.name;
         menuPokemon.SetActive(true);
     }
 
+    /// <summary>
+    /// Cabecera: public void buttonAceptarSeleccionarPokemon()
+    /// Comentario: Este metodo se encarga de confirma elegir un pokemon.
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se guardara en la base de datos los datos del pokemon seleccionado a el jugador y se cambiara de escena a LobbyScene.
+    /// </summary>
     public void buttonAceptarSeleccionarPokemon()
     {
         PokemonJugador pokemonSeleccionado = determinarPokemonSeleccionado();
@@ -76,13 +94,12 @@ public class ObtenerPrimerPokemon : MonoBehaviour
             Debug.Log("Error trabajando con los datos del jugador");
         }
     }
-
+    //Metodo se encarga de coger el pokemon seleccionado en funcion del menu que se haya activado. Cada menu corresponde con el de un tipo de pokemon y esta asociado a un pokemon
     private PokemonJugador determinarPokemonSeleccionado()
     {
         PokemonJugador pokemon = new PokemonJugador();
         switch (identificadorPokemonSeleccionado)
         {
-
             case "MenuPokemonFuego":
                 pokemon = new PokemonJugador(pokemonsIniciales[0],0,1,1,0,100);
                 break;
@@ -94,15 +111,15 @@ public class ObtenerPrimerPokemon : MonoBehaviour
             case "MenuPokemonPlanta":
                 pokemon = new PokemonJugador(pokemonsIniciales[2], 0, 1, 1, 0, 100);
                 break;
-
         }
         return pokemon;
     }
 
+    //Metodo se encarga de generar los pokemons iniciales 
     private void generarPokemonsIniciales()
     {
         List<MovimientoPokemon> movimientosPokemonsFuego = new List<MovimientoPokemon> { new MovimientoPokemon(1, "Ascuas", 40, 100, 25, "Fuego"), new MovimientoPokemon(2, "Lanzallamas", 90, 100, 15, "Fuego"), new MovimientoPokemon(3, "Sorpresa", 40, 100, 10, "Normal"), new MovimientoPokemon(4, "Canon", 60, 100, 15, "Normal") },
-            movimientosPokemonsAgua = new List<MovimientoPokemon> { new MovimientoPokemon(5, "Doble golpe", 35, 90, 10, "Normal"), new MovimientoPokemon(6, "Rayo burbuja", 65, 100, 20, "Agua"), new MovimientoPokemon(7, "Surf", 90, 100, 25, "Agua"), new MovimientoPokemon(8, "Arañazo", 40, 100, 35, "Normal") },
+            movimientosPokemonsAgua = new List<MovimientoPokemon> { new MovimientoPokemon(5, "Doble golpe", 35, 90, 10, "Normal"), new MovimientoPokemon(6, "Rayo burbuja", 65, 100, 20, "Agua"), new MovimientoPokemon(7, "Surf", 90, 100, 25, "Agua"), new MovimientoPokemon(8, "AraÃ±azo", 40, 100, 35, "Normal") },
             movimientosPokemonsPlanta = new List<MovimientoPokemon> { new MovimientoPokemon(9, "Corte", 50, 95, 30, "Normal"), new MovimientoPokemon(10, "Hoja Magica", 60, 100, 20, "Planta"), new MovimientoPokemon(11, "Destructor", 40, 100, 35, "Normal"), new MovimientoPokemon(12, "Rayo solar", 120, 100, 10, "Planta") };
         List<string> debilidadesPlanta = new List<string> { "Fuego", "Bicho", "Hielo", "Volador", "Veneno" },
             debilidadesFuego = new List<string> { "Agua", "Tierra", "Roca" },
