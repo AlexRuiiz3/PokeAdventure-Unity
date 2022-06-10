@@ -108,7 +108,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     PokemonJugadorLuchando = Jugador.EquipoPokemon[numeroBotonPulsado - 1];
                     trainerHUD.inicializarDatos(PokemonJugadorLuchando);
                     prepararBannerIconosMovimientos();
-                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti";
+                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} te elijo a ti!";
                     if (BattleState == BattleState.PLAYERTURN)
                     {
                         activarDesactivarBotonesMenuAcciones(false);
@@ -122,13 +122,13 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                 }
                 else
                 {
-                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar";
+                    textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} no tiene fuerzas para luchar.";
                 }
 
             }
             else
             {
-                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando";
+                textoDialogo.text = $"{Jugador.EquipoPokemon[numeroBotonPulsado - 1].Nombre} ya esta luchando!";
             }
 
         }
@@ -216,13 +216,13 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     textoDialogo.text = $"¡{PokemonRivalLuchando.Nombre} enemigo se debilito!";
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
                     yield return new WaitForSeconds(3f);
-                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} de experiencia";
+                    textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} de experiencia.";
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
                         yield return new WaitForSeconds(3.5f);
                         trainerHUD.setTextNivel(PokemonJugadorLuchando.Nivel);
                         UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/LevelUp", 1f);
-                        textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}";
+                        textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha subido al nivel {PokemonJugadorLuchando.Nivel}!";
                     }
 
                     if (determinarDerrotaRival())
@@ -233,7 +233,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                         trainerNPC.derrotado = true;
                         yield return new WaitForSeconds(3.5f);
                         Jugador.Dinero += trainerNPC.dineroAlDerrotar;
-                        textoDialogo.text = $"Has derrotado al entrenador rival y obtenido {trainerNPC.dineroAlDerrotar}$";
+                        textoDialogo.text = $"Has derrotado al entrenador rival y obtenido {trainerNPC.dineroAlDerrotar}$!";
                         yield return new WaitForSeconds(3.5f);
                         textoDialogo.text = "¡Victoria! Saliendo del combate...";
                         BattleState = BattleState.WIN;
@@ -245,14 +245,14 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                         PokemonRivalLuchando = trainerNPC.EquipoPokemon.First(g => g.HP > 0);
                         rivalPokemonHUD.inicializarDatos(PokemonRivalLuchando);
                         rivalPokemonHUD.imagenPokemon.enabled = true;
-                        textoDialogo.text = $"El entrendador rival saca a {PokemonRivalLuchando.Nombre}";
+                        textoDialogo.text = $"El entrendador rival saca a {PokemonRivalLuchando.Nombre}.";
                         yield return new WaitForSeconds(3f);
                     }
                 }
             }
             else
             {
-                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha fallado";
+                textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha fallado!";
             }
             BattleState = BattleState.ENEMYTURN;
             StartCoroutine(atacarEntranadorRival());
@@ -275,7 +275,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
     IEnumerator atacarEntranadorRival()
     {
         yield return new WaitForSeconds(2f);
-        textoDialogo.text = $"Es el turno del {PokemonRivalLuchando.Nombre} rival";
+        textoDialogo.text = $"Es el turno del {PokemonRivalLuchando.Nombre} rival!";
         yield return new WaitForSeconds(3f); //Para que no se junten los mensaje, se hace una pausa y asi da tiempo de ver los mensajes de ambos
 
         if (!determinarRivalUsaCuracion())
@@ -339,14 +339,14 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     else
                     {
                         yield return new WaitForSeconds(1f);
-                        textoDialogo.text = "Elige un pokemon para luchar";
+                        textoDialogo.text = "¡Elige un pokemon para luchar!";
                         StopCoroutine(atacarEntranadorRival());
                     }
                 }
             }
             else
             {
-                textoDialogo.text = $"El {PokemonRivalLuchando.Nombre} salvaje ha fallado ";
+                textoDialogo.text = $"El {PokemonRivalLuchando.Nombre} salvaje ha fallado!";
             }
         }
         else
@@ -383,7 +383,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
             trainerHUD.setBarraSalud(PokemonJugadorLuchando.HP, PokemonJugadorLuchando.HPMaximos);
         }
 
-        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}";
+        textoDialogo.text = $"Has restaurado {ItemAUsar.CuracionPS}PS a {PokemonJugadorLuchando.Nombre}.";
         //Se actualiza la vida de la interfaz del pokemon de ver equipo
         botonesPokemonsEquipo[numeroBotonPulsado].GetComponentsInChildren<TextMeshProUGUI>()[1].text = $"PS: {Jugador.EquipoPokemon[numeroBotonPulsado].HP} / {Jugador.EquipoPokemon[numeroBotonPulsado].HPMaximos}";
         configurarMenuEquipo(false);
@@ -413,7 +413,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
         int randomItemUsar = UnityEngine.Random.Range(0, trainerNPC.Mochila.Count);
         ItemConCantidad itemUsar = trainerNPC.Mochila[randomItemUsar];
         UtilidadesEscena.llamarActivarAudioMomentaneo("Iteracion/UsarPocion", 1f);
-        textoDialogo.text = $"El entrenador rival uso {itemUsar.Nombre}";
+        textoDialogo.text = $"El entrenador rival uso {itemUsar.Nombre}.";
         PokemonRivalLuchando.HP += itemUsar.CuracionPS;
         rivalPokemonHUD.setBarraSalud(PokemonRivalLuchando.HP, PokemonRivalLuchando.HPMaximos);
 
