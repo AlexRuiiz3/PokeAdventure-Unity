@@ -10,8 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
-    private Rigidbody2D rigidBody; //Atributo que hara referencia al componente RigidBody2D de Unity que tiene el Jugador
+    private Rigidbody2D rigidBody; 
     private Animator animator;
     private float movimientoHorizontal;
     private float movimientoVertical;
@@ -19,17 +18,15 @@ public class PlayerController : MonoBehaviour
     public LayerMask zonaHierba; //Atributo que servira para poder detectar cuando un jugador este por una zona de hierba
     public Jugador Jugador { get; set; }
 
-    // Start se llama al principio del juego(Al principio de la ejecucion de este script).Solo se ejecuta 1 vez
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update se llama por cada frame(En los juegos se dice que van a 60 frame/s eso quiere decir que el metodo update se esta ejecutando 60 veces por segundo)
     void Update()
     {
-        if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString())//Para evitar que cuando el usuario este en interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
+        if (PlayerPrefs.GetString("EstadoDialogo") == DialogEstate.END.ToString() && Time.timeScale == 1)//Para evitar que cuando el usuario este en interactuando con un objeto o NPC que tiene un dialogo, se pueda mover
         {
             //Se obtiene el input del jugador(Teclado)
             movimientoHorizontal = Input.GetAxisRaw("Horizontal") * 1.9f; //Metodo que devuelve 1 si pulsa la A o la D y -1 cualquier otra tecla
@@ -57,12 +54,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     private void FixedUpdate()
-    { //Es un metodo que tiene que actualizarce de manera mucho mas habitual que el Update(Este depende de a cuantos frame por segundos vayas), por eso aqui es donde se mete lo de la fisica
-        //Vector representa un vector con dos posiciones X e Y en el mundo 
+    { //Es un metodo que tiene que actualizarce de manera mucho mas habitual que el Update(Este depende de a cuantos frame por segundos vayas), por eso aqui es donde se mete lo de la fisica 
         rigidBody.velocity = new Vector2(movimientoHorizontal, movimientoVertical);
     }
 
@@ -78,7 +71,7 @@ public class PlayerController : MonoBehaviour
     //Metodos añadidos
     private void comprobarZonaHierba()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null && Time.timeScale == 1)
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, zonaHierba) != null)
         {
             if (UnityEngine.Random.Range(1, 851) <= 2)
             {
@@ -89,16 +82,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Metodo
+    //Metodo para poder comenzar la corrutina desde el script ultilidadesObjetoInteractable
     public void iniciarCoroutineAsignarObjetoEncontrado() { //Necesario ya que desde donde se llama no se puede llamar a StartCoroutine
         StartCoroutine(asignarObjetoEncontrado());
     }
     
+    /// <summary>
+    /// Cabecera: public IEnumerator asignarObjetoEncontrado()
+    /// Comentario: Esta corrutina se encarga de asignar al jugador un objecto que recoge. 
+    /// Entradas: Ninguna
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se mostrara en pantalla un menu temporal con el objeto recogido, y se asignara a la mochila del jugador el objeto recogido.
+    /// </summary>
     public IEnumerator asignarObjetoEncontrado() //Deberia de ir en ultilidadesObjetoInteractable, pero al ser una corrutina debe de ir en un script que este asociado a un gameObject del juego
     {
         GameObject canvasObjetoRecogigo = Resources.FindObjectsOfTypeAll<GameObject>().First(g => g.name == "CanvasObjetoRecogido");
         int cantidadItem = (int)UnityEngine.Random.Range(1f, 3f);
-        //Poner try catch
+        try{
         ItemConCantidad itemRecogido = new ItemConCantidad(ListadosItemBL.obtenerItemAleatorio(), cantidadItem);
         Sprite iconoItem = Resources.LoadAll<Sprite>("Imagenes/Items/").First(g => g.name == itemRecogido.Nombre);
 
@@ -117,5 +118,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         canvasObjetoRecogigo.gameObject.SetActive(false);
         StopCoroutine(asignarObjetoEncontrado());
+        }catch(Exception){
+            UtilidadesEscena.mostrarMensajeError("Error en la generacion del item");
+            StopCoroutine(asignarObjetoEncontrado());
+        }
     }
 }
