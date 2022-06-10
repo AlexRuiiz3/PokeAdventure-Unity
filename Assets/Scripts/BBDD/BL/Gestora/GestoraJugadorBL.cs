@@ -10,7 +10,7 @@ public class GestoraJugadorBL
     /// Entradas: ClsJugador jugador
     /// Salidas: Ninguna
     /// Precondiciones: jugador no debera ser distinto de null
-    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se einsertara en la base de datos.
+    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se insertara en la base de datos.
     /// </summary>
     /// <param name="jugador"></param>
     /// <returns></returns>
@@ -25,7 +25,7 @@ public class GestoraJugadorBL
     /// Entradas: int id, int dinero
     /// Salidas: int
     /// Precondiciones: Ninguna
-    /// Postcondiciones: Se insertara en la base de datos un nuevo jugador. Si se produce algun tipo de excepcion el jugador no se einsertara en la base de datos.
+    /// Postcondiciones: Se actualizara el valor del campo dinero de un jugador en la base de datos.
     /// </summary>
     /// <param name="id"></param>
     /// <param name="dinero"></param>
