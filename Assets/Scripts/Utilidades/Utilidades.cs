@@ -11,6 +11,16 @@ using System;
 public class Utilidades
 {
 
+    /// <summary>
+    /// Cabecera: public static void obtenerDatosJugador(string nombreUsuario, string contrasenha)
+    /// Comentario: Este metodo se encarga de obtener todos los datos del jugador de la base de datos.
+    /// Entradas: string nombreUsuario, string contrasenha
+    /// Salidas: Ninguna
+    /// Precondiciones: Ninguna
+    /// Postcondiciones: Se obtendran los datos del jugador.
+    /// </summary>
+    ///<param name="nombreUsuario"></param>
+    ///<param name="contrasenha"></param>
     public static void obtenerDatosJugador(string nombreUsuario, string contrasenha)
     {
         try
@@ -28,7 +38,7 @@ public class Utilidades
         }
         catch (Exception)
         {
-            throw new Exception();
+            throw;
         }
 
     }
@@ -44,17 +54,24 @@ public class Utilidades
     ///                  Si se recibide una cadena que este a null, se producira un NullPointerException.
     /// </summary>
     ///<param name="cadena"></param>
+    ///<returns>bool</returns>
     public static bool comprobarCadenaVacia(string cadena)
     {
         return string.IsNullOrEmpty(cadena.Trim());
     }
 
+    /// <summary>
+    /// Cabecera: public static void cambiarPrimerCaracterMayuscula(string cadena)
+    /// Comentario: Este metodo se encarga de comprobar si la cadena rebidida como parametros se encuentra vacia.
+    /// Entrada/Salida: cadena
+    /// Precondiciones: cadena debe ser distinto de null.
+    /// Postcondiciones: Se devolvera la misma cadena que se recibe pero con la primera letra en mayuscula
+    /// </summary>
+    ///<param name="cadena"></param>
     public static void cambiarPrimerCaracterMayuscula(string cadena)
     {
         cadena = cadena.Substring(0, 1).ToUpper() + cadena.Substring(1);
     }
-
-   
 
     /// <summary>
     /// Cabecera: public static List<string> obtenerFrasesAleatoriasTrainer()
@@ -64,6 +81,7 @@ public class Utilidades
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se obtendra un List<string>
     /// </summary>
+    ///<returns>List<string></returns>
     public static List<string> obtenerFrasesAleatoriasTrainer()
     {
         List<List<string>> frasesEntrenadores = new List<List<string>> {
@@ -91,6 +109,7 @@ public class Utilidades
     /// Precondiciones: Ninguna
     /// Postcondiciones: Se obtendra un List<string>
     /// </summary>
+    ///<returns>List<string><returns>
     public static List<string> obtenerFrasesAleatoriasTrainerDerrotado()
     {
         List<List<string>> frasesEntrenadoresDerotao = new List<List<string>> {
