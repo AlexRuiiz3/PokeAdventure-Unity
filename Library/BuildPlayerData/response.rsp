@@ -22,6 +22,7 @@
 -a="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Assets\Plugins\PokeApi-NJ.NET.dll"
 -a="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Assets\Plugins\Mono.Data.Sqlite.dll"
 -a="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Assets\Plugins\Demigiant\DOTween\DOTween.dll"
+-a="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Assets\Plugins\Newtonsoft.Json.dll"
 -a="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll"
 -s="C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\Managed\UnityEngine"
 -s="C:\Users\AlexRuiz\Desktop\Ciclo DAM\Repositorios\PokeAdventure-Unity\Library\PlayerScriptAssemblies"

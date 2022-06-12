@@ -56,13 +56,14 @@ public class ConfiguracionDB
             try
             {
                 conexion = establecerConexion();
-                string contenidoScript = File.ReadAllText("Assets\\Scripts\\BBDD\\PokeAdventureBD.sql");
+                string contenidoScript = File.ReadAllText("Assets\\Plugins\\PokeAdventureBD.sql");
                 SqliteCommand sqlCommand = new SqliteCommand(contenidoScript,conexion);
                 sqlCommand.ExecuteNonQuery();
                 PlayerPrefs.SetInt("BaseDatosCreada",1);
             }
             catch (Exception)
             {
+            throw;
             }
             finally
             {

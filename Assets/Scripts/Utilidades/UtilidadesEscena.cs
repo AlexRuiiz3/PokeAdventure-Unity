@@ -149,6 +149,9 @@ public class UtilidadesEscena : MonoBehaviour
         }
     }
 
+    public void cerrarJuego() {
+        Application.Quit();
+    }
     /// <summary>
     /// Cabecera: public static void activarPausarMusicaEscenaActiva(bool modo)
     /// Comentario: Este metodo se encarga de pausar la musica que tenga la escena que se encuentra activa.

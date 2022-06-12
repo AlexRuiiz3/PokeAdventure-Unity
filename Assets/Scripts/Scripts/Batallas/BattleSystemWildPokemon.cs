@@ -442,7 +442,7 @@ public class BattleSystemWildPokemon : ComunBattleSystem
         rivalPokemonHUD.imagenPokemon.sprite = InterfazItemAUsar.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
         rivalPokemonHUD.imagenPokemon.transform.localScale = new Vector3(0.35f, 0.52f, 1f);
         rivalPokemonHUD.imagenPokemon.rectTransform.offsetMax = new Vector2(1.75f, -34.18f);
-        bool pokemonCapturado = true;//UtilidadesSystemaBatalla.determinarCapturarPokemon(itemAUsar.IndiceExito,wildPokemon.HPMaximos,wildPokemon.HP);
+        bool pokemonCapturado = UtilidadesSystemaBatalla.determinarCapturarPokemon(ItemAUsar.IndiceExito,PokemonRivalLuchando.HPMaximos, PokemonRivalLuchando.HP);
         if (pokemonCapturado) {
             UtilidadesEscena.llamarActivarAudioMomentaneo("Batalla/PokemonCapturado", 3.5f);
         }
