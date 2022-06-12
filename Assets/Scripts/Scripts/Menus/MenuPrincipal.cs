@@ -68,7 +68,6 @@ public class MenuPrincipal : MonoBehaviour
             }
             catch (Exception)
             {
-                throw;
                 UtilidadesEscena.mostrarMensajeError("Ocurrio un error al intentar acceder a la base de datos");
             }
         }

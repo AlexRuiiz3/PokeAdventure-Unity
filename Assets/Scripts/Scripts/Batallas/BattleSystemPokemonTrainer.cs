@@ -219,6 +219,7 @@ public class BattleSystemPokemonTrainer : ComunBattleSystem
                     experienciaGanada = UtilidadesSystemaBatalla.generarExperienciaDerrotarPokemonRival(PokemonRivalLuchando.Nivel);
                     yield return new WaitForSeconds(3f);
                     textoDialogo.text = $"{PokemonJugadorLuchando.Nombre} ha ganado {experienciaGanada} de experiencia.";
+                    PokemonJugadorLuchando.Experiencia += experienciaGanada;
                     while (PokemonJugadorLuchando.comprobarSubirNivel()) //Se vuelve a comprobar con un while porque cuando sube de nivel puede ser que tenga la experiencia necesaria para subir otra vez de nivel de manera seguida
                     {
                         yield return new WaitForSeconds(3.5f);
